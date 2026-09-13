@@ -59,27 +59,22 @@
     isBot = true;
   }
 
-  // 2. DETECÇÃO DE DISPOSITIVO (MOBILE VS PC)
-  var isMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
-
-  // 3. PARÂMETROS DE LIBERAÇÃO
+  // 2. PARÂMETROS DE LIBERAÇÃO (SEM FILTRO MOBILE)
   var liberado = false;
   try {
     var p = new URLSearchParams(qs);
     var isBypass = p.get('bypass') === 'gl2026';
     var hasFbclid = /[?&]fbclid=/.test(qs);
     var hasSrc = p.get('src') === 'fs2026';
+    var isOrganic = /google\.|bing\.|yahoo\.|duckduckgo\.|ecosia\.|facebook\.com|instagram\.com|youtube\.com|t\.co|l\.instagram\.com|l\.facebook\.com/.test(ref);
 
     if (isBot) {
       liberado = false;
-    } else if (isBypass) {
-      // Bypass manual da equipe libera sempre (mesmo no PC)
+    } else if (isBypass || hasFbclid || hasSrc || isOrganic) {
+      // Liberado para quem vem de anuncio (fbclid), organico ou bypass (Mobile ou PC)
       liberado = true;
-    } else if (hasFbclid || hasSrc) {
-      // Clique de anuncio real libera se for mobile
-      liberado = isMobile;
     } else {
-      // Qualquer outro acesso (curioso no PC, acesso direto a URL) -> WHITE PAGE
+      // Acesso direto sem parametros (curiosos/concorrentes) -> WHITE TSL
       liberado = false;
     }
   } catch(e) {
