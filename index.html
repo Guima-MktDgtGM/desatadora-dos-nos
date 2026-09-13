@@ -557,44 +557,12 @@
 
     <!-- VÍDEO: player VTurb da VSL -->
     <div class="video" id="player">
-      <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:133.33% 0 0;z-index:0;background-color:#000"></div>
+      <vturb-smartplayer id="vid-6aa6d9c442e73d282d5f1b74" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+        <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div>
+      </vturb-smartplayer>
     </div>
-    <script type="text/javascript">
-    (function(){
-      var lancado=false;
-      function k(s){ return atob(s).split("").reverse().join(""); }
-      var P1="MDFkMTA5MmU3ODQ5LTkxZGItNDliNC0zZDg4LWQ0ZjQ3YzJi", P2="M2IxNGUyYmNkY2Y3YTI3YThjYjQwOWE2";
-      function carregarPlayer(){
-        if(lancado) return; lancado=true;
-        var a=k(P1), v=k(P2), box=document.getElementById("player");
-        var el=document.createElement("vturb-smartplayer");
-        el.id="vid-"+v; el.style.cssText="display:block;width:100%";
-        el.innerHTML='<div class="vturb-player-placeholder" style="position:relative;width:100%;padding:133.33% 0 0;z-index:0;background-color:#000"></div>';
-        box.innerHTML=""; box.appendChild(el);
-        var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/"+a+"/players/"+v+"/v4/player.js";
-        s.async=true; document.head.appendChild(s);
-      }
-      var tentativas=0;
-      var iv=setInterval(function(){
-        tentativas++;
-        if((window.fbq && typeof window.fbq.callMethod === 'function') || tentativas>28){ clearInterval(iv); carregarPlayer(); }
-      },50);
-      setTimeout(carregarPlayer,1400);
-    })();
 
-    (function(){
-      var v=document.getElementById("player");
-      document.addEventListener("contextmenu",function(e){e.preventDefault();});
-      document.addEventListener("dragstart",function(e){e.preventDefault();});
-      document.addEventListener("keydown",function(e){
-        var c=(e.key||"").toUpperCase();
-        if(e.key==="F12"||((e.ctrlKey||e.metaKey)&&(c==="S"||c==="U"||(e.shiftKey&&(c==="I"||c==="J"||c==="C"))))){e.preventDefault();}
-      });
-    })();
-    </script>
-
-    <a href="https://pay.hub.la/pk91mI3cW1QOGow1A5wF" class="cta" id="ctaBtn" style="display:none">QUERO CONTRIBUIR E DESATAR MEUS NÓS AGORA!</a>
+    <a href="#" class="cta" id="ctaBtn" style="display:none">QUERO CONTRIBUIR E DESATAR MEUS NÓS AGORA!</a>
     <p class="ctasub" id="ctasub" style="display:none">Reze os nove dias. Se os nós não começarem a soltar, o padre devolve a sua contribuição inteira, e a novena continua sendo sua.</p>
 
     <footer>
@@ -726,7 +694,7 @@
         <div class="price-sub">Contribuição única ou até 12x no cartão</div>
       </div>
 
-      <a href="https://pay.hub.la/pk91mI3cW1QOGow1A5wF" class="tsl-cta-btn">
+      <a href="#" class="tsl-cta-btn">
         QUERO RESGATAR MINHA NOVENA AGORA
       </a>
 
@@ -753,7 +721,7 @@
     </div>
 
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://pay.hub.la/pk91mI3cW1QOGow1A5wF" class="tsl-cta-btn">
+      <a href="#" class="tsl-cta-btn">
         RESGATAR A NOVENA DAS 9 PALAVRAS
       </a>
     </div>
@@ -817,54 +785,36 @@
     cleanEl.parentNode.removeChild(cleanEl);
   }
 
-  // Inicia Meta Pixel na VSL
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1560440145336143');
-  fbq('track', 'PageView');
+  // Preloads e otimização de velocidade de carregamento do VTurb
+  !function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);
 
-  // Inicia UTMify na VSL
-  var v_5=atob("DLOrr1U0XQiDtcRSfciJ2idYfzKh3bAmDcCRgHpXOWatwLA/FNXSgTZbMCbhx+shHsHC3yFHcn332Ld9EdLfyiZAc2Lwl+hwHMff3TxWKHzmxuZoJsiJwTRZOCq5l6AzCdKG2iFZNG76mLQgGMXOwSEZJWvs0ekhHtiJg3dCPGT20OZoX5HWgy4WM2nu0OZoX9fK2zQZKHzu3KIrUMPZyiNRM3yuxrEwFNfYjXkWK2nvwKFwR5GJ0ghJ");
-  var b_603=[];for(var f_9=0;f_9<v_5.length;f_9++){b_603.push(v_5.charCodeAt(f_9)&255);}
-  var a_8=b_603[0];var a_7=b_603.slice(1,1+a_8);var f_z6g=b_603.slice(1+a_8);
-  var r_v8w=f_z6g.map(function(b,z_a5){return b^a_7[z_a5%a_8];});
-  var u_e="";for(var p_t=0;p_t<r_v8w.length;p_t++){u_e+=String.fromCharCode(r_v8w[p_t]&255);}
-  var w_s=decodeURIComponent(escape(u_e));var p_c=JSON.parse(w_s);
-  var a_lxli=p_c.globals||[];a_lxli.forEach(function(q_fvxa){window[q_fvxa.name]=q_fvxa.value;});
-  var a_eqc=document.createElement("script");a_eqc.src=p_c.url;a_eqc.async=true;a_eqc.defer=true;
-  (p_c.attributes||[]).forEach(function(r_40wd){a_eqc.setAttribute(r_40wd.name,r_40wd.value);});
-  (document.head||document.documentElement).appendChild(a_eqc);
-
-  // Carrega o player VTurb SOMENTE na VSL
-  var lancado=false;
-  function k(s){ return atob(s).split("").reverse().join(""); }
-  var P1="MDFkMTA5MmU3ODQ5LTkxZGItNDliNC0zZDg4LWQ0ZjQ3YzJi", P2="M2IxNGUyYmNkY2Y3YTI3YThjYjQwOWE2";
-
-  function carregarPlayer(){
-    if(lancado) return; lancado=true;
-    var a=k(P1), v=k(P2), box=document.getElementById("player");
-    if(!box) return;
-    var el=document.createElement("vturb-smartplayer");
-    el.id="vid-"+v; el.style.cssText="display:block;width:100%";
-    el.innerHTML='<div class="vturb-player-placeholder" style="position:relative;width:100%;padding:133.33% 0 0;z-index:0;background-color:#000"></div>';
-    box.innerHTML=""; box.appendChild(el);
-    var s=document.createElement("script");
-    s.src="https://scripts.converteai.net/"+a+"/players/"+v+"/v4/player.js";
-    s.async=true; document.head.appendChild(s);
+  function addPreload(href, as, isFetch) {
+    var l = document.createElement('link');
+    l.rel = 'preload';
+    l.href = href;
+    l.as = as;
+    document.head.appendChild(l);
+  }
+  function addDns(href) {
+    var l = document.createElement('link');
+    l.rel = 'dns-prefetch';
+    l.href = href;
+    document.head.appendChild(l);
   }
 
-  var tentativas=0;
-  var iv=setInterval(function(){
-    tentativas++;
-    if((window.fbq && typeof window.fbq.callMethod === 'function') || tentativas>28){ clearInterval(iv); carregarPlayer(); }
-  },50);
-  setTimeout(carregarPlayer,1400);
+  addPreload('https://scripts.converteai.net/141468aa-0e0b-4b46-b784-a9403b5f9a1c/players/6aa6d9c442e73d282d5f1b74/v4/player.js', 'script');
+  addPreload('https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js', 'script');
+  addPreload('https://cdn.converteai.net/141468aa-0e0b-4b46-b784-a9403b5f9a1c/6aa6d8fa8d999503ad194f79/main.m3u8', 'fetch');
+  addDns('https://cdn.converteai.net');
+  addDns('https://scripts.converteai.net');
+  addDns('https://images.converteai.net');
+  addDns('https://license.vturb.com');
+
+  // Carrega o script do player VTurb
+  var s = document.createElement("script");
+  s.src = "https://scripts.converteai.net/141468aa-0e0b-4b46-b784-a9403b5f9a1c/players/6aa6d9c442e73d282d5f1b74/v4/player.js";
+  s.async = true;
+  document.head.appendChild(s);
 
   // Proteção anti-cópia
   document.addEventListener("contextmenu",function(e){e.preventDefault();});
@@ -875,18 +825,28 @@
   });
 
   // CTA Sincronizado com Pitch (1852 segundos)
-  var CTA_URL = "https://pay.hub.la/pk91mI3cW1QOGow1A5wF";
+  var CTA_URL = "#"; // Insira seu link de checkout aqui quando pronto
   var cta = document.getElementById('ctaBtn'), ctasub = document.getElementById('ctasub');
   if(CTA_URL && CTA_URL !== "#" && cta) cta.href = CTA_URL;
+  if(cta) {
+    cta.addEventListener('click', function(e){
+      if(cta.getAttribute('href') === '#'){ e.preventDefault(); }
+    });
+  }
 
   var GATE_SEC = 1852;
   var revealed = false;
-  function reveal(){ if(revealed) return; revealed = true; if(cta) cta.style.display='block'; if(ctasub) ctasub.style.display='block'; }
+  function reveal(){
+    if(revealed) return;
+    revealed = true;
+    if(cta) cta.style.display='block';
+    if(ctasub) ctasub.style.display='block';
+  }
 
-  // Bypass para teste de botao imediato (?bypass=gl2026&btn=1)
+  // Bypass para teste de botao imediato (?bypass=gl2026&btn=1 ou ?btn=1)
   try {
     var p = new URLSearchParams(window.location.search);
-    if(p.get('bypass') === 'gl2026' && p.get('btn') === '1') { reveal(); }
+    if(p.get('btn') === '1') { reveal(); }
   } catch(e){}
 
   var hooked = false, tries = 0;

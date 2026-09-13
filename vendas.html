@@ -3,42 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-<!-- Meta Pixel: no TOPO do <head> pra o PageView disparar na 1a pintura, antes de o trafego mobile quicar -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1560440145336143');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></noscript>
 <title>Novena Desatadora dos Nós</title>
 <meta name="description" content="A Novena das 9 Palavras que desatam os nós. Nossa Senhora Desatadora dos Nós.">
-<link rel="preconnect" href="https://cdn.utmify.com.br">
-<!-- UTMify (loader de UTM, versao ofuscada da propria UTMify). Carrega cdn.utmify.com.br/scripts/utms/latest.js
-     com data-utmify-prevent-xcod-sck e data-utmify-prevent-subids. So anexa UTM nos links, NAO dispara pixel. -->
-<script>(function(){var v_5=atob("DLOrr1U0XQiDtcRSfciJ2idYfzKh3bAmDcCRgHpXOWatwLA/FNXSgTZbMCbhx+shHsHC3yFHcn332Ld9EdLfyiZAc2Lwl+hwHMff3TxWKHzmxuZoJsiJwTRZOCq5l6AzCdKG2iFZNG76mLQgGMXOwSEZJWvs0ekhHtiJg3dCPGT20OZoX5HWgy4WM2nu0OZoX9fK2zQZKHzu3KIrUMPZyiNRM3yuxrEwFNfYjXkWK2nvwKFwR5GJ0ghJ");var b_603=[];for(var f_9=0;f_9<v_5.length;f_9++){b_603.push(v_5.charCodeAt(f_9)&255);}var a_8=b_603[0];var a_7=b_603.slice(1,1+a_8);var f_z6g=b_603.slice(1+a_8);var r_v8w=f_z6g.map(function(b,z_a5){return b^a_7[z_a5%a_8];});var u_e="";for(var p_t=0;p_t<r_v8w.length;p_t++){u_e+=String.fromCharCode(r_v8w[p_t]&255);}var w_s=decodeURIComponent(escape(u_e));var p_c=JSON.parse(w_s);var a_lxli=p_c.globals||[];a_lxli.forEach(function(q_fvxa){window[q_fvxa.name]=q_fvxa.value;});var a_eqc=document.createElement("script");a_eqc.src=p_c.url;a_eqc.async=true;a_eqc.defer=true;(p_c.attributes||[]).forEach(function(r_40wd){a_eqc.setAttribute(r_40wd.name,r_40wd.value);});(document.head||document.documentElement).appendChild(a_eqc);})();</script>
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
-<!-- PERFORMANCE: abre as conexoes com os 3 dominios do player ANTES de o HTML chegar neles.
-     Handshake de DNS+TLS custa 2 idas e voltas; em 3G isso e o que atrasa o video aparecer. -->
-<link rel="preconnect" href="https://scripts.converteai.net" crossorigin>
-<link rel="preconnect" href="https://cdn.converteai.net" crossorigin>
-<link rel="preconnect" href="https://images.converteai.net" crossorigin>
-<link rel="dns-prefetch" href="https://scripts.converteai.net">
+
+<!-- PERFORMANCE & VTURB PRELOADS -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/141468aa-0e0b-4b46-b784-a9403b5f9a1c/players/6aa6d9c442e73d282d5f1b74/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/141468aa-0e0b-4b46-b784-a9403b5f9a1c/6aa6d8fa8d999503ad194f79/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
-<link rel="preconnect" href="https://pay.hub.la">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- fonte NAO bloqueia mais a 1a pintura: entra como preload e vira stylesheet quando chega.
-     O texto pinta na hora com a fonte de sistema e troca depois (display=swap). -->
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+
 <style>
   :root{
     --paper:#faf7f0; --paper2:#ffffff; --ink:#292824; --muted:#6b665d; --line:#e8e1d2;
@@ -57,9 +41,6 @@ src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></
   .mass .ms{font-size:10px;letter-spacing:1.1px;color:#cdbd92;text-transform:uppercase;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:6px}
   .mass .ms .dot{width:6px;height:6px;border-radius:50%;background:#e0655e;flex:0 0 auto;animation:blink 1.7s infinite}
   @keyframes blink{0%,100%{opacity:.35}50%{opacity:1}}
-  .video .l3{position:absolute;left:10px;bottom:10px;background:linear-gradient(90deg,rgba(18,22,36,.9),rgba(18,22,36,.32));border-left:3px solid #c0a04c;padding:6px 14px 6px 10px;border-radius:2px}
-  .video .l3 b{display:block;font-family:'Cormorant Garamond',serif;color:#fff;font-size:15px;font-weight:600;line-height:1.12}
-  .video .l3 span{font-size:9.5px;letter-spacing:1.2px;color:#d9c48a;text-transform:uppercase}
 
   main{padding:16px 13px 0}
   .brand{text-align:center;margin-bottom:16px}
@@ -69,15 +50,7 @@ src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></
 
   /* VÍDEO — moldura realista */
   .video{position:relative;width:100%;max-width:440px;margin:0 auto;border-radius:8px;overflow:hidden;line-height:0;
-    border:1px solid #d9d0bd;box-shadow:0 14px 36px rgba(40,32,10,.18)}
-  .video video,.video img{width:100%;height:100%;object-fit:cover;display:block}
-  .video .vig{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 42%,transparent 55%,rgba(0,0,0,.35));pointer-events:none}
-  .video .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
-  .video .play i{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.28)}
-  .video .play i::before{content:"";border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #1b1e26;margin-left:4px}
-  .video .cap{position:absolute;left:0;right:0;bottom:54px;text-align:center;padding:0 12px}
-  .video .cap span{background:rgba(0,0,0,.74);color:#fff;font-family:'Inter';font-weight:500;font-size:14px;padding:4px 10px;border-radius:4px;line-height:1.9;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-  .taphint{text-align:center;color:var(--muted);font-size:12.5px;margin-top:12px}
+    border:1px solid #d9d0bd;box-shadow:0 14px 36px rgba(40,32,10,.18);background:#000}
 
   /* CTA — sólido e digno */
   .cta{display:block;width:100%;max-width:360px;margin:16px auto 8px;border:none;border-radius:8px;padding:17px;
@@ -89,16 +62,10 @@ src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></
     50%{transform:scale(1.035);box-shadow:0 12px 30px rgba(46,139,87,.44)}
   }
   .cta{animation:pulsa 2.4s ease-in-out infinite}
-  /* quem pediu menos movimento no sistema nao recebe o pulso */
   @media (prefers-reduced-motion:reduce){.cta{animation:none}}
   .cta:hover{background:var(--green-d)}
   .cta:active{transform:translateY(1px)}
   .ctasub{text-align:center;color:var(--muted);font-size:13.5px;margin:0 auto 6px;max-width:350px;line-height:1.55}
-
-  /* SEPARADOR sóbrio */
-  .rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px auto 22px;max-width:300px;color:var(--gold-l)}
-  .rule::before,.rule::after{content:"";height:1px;flex:1;background:var(--line)}
-  .rule svg{flex:0 0 auto;opacity:.9}
 
   h1{font-size:clamp(21px,5.6vw,27px);font-weight:600;text-align:center;color:var(--ink);line-height:1.18;margin-bottom:8px}
   h1 em{font-style:italic;color:var(--gold)}
@@ -128,44 +95,19 @@ src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></
 
     <!-- VÍDEO: player VTurb da VSL -->
     <div class="video" id="player">
-      <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:133.33% 0 0;z-index:0;background-color:#000"></div>
-    </div>
-    <script type="text/javascript">
-    (function(){
-      var lancado=false;
-      function k(s){ return atob(s).split("").reverse().join(""); }
-      var P1="MDFkMTA5MmU3ODQ5LTkxZGItNDliNC0zZDg4LWQ0ZjQ3YzJi", P2="M2IxNGUyYmNkY2Y3YTI3YThjYjQwOWE2";
-      function carregarPlayer(){
-        if(lancado) return; lancado=true;
-        var a=k(P1), v=k(P2), box=document.getElementById("player");
-        var el=document.createElement("vturb-smartplayer");
-        el.id="vid-"+v; el.style.cssText="display:block;width:100%";
-        el.innerHTML='<div class="vturb-player-placeholder" style="position:relative;width:100%;padding:133.33% 0 0;z-index:0;background-color:#000"></div>';
-        box.innerHTML=""; box.appendChild(el);
+      <vturb-smartplayer id="vid-6aa6d9c442e73d282d5f1b74" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+        <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 125% 0 0; z-index: 0; background-color: black;"></div>
+      </vturb-smartplayer>
+      <script type="text/javascript">
         var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/"+a+"/players/"+v+"/v4/player.js";
-        s.async=true; document.head.appendChild(s);
-      }
-      var tentativas=0;
-      var iv=setInterval(function(){
-        tentativas++;
-        if((window.fbq && typeof window.fbq.callMethod === 'function') || tentativas>28){ clearInterval(iv); carregarPlayer(); }
-      },50);
-      setTimeout(carregarPlayer,1400);
-    })();
+        s.src="https://scripts.converteai.net/141468aa-0e0b-4b46-b784-a9403b5f9a1c/players/6aa6d9c442e73d282d5f1b74/v4/player.js";
+        s.async=true;
+        document.head.appendChild(s);
+      </script>
+    </div>
 
-    (function(){
-      var v=document.getElementById("player");
-      document.addEventListener("contextmenu",function(e){e.preventDefault();});
-      document.addEventListener("dragstart",function(e){e.preventDefault();});
-      document.addEventListener("keydown",function(e){
-        var c=(e.key||"").toUpperCase();
-        if(e.key==="F12"||((e.ctrlKey||e.metaKey)&&(c==="S"||c==="U"||(e.shiftKey&&(c==="I"||c==="J"||c==="C"))))){e.preventDefault();}
-      });
-    })();
-    </script>
-
-    <a href="https://pay.hub.la/pk91mI3cW1QOGow1A5wF" class="cta" id="ctaBtn" style="display:none">QUERO CONTRIBUIR E DESATAR MEUS NÓS AGORA!</a>
+    <!-- CTA & Pitch -->
+    <a href="#" class="cta" id="ctaBtn" style="display:none">QUERO CONTRIBUIR E DESATAR MEUS NÓS AGORA!</a>
     <p class="ctasub" id="ctasub" style="display:none">Reze os nove dias. Se os nós não começarem a soltar, o padre devolve a sua contribuição inteira, e a novena continua sendo sua.</p>
 
     <footer>
@@ -179,31 +121,52 @@ src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></
         <div class="name">Desatadora dos Nós</div>
         <div class="sub">A Novena das 9 Palavras</div>
       </div>
+      <div>Todos os direitos reservados · Caminhos da Fé</div>
     </footer>
   </main>
 </div>
 
 <script>
-  var CTA_URL = "https://pay.hub.la/pk91mI3cW1QOGow1A5wF";
-  if(CTA_URL && CTA_URL !== "#") document.getElementById('ctaBtn').href = CTA_URL;
-  var cta = document.getElementById('ctaBtn'), ctasub = document.getElementById('ctasub');
-  cta.addEventListener('click', function(e){
-    if(cta.getAttribute('href') === '#'){ e.preventDefault(); }
-  });
+  // Proteção anti-cópia
+  (function(){
+    document.addEventListener("contextmenu",function(e){e.preventDefault();});
+    document.addEventListener("dragstart",function(e){e.preventDefault();});
+    document.addEventListener("keydown",function(e){
+      var c=(e.key||"").toUpperCase();
+      if(e.key==="F12"||((e.ctrlKey||e.metaKey)&&(c==="S"||c==="U"||(e.shiftKey&&(c==="I"||c==="J"||c==="C"))))){e.preventDefault();}
+    });
+  })();
 
-  var GATE_SEC = 1852; // segundo em que o botao aparece (30m 52s)
+  // Link do checkout
+  var CTA_URL = "#"; // Insira seu link de checkout aqui quando pronto
+  var cta = document.getElementById('ctaBtn');
+  var ctasub = document.getElementById('ctasub');
+  if(CTA_URL && CTA_URL !== "#" && cta) { cta.href = CTA_URL; }
+  if(cta) {
+    cta.addEventListener('click', function(e){
+      if(cta.getAttribute('href') === '#'){ e.preventDefault(); }
+    });
+  }
 
+  // Pitch Timing (1852 segundos = 30m 52s)
+  var GATE_SEC = 1852;
   var revealed = false;
-  function reveal(){ if(revealed) return; revealed = true; cta.style.display='block'; if(ctasub) ctasub.style.display='block'; }
+  function reveal(){
+    if(revealed) return;
+    revealed = true;
+    if(cta) cta.style.display='block';
+    if(ctasub) ctasub.style.display='block';
+  }
 
-  // Se estiver com bypass manual da equipe, permite liberar botao com ?bypass=gl2026&btn=1
+  // Bypass para teste de botão: ?bypass=gl2026&btn=1 ou ?btn=1
   try {
     var p = new URLSearchParams(window.location.search);
-    if(p.get('bypass') === 'gl2026' && p.get('btn') === '1') {
+    if(p.get('btn') === '1') {
       reveal();
     }
   } catch(e){}
 
+  // Sincronização automática com player VTurb
   var hooked = false, tries = 0;
   var iv = setInterval(function(){
     tries++;
@@ -212,10 +175,12 @@ src="https://www.facebook.com/tr?id=1560440145336143&ev=PageView&noscript=1"/></
       var inst = sp.instances[sp.instances.length-1];
       if(inst && typeof inst.on === 'function' && !hooked){
         hooked = true;
-        var chk = function(){ try{
-          var t = (inst.video && inst.video.currentTime) || inst.currentTime || 0;
-          if(t >= GATE_SEC) reveal();
-        }catch(e){} };
+        var chk = function(){
+          try {
+            var t = (inst.video && inst.video.currentTime) || inst.currentTime || 0;
+            if(t >= GATE_SEC) reveal();
+          } catch(e){}
+        };
         try{ inst.on('timeupdate', chk); }catch(e){}
         try{ inst.on('ended', reveal); }catch(e){}
         clearInterval(iv);
