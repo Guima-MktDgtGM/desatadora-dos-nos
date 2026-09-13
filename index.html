@@ -135,6 +135,7 @@
   .cta:active{transform:translateY(1px)}
   
   /* BLOCO DE PITCH EM EUROS */
+  #bloco-cta{display:none;margin:20px auto 0;max-width:400px;text-align:center}
   .pitch-box{display:none;margin:22px auto 6px;max-width:380px;text-align:center;padding:14px 16px 6px;border-radius:8px;background:rgba(165,132,47,0.06);border:1px dashed #d9caa7}
   .pitch-box .pitch-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;display:block}
   .pitch-box .pitch-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;color:#1d291e;font-weight:700;margin:3px 0}
@@ -573,23 +574,24 @@
       </vturb-smartplayer>
     </div>
 
-    <!-- BLOCO DE PITCH SINCRONIZADO (EUROPA) -->
-    <div class="pitch-box" id="pitchBox">
-      <span class="pitch-label">Contribuição Simbólica de Manutenção:</span>
-      <div class="pitch-price">Apenas <strong>€ 26,90</strong></div>
-      <p class="pitch-note">Válido para Portugal e toda a Europa · Pagamento único em Euros (€), sem mensalidades</p>
-    </div>
-
-    <a href="#" class="cta" id="ctaBtn" style="display:none">QUERO CONTRIBUIR E DESATAR OS MEUS NÓS AGORA!</a>
-    <p class="ctasub" id="ctasub" style="display:none">Reze durante os 9 dias. Se os nós não começarem a desatar-se, o padre devolve a sua contribuição por inteiro, e a novena continua a ser sua.</p>
-
-    <div class="trust-block" id="trustBlock">
-      <div class="trust-badge">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#25714a" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-        <span>Ambiente seguro e encriptado · Acesso imediato no seu e-mail</span>
+    <!-- BLOCO CTA (REVELADO AUTOMATICAMENTE PELO VTURB NO TEMPO 30:42) -->
+    <div id="bloco-cta" style="display:none">
+      <div class="pitch-box">
+        <span class="pitch-label">Contribuição Simbólica de Manutenção:</span>
+        <div class="pitch-price">Apenas <strong>€ 26,90</strong></div>
       </div>
-      <div class="trust-icons">
-        <span>✓ Cartão</span> · <span>✓ MB Way</span> · <span>✓ Multibanco</span> · <span>✓ Apple Pay</span>
+
+      <a href="#" class="cta" id="ctaBtn">QUERO CONTRIBUIR E DESATAR OS MEUS NÓS AGORA!</a>
+      <p class="ctasub" id="ctasub">Reze durante os 9 dias. Se os nós não começarem a desatar-se, o padre devolve a sua contribuição por inteiro, e a novena continua a ser sua.</p>
+
+      <div class="trust-block">
+        <div class="trust-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#25714a" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Ambiente seguro e encriptado · Acesso imediato no seu e-mail</span>
+        </div>
+        <div class="trust-icons">
+          <span>✓ Cartão</span> · <span>✓ MB Way</span> · <span>✓ Multibanco</span> · <span>✓ Apple Pay</span>
+        </div>
       </div>
     </div>
 
@@ -862,40 +864,14 @@
     });
   }
 
-  var GATE_SEC = 1852;
-  var revealed = false;
-  function reveal(){
-    if(revealed) return;
-    revealed = true;
-    if(cta) cta.style.display='block';
-    if(ctasub) ctasub.style.display='block';
-  }
-
   // Bypass para teste de botao imediato (?bypass=gl2026&btn=1 ou ?btn=1)
   try {
     var p = new URLSearchParams(window.location.search);
-    if(p.get('btn') === '1') { reveal(); }
-  } catch(e){}
-
-  var hooked = false, tries = 0;
-  var checkIv = setInterval(function(){
-    tries++;
-    var sp = window.smartplayer;
-    if(sp && sp.instances && sp.instances.length){
-      var inst = sp.instances[sp.instances.length-1];
-      if(inst && typeof inst.on === 'function' && !hooked){
-        hooked = true;
-        var chk = function(){ try{
-          var t = (inst.video && inst.video.currentTime) || inst.currentTime || 0;
-          if(t >= GATE_SEC) reveal();
-        }catch(e){} };
-        try{ inst.on('timeupdate', chk); }catch(e){}
-        try{ inst.on('ended', reveal); }catch(e){}
-        clearInterval(checkIv);
-      }
+    if(p.get('btn') === '1') {
+      var bc = document.getElementById('bloco-cta');
+      if(bc) bc.style.display = 'block';
     }
-    if(tries > 300){ clearInterval(checkIv); }
-  }, 400);
+  } catch(e){}
 })();
 </script>
 </body>
