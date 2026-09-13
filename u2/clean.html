@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>História das Medalhas e Escudos Beneditinos — Volume II</title>
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#0c0d10; --ink:#18181b; --light:#f7f6f2; --white:#ffffff;
+    --blue-dark:#1b2d4b; --gold:#c49738; --gold-light:#e5c378;
+    --green:#1f9247; --green-dark:#177136; --red:#c22929;
+    --line:#e5e0d4; --muted:#716b5f;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *,::after,::before{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{overflow-x:hidden;scroll-behavior:smooth}
+  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+
+  /* Controle do Cloaker: por padrão esconde o real até validar */
+  #conteudo-real{display:none}
+  #pagina-clean{display:block}
+
+  .wrap{width:100%;max-width:640px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 0 25px rgba(0,0,0,0.06)}
+
+  /* Faixa de Alerta no Topo */
+  .band-alert{background:#fff8e6;border-bottom:2px solid var(--gold);padding:14px 16px;text-align:center}
+  .alert-top{font-size:13.5px;font-weight:700;color:#8a6416;letter-spacing:.3px;text-transform:uppercase}
+
+  /* Faixa Principal de Título */
+  .band-hero{background:linear-gradient(180deg,#1b2d4b 0%,#132238 100%);color:#fff;padding:30px 18px 26px;text-align:center}
+  .kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);font-weight:700;margin-bottom:10px}
+  h1.headline{font-family:var(--serif);font-size:clamp(24px,5.5vw,34px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:12px}
+  h1.headline em{font-style:italic;color:var(--gold-light)}
+  .subhead{font-size:14.5px;color:#d3dbe6;max-width:520px;margin:0 auto;line-height:1.55}
+
+  /* Corpo da Oferta */
+  .band-body{padding:26px 20px 34px}
+  .highlight-card{background:#faf8f3;border:1px solid var(--line);border-radius:10px;padding:22px 20px;margin:20px 0;text-align:center}
+  .highlight-card h3{font-family:var(--serif);font-size:24px;color:var(--blue-dark);margin-bottom:10px}
+  .highlight-card p{font-size:14.5px;color:#49453d;line-height:1.6}
+
+  .benefit-list{list-style:none;margin:20px 0;text-align:left}
+  .benefit-list li{padding:10px 0 10px 30px;position:relative;font-size:14.5px;color:#333;border-bottom:1px dashed var(--line)}
+  .benefit-list li:last-child{border-bottom:none}
+  .benefit-list li::before{content:"✓";position:absolute;left:4px;top:10px;color:var(--green);font-weight:800;font-size:16px}
+
+  /* Preço e Botão */
+  .price-box{text-align:center;margin:22px 0 14px}
+  .price-was{font-size:14px;color:var(--muted);text-decoration:line-through}
+  .price-now{font-family:var(--serif);font-size:38px;font-weight:700;color:#18181b}
+  .price-now span{font-size:18px}
+  .price-sub{font-size:12.5px;color:var(--muted);margin-top:-4px}
+
+  .btn-buy{
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    width:100%;max-width:480px;margin:12px auto 0;
+    padding:18px 20px;
+    font-family:var(--sans);font-size:16px;font-weight:800;letter-spacing:.3px;line-height:1.2;
+    color:#fff;text-align:center;text-decoration:none;text-transform:uppercase;
+    background:linear-gradient(180deg,#249c4e 0%,#197d3c 100%);
+    border-radius:8px;box-shadow:0 8px 24px rgba(25,125,60,.35);
+    transition:transform .12s ease,filter .15s ease;
+  }
+  .btn-buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-buy:active{transform:translateY(1px)}
+
+  /* Link de Recusa */
+  .refuse-wrap{text-align:center;margin:18px auto 0;max-width:460px}
+  .refuse-link{font-size:12px;color:#857f73;text-decoration:underline;line-height:1.4;display:inline-block;padding:6px}
+  .refuse-link:hover{color:#4a463e}
+
+  /* Página White Institucional */
+  .clean-wrap{max-width:600px;margin:0 auto;padding:48px 22px;background:#fff;min-height:100vh}
+  .clean-badge{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+  .clean-wrap h1{font-family:var(--serif);font-size:28px;line-height:1.25;margin-bottom:14px;color:#222}
+  .clean-wrap p{font-size:15px;line-height:1.75;color:#4a463e;margin-bottom:16px}
+  .clean-box{background:#f6f4ee;border-left:3px solid var(--gold);padding:16px 18px;border-radius:4px;margin:24px 0;font-size:14px;color:#555}
+  .clean-foot{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="clean-wrap">
+  <div class="clean-badge">Tradição &amp; Estudos Devocionais</div>
+  <h1>História das Medalhas e Escudos Beneditinos — Volume II</h1>
+  <p>Estudo histórico sobre o papel da Regra de São Bento na espiritualidade cristã ocidental. Material fornecido exclusivamente para leitura formativa dos alunos e membros da comunidade.</p>
+  <div class="clean-box">
+    <strong>Aviso aos Visitantes:</strong> O material apresentado neste portal possui propósito formativo, histórico e reflexivo, em harmonia com as diretrizes da fé cristã. Não constitui aconselhamento financeiro, médico ou promessa de resultados materiais.
+  </div>
+  <p>Para suporte a assinantes ou envio de intenções de oração, utilize os canais oficiais disponibilizados no momento da sua inscrição.</p>
+  <div class="clean-foot">
+    &copy; 2026 Portal de Estudos e Práticas Marianas. Conteúdo formativo de acesso restrito.
+  </div>
+</div>
+</body>
+</html>
