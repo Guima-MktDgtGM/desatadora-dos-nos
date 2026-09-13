@@ -1,132 +1,194 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UP2: O Escudo de São Bento contra Inveja</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Bênção Noturna: Áudios Frequenciais do Terço de Desamarração</title>
 <meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- KashPay Upsell Processor (One-Click) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.kashpay.com.br/scripts/upsell-processor.js"></script>
+
 <style>
   :root {
-    --black:#0c0d10; --ink:#18181b; --light:#f7f6f2; --white:#ffffff;
-    --blue-dark:#1b2d4b; --gold:#c49738; --gold-light:#e5c378;
-    --green:#1f9247; --green-dark:#177136; --red:#c22929;
-    --line:#e5e0d4; --muted:#716b5f;
-    --serif:'Cormorant Garamond',Georgia,serif;
-    --sans:'Inter',-apple-system,system-ui,sans-serif;
+    --black:#000; --ink:#111; --light:#ebebeb; --blue:#004aad;
+    --green:#057932; --gold:#ffb000;
+    --sans:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   }
-  *,::after,::before{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html{overflow-x:hidden;scroll-behavior:smooth}
-  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-  img{max-width:100%;height:auto;display:block}
+  *,::after,::before{margin:0;padding:0;box-sizing:border-box;}
+  html{overflow-x:hidden;scroll-behavior:smooth;}
+  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;height:auto;display:block;}
 
-  /* Controle do Cloaker: por padrão esconde o real até validar */
-  #conteudo-real{display:none}
-  #pagina-clean{display:block}
+  #conteudo-real{display:none;}
+  #pagina-clean{display:block;}
 
-  .wrap{width:100%;max-width:640px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 0 25px rgba(0,0,0,0.06)}
+  .wrap{width:100%;max-width:680px;margin:0 auto;}
 
-  /* Faixa de Alerta no Topo */
-  .band-alert{background:#fff8e6;border-bottom:2px solid var(--gold);padding:14px 16px;text-align:center}
-  .alert-top{font-size:13.5px;font-weight:700;color:#8a6416;letter-spacing:.3px;text-transform:uppercase}
-
-  /* Faixa Principal de Título */
-  .band-hero{background:linear-gradient(180deg,#1b2d4b 0%,#132238 100%);color:#fff;padding:30px 18px 26px;text-align:center}
-  .kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);font-weight:700;margin-bottom:10px}
-  h1.headline{font-family:var(--serif);font-size:clamp(24px,5.5vw,34px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:12px}
-  h1.headline em{font-style:italic;color:var(--gold-light)}
-  .subhead{font-size:14.5px;color:#d3dbe6;max-width:520px;margin:0 auto;line-height:1.55}
-
-  /* Corpo da Oferta */
-  .band-body{padding:26px 20px 34px}
-  .highlight-card{background:#faf8f3;border:1px solid var(--line);border-radius:10px;padding:22px 20px;margin:20px 0;text-align:center}
-  .highlight-card h3{font-family:var(--serif);font-size:24px;color:var(--blue-dark);margin-bottom:10px}
-  .highlight-card p{font-size:14.5px;color:#49453d;line-height:1.6}
-
-  .benefit-list{list-style:none;margin:20px 0;text-align:left}
-  .benefit-list li{padding:10px 0 10px 30px;position:relative;font-size:14.5px;color:#333;border-bottom:1px dashed var(--line)}
-  .benefit-list li:last-child{border-bottom:none}
-  .benefit-list li::before{content:"✓";position:absolute;left:4px;top:10px;color:var(--green);font-weight:800;font-size:16px}
-
-  /* Preço e Botão */
-  .price-box{text-align:center;margin:22px 0 14px}
-  .price-was{font-size:14px;color:var(--muted);text-decoration:line-through}
-  .price-now{font-family:var(--serif);font-size:38px;font-weight:700;color:#18181b}
-  .price-now span{font-size:18px}
-  .price-sub{font-size:12.5px;color:var(--muted);margin-top:-4px}
-
-  .btn-buy{
-    border:none;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    width:100%;max-width:480px;margin:12px auto 0;
-    padding:18px 20px;
-    font-family:var(--sans);font-size:16px;font-weight:800;letter-spacing:.3px;line-height:1.2;
-    color:#fff;text-align:center;text-decoration:none;text-transform:uppercase;
-    background:linear-gradient(180deg,#249c4e 0%,#197d3c 100%);
-    border-radius:8px;box-shadow:0 8px 24px rgba(25,125,60,.35);
-    transition:transform .12s ease,filter .15s ease;
+  /* ---- FAIXA DE ALERTA DO TOPO ---- */
+  .band-alert{background:#fff;padding:16px 18px;}
+  .alert-top{
+    font-size:15px;font-weight:800;line-height:1.35;
+    color:var(--blue);text-align:center;text-transform:uppercase;letter-spacing:.2px;
   }
-  .btn-buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
-  .btn-buy:active{transform:translateY(1px)}
 
-  /* Link de Recusa */
-  .refuse-wrap{text-align:center;margin:18px auto 0;max-width:460px}
-  .refuse-link{font-size:12px;color:#857f73;text-decoration:underline;line-height:1.4;display:inline-block;padding:6px}
-  .refuse-link:hover{color:#4a463e}
+  /* ---- FAIXA PRETA DA HEADLINE ---- */
+  .band-black{background:var(--black);padding:32px 18px 26px;}
+  h1.headline{
+    font-size:38px;font-weight:900;line-height:1.1;
+    color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;
+  }
 
-  /* Página White Institucional */
-  .clean-wrap{max-width:600px;margin:0 auto;padding:48px 22px;background:#fff;min-height:100vh}
-  .clean-badge{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
-  .clean-wrap h1{font-family:var(--serif);font-size:28px;line-height:1.25;margin-bottom:14px;color:#222}
-  .clean-wrap p{font-size:15px;line-height:1.75;color:#4a463e;margin-bottom:16px}
-  .clean-box{background:#f6f4ee;border-left:3px solid var(--gold);padding:16px 18px;border-radius:4px;margin:24px 0;font-size:14px;color:#555}
-  .clean-foot{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8}
+  /* ---- FAIXA DA SUBHEADLINE ---- */
+  .band-sub{background:#141414;padding:16px 18px;}
+  .headline-sub{
+    font-size:14.5px;font-weight:800;line-height:1.4;
+    color:#fff;text-align:center;text-transform:uppercase;letter-spacing:.2px;
+  }
+
+  /* ---- SEÇÃO PRINCIPAL ---- */
+  .band-light{background:var(--light);padding:30px 18px 40px;}
+
+  .item-label{
+    font-size:26px;font-weight:700;line-height:1.15;
+    color:var(--ink);text-align:center;text-transform:uppercase;
+  }
+  .item-name{
+    font-size:34px;font-weight:900;line-height:1.1;
+    color:var(--blue);text-align:center;text-transform:uppercase;
+    margin-top:2px;margin-bottom:20px;letter-spacing:-.5px;
+  }
+
+  /* ---- PARÁGRAFO ÚNICO DE ALTA CONVERSÃO ---- */
+  .appeal-box{
+    background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:24px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);border-left:5px solid var(--blue);
+  }
+  .appeal-text{
+    font-size:16px;font-weight:600;line-height:1.65;color:#222;text-align:left;
+  }
+
+  .product-shot{
+    width:100%;max-width:460px;margin:0 auto 28px;border-radius:14px;
+    box-shadow:0 14px 34px rgba(0,74,173,0.22);
+  }
+
+  /* ---- PÁGINA INSTITUCIONAL CLEAN (CLOAKER) ---- */
+  .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
+  .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
+  .clean-wrap p{font-size:16px;font-weight:400;line-height:1.75;color:#3d382e;margin-bottom:16px;}
+  .clean-foot{margin-top:36px;padding-top:20px;border-top:1px solid #d8d2c4;font-size:13px;color:#7a7466;line-height:1.7;}
+  .clean-foot a{color:#7a7466;}
+
+  @media (max-width:600px){
+    .alert-top{font-size:13px;}
+    h1.headline{font-size:27px;}
+    .band-black{padding:24px 16px 20px;}
+    .headline-sub{font-size:13px;}
+    .item-label{font-size:21px;}
+    .item-name{font-size:27px;margin-bottom:16px;}
+    .appeal-text{font-size:14.5px;}
+    .band-light{padding:24px 14px 32px;}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="band-alert">
-    <div class="alert-top">⚠️ Atenção: Não feche ou atualize esta página!</div>
-  </div>
 
-  <div class="band-hero">
-    <div class="kicker">Etapa Especial de Confirmação</div>
-    <h1 class="headline">ÚLTIMA ETAPA: Proteja Suas Finanças e Sua Família Contra <em>Bloqueios e Inveja Oculta</em></h1>
-    <p class="subhead">O Manuscrito dos Mosteiros Beneditinos: As 12 Orações Secretas da Medalha de São Bento para quebrar amarras que tentam reatar os nós desatados.</p>
-  </div>
+<!-- =============== CONTEÚDO REAL (UPSELL 2) =============== -->
+<div id="conteudo-real" style="display:block">
 
-  <div class="band-body">
-    <div class="highlight-card">
-      <h3>A Coleção Secreta de São Bento</h3>
-      <p>O ritual diário de 3 minutos para selar as portas da sua casa, afastar maus pensamentos, inveja no trabalho e proteger as bênçãos alcançadas pela intercessão de Maria.</p>
+  <section class="band-alert">
+    <div class="wrap">
+      <p class="alert-top">NÃO FECHE ESSA PÁGINA OU A BÊNÇÃO NOTURNA SERÁ DEIXADA PARA OUTRA PESSOA</p>
+    </div>
+  </section>
 
-      <ul class="benefit-list">
-        <li>Liberação imediata direto no seu WhatsApp e e-mail</li>
-        <li>Áudios guiados com frequências de calma e proteção</li>
-        <li>Acesso com 1 único clique (adicionado com segurança ao seu pedido)</li>
-      </ul>
+  <section class="band-black">
+    <div class="wrap">
+      <h1 class="headline">CONSAGRAÇÃO SAGRADA EM ÁUDIO LIBERADA APENAS PARA VOCÊ!</h1>
+    </div>
+  </section>
 
-      <div class="price-box">
-        <div class="price-was">De R$ 97,00</div>
-        <div class="price-now"><span>R$</span> 37,00</div>
-        <div class="price-sub">Pagamento único sem nenhuma cobrança extra</div>
+  <section class="band-sub">
+    <div class="wrap">
+      <p class="headline-sub">ESTA COLEÇÃO DE ÁUDIOS FREQUENCIAIS NÃO ESTÁ DISPONÍVEL FORA DESSA PÁGINA AQUI</p>
+    </div>
+  </section>
+
+  <section class="band-light">
+    <div class="wrap">
+      <p class="item-label">ÁUDIOS FREQUENCIAIS</p>
+      <p class="item-name">TERÇO MILAGROSO DE DESAMARRAÇÃO</p>
+
+      <!-- PARÁGRAFO ÚNICO DE ALTA CONVERSÃO -->
+      <div class="appeal-box">
+        <p class="appeal-text">
+          Muitas vezes, quando você vai se deitar, a mente acelera, o cansaço do dia pesa e fica difícil concentrar-se nas orações. Esta coleção exclusiva traz as 9 Palavras Sagradas e o Terço de Nossa Senhora gravados em frequências harmónicas sacras de 432Hz e 528Hz, para que você apenas coloque os fones de ouvido ao dormir e deixe a voz de desamarração atuar no seu subconsciente e no ambiente da sua casa durante o sono, acordando em profunda paz e com os seus caminhos espirituais totalmente destravados.
+        </p>
       </div>
 
-      <button class="btn-buy accept-link" data-kashpay-upsell="true">
-        SIM! ADICIONAR O ESCUDO DE SÃO BENTO POR APENAS R$ 37
-      </button>
+      <img class="product-shot" src="audios-terco-desamarracao.jpg" alt="Áudios Frequenciais Terço Milagroso de Desamarração" width="800" height="1067" fetchpriority="high">
 
-      <div class="refuse-wrap">
-        <a href="/u3/?src=fs2026" class="refuse-link" id="refuseBtn">
-          Não, quero encerrar e abrir mão da blindagem do lar de São Bento.
-        </a>
-      </div>
+      <!-- BOTÃO 1-CLICK KASHPAY (IMEDIATO, SEM PREÇO E SEM RECUSA) -->
+      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/a18aafbc3a9f66a8')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: 28px auto 10px;">Aceder a estes áudios sagrados</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- =============== PÁGINA INSTITUCIONAL CLEAN (CLOAKER) =============== -->
+<div id="pagina-clean" style="display:none">
+  <div class="clean-wrap">
+    <h1>Acervo de áudio devocional e meditações</h1>
+    <p>
+      Esta secção disponibiliza gravações sonoras complementares para momentos de recolhimento pessoal, acessíveis apenas a quem integra a comunidade de oração. Não se encontra disponível para compra individual.
+    </p>
+    <p>
+      Se acedeu a esta página através de uma ligação enviada por e-mail e o conteúdo não surge de forma completa, por favor abra novamente o endereço a partir da mensagem original.
+    </p>
+    <div class="clean-foot">
+      Material devocional e educativo cristão. Não substitui qualquer orientação médica, psicológica ou jurídica.<br><br>
+      Apoio ao leitor: <a href="mailto:contato@caminhosdafe.online">contato@caminhosdafe.online</a>
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  try {
+    var qs = new URLSearchParams(location.search);
+    var previewMode = qs.get("bypass") === "gl2026" || qs.get("btn") === "1";
+    var funnelToken = qs.get("src") === "fs2026";
+    var PAY_HOSTS = [
+      "pay.kashpay.com.br", "checkout.kashpay.com.br", "kashpay.net", "checkout.kashpay.net",
+      "checkout.stripe.com", "buy.stripe.com",
+      "go.centerpag.com", "pay.centerpag.com", "pay.perfectpay.com.br"
+    ];
+    var refHost = "";
+    try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e) {}
+    var fromPay = PAY_HOSTS.indexOf(refHost) !== -1;
+    var sessionOk = false;
+    try { sessionOk = sessionStorage.getItem("funnel_ok") === "1"; } catch(e){}
+
+    var liberado = previewMode || funnelToken || fromPay || sessionOk;
+
+    if (liberado) {
+      if (funnelToken || fromPay) {
+        try { sessionStorage.setItem("funnel_ok","1"); } catch(e){}
+      }
+      var real  = document.getElementById("conteudo-real");
+      var clean = document.getElementById("pagina-clean");
+      if (real)  real.style.display  = "block";
+      if (clean) clean.style.display = "none";
+    }
+  } catch(e){}
+})();
+</script>
+
 </body>
 </html>
