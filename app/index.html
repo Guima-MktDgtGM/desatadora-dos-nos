@@ -1404,10 +1404,15 @@
       setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-16', 'opacity-0');
-      }, 5500);
+      }, 5000);
+
+      // Próxima notificação com intervalo espaçado e orgânico (entre 90s e 150s)
+      const nextDelay = Math.floor(Math.random() * (150000 - 90000 + 1)) + 90000;
+      setTimeout(triggerLiveBotActivity, nextDelay);
     }
 
-    setInterval(triggerLiveBotActivity, 40000);
+    // Primeira notificação suave após 70 segundos de navegação
+    setTimeout(triggerLiveBotActivity, 70000);
 
     // -------------------------------------------------------------
     // 10. CADERNO DE GRAÇAS
