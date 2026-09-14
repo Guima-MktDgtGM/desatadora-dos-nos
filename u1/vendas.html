@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-gate="real">
 <head>
-<!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW (SEM EVENTOS EXTRAS) -->
+<!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW -->
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <script>
@@ -13,22 +13,17 @@ n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
-// ID do Pixel: substitua SEU_PIXEL_AQUI pelo seu ID, ou passe via URL (?pixel=123456)
 var PIXEL_ID = window.__FB_PIXEL_ID || "SEU_PIXEL_AQUI";
 try {
   var urlPix = new URLSearchParams(window.location.search).get('pixel');
   if (urlPix) PIXEL_ID = urlPix;
 } catch(e){}
-
 if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
   fbq('init', PIXEL_ID);
   fbq('track', 'PageView');
 }
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></noscript>
-<!-- FIM META PIXEL -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <title>Bênção Especial de Proteção</title>
@@ -38,15 +33,47 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-
 <link rel="preload" as="image" href="guia-15-dias-maria.jpg" fetchpriority="high">
+
 <!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.kashpay.com.br/scripts/upsell-processor.js"></script>
+
+<!-- GATEWAY / CLOAKER DETECTOR EXECUTADO ANTES DO RENDER -->
+<script>
+(function(){
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var ua = (navigator.userAgent || '').toLowerCase();
+    
+    // Bots sempre veem clean
+    var isBot = /bot|google|facebookexternalhit|facebot|meta-externalagent|crawler|spider|inspect/i.test(ua);
+    
+    // Parâmetros de liberação da página Black
+    var isCleanParam = qs.get("clean") === "1" || qs.get("white") === "1";
+    var isBypass = qs.get("bypass") === "gl2026" || qs.get("btn") === "1";
+    var isFunnel = qs.get("src") === "fs2026";
+    
+    var ref = (document.referrer || '').toLowerCase();
+    var fromPay = /kashpay|stripe|centerpag|perfectpay|hotmart/i.test(ref);
+    var sessionOk = false;
+    try { sessionOk = sessionStorage.getItem("funnel_ok") === "1"; } catch(e){}
+
+    if (!isBot && !isCleanParam && (isBypass || isFunnel || fromPay || sessionOk)) {
+      try { sessionStorage.setItem("funnel_ok", "1"); } catch(e){}
+      document.documentElement.setAttribute('data-gate', 'real');
+    } else {
+      document.documentElement.setAttribute('data-gate', 'clean');
+    }
+  } catch(e){
+    document.documentElement.setAttribute('data-gate', 'clean');
+  }
+})();
+</script>
 
 <style>
   :root {
     --black:#000; --ink:#111; --light:#ebebeb; --blue:#004aad;
-    --green:#2eb84e; --green-dark:#1f7a34; --gold:#ffb000;
+    --green:#057932; --gold:#ffb000;
     --sans:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   }
   *,::after,::before{margin:0;padding:0;box-sizing:border-box;}
@@ -54,33 +81,33 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
   body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
   img{max-width:100%;height:auto;display:block;}
 
-  #conteudo-real{display:none;}
-  #pagina-clean{display:block;}
+  /* CONTROLE VISUAL IMEDIATO */
+  html[data-gate="clean"] #conteudo-real { display: none !important; }
+  html[data-gate="clean"] #pagina-clean { display: block !important; }
+
+  html[data-gate="real"] #conteudo-real { display: block !important; }
+  html[data-gate="real"] #pagina-clean { display: none !important; }
 
   .wrap{width:100%;max-width:680px;margin:0 auto;}
 
-  /* ---- FAIXA DE ALERTA DO TOPO ---- */
   .band-alert{background:#fff;padding:16px 18px;}
   .alert-top{
     font-size:15px;font-weight:800;line-height:1.35;
     color:var(--blue);text-align:center;text-transform:uppercase;letter-spacing:.2px;
   }
 
-  /* ---- FAIXA PRETA DA HEADLINE ---- */
   .band-black{background:var(--black);padding:32px 18px 26px;}
   h1.headline{
     font-size:38px;font-weight:900;line-height:1.1;
     color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;
   }
 
-  /* ---- FAIXA DA SUBHEADLINE ---- */
   .band-sub{background:#141414;padding:16px 18px;}
   .headline-sub{
     font-size:14.5px;font-weight:800;line-height:1.4;
     color:#fff;text-align:center;text-transform:uppercase;letter-spacing:.2px;
   }
 
-  /* ---- SEÇÃO PRINCIPAL ---- */
   .band-light{background:var(--light);padding:30px 18px 40px;}
 
   .item-label{
@@ -93,7 +120,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
     margin-top:2px;margin-bottom:20px;letter-spacing:-.5px;
   }
 
-  /* ---- PARÁGRAFO ÚNICO DE ALTA CONVERSÃO ---- */
   .appeal-box{
     background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:24px;
     box-shadow:0 6px 20px rgba(0,0,0,0.06);border-left:5px solid var(--blue);
@@ -101,75 +127,12 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
   .appeal-text{
     font-size:16px;font-weight:600;line-height:1.65;color:#222;text-align:left;
   }
-  .appeal-text strong{color:#000;}
 
   .product-shot{
     width:100%;max-width:440px;margin:0 auto 28px;border-radius:14px;
     box-shadow:0 14px 34px rgba(0,74,173,0.22);
   }
 
-  /* ---- CAIXA DE CONFIRMAÇÃO DE E-MAIL (GATILHO DO BOTÃO) ---- */
-  .email-box{
-    background:#fff;border-radius:14px;padding:22px 18px;margin:0 auto 20px;
-    max-width:520px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,0.06);
-    border:2px solid #dedede;transition:border-color .2s;
-  }
-  .email-box:focus-within{border-color:var(--blue);}
-  .email-label{
-    font-size:14.5px;font-weight:800;color:#111;text-transform:uppercase;
-    display:block;margin-bottom:12px;line-height:1.35;
-  }
-  .email-input{
-    width:100%;padding:16px 18px;font-size:16px;font-family:var(--sans);
-    font-weight:600;border:2px solid #ccc;border-radius:8px;outline:none;
-    text-align:center;transition:border-color .2s;background:#fafafa;
-  }
-  .email-input:focus{border-color:var(--blue);background:#fff;}
-  .email-hint{font-size:12px;color:#777;margin-top:8px;font-weight:500;}
-
-  /* ---- BOTÃO ONE-CLICK (KASHPAY) ---- */
-  .btn-buy{
-    border:none;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    width:100%;max-width:520px;margin:0 auto;
-    padding:20px 20px;
-    font-family:'Anton','Montserrat',Impact,sans-serif;
-    font-size:22px;font-weight:400;letter-spacing:.5px;line-height:1.15;
-    color:#fff;text-align:center;text-decoration:none;text-transform:uppercase;
-    text-shadow:0 2px 3px rgba(0,0,0,.3);
-    background:linear-gradient(180deg,#42cc63 0%,#2eb84e 55%,#25a343 100%);
-    border-bottom:5px solid var(--green-dark);
-    border-radius:44px;
-    box-shadow:0 10px 26px rgba(46,184,78,.4);
-    transition:filter .15s ease,transform .12s ease,opacity .25s ease;
-  }
-  .btn-buy:hover:not(:disabled){filter:brightness(1.06);}
-  .btn-buy:active:not(:disabled){transform:translateY(3px);border-bottom-width:2px;}
-
-  /* ESTADO BLOQUEADO / APAGADO */
-  .btn-disabled{
-    opacity:0.35 !important;
-    filter:grayscale(90%) !important;
-    cursor:not-allowed !important;
-    pointer-events:none !important;
-    box-shadow:none !important;
-    animation:none !important;
-  }
-  /* ESTADO LIBERADO / ATIVO */
-  .btn-active{
-    opacity:1 !important;
-    filter:none !important;
-    cursor:pointer !important;
-    pointer-events:auto !important;
-    animation:ctaPulse 1.4s ease-in-out infinite;
-  }
-  @keyframes ctaPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
-  @media (prefers-reduced-motion:reduce){.btn-active{animation:none;}}
-
-  .refuse-wrap{text-align:center;margin-top:24px;}
-  .refuse-link{font-size:13.5px;font-weight:600;color:#6b6b6b;text-decoration:underline;line-height:1.5;}
-
-  /* ---- PÁGINA INSTITUCIONAL CLEAN (CLOAKER) ---- */
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
   .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
   .clean-wrap p{font-size:16px;font-weight:400;line-height:1.75;color:#3d382e;margin-bottom:16px;}
@@ -184,15 +147,14 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
     .item-label{font-size:21px;}
     .item-name{font-size:29px;margin-bottom:16px;}
     .appeal-text{font-size:14.5px;}
-    .btn-buy{font-size:18px;padding:17px 14px;border-radius:38px;}
     .band-light{padding:24px 14px 32px;}
   }
 </style>
 </head>
 <body>
 
-<!-- =============== CONTEÚDO REAL (UPSELL 1) =============== -->
-<div id="conteudo-real" style="display:block">
+<!-- =============== CONTEÚDO REAL (BLACK - UPSELL 1) =============== -->
+<div id="conteudo-real">
 
   <section class="band-alert">
     <div class="wrap">
@@ -217,7 +179,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
       <p class="item-label">GUIA ESPIRITUAL</p>
       <p class="item-name">15 DIAS COM MARIA</p>
 
-      <!-- PARÁGRAFO ÚNICO DE ALTA CONVERSÃO (ZERO MENÇÃO A COMPRA/PAGAMENTO) -->
       <div class="appeal-box">
         <p class="appeal-text">
           Assim que os seus nós começam a desatar, as forças contrárias tentam imediatamente amarrar a sua vida de novo com inveja, discórdia na família e bloqueios repentinos. Este Roteiro Sagrado de 15 Dias é a única blindagem espiritual deixada pelo Padre Jakob Rem para cobrir os seus filhos e a sua casa sob o Manto de Maria, fechando para sempre as portas do seu lar contra todo o mal e garantindo que as bênçãos que você acaba de receber permaneçam com você para sempre.
@@ -232,8 +193,8 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
 
 </div>
 
-<!-- =============== PÁGINA INSTITUCIONAL CLEAN (CLOAKER) =============== -->
-<div id="pagina-clean" style="display:none">
+<!-- =============== PÁGINA INSTITUCIONAL CLEAN (WHITE) =============== -->
+<div id="pagina-clean">
   <div class="clean-wrap">
     <h1>Leituras complementares e materiais de apoio</h1>
     <p>
@@ -248,61 +209,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
     </div>
   </div>
 </div>
-
-<script>
-(function(){
-  // 1. CLOAKER / GATEWAY DETECTOR
-  try {
-    var qs = new URLSearchParams(location.search);
-    var previewMode = qs.get("bypass") === "gl2026" || qs.get("btn") === "1";
-    var funnelToken = qs.get("src") === "fs2026";
-    var PAY_HOSTS = [
-      "pay.kashpay.com.br", "checkout.kashpay.com.br", "kashpay.net", "checkout.kashpay.net",
-      "checkout.stripe.com", "buy.stripe.com",
-      "go.centerpag.com", "pay.centerpag.com", "pay.perfectpay.com.br"
-    ];
-    var refHost = "";
-    try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e) {}
-    var fromPay = PAY_HOSTS.indexOf(refHost) !== -1;
-    var sessionOk = false;
-    try { sessionOk = sessionStorage.getItem("funnel_ok") === "1"; } catch(e){}
-
-    var liberado = previewMode || funnelToken || fromPay || sessionOk;
-
-    if (liberado) {
-      if (funnelToken || fromPay) {
-        try { sessionStorage.setItem("funnel_ok","1"); } catch(e){}
-      }
-      var real  = document.getElementById("conteudo-real");
-      var clean = document.getElementById("pagina-clean");
-      if (real)  real.style.display  = "block";
-      if (clean) clean.style.display = "none";
-    }
-
-    // Repassa parâmetros para o link de recusa
-    var params = location.search;
-    if (params) {
-      var refLink = document.querySelector('.refuse-link');
-      if (refLink) {
-        var href = refLink.getAttribute('href');
-        var sep = href.indexOf('?') !== -1 ? '&' : '?';
-        refLink.setAttribute('href', href + sep + params.replace(/^\?/,''));
-      }
-    }
-  } catch(e){}
-
-  else {
-        btnUpsell.disabled = true;
-        btnUpsell.classList.add('btn-disabled');
-        btnUpsell.classList.remove('btn-active');
-        if (emailHint) {
-          emailHint.innerHTML = '🔒 O botão abaixo será liberado assim que você digitar o seu e-mail.';
-        }
-      }
-    });
-  }
-})();
-</script>
 
 </body>
 </html>
