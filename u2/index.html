@@ -19,16 +19,19 @@ n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-var PIXEL_ID = window.__FB_PIXEL_ID || "SEU_PIXEL_AQUI";
+var PIXEL_ID = window.__FB_PIXEL_ID || "2782586508793387";
 try {
   var urlPix = new URLSearchParams(window.location.search).get('pixel');
   if (urlPix) PIXEL_ID = urlPix;
 } catch(e){}
-if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
+if (PIXEL_ID) {
   fbq('init', PIXEL_ID);
   fbq('track', 'PageView');
 }
 </script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></noscript>
+<!-- FIM META PIXEL -->
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
