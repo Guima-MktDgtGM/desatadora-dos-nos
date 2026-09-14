@@ -77,8 +77,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
   .video{position:relative;width:100%;max-width:440px;margin:0 auto;border-radius:8px;overflow:hidden;line-height:0;
     border:1px solid #d9d0bd;box-shadow:0 14px 36px rgba(40,32,10,.18);background:#000}
 
-  /* BLOCO CTA (CONTROLADO PELO VTURB) */
-  #bloco-cta{display:none;margin:18px auto 0;max-width:400px;text-align:center}
 
   /* CTA BOTÃO */
   .cta{display:block;width:100%;max-width:380px;margin:0 auto 10px;border:none;border-radius:8px;padding:17px;
@@ -137,12 +135,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
       </script>
     </div>
 
-    <!-- BLOCO CTA (REVELADO PELO VTURB NO TEMPO 30:42) -->
-    <div id="bloco-cta" style="display:none">
-      <a href="#" class="cta" id="ctaBtn">QUERO CONTRIBUIR E DESATAR OS MEUS NÓS AGORA!</a>
-      <p class="ctasub" id="ctasub">Reze durante os 9 dias. Se os nós não começarem a desatar-se, o padre devolve a sua contribuição por inteiro, e a novena continua a ser sua.</p>
-    </div>
-
     <footer>
       <div class="brand">
         <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
@@ -169,25 +161,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
       if(e.key==="F12"||((e.ctrlKey||e.metaKey)&&(c==="S"||c==="U"||(e.shiftKey&&(c==="I"||c==="J"||c==="C"))))){e.preventDefault();}
     });
   })();
-
-  // Link do checkout
-  var CTA_URL = "#"; // Insira o seu link de checkout quando pronto
-  var cta = document.getElementById('ctaBtn');
-  if(CTA_URL && CTA_URL !== "#" && cta) { cta.href = CTA_URL; }
-  if(cta) {
-    cta.addEventListener('click', function(e){
-      if(cta.getAttribute('href') === '#'){ e.preventDefault(); }
-    });
-  }
-
-  // Bypass para teste imediato de visualização: ?btn=1
-  try {
-    var p = new URLSearchParams(window.location.search);
-    if(p.get('btn') === '1') {
-      var bc = document.getElementById('bloco-cta');
-      if(bc) bc.style.display = 'block';
-    }
-  } catch(e){}
 </script>
 </body>
 </html>
