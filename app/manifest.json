@@ -1,0 +1,18 @@
+{
+  "name": "Caminhos da Fé — Santuário das 9 Palavras",
+  "short_name": "Caminhos da Fé",
+  "description": "A Novena das 9 Palavras e o Manto Sagrado de Nossa Senhora Desatadora dos Nós",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0B132B",
+  "theme_color": "#0B132B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/app-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

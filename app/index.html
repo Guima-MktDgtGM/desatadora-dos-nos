@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Caminhos da Fé — O Santuário das 9 Palavras</title>
+  <meta name="description" content="A Novena das 9 Palavras e a Blindagem Espiritual de Nossa Senhora Desatadora dos Nós">
+  <meta name="theme-color" content="#0B132B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Caminhos da Fé">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/jpeg" href="images/app-icon.jpg">
+  <link rel="apple-touch-icon" href="images/app-icon.jpg">
+
+  <!-- FONTS: Cinzel, Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- TAILWIND CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            sacred: {
+              bg: '#070C1A',
+              card: '#101B37',
+              cardHover: '#162447',
+              gold: '#D4AF37',
+              goldDark: '#9A7314',
+              goldLight: '#F5E6BE',
+              blue: '#1E40AF',
+              green: '#0D8A43',
+              border: 'rgba(212, 175, 55, 0.22)'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- LUCIDE ICONS & CONFETTI -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      background-color: #070C1A;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .gold-glow {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.28);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FDE68A 0%, #D4AF37 50%, #9A7314 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .flame-anim {
+      animation: flicker 1.8s ease-in-out infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-1deg); opacity: 0.95; filter: drop-shadow(0 0 8px #F59E0B); }
+      50% { transform: scale(1.08) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 16px #FBBF24); }
+      100% { transform: scale(0.96) rotate(-2deg); opacity: 0.92; filter: drop-shadow(0 0 10px #D97706); }
+    }
+    .knot-pulse {
+      animation: knotGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes knotGlow {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3)); }
+      50% { transform: scale(1.06); filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7)); }
+    }
+    /* Esconder barra de scroll */
+    ::-webkit-scrollbar { display: none; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased">
+
+  <!-- ==================== CONTAINER CENTRAL MOBILE-FIRST ==================== -->
+  <div id="app" class="w-full max-w-md mx-auto min-h-screen flex flex-col bg-sacred-bg relative pb-28">
+
+    <!-- TOPO / HEADER SAGRADO -->
+    <header class="sticky top-0 z-40 bg-sacred-bg/95 backdrop-blur-md border-b border-sacred-border/40 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <img src="images/app-icon.jpg" alt="Ícone Sagrado" class="w-9 h-9 rounded-full border border-sacred-gold/50 shadow-md">
+        <div>
+          <span class="text-[10px] tracking-widest text-sacred-gold font-cinzel block uppercase font-bold">Caminhos da Fé</span>
+          <h1 class="text-xs font-serif font-bold text-white tracking-wide">Santuário de Maria</h1>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openInstallModal()" class="flex items-center gap-1 text-[11px] bg-sacred-gold/15 text-sacred-gold border border-sacred-gold/40 px-2.5 py-1 rounded-full font-semibold hover:bg-sacred-gold/25 transition">
+          <i data-lucide="download" class="w-3 h-3"></i>
+          <span>Instalar</span>
+        </button>
+        <button onclick="switchTab('tab-caderno')" class="relative p-1.5 text-slate-300 hover:text-white">
+          <i data-lucide="help-circle" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- CORDA DOS 9 NÓS SAGRADOS (FIXA NO TOPO DE TODAS AS ABAS) -->
+    <section class="bg-gradient-to-b from-sacred-card to-sacred-bg px-4 pt-3 pb-3 border-b border-sacred-border/30">
+      <div class="flex items-center justify-between mb-2">
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sacred-gold"></i>
+          <span class="text-[11px] font-cinzel font-bold text-sacred-goldLight tracking-wider uppercase">Corda da Desamarração</span>
+        </div>
+        <span id="knots-progress-label" class="text-[11px] font-semibold text-slate-300">0 de 9 Desatados</span>
+      </div>
+
+      <!-- VISUALIZADOR DOS 9 NÓS -->
+      <div class="grid grid-cols-9 gap-1.5 py-1">
+        <!-- 9 nós gerados dinamicamente pelo JS -->
+        <div id="knot-track" class="contents"></div>
+      </div>
+
+      <!-- BARRA DE PROGRESSO EM LINHA -->
+      <div class="w-full bg-slate-800/80 h-1.5 rounded-full overflow-hidden mt-2">
+        <div id="knots-progress-bar" class="bg-gradient-to-r from-sacred-goldDark via-sacred-gold to-yellow-300 h-full w-0 transition-all duration-700"></div>
+      </div>
+    </section>
+
+    <!-- ==================== ÁREA DE CONTEÚDO PRINCIPAL (TABS) ==================== -->
+    <main class="flex-1 px-4 py-4 space-y-4">
+
+      <!-- ==================== TAB 1: INÍCIO ==================== -->
+      <div id="tab-inicio" class="space-y-4">
+        <!-- Saudação com Horário -->
+        <div class="bg-sacred-card border border-sacred-border/50 rounded-2xl p-4 shadow-lg">
+          <div class="flex items-center gap-2 text-sacred-gold text-xs font-semibold mb-1">
+            <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+            <span id="greeting-time">Boa noite, devoto(a)</span>
+          </div>
+          <h2 class="text-lg font-serif font-bold text-white mb-1">Que a Paz de Maria Guarde o Seu Lar</h2>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Cada nó que entrega a Nossa Senhora é uma porta que se abre para a fartura e a harmonia na sua vida.
+          </p>
+        </div>
+
+        <!-- CARD DA VELA SAGRADA DA FAMÍLIA (STREAK DIÁRIO) -->
+        <div class="relative overflow-hidden rounded-2xl border border-sacred-gold/40 shadow-xl bg-gradient-to-b from-amber-950/40 via-sacred-card to-sacred-card p-4">
+          <div class="flex items-start justify-between">
+            <div class="space-y-1 max-w-[65%]">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold tracking-wider uppercase border border-amber-500/30">
+                <i data-lucide="flame" class="w-2.5 h-2.5"></i> Altar Virtual
+              </span>
+              <h3 class="text-base font-serif font-bold text-white">Vela da Minha Família</h3>
+              <p class="text-[11px] text-slate-300">Acenda diariamente para consagrar os seus pedidos sob o Manto.</p>
+            </div>
+            <!-- Ícone da Vela Animada -->
+            <div id="candle-icon-container" class="relative flex flex-col items-center justify-center w-16 h-20 bg-slate-900/60 rounded-xl border border-amber-500/30">
+              <div id="candle-flame" class="w-4 h-6 bg-gradient-to-t from-orange-500 via-amber-300 to-yellow-100 rounded-full flame-anim -mb-1 z-10 hidden"></div>
+              <div class="w-5 h-10 bg-amber-100/90 rounded-sm shadow-inner border border-amber-200"></div>
+              <span id="streak-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full shadow">0d</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-700/50 flex items-center justify-between">
+            <span id="streak-text" class="text-xs font-medium text-amber-200/90">Acenda a vela de hoje</span>
+            <button id="btn-light-candle" onclick="lightCandle()" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-sacred-gold hover:from-amber-600 hover:to-amber-500 text-slate-950 text-xs font-bold rounded-xl shadow-lg transition transform active:scale-95 flex items-center gap-1.5">
+              <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+              <span id="btn-candle-text">Acender Vela</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ATALHO PARA CONTINUAR A NOVENA -->
+        <div class="relative rounded-2xl overflow-hidden border border-sacred-border bg-sacred-card shadow-lg p-4 flex items-center gap-3.5">
+          <img src="images/app-icon.jpg" alt="Novena" class="w-16 h-16 rounded-xl object-cover border border-sacred-gold/40 shadow-md flex-shrink-0">
+          <div class="flex-1 min-w-0">
+            <span class="text-[10px] font-bold text-sacred-gold uppercase tracking-wider block">Oração Recomendada</span>
+            <h4 id="next-day-title" class="text-sm font-bold text-white truncate font-serif">Dia 1: Abertura dos Caminhos</h4>
+            <p class="text-[11px] text-slate-300 truncate">Escute as palavras sagradas antes de dormir.</p>
+          </div>
+          <button onclick="goToCurrentDay()" class="w-10 h-10 rounded-full bg-sacred-gold text-slate-950 flex items-center justify-center shadow-lg hover:bg-yellow-400 transition flex-shrink-0 active:scale-95">
+            <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
+          </button>
+        </div>
+
+        <!-- ORÁCULO SAGRADO / VERSÍCULO DO DIA -->
+        <div class="bg-gradient-to-br from-sacred-card to-slate-900 border border-sacred-border/40 rounded-2xl p-4 text-center space-y-2">
+          <i data-lucide="quote" class="w-5 h-5 text-sacred-gold/70 mx-auto"></i>
+          <p id="verse-text" class="text-xs font-serif italic text-slate-200 leading-relaxed">
+            "Entrega o teu caminho ao Senhor; confia nele, e o mais Ele fará."
+          </p>
+          <span id="verse-ref" class="text-[10px] font-cinzel font-bold text-sacred-gold tracking-widest block uppercase">— Salmos 37:5</span>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 2: NOVENA (9 DIAS) ==================== -->
+      <div id="tab-novena" class="hidden space-y-3">
+        <!-- CABEÇALHO DA ABA -->
+        <div class="text-center py-2">
+          <h2 class="text-lg font-serif font-bold text-white">A Novena das 9 Palavras</h2>
+          <p class="text-xs text-slate-300">Reze um dia por vez antes de dormir para desatar os seus nós.</p>
+        </div>
+
+        <!-- LISTA DOS 9 DIAS -->
+        <div id="days-list" class="space-y-2.5">
+          <!-- Gerado via JS com status trancado/aberto/concluído -->
+        </div>
+      </div>
+
+      <!-- ==================== MODAL DE VISUALIZAÇÃO DO DIA DA NOVENA ==================== -->
+      <div id="day-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-sacred-card border border-sacred-gold/40 w-full max-w-md max-h-[92vh] rounded-t-3xl sm:rounded-2xl flex flex-col shadow-2xl overflow-hidden animate-in slide-in-from-bottom duration-300">
+          <!-- Topo do Modal -->
+          <div class="p-4 border-b border-slate-700/60 flex items-center justify-between bg-slate-900/60">
+            <div class="flex items-center gap-2">
+              <span id="modal-day-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-sacred-gold/20 text-sacred-gold border border-sacred-gold/40">Dia 1</span>
+              <h3 id="modal-day-title" class="text-sm font-serif font-bold text-white truncate max-w-[220px]">Abertura dos Caminhos</h3>
+            </div>
+            <button onclick="closeDayModal()" class="p-1.5 text-slate-400 hover:text-white rounded-full hover:bg-slate-800">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Corpo do Modal com Scroll -->
+          <div class="flex-1 overflow-y-auto p-4 space-y-4 text-slate-200 text-xs leading-relaxed">
+            <!-- PLAYER DE FREQUÊNCIA SAGRADA DO DIA -->
+            <div class="bg-slate-900/90 border border-sacred-gold/30 rounded-xl p-3 space-y-2">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-sacred-gold/20 flex items-center justify-center text-sacred-gold">
+                    <i data-lucide="headphones" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold text-sacred-gold block uppercase">Frequência Sacra 432Hz</span>
+                    <span class="text-[11px] text-white font-medium">Harmonia Noturna de Desamarração</span>
+                  </div>
+                </div>
+                <button id="btn-audio-toggle" onclick="toggleAudioFrequency(432)" class="w-9 h-9 rounded-full bg-sacred-gold text-slate-950 flex items-center justify-center hover:bg-yellow-400 active:scale-95 shadow">
+                  <i id="audio-icon" data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
+                </button>
+              </div>
+
+              <!-- TIMER DE SONO -->
+              <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px] text-slate-400">
+                <span>Timer de Sono:</span>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="setSleepTimer(15)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">15m</button>
+                  <button onclick="setSleepTimer(30)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">30m</button>
+                  <button onclick="setSleepTimer(60)" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">60m</button>
+                  <span id="sleep-timer-status" class="text-sacred-gold font-semibold ml-1"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TEXTO DA ORAÇÃO -->
+            <div class="space-y-2 bg-slate-950/40 p-3.5 rounded-xl border border-slate-800">
+              <h4 class="font-cinzel text-sacred-gold font-bold text-xs uppercase tracking-wider text-center">Palavra Sagrada do Dia</h4>
+              <p id="modal-day-prayer" class="text-[13px] leading-relaxed font-serif text-slate-100 text-justify">
+                <!-- Inserido dinamicamente -->
+              </p>
+            </div>
+
+            <!-- RITUAL ANTES DE DORMIR -->
+            <div class="bg-amber-950/30 border border-amber-500/30 rounded-xl p-3 space-y-1">
+              <span class="text-[10px] font-bold uppercase text-amber-300 flex items-center gap-1">
+                <i data-lucide="moon" class="w-3 h-3"></i> Ritual Sagrado para Esta Noite
+              </span>
+              <p id="modal-day-ritual" class="text-[11px] text-amber-100/90 leading-normal">
+                <!-- Inserido dinamicamente -->
+              </p>
+            </div>
+          </div>
+
+          <!-- Rodapé do Modal com Botão de Conclusão -->
+          <div class="p-3 bg-slate-900 border-t border-slate-800 flex items-center gap-2">
+            <button id="btn-complete-day" onclick="completeCurrentDay()" class="flex-1 py-3 bg-gradient-to-r from-sacred-green to-emerald-600 hover:from-emerald-600 hover:to-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Concluir Oração e Desatar Nó</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 3: BLINDAGEM (UPSELLS) ==================== -->
+      <div id="tab-blindagem" class="hidden space-y-4">
+        <div class="text-center py-2">
+          <h2 class="text-lg font-serif font-bold text-white">Blindagem Espiritual</h2>
+          <p class="text-xs text-slate-300">Materiais sagrados complementares para proteger o seu lar.</p>
+        </div>
+
+        <!-- MÓDULO 1: GUIA 15 DIAS COM MARIA (UPSELL 1) -->
+        <div class="bg-sacred-card border border-sacred-gold/40 rounded-2xl overflow-hidden shadow-xl">
+          <div class="relative h-36 overflow-hidden">
+            <img src="https://caminhosdafe.online/u1/guia-15-dias-maria.jpg" alt="Guia 15 Dias" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-sacred-card via-sacred-card/60 to-transparent"></div>
+            <span class="absolute top-3 left-3 bg-sacred-gold text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded-full shadow uppercase">Módulo 1</span>
+          </div>
+          <div class="p-4 space-y-2 -mt-4 relative z-10">
+            <h3 class="font-serif font-bold text-base text-white">Guia de 15 Dias com Maria</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              O itinerário completo de blindagem deixado pelo Padre Jakob Rem para cobrir a sua família sob o Manto Sagrado e impedir novos nós de discórdia e inveja.
+            </p>
+            <div class="pt-2">
+              <button onclick="openGuideModal()" class="w-full py-2.5 bg-sacred-gold hover:bg-yellow-400 text-slate-950 font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span>Aceder aos 15 Roteiros Sagrados</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÓDULO 2: ÁUDIOS FREQUENCIAIS NOTURNOS (UPSELL 2) -->
+        <div class="bg-sacred-card border border-sacred-gold/40 rounded-2xl overflow-hidden shadow-xl">
+          <div class="relative h-36 overflow-hidden">
+            <img src="images/frequencia-som.jpg" alt="Frequências Sacras" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-sacred-card via-sacred-card/60 to-transparent"></div>
+            <span class="absolute top-3 left-3 bg-indigo-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow uppercase">Módulo 2</span>
+          </div>
+          <div class="p-4 space-y-3 -mt-4 relative z-10">
+            <div>
+              <h3 class="font-serif font-bold text-base text-white">Áudios Frequenciais do Terço Noturno</h3>
+              <p class="text-xs text-slate-300">Frequências harmónicas sacras para reproduzir ao dormir com fones.</p>
+            </div>
+
+            <!-- FAIXAS DE ÁUDIO FREQUENCIAL INTERATIVAS -->
+            <div class="space-y-2">
+              <!-- Faixa 1: 432Hz -->
+              <div class="flex items-center justify-between p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                <div>
+                  <span class="text-xs font-bold text-white block">432Hz — Sono Reparador & Paz</span>
+                  <span class="text-[10px] text-slate-400">Harmonia para acalmar a mente agitada</span>
+                </div>
+                <button onclick="toggleAudioFrequency(432)" class="p-2 bg-sacred-gold text-slate-950 rounded-full hover:bg-yellow-400">
+                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                </button>
+              </div>
+
+              <!-- Faixa 2: 528Hz -->
+              <div class="flex items-center justify-between p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                <div>
+                  <span class="text-xs font-bold text-white block">528Hz — Desbloqueio Financeiro</span>
+                  <span class="text-[10px] text-slate-400">Frequência milagrosa de restauração</span>
+                </div>
+                <button onclick="toggleAudioFrequency(528)" class="p-2 bg-sacred-gold text-slate-950 rounded-full hover:bg-yellow-400">
+                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                </button>
+              </div>
+
+              <!-- Faixa 3: 963Hz -->
+              <div class="flex items-center justify-between p-2.5 bg-slate-900/80 rounded-xl border border-slate-800">
+                <div>
+                  <span class="text-xs font-bold text-white block">963Hz — Presença Mariana Noturna</span>
+                  <span class="text-[10px] text-slate-400">Conexão espiritual com o Manto Protetor</span>
+                </div>
+                <button onclick="toggleAudioFrequency(963)" class="p-2 bg-sacred-gold text-slate-950 rounded-full hover:bg-yellow-400">
+                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 4: COMUNIDADE (CÍRCULO DE ORAÇÃO) ==================== -->
+      <div id="tab-comunidade" class="hidden space-y-4">
+        <div class="text-center py-2">
+          <h2 class="text-lg font-serif font-bold text-white">Círculo Sagrado de Oração</h2>
+          <p class="text-xs text-slate-300">Milhares de fiéis unidos em comunhão sob a intercessão de Maria.</p>
+        </div>
+
+        <!-- CAMPO PARA O USUÁRIO DEIXAR SEU PEDIDO/TESTEMUNHO -->
+        <div class="bg-sacred-card border border-sacred-border/60 rounded-2xl p-3.5 space-y-2.5 shadow-lg">
+          <span class="text-[11px] font-cinzel font-bold text-sacred-gold block uppercase tracking-wider">Deixe o Seu Testemunho ou Pedido</span>
+          <textarea id="user-post-input" rows="2" placeholder="Irmãos, peço oração pela minha família ou agradeço pelo nó desatado..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold resize-none"></textarea>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] text-slate-400 flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3 h-3 text-emerald-400"></i> Comunidade Moderada
+            </span>
+            <button onclick="publishUserPost()" class="px-4 py-1.5 bg-sacred-gold hover:bg-yellow-400 text-slate-950 font-bold text-xs rounded-xl shadow transition active:scale-95">
+              Publicar
+            </button>
+          </div>
+        </div>
+
+        <!-- FEED DE TESTEMUNHOS VIVOS (SEEDS + BOTS DINÂMICOS) -->
+        <div id="community-feed" class="space-y-3">
+          <!-- Injetado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- ==================== TAB 5: CADERNO DE GRAÇAS (ANTI-CHARGEBACK) ==================== -->
+      <div id="tab-caderno" class="hidden space-y-4">
+        <div class="text-center py-2">
+          <h2 class="text-lg font-serif font-bold text-white">O Meu Caderno de Graças</h2>
+          <p class="text-xs text-slate-300">Registe os nós que entrega a Maria e guarde as suas vitórias.</p>
+        </div>
+
+        <!-- OS MEUS NÓS PARA DESATAR -->
+        <div class="bg-sacred-card border border-sacred-border/60 rounded-2xl p-4 space-y-3 shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-serif font-bold text-sacred-gold uppercase">Os Meus Nós Atuais</span>
+            <span class="text-[10px] text-slate-400">Entregues a Maria</span>
+          </div>
+
+          <div id="knots-list" class="space-y-2">
+            <!-- Gerado dinamicamente -->
+          </div>
+
+          <!-- ADICIONAR NOVO NÓ -->
+          <div class="pt-2 flex gap-2">
+            <input type="text" id="new-knot-input" placeholder="Ex: Dívida do Cartão, Emprego para o filho..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold">
+            <button onclick="addKnot()" class="px-3 py-2 bg-sacred-gold text-slate-950 font-bold text-xs rounded-xl shadow hover:bg-yellow-400 active:scale-95">
+              + Adicionar
+            </button>
+          </div>
+        </div>
+
+        <!-- SELO DE GARANTIA DO FIEL (30 DIAS) -->
+        <div class="bg-slate-900/90 border border-sacred-gold/40 rounded-2xl p-4 text-center space-y-2">
+          <div class="w-10 h-10 rounded-full bg-sacred-gold/15 text-sacred-gold flex items-center justify-center mx-auto">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-serif font-bold text-sm text-white">Garantia Sagrada Incondicional de 30 Dias</h4>
+          <p class="text-xs text-slate-300 leading-relaxed max-w-xs mx-auto">
+            Reze durante os 9 dias com fé. Se os nós não começarem a desatar-se, o padre devolve a sua contribuição por inteiro sem perguntas.
+          </p>
+        </div>
+
+        <!-- CANAIS DE SUPORTE DIRETO (WHATSAPP & E-MAIL) -->
+        <div class="bg-sacred-card border border-slate-700/60 rounded-2xl p-4 space-y-3 shadow-lg">
+          <h4 class="font-serif font-bold text-sm text-white text-center">Precisa de Ajuda ou Tem Dúvidas?</h4>
+          <p class="text-xs text-slate-300 text-center">A nossa equipa de apoio ao fiel está disponível para o amparar:</p>
+
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <a href="mailto:contato@caminhosdafe.online" class="flex items-center justify-center gap-1.5 p-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl text-xs font-semibold text-white transition">
+              <i data-lucide="mail" class="w-4 h-4 text-sacred-gold"></i>
+              <span>E-mail</span>
+            </a>
+            <a href="https://wa.me/351912345678?text=A+paz+de+Cristo.+Preciso+de+ajuda+com+o+meu+acesso+ao+app" target="_blank" class="flex items-center justify-center gap-1.5 p-2.5 bg-emerald-800/80 hover:bg-emerald-700 border border-emerald-600 rounded-xl text-xs font-semibold text-white transition">
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-300"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- BOTÃO PARA REVER O GUIA DE INSTALAÇÃO -->
+          <button onclick="openInstallModal()" class="w-full py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold rounded-xl transition flex items-center justify-center gap-1.5">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-sacred-gold"></i>
+            <span>Ver Guia: Como Instalar no Telemóvel</span>
+          </button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ==================== NOTIFICAÇÃO FLUTUANTE (BOT EM TEMPO REAL) ==================== -->
+    <div id="live-bot-toast" class="fixed bottom-20 left-4 right-4 max-w-md mx-auto pointer-events-none z-40 transform translate-y-12 opacity-0 transition-all duration-500">
+      <div class="bg-slate-900/95 border border-sacred-gold/50 shadow-2xl rounded-2xl p-3 flex items-center gap-3 backdrop-blur-md">
+        <div class="w-8 h-8 rounded-full bg-sacred-gold/20 flex items-center justify-center text-sacred-gold flex-shrink-0">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span id="toast-title" class="text-[10px] font-bold text-sacred-gold block uppercase truncate">Bênção em Tempo Real</span>
+          <p id="toast-body" class="text-xs text-white truncate">Maria Silva acabou de desatar o nó do 4º dia!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BOTTOM NAVIGATION BAR (FIXA) ==================== -->
+    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-sacred-bg/95 backdrop-blur-lg border-t border-sacred-border/40 py-2">
+      <div class="max-w-md mx-auto px-2 flex items-center justify-around">
+        <!-- Tab 1: Início -->
+        <button onclick="switchTab('tab-inicio')" id="nav-tab-inicio" class="flex flex-col items-center gap-1 text-sacred-gold">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span class="text-[10px] font-semibold">Início</span>
+        </button>
+
+        <!-- Tab 2: Novena -->
+        <button onclick="switchTab('tab-novena')" id="nav-tab-novena" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white">
+          <i data-lucide="book-marked" class="w-5 h-5"></i>
+          <span class="text-[10px] font-semibold">Novena</span>
+        </button>
+
+        <!-- Tab 3: Blindagem -->
+        <button onclick="switchTab('tab-blindagem')" id="nav-tab-blindagem" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white">
+          <i data-lucide="shield" class="w-5 h-5"></i>
+          <span class="text-[10px] font-semibold">Blindagem</span>
+        </button>
+
+        <!-- Tab 4: Comunidade -->
+        <button onclick="switchTab('tab-comunidade')" id="nav-tab-comunidade" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white relative">
+          <i data-lucide="users" class="w-5 h-5"></i>
+          <span class="text-[10px] font-semibold">Comunidade</span>
+          <span class="absolute top-0 right-3 w-2 h-2 rounded-full bg-emerald-500"></span>
+        </button>
+
+        <!-- Tab 5: Caderno -->
+        <button onclick="switchTab('tab-caderno')" id="nav-tab-caderno" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white">
+          <i data-lucide="scroll" class="w-5 h-5"></i>
+          <span class="text-[10px] font-semibold">Caderno</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ==================== MODAL DE GUIA DE INSTALAÇÃO (PWA) ==================== -->
+    <div id="install-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="bg-sacred-card border border-sacred-gold/60 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4 animate-in zoom-in-95 duration-200">
+        <div class="text-center space-y-1.5">
+          <img src="images/app-icon.jpg" alt="Ícone do App" class="w-14 h-14 rounded-2xl mx-auto border-2 border-sacred-gold shadow-lg">
+          <h3 class="text-base font-serif font-bold text-white">Instale o Aplicativo Sagrado</h3>
+          <p class="text-xs text-slate-300">Acesse com 1 toque no ecrã do seu telemóvel, como um app oficial.</p>
+        </div>
+
+        <!-- ABAS IPHONE / ANDROID -->
+        <div class="flex rounded-xl bg-slate-900 p-1 border border-slate-800">
+          <button id="tab-btn-ios" onclick="switchInstallTab('ios')" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-sacred-gold text-slate-950 shadow">
+            iPhone (Safari)
+          </button>
+          <button id="tab-btn-android" onclick="switchInstallTab('android')" class="flex-1 py-1.5 text-xs font-bold rounded-lg text-slate-400 hover:text-white">
+            Android (Chrome)
+          </button>
+        </div>
+
+        <!-- INSTRUÇÕES IPHONE -->
+        <div id="install-guide-ios" class="space-y-2.5 text-xs text-slate-200">
+          <div class="flex items-start gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[11px] flex items-center justify-center flex-shrink-0">1</span>
+            <p>Toque no ícone de <strong>Partilhar</strong> na barra inferior do Safari (o quadrado com uma seta a apontar para cima <strong>⎋ / 📤</strong>).</p>
+          </div>
+          <div class="flex items-start gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[11px] flex items-center justify-center flex-shrink-0">2</span>
+            <p>Role para baixo nas opções e toque em <strong>"Adicionar ao Ecrã Principal"</strong> (com ícone de <strong>[+]</strong>).</p>
+          </div>
+          <div class="flex items-start gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[11px] flex items-center justify-center flex-shrink-0">3</span>
+            <p>Toque em <strong>"Adicionar"</strong> no canto superior direito. O ícone de Maria aparecerá no seu ecrã!</p>
+          </div>
+        </div>
+
+        <!-- INSTRUÇÕES ANDROID -->
+        <div id="install-guide-android" class="space-y-2.5 text-xs text-slate-200 hidden">
+          <div class="flex items-start gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[11px] flex items-center justify-center flex-shrink-0">1</span>
+            <p>Toque nos <strong>três pontinhos verticais (⋮)</strong> no canto superior direito do Google Chrome.</p>
+          </div>
+          <div class="flex items-start gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[11px] flex items-center justify-center flex-shrink-0">2</span>
+            <p>Selecione a opção <strong>"Instalar aplicativo"</strong> ou <strong>"Adicionar ao ecrã principal"</strong>.</p>
+          </div>
+          <div class="flex items-start gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[11px] flex items-center justify-center flex-shrink-0">3</span>
+            <p>Confirme clicando em <strong>"Instalar"</strong>. O app abrirá em tela cheia sempre que tocar no ícone!</p>
+          </div>
+        </div>
+
+        <!-- BOTÃO DE ENTRAR -->
+        <button onclick="closeInstallModal()" class="w-full py-3 bg-gradient-to-r from-sacred-gold to-yellow-400 hover:from-yellow-400 hover:to-sacred-gold text-slate-950 font-bold text-xs rounded-xl shadow-lg transition active:scale-95">
+          Entrar no Santuário Sagrado
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== SCRIPTS DA APLICAÇÃO (STATE & LOGIC) ==================== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. DADOS ESTÁTICOS DA NOVENA (OS 9 DIAS)
+    // -------------------------------------------------------------
+    const NOVENA_DAYS = [
+      {
+        day: 1,
+        title: "Abertura dos Caminhos",
+        subtitle: "Quebra de bloqueios e trancas financeiras",
+        prayer: "Santa Maria, Mãe de Deus e nossa Mãe cheia de graça, vós que desatais os nós que sufocam a vida dos vossos filhos: coloco hoje nas vossas mãos sagradas o nó das portas trancadas. Onde faltava trabalho, onde o dinheiro escorria como água e onde havia impedimentos ocultos, peço que o vosso Manto de Luz abra os caminhos da providência e faça descer a bênção da fartura sobre o meu lar.",
+        ritual: "Antes de adormecer, coloque a mão sobre o peito, respire fundo 3 vezes e repita mentalmente: 'Nossa Senhora Desatadora dos Nós, desatai os caminhos da minha casa esta noite'."
+      },
+      {
+        day: 2,
+        title: "Desamarração de Dívidas",
+        subtitle: "Libertação de juros, cobranças e sufocos",
+        prayer: "Mãe amorosa, desatai o nó que me tira o sono e me faz acordar com o coração aflito por contas, compromissos atrasados e juros que parecem não ter fim. Vós que desatastes a desobediência de Adão pela vossa fidelidade, desatai cada nó que prende as minhas finanças ao desespero, concedendo-me sabedoria e alívio financeiro imediato.",
+        ritual: "Beba um copo de água limpa consagrando o seu corpo à paz e durma com a certeza de que a dívida já foi colocada nas mãos de Deus."
+      },
+      {
+        day: 3,
+        title: "Purificação do Lar",
+        subtitle: "Afastamento de inveja e discórdia",
+        prayer: "Virgem Imaculada, expulsai de perto da minha família todo o olhar de inveja, toda a palavra de discórdia e todo o laço do inimigo que tentou minar a união do meu lar. Desatai as intrigas, os mal-entendidos e as energias pesadas, cobrindo as quatro paredes da minha casa com a vossa paz celestial.",
+        ritual: "Faça uma oração em silêncio olhando para a entrada da sua casa, abençoando cada pessoa que mora com você."
+      },
+      {
+        day: 4,
+        title: "O Manto Protetor",
+        subtitle: "Blindagem dos filhos e da saúde",
+        prayer: "Mãe bendita, estendei o vosso Manto Santo sobre os meus filhos, meus netos e toda a minha família. Que nenhuma doença repentina, nenhum acidente e nenhuma força contrária possa romper a cerca de anjos que o Senhor colocou à nossa volta. Que a nossa saúde e os nossos bens sejam guardados sob a vossa guarda.",
+        ritual: "Reze uma Ave-Maria com a mão estendida em bênção para a sua família antes de fechar os olhos."
+      },
+      {
+        day: 5,
+        title: "Providência Imediata",
+        subtitle: "A bênção do pão e do sustento abundante",
+        prayer: "Rainha do Céu, assim como providenciastes o vinho nas Bodas de Caná quando a família não tinha mais recursos, intercedei hoje pela despensa e pelas contas da minha casa. Não permitais que falte o alimento, o dinheiro digno e a abundância para honrar cada compromisso com paz e serenidade.",
+        ritual: "Agradeça a Deus por tudo o que já tem na mesa e profetize: 'A providência divina nunca me faltará'."
+      },
+      {
+        day: 6,
+        title: "Harmonia e Perdão",
+        subtitle: "Cura de mágoas e nós emocionais",
+        prayer: "Mãe compassiva, desatai os nós da amargura, do ressentimento e do orgulho que possam existir no meu coração ou na convivência com os meus entes queridos. Enchei o nosso lar de mansidão, compreensão e paciência, restaurando laços que pareciam quebrados para sempre.",
+        ritual: "Lembre-se de alguém que lhe ofendeu ou magoou e diga em oração: 'Em nome de Maria, eu te abençoo e liberto este nó'."
+      },
+      {
+        day: 7,
+        title: "Iluminação nos Negócios",
+        subtitle: "Sabedoria para prosperar e trabalhar",
+        prayer: "Virgem Prudente, concedei-me olhos espirituais para enxergar as oportunidades certas e sabedoria para fechar negócios justos e prósperos. Que as minhas mãos sejam abençoadas em tudo o que tocarem e que o meu suor seja recompensado com dignidade e fartura.",
+        ritual: "Olhe para as palmas das suas mãos e peça que o Espírito Santo as guie em cada decisão de amanhã."
+      },
+      {
+        day: 8,
+        title: "Fartura e Prosperidade",
+        subtitle: "O fim definitivo da escassez",
+        prayer: "Mãe Admirável, vejo os nós a desatarem-se um a um. Declaro que o ciclo de escassez e miséria espiritual está quebrado na minha linhagem. Onde havia falta, haja multiplicação; onde havia medo do futuro, haja segurança na graça de Deus. Obrigado pela fartura que já se aproxima.",
+        ritual: "Escreva uma palavra de agradecimento num papel e guarde-o sob o seu travesseiro esta noite."
+      },
+      {
+        day: 9,
+        title: "Consagração Perpétua",
+        subtitle: "Selo de gratidão e vitória perpétua",
+        prayer: "Ó Maria, Desatadora dos Nós, o meu coração transborda em gratidão. Consagro a minha vida, a minha família e todas as minhas conquistas ao vosso Imaculado Coração. Nenhum nó atado pelo inimigo poderá resistir à força do vosso amor materno. Permanecei sempre connosco. Amém!",
+        ritual: "Abaixe a cabeça em reverência, sorria em paz e durma sabendo que a sua vitória foi selada nos céus."
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // 2. BANCO DE DADOS DOS TESTEMUNHOS INICIAIS (SEED BOTS)
+    // -------------------------------------------------------------
+    const INITIAL_POSTS = [
+      {
+        id: "p1",
+        author: "Maria Teresa Albuquerque",
+        location: "Porto, Portugal",
+        timeAgo: "há 14 min",
+        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80",
+        tag: "Nó do Dinheiro Desatado",
+        text: "Irmãos, não tenho palavras para agradecer a Nossa Senhora. Terminei o 6º dia da novena ontem. Estava com um processo de execução de quase 3.000€ que me tirava o sono há 8 meses. Esta manhã chamaram-me do banco para renegociar com perdão total dos juros! O que parecia impossível desatou-se!",
+        prayersCount: 348,
+        hasPrayed: false
+      },
+      {
+        id: "p2",
+        author: "António Manuel Ferreira",
+        location: "Braga, Portugal",
+        timeAgo: "há 42 min",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80",
+        tag: "Fartura & Comércio",
+        text: "Estava com o meu pequeno comércio a passar dificuldades e os clientes sumiram. Comecei a ouvir os áudios frequenciais em 432Hz ao deitar. A paz que entrou na minha casa foi imediata e ontem fechei o maior contrato do ano com uma distribuidora. Glória a Deus e a Maria!",
+        prayersCount: 219,
+        hasPrayed: false
+      },
+      {
+        id: "p3",
+        author: "Fátima Silva dos Santos",
+        location: "Coimbra, Portugal",
+        timeAgo: "há 2 horas",
+        avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=120&auto=format&fit=crop&q=80",
+        tag: "Emprego para Filho",
+        text: "O meu filho mais velho estava sem trabalho há quase um ano e o clima em casa era só tristeza. Rezei o 3º dia com muita fé pelas 9 palavras. Hoje às 15h chamaram-no para uma entrevista e já ficou contratado para começar segunda-feira! Confiem, Maria nunca falha!",
+        prayersCount: 492,
+        hasPrayed: false
+      },
+      {
+        id: "p4",
+        author: "José Carlos Mendonça",
+        location: "Lisboa, Portugal",
+        timeAgo: "há 4 horas",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80",
+        tag: "Paz Familiar",
+        text: "A blindagem dos 15 dias com Maria tirou o peso do meu peito. As discussões diárias cessaram e sinto os meus netos guardados sob o Manto. Deus abençoe esta obra linda que nos devolveu a esperança.",
+        prayersCount: 167,
+        hasPrayed: false
+      },
+      {
+        id: "p5",
+        author: "Lurdes Rodrigues",
+        location: "Faro, Portugal",
+        timeAgo: "há 6 horas",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80",
+        tag: "Cura de Ansiedade",
+        text: "Amém! Acabei de rezar o Dia 1. Há meses que não conseguia dormir sem comprimidos. Ontem dormi a noite inteira em paz com a oração. Deixo aqui a minha vela acesa por todas as famílias necessitadas deste círculo.",
+        prayersCount: 143,
+        hasPrayed: false
+      }
+    ];
+
+    // BOTS DINÂMICOS PARA O TOAST DE ATIVIDADE
+    const DYNAMIC_BOT_NOTIFICATIONS = [
+      { name: "Rosa Martins", city: "Setúbal", action: "acabou de desatar o nó financeiro do 5º dia!" },
+      { name: "Manuel Sousa", city: "Viseu", action: "acendeu uma vela pela cura e harmonia do seu lar." },
+      { name: "Ana Paula Gouveia", city: "Aveiro", action: "alcançou uma graça inesperada no trabalho após o 3º dia!" },
+      { name: "Joaquim Barreto", city: "Santarém", action: "concluiu o 9º dia da novena com grande louvor!" },
+      { name: "Teresa Cristina", city: "Leiria", action: "deixou um pedido de oração pela saúde dos seus filhos." },
+      { name: "Gonçalo Ribeiro", city: "Guimarães", action: "ouviu o terço frequencial em 528Hz e relatou paz profunda." }
+    ];
+
+    // -------------------------------------------------------------
+    // 3. GERENCIADOR DE ESTADO (LOCALSTORAGE)
+    // -------------------------------------------------------------
+    function getState() {
+      return {
+        completedDays: JSON.parse(localStorage.getItem('novena_completed_days') || '[]'),
+        streak: parseInt(localStorage.getItem('novena_streak') || '0', 10),
+        lastCandleDate: localStorage.getItem('novena_last_candle_date') || '',
+        knots: JSON.parse(localStorage.getItem('novena_my_knots') || JSON.stringify([
+          { id: 1, text: "Dívidas e bloqueios no banco", untied: false },
+          { id: 2, text: "Trabalho e sustento abundante", untied: false },
+          { id: 3, text: "Proteção e harmonia dos meus filhos", untied: false }
+        ])),
+        posts: JSON.parse(localStorage.getItem('novena_community_posts') || JSON.stringify(INITIAL_POSTS)),
+        pwaDismissed: localStorage.getItem('novena_pwa_dismissed') === 'true'
+      };
+    }
+
+    function saveState(partial) {
+      if (partial.completedDays !== undefined) localStorage.setItem('novena_completed_days', JSON.stringify(partial.completedDays));
+      if (partial.streak !== undefined) localStorage.setItem('novena_streak', partial.streak.toString());
+      if (partial.lastCandleDate !== undefined) localStorage.setItem('novena_last_candle_date', partial.lastCandleDate);
+      if (partial.knots !== undefined) localStorage.setItem('novena_my_knots', JSON.stringify(partial.knots));
+      if (partial.posts !== undefined) localStorage.setItem('novena_community_posts', JSON.stringify(partial.posts));
+      if (partial.pwaDismissed !== undefined) localStorage.setItem('novena_pwa_dismissed', partial.pwaDismissed.toString());
+    }
+
+    let activeModalDay = 1;
+
+    // -------------------------------------------------------------
+    // 4. RENDERIZAÇÃO DA CORDA DOS NÓS
+    // -------------------------------------------------------------
+    function renderKnotsTrack() {
+      const state = getState();
+      const track = document.getElementById('knot-track');
+      if (!track) return;
+
+      const completedCount = state.completedDays.length;
+      document.getElementById('knots-progress-label').textContent = `${completedCount} de 9 Desatados`;
+      document.getElementById('knots-progress-bar').style.width = `${(completedCount / 9) * 100}%`;
+
+      let html = '';
+      for (let i = 1; i <= 9; i++) {
+        const isUntied = state.completedDays.includes(i);
+        if (isUntied) {
+          // Nó desatado (Estrela dourada brilhante)
+          html += `
+            <div onclick="openDayModal(${i})" class="flex flex-col items-center cursor-pointer group">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 text-slate-950 flex items-center justify-center shadow-lg font-bold text-xs border border-amber-300 transform group-hover:scale-110 transition">
+                ✨
+              </div>
+              <span class="text-[9px] font-bold text-sacred-gold mt-1">D${i}</span>
+            </div>
+          `;
+        } else {
+          // Nó atado (círculo com nó dourado pulsante se for o próximo)
+          const isNext = i === 1 || state.completedDays.includes(i - 1);
+          const knotClass = isNext ? 'knot-pulse border-sacred-gold/80 bg-slate-900 text-sacred-gold' : 'border-slate-700 bg-slate-900/60 text-slate-500';
+          html += `
+            <div onclick="openDayModal(${i})" class="flex flex-col items-center cursor-pointer group">
+              <div class="w-8 h-8 rounded-full border ${knotClass} flex items-center justify-center text-xs font-serif font-bold shadow transition transform group-hover:scale-105">
+                ${i}
+              </div>
+              <span class="text-[9px] text-slate-400 mt-1">D${i}</span>
+            </div>
+          `;
+        }
+      }
+      track.innerHTML = html;
+    }
+
+    // -------------------------------------------------------------
+    // 5. RENDERIZAÇÃO DA TRILHA DOS 9 DIAS (TAB NOVENA)
+    // -------------------------------------------------------------
+    function renderNovenaDaysList() {
+      const state = getState();
+      const list = document.getElementById('days-list');
+      if (!list) return;
+
+      let html = '';
+      NOVENA_DAYS.forEach((d) => {
+        const isCompleted = state.completedDays.includes(d.day);
+        const isLocked = d.day > 1 && !state.completedDays.includes(d.day - 1) && !isCompleted;
+
+        let statusBadge = '';
+        let cardBg = 'bg-sacred-card border-sacred-border/50';
+        let actionBtn = `<button onclick="openDayModal(${d.day})" class="px-3 py-1.5 bg-sacred-gold text-slate-950 font-bold text-xs rounded-xl shadow hover:bg-yellow-400">Rezar</button>`;
+
+        if (isCompleted) {
+          statusBadge = '<span class="text-[10px] text-emerald-400 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> Nó Desatado</span>';
+          cardBg = 'bg-sacred-card border-emerald-500/40';
+          actionBtn = `<button onclick="openDayModal(${d.day})" class="px-3 py-1.5 bg-slate-800 text-slate-300 font-semibold text-xs rounded-xl hover:bg-slate-700">Rever</button>`;
+        } else if (isLocked) {
+          statusBadge = '<span class="text-[10px] text-slate-500 font-medium">Reze o dia anterior</span>';
+          cardBg = 'bg-slate-950/60 border-slate-800 opacity-60';
+          actionBtn = `<span class="p-2 text-slate-600"><i data-lucide="lock" class="w-4 h-4"></i></span>`;
+        } else {
+          statusBadge = '<span class="text-[10px] text-sacred-gold font-bold flex items-center gap-1">Pronto para Rezar</span>';
+          cardBg = 'bg-gradient-to-r from-sacred-card to-slate-900 border-sacred-gold/60 shadow-md';
+        }
+
+        html += `
+          <div class="rounded-2xl border p-3.5 flex items-center justify-between gap-3 ${cardBg} transition">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700/80 flex items-center justify-center flex-shrink-0 font-cinzel font-bold ${isCompleted ? 'text-emerald-400' : 'text-sacred-gold'}">
+                ${d.day}
+              </div>
+              <div class="min-w-0">
+                ${statusBadge}
+                <h4 class="text-xs font-bold text-white truncate font-serif mt-0.5">${d.title}</h4>
+                <p class="text-[10px] text-slate-400 truncate">${d.subtitle}</p>
+              </div>
+            </div>
+            ${actionBtn}
+          </div>
+        `;
+      });
+
+      list.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    // -------------------------------------------------------------
+    // 6. MODAL DO DIA DA NOVENA & CONCLUSÃO
+    // -------------------------------------------------------------
+    function openDayModal(dayNum) {
+      activeModalDay = dayNum;
+      const dayData = NOVENA_DAYS.find(d => d.day === dayNum) || NOVENA_DAYS[0];
+      const state = getState();
+      const isCompleted = state.completedDays.includes(dayNum);
+
+      document.getElementById('modal-day-badge').textContent = `Dia ${dayData.day}`;
+      document.getElementById('modal-day-title').textContent = dayData.title;
+      document.getElementById('modal-day-prayer').textContent = dayData.prayer;
+      document.getElementById('modal-day-ritual').textContent = dayData.ritual;
+
+      const completeBtn = document.getElementById('btn-complete-day');
+      if (isCompleted) {
+        completeBtn.innerHTML = '<i data-lucide="check-check" class="w-4 h-4"></i> <span>Nó Já Desatado (Concluído)</span>';
+        completeBtn.className = 'flex-1 py-3 bg-slate-800 text-slate-300 font-semibold text-xs rounded-xl cursor-default flex items-center justify-center gap-2';
+      } else {
+        completeBtn.innerHTML = '<i data-lucide="check-circle" class="w-4 h-4"></i> <span>Concluir Oração e Desatar Nó</span>';
+        completeBtn.className = 'flex-1 py-3 bg-gradient-to-r from-sacred-green to-emerald-600 hover:from-emerald-600 hover:to-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2';
+      }
+
+      document.getElementById('day-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeDayModal() {
+      stopAudioFrequency();
+      document.getElementById('day-modal').classList.add('hidden');
+    }
+
+    function completeCurrentDay() {
+      const state = getState();
+      if (!state.completedDays.includes(activeModalDay)) {
+        state.completedDays.push(activeModalDay);
+        saveState({ completedDays: state.completedDays });
+
+        // Explosão de confetes sacros
+        confetti({
+          particleCount: 120,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#D4AF37', '#FDE68A', '#10B981', '#FFFFFF']
+        });
+
+        // Som sacro de sino sintetizado
+        playSacredBellSound();
+      }
+
+      closeDayModal();
+      renderKnotsTrack();
+      renderNovenaDaysList();
+      updateHomeRecommendations();
+    }
+
+    function goToCurrentDay() {
+      const state = getState();
+      let nextDay = 1;
+      for (let i = 1; i <= 9; i++) {
+        if (!state.completedDays.includes(i)) {
+          nextDay = i;
+          break;
+        }
+      }
+      openDayModal(nextDay);
+    }
+
+    function updateHomeRecommendations() {
+      const state = getState();
+      let nextDay = 1;
+      for (let i = 1; i <= 9; i++) {
+        if (!state.completedDays.includes(i)) {
+          nextDay = i;
+          break;
+        }
+      }
+      const dayData = NOVENA_DAYS.find(d => d.day === nextDay) || NOVENA_DAYS[8];
+      const titleElem = document.getElementById('next-day-title');
+      if (titleElem) {
+        titleElem.textContent = `Dia ${dayData.day}: ${dayData.title}`;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 7. VELA VIRTUAL (STREAK DIÁRIO)
+    // -------------------------------------------------------------
+    function updateCandleUI() {
+      const state = getState();
+      const today = new Date().toISOString().split('T')[0];
+      const isLitToday = state.lastCandleDate === today;
+
+      const flame = document.getElementById('candle-flame');
+      const badge = document.getElementById('streak-badge');
+      const streakText = document.getElementById('streak-text');
+      const btn = document.getElementById('btn-light-candle');
+      const btnText = document.getElementById('btn-candle-text');
+
+      badge.textContent = `${state.streak}d`;
+
+      if (isLitToday) {
+        flame.classList.remove('hidden');
+        streakText.textContent = `Vela acesa hoje (${state.streak} dias em oração)`;
+        btnText.textContent = 'Abençoado Hoje';
+        btn.classList.add('opacity-70', 'cursor-default');
+      } else {
+        flame.classList.add('hidden');
+        streakText.textContent = 'Acenda a vela da sua família hoje';
+        btnText.textContent = 'Acender Vela';
+        btn.classList.remove('opacity-70', 'cursor-default');
+      }
+    }
+
+    function lightCandle() {
+      const state = getState();
+      const today = new Date().toISOString().split('T')[0];
+
+      if (state.lastCandleDate === today) return;
+
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+      let newStreak = state.streak;
+
+      if (state.lastCandleDate === yesterday) {
+        newStreak += 1;
+      } else {
+        newStreak = 1;
+      }
+
+      saveState({
+        lastCandleDate: today,
+        streak: newStreak
+      });
+
+      playSacredBellSound();
+      confetti({
+        particleCount: 50,
+        spread: 45,
+        origin: { y: 0.7 },
+        colors: ['#F59E0B', '#FDE68A']
+      });
+
+      updateCandleUI();
+    }
+
+    // -------------------------------------------------------------
+    // 8. GERADOR DE FREQUÊNCIAS SACRAS (WEB AUDIO API - 432Hz / 528Hz)
+    // -------------------------------------------------------------
+    let audioCtx = null;
+    let oscillator = null;
+    let gainNode = null;
+    let sleepTimeout = null;
+    let isPlayingAudio = false;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSacredBellSound() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(528, ctx.currentTime);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 2.5);
+      } catch(e){}
+    }
+
+    function toggleAudioFrequency(hz = 432) {
+      if (isPlayingAudio) {
+        stopAudioFrequency();
+      } else {
+        startAudioFrequency(hz);
+      }
+    }
+
+    function startAudioFrequency(hz) {
+      try {
+        const ctx = getAudioContext();
+        stopAudioFrequency();
+
+        oscillator = ctx.createOscillator();
+        gainNode = ctx.createGain();
+
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(hz, ctx.currentTime);
+
+        gainNode.gain.setValueAtTime(0.01, ctx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 2);
+
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        oscillator.start();
+        isPlayingAudio = true;
+
+        const icon = document.getElementById('audio-icon');
+        if (icon) icon.setAttribute('data-lucide', 'pause');
+        lucide.createIcons();
+      } catch(e){}
+    }
+
+    function stopAudioFrequency() {
+      if (oscillator) {
+        try {
+          oscillator.stop();
+          oscillator.disconnect();
+        } catch(e){}
+        oscillator = null;
+      }
+      isPlayingAudio = false;
+      const icon = document.getElementById('audio-icon');
+      if (icon) icon.setAttribute('data-lucide', 'play');
+      lucide.createIcons();
+    }
+
+    function setSleepTimer(minutes) {
+      if (sleepTimeout) clearTimeout(sleepTimeout);
+      const status = document.getElementById('sleep-timer-status');
+      if (status) status.textContent = `(${minutes}m)`;
+
+      sleepTimeout = setTimeout(() => {
+        stopAudioFrequency();
+        if (status) status.textContent = '';
+      }, minutes * 60 * 1000);
+    }
+
+    // -------------------------------------------------------------
+    // 9. COMUNIDADE & TESTEMUNHOS (COM INTERATIVIDADE & BOTS)
+    // -------------------------------------------------------------
+    function renderCommunityFeed() {
+      const state = getState();
+      const feed = document.getElementById('community-feed');
+      if (!feed) return;
+
+      let html = '';
+      state.posts.forEach((p) => {
+        html += `
+          <div class="bg-sacred-card border border-sacred-border/40 rounded-2xl p-4 space-y-3 shadow-lg">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="${p.avatar}" alt="${p.author}" class="w-9 h-9 rounded-full object-cover border border-sacred-gold/40 shadow">
+                <div>
+                  <h4 class="text-xs font-bold text-white leading-tight">${p.author}</h4>
+                  <span class="text-[10px] text-slate-400">${p.location} · ${p.timeAgo}</span>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                ${p.tag}
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-200 leading-relaxed text-justify font-sans">
+              ${p.text}
+            </p>
+
+            <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-slate-400 text-xs">
+              <button onclick="prayForPost('${p.id}')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-slate-800 transition ${p.hasPrayed ? 'text-sacred-gold font-bold' : 'text-slate-300'}">
+                <i data-lucide="flame" class="w-3.5 h-3.5 ${p.hasPrayed ? 'fill-current text-sacred-gold' : ''}"></i>
+                <span id="prayers-count-${p.id}">${p.prayersCount} Velas</span>
+              </button>
+              <button onclick="commentAmen('${p.id}')" class="flex items-center gap-1 px-3 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 transition">
+                <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                <span>Amém 🙏</span>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      feed.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    function prayForPost(postId) {
+      const state = getState();
+      const post = state.posts.find(p => p.id === postId);
+      if (!post) return;
+
+      if (!post.hasPrayed) {
+        post.prayersCount += 1;
+        post.hasPrayed = true;
+        saveState({ posts: state.posts });
+        playSacredBellSound();
+        renderCommunityFeed();
+      }
+    }
+
+    function commentAmen(postId) {
+      prayForPost(postId);
+      alert('O seu Amém foi consagrado em oração por este irmão! 🙏');
+    }
+
+    function publishUserPost() {
+      const input = document.getElementById('user-post-input');
+      const text = (input ? input.value : '').trim();
+      if (!text) return;
+
+      const state = getState();
+      const newPost = {
+        id: 'p_' + Date.now(),
+        author: 'Devoto de Maria (Você)',
+        location: 'Portugal',
+        timeAgo: 'agora mesmo',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
+        tag: 'Em Oração',
+        text: text,
+        prayersCount: 1,
+        hasPrayed: true
+      };
+
+      state.posts.unshift(newPost);
+      saveState({ posts: state.posts });
+      input.value = '';
+      renderCommunityFeed();
+
+      confetti({ particleCount: 40, spread: 50, origin: { y: 0.6 } });
+    }
+
+    // SIMULADOR DE NOTIFICAÇÕES FLUTUANTES (BOTS AO VIVO)
+    let botIndex = 0;
+    function triggerLiveBotToast() {
+      const toast = document.getElementById('live-bot-toast');
+      const title = document.getElementById('toast-title');
+      const body = document.getElementById('toast-body');
+      if (!toast || !title || !body) return;
+
+      const bot = DYNAMIC_BOT_NOTIFICATIONS[botIndex % DYNAMIC_BOT_NOTIFICATIONS.length];
+      botIndex++;
+
+      title.textContent = `${bot.name} (${bot.city})`;
+      body.textContent = bot.action;
+
+      toast.classList.remove('translate-y-12', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-12', 'opacity-0');
+      }, 5500);
+    }
+
+    setInterval(triggerLiveBotToast, 45000);
+
+    // -------------------------------------------------------------
+    // 10. CADERNO DE GRAÇAS (NÓS PESSOAIS DO LEAD)
+    // -------------------------------------------------------------
+    function renderKnotsList() {
+      const state = getState();
+      const container = document.getElementById('knots-list');
+      if (!container) return;
+
+      let html = '';
+      state.knots.forEach((k) => {
+        html += `
+          <div class="flex items-center justify-between p-2.5 bg-slate-900/90 rounded-xl border border-slate-800">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <button onclick="toggleKnotUntied(${k.id})" class="w-5 h-5 rounded-md border flex items-center justify-center ${k.untied ? 'bg-emerald-500 border-emerald-400 text-slate-950' : 'border-slate-600 bg-slate-800 text-transparent'}">
+                <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+              </button>
+              <span class="text-xs truncate ${k.untied ? 'line-through text-emerald-400 font-semibold' : 'text-slate-200'}">${k.text}</span>
+            </div>
+            ${k.untied ? '<span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-1.5 py-0.5 rounded uppercase">Desatado ✨</span>' : ''}
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    function toggleKnotUntied(id) {
+      const state = getState();
+      const knot = state.knots.find(k => k.id === id);
+      if (!knot) return;
+
+      knot.untied = !knot.untied;
+      saveState({ knots: state.knots });
+
+      if (knot.untied) {
+        confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+        playSacredBellSound();
+      }
+
+      renderKnotsList();
+    }
+
+    function addKnot() {
+      const input = document.getElementById('new-knot-input');
+      const text = (input ? input.value : '').trim();
+      if (!text) return;
+
+      const state = getState();
+      state.knots.push({
+        id: Date.now(),
+        text: text,
+        untied: false
+      });
+
+      saveState({ knots: state.knots });
+      input.value = '';
+      renderKnotsList();
+    }
+
+    // -------------------------------------------------------------
+    // 11. CONTROLE DE NAVEGAÇÃO ENTRE ABAS
+    // -------------------------------------------------------------
+    function switchTab(tabId) {
+      const tabs = ['tab-inicio', 'tab-novena', 'tab-blindagem', 'tab-comunidade', 'tab-caderno'];
+      tabs.forEach(t => {
+        const el = document.getElementById(t);
+        const navBtn = document.getElementById('nav-' + t);
+        if (el) {
+          if (t === tabId) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        }
+        if (navBtn) {
+          if (t === tabId) {
+            navBtn.classList.remove('text-slate-400');
+            navBtn.classList.add('text-sacred-gold');
+          } else {
+            navBtn.classList.remove('text-sacred-gold');
+            navBtn.classList.add('text-slate-400');
+          }
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // -------------------------------------------------------------
+    // 12. GUIA DE INSTALAÇÃO DO PWA (MODAL INICIAL)
+    // -------------------------------------------------------------
+    function openInstallModal() {
+      document.getElementById('install-modal').classList.remove('hidden');
+    }
+
+    function closeInstallModal() {
+      saveState({ pwaDismissed: true });
+      document.getElementById('install-modal').classList.add('hidden');
+    }
+
+    function switchInstallTab(type) {
+      const iosBtn = document.getElementById('tab-btn-ios');
+      const androidBtn = document.getElementById('tab-btn-android');
+      const iosGuide = document.getElementById('install-guide-ios');
+      const androidGuide = document.getElementById('install-guide-android');
+
+      if (type === 'ios') {
+        iosBtn.className = 'flex-1 py-1.5 text-xs font-bold rounded-lg bg-sacred-gold text-slate-950 shadow';
+        androidBtn.className = 'flex-1 py-1.5 text-xs font-bold rounded-lg text-slate-400 hover:text-white';
+        iosGuide.classList.remove('hidden');
+        androidGuide.classList.add('hidden');
+      } else {
+        androidBtn.className = 'flex-1 py-1.5 text-xs font-bold rounded-lg bg-sacred-gold text-slate-950 shadow';
+        iosBtn.className = 'flex-1 py-1.5 text-xs font-bold rounded-lg text-slate-400 hover:text-white';
+        androidGuide.classList.remove('hidden');
+        iosGuide.classList.add('hidden');
+      }
+    }
+
+    function openGuideModal() {
+      alert('Guia de 15 Dias com Maria: 15 roteiros santos desbloqueados e prontos para leitura diária no seu dispositivo!');
+    }
+
+    // -------------------------------------------------------------
+    // 13. INICIALIZAÇÃO DO APP
+    // -------------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      // Registrar Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      }
+
+      renderKnotsTrack();
+      renderNovenaDaysList();
+      renderCommunityFeed();
+      renderKnotsList();
+      updateCandleUI();
+      updateHomeRecommendations();
+      lucide.createIcons();
+
+      // Saudação horária
+      const hour = new Date().getHours();
+      const greeting = document.getElementById('greeting-time');
+      if (greeting) {
+        if (hour >= 5 && hour < 12) greeting.textContent = 'Bom dia, devoto(a)';
+        else if (hour >= 12 && hour < 18) greeting.textContent = 'Boa tarde, devoto(a)';
+        else greeting.textContent = 'Boa noite, devoto(a)';
+      }
+
+      // Abrir modal de instalação se for a primeira vez
+      const state = getState();
+      if (!state.pwaDismissed) {
+        setTimeout(openInstallModal, 1200);
+      }
+    });
+  </script>
+</body>
+</html>
