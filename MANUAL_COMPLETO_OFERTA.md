@@ -9,9 +9,9 @@
 - **Nome da Oferta:** Novena de Nossa Senhora Desatadora dos Nós (*"A Novena das 9 Palavras"*)
 - **Nicho:** Espiritualidade Cristã / Catolicismo / Desenvolvimento Pessoal & Fé
 - **Subnicho:** Desamarração de Trava Financeira, Dívidas e Cura Familiar
-- **Moeda de Faturamento:** Dólar Americano ($ USD) — rodando para tráfego de Portugal e Europa
+- **Moeda de Faturamento:** Euro (€ EUR) — faturamento nativo para Portugal e Europa
 - **Geolocalização / Avatar Principal:**
-  - **Público Primário:** Portugal (PT-PT) e fiéis católicos na Europa (rodando tráfego direto para a Europa com faturamento em Dólar $ USD).
+  - **Público Primário:** Portugal (PT-PT) e fiéis católicos na Europa (rodando tráfego direto na Europa com faturamento oficial em Euro € EUR).
   - **Faixa Etária:** Mulheres e homens de 35 a 65+ anos.
   - **Perfil do Comprador:** Pessoas devotas ou com raízes católicas profundas que estão passando por um momento de grande aperto financeiro, dívidas acumuladas, desavenças na família, sensação de "vida amarrada" ou portas fechadas.
 - **Grande Ideia / Gancho (Big Idea):**
@@ -55,12 +55,12 @@
                                                 │
                                                 ▼
                                     [Upsell 1: /u1/?src=fs2026]
-                                      "15 Dias com Maria" ($36.90 USD)
+                                      "15 Dias com Maria" (€36,90)
                                                 │
                                     (Aceitando ou Recusando)
                                                 ▼
                                     [Upsell 2: /u2/?src=fs2026]
-                                      "Áudios do Terço" ($46.90 USD)
+                                      "Áudios do Terço" (€46,90)
                                                 │
                                     (Aceitando ou Recusando)
                                                 ▼
@@ -80,8 +80,8 @@
 | **Gate / Cloaker** | Filtro Inteligente | `https://caminhosdafe.online/` | `?bypass=gl2026` | Analisa User-Agent, fbclid e referrers para entregar Black ou White. |
 | **Front VSL (Black)** | Transmissão Sagrada | `https://caminhosdafe.online/vendas.html` | Direto | Página de alta conversão com player VTurb e delay de pitch. |
 | **Front TSL (White)** | Devoção Histórica | `https://caminhosdafe.online/clean.html` | Direto | Página institucional e artigo litúrgico aprovado para aprovação de anúncios. |
-| **Upsell 1 (U1)** | Guia 15 Dias com Maria | `https://caminhosdafe.online/u1/?src=fs2026` | `https://caminhosdafe.online/u1/?bypass=gl2026` | Proteção e blindagem do lar contra forças contrárias ($36.90 USD). |
-| **Upsell 2 (U2)** | Áudios Frequenciais Terço | `https://caminhosdafe.online/u2/?src=fs2026` | `https://caminhosdafe.online/u2/?bypass=gl2026` | Áudios do Terço com frequências de 432Hz/528Hz para dormir ($46.90 USD). |
+| **Upsell 1 (U1)** | Guia 15 Dias com Maria | `https://caminhosdafe.online/u1/?src=fs2026` | `https://caminhosdafe.online/u1/?bypass=gl2026` | Proteção e blindagem do lar contra forças contrárias (€36,90). |
+| **Upsell 2 (U2)** | Áudios Frequenciais Terço | `https://caminhosdafe.online/u2/?src=fs2026` | `https://caminhosdafe.online/u2/?bypass=gl2026` | Áudios do Terço com frequências de 432Hz/528Hz para dormir (€46,90). |
 | **Obrigado** | Agradecimento & Bênção | `https://caminhosdafe.online/obrigado/` | Direto | Imagem de Maria, gratidão pelo ato de caridade/construção e dados de envio. |
 | **Web App** | Santuário Caminhos da Fé | `https://caminhosdafe.online/app/` | Direto | Web App PWA completo com novena, vela, orações, áudios e comunidade. |
 
@@ -95,17 +95,17 @@
 
 ### Detalhes de Produtos & Checkouts:
 1. **Front-End (Novena das 9 Palavras):**
-   - **Preço Oficial:** $26.90 USD
+   - **Preço Oficial:** €26,90
    - Configurado no player VTurb / Checkout principal.
    - Entrega: E-mail com boas-vindas e acesso irrestrito ao Web App `/app/`.
 2. **Upsell 1 (U1) — Guia 15 Dias com Maria:**
    - **Checkout KashPay:** `https://checkout.kashpay.com.br/u/b99e60b100fb3abe`
    - **Chamada no Botão:** `onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')"`
-   - **Preço Oficial:** $36.90 USD
+   - **Preço Oficial:** €36,90
 3. **Upsell 2 (U2) — Áudios Frequenciais do Terço de Desamarração:**
    - **Checkout KashPay:** `https://checkout.kashpay.com.br/u/a18aafbc3a9f66a8`
    - **Chamada no Botão:** `onclick="acceptUpsell('https://checkout.kashpay.com.br/u/a18aafbc3a9f66a8')"`
-   - **Preço Oficial:** $46.90 USD
+   - **Preço Oficial:** €46,90
 
 ---
 
