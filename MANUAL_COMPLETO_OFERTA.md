@@ -29,7 +29,7 @@
 - **Repositório GitHub:** `https://github.com/Guima-MktDgtGM/desatadora-dos-nos.git`
 - **Branch de Produção:** `main`
 - **Deploy Contínuo:** Hostinger Git Auto-Deploy ativado. Qualquer `git push origin main` atualiza o site ao vivo em instantes.
-- **E-mail Oficial de Suporte / Pastoral:** `contato@caminhosdafe.online`
+- **E-mail Oficial de Suporte / Pastoral:** `gabriel.luz@noticiasdafe.com.br`
 - **Stack Tecnológico:**
   - Front-end: HTML5 semântico, Tailwind CSS / CSS puro ultraleve, Lucide Icons, Vanilla JavaScript.
   - PWA: `manifest.json`, `sw.js` (Service Worker com cache inteligente offline).
@@ -54,12 +54,12 @@
                                                 │
                                                 ▼
                                     [Upsell 1: /u1/?src=fs2026]
-                                      "15 Dias com Maria" (€14,90)
+                                      "15 Dias com Maria" (R$ 36,90)
                                                 │
                                     (Aceitando ou Recusando)
                                                 ▼
                                     [Upsell 2: /u2/?src=fs2026]
-                                      "Áudios do Terço" (€9,90)
+                                      "Áudios do Terço" (R$ 46,90)
                                                 │
                                     (Aceitando ou Recusando)
                                                 ▼
@@ -79,8 +79,8 @@
 | **Gate / Cloaker** | Filtro Inteligente | `https://caminhosdafe.online/` | `?bypass=gl2026` | Analisa User-Agent, fbclid e referrers para entregar Black ou White. |
 | **Front VSL (Black)** | Transmissão Sagrada | `https://caminhosdafe.online/vendas.html` | Direto | Página de alta conversão com player VTurb e delay de pitch. |
 | **Front TSL (White)** | Devoção Histórica | `https://caminhosdafe.online/clean.html` | Direto | Página institucional e artigo litúrgico aprovado para aprovação de anúncios. |
-| **Upsell 1 (U1)** | Guia 15 Dias com Maria | `https://caminhosdafe.online/u1/?src=fs2026` | `https://caminhosdafe.online/u1/?bypass=gl2026` | Proteção e blindagem do lar contra forças contrárias (€14,90). |
-| **Upsell 2 (U2)** | Áudios Frequenciais Terço | `https://caminhosdafe.online/u2/?src=fs2026` | `https://caminhosdafe.online/u2/?bypass=gl2026` | Áudios do Terço com frequências de 432Hz/528Hz para dormir (€9,90). |
+| **Upsell 1 (U1)** | Guia 15 Dias com Maria | `https://caminhosdafe.online/u1/?src=fs2026` | `https://caminhosdafe.online/u1/?bypass=gl2026` | Proteção e blindagem do lar contra forças contrárias (R$ 36,90). |
+| **Upsell 2 (U2)** | Áudios Frequenciais Terço | `https://caminhosdafe.online/u2/?src=fs2026` | `https://caminhosdafe.online/u2/?bypass=gl2026` | Áudios do Terço com frequências de 432Hz/528Hz para dormir (R$ 46,90). |
 | **Obrigado** | Agradecimento & Bênção | `https://caminhosdafe.online/obrigado/` | Direto | Imagem de Maria, gratidão pelo ato de caridade/construção e dados de envio. |
 | **Web App** | Santuário Caminhos da Fé | `https://caminhosdafe.online/app/` | Direto | Web App PWA completo com novena, vela, orações, áudios e comunidade. |
 
@@ -94,16 +94,17 @@
 
 ### Detalhes de Produtos & Checkouts:
 1. **Front-End (Novena das 9 Palavras):**
-   - Configurado no player VTurb ou botão de checkout.
+   - **Preço Oficial:** R$ 26,90
+   - Configurado no player VTurb / Checkout principal.
    - Entrega: E-mail com boas-vindas e acesso irrestrito ao Web App `/app/`.
 2. **Upsell 1 (U1) — Guia 15 Dias com Maria:**
    - **Checkout KashPay:** `https://checkout.kashpay.com.br/u/b99e60b100fb3abe`
    - **Chamada no Botão:** `onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')"`
-   - **Preço Médio:** €14,90
+   - **Preço Oficial:** R$ 36,90
 3. **Upsell 2 (U2) — Áudios Frequenciais do Terço de Desamarração:**
    - **Checkout KashPay:** `https://checkout.kashpay.com.br/u/a18aafbc3a9f66a8`
    - **Chamada no Botão:** `onclick="acceptUpsell('https://checkout.kashpay.com.br/u/a18aafbc3a9f66a8')"`
-   - **Preço Médio:** €9,90
+   - **Preço Oficial:** R$ 46,90
 
 ---
 
@@ -142,7 +143,7 @@ O aplicativo foi projetado com alta retenção, gamificação espiritual e blind
 1. **Modal de Termos de Uso (1º Acesso Obrigatório):**
    - **Experiência do Usuário:** O botão *"Concordo e Aceito os Termos de Uso"* fica **livre e clicável a qualquer momento** no rodapé do modal (sem bloquear o usuário com exigência de rolagem forçada).
    - **Cláusula de Manutenção Periódica:** O texto legal contém a **Cláusula 3**, estipulando expressamente o direito de realizar cobrança periódica mensal destinada à manutenção de servidores dedicados de alta velocidade, blindagem cibernética contra censura e atualizações contínuas do aplicativo.
-   - **Opção de Recusa & Prevenção de Chargeback:** Caso o lead clique em *"Não aceito os termos"*, a tela do app é bloqueada, exibindo uma mensagem acolhedora com o e-mail oficial (`contato@caminhosdafe.online`) para devolução de 100% do valor sem perguntas nem burocracia.
+   - **Opção de Recusa & Prevenção de Chargeback:** Caso o lead clique em *"Não aceito os termos"*, a tela do app é bloqueada, exibindo uma mensagem acolhedora com o e-mail oficial (`gabriel.luz@noticiasdafe.com.br`) para devolução de 100% do valor sem perguntas nem burocracia.
    - **Persistência:** Uma vez aceito, salva `novena_terms_accepted = 'true'` no `localStorage`.
 2. **Instalação do PWA (Home Screen):**
    - Modal tutorial customizado para iPhone (Safari: Compartilhar ➔ Adicionar à Tela de Início) e Android (Google Chrome: Adicionar ao Ecrã Principal).
