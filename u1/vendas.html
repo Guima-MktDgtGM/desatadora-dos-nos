@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-PT" data-gate="real">
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Bênção Especial de Proteção</title>
+<meta name="robots" content="noindex, nofollow">
+
 <!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW -->
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
@@ -23,11 +29,6 @@ if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
   fbq('track', 'PageView');
 }
 </script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<title>Bênção Especial de Proteção</title>
-<meta name="robots" content="noindex, nofollow">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,10 +63,10 @@ if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
       try { sessionStorage.setItem("funnel_ok", "1"); } catch(e){}
       document.documentElement.setAttribute('data-gate', 'real');
     } else {
-      document.documentElement.setAttribute('data-gate', 'clean');
+      document.documentElement.setAttribute('data-gate', 'real');
     }
   } catch(e){
-    document.documentElement.setAttribute('data-gate', 'clean');
+    document.documentElement.setAttribute('data-gate', 'real');
   }
 })();
 </script>
@@ -129,8 +130,38 @@ if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
   }
 
   .product-shot{
-    width:100%;max-width:440px;margin:0 auto 28px;border-radius:14px;
+    width:100%;max-width:440px;margin:0 auto 24px;border-radius:14px;
     box-shadow:0 14px 34px rgba(0,74,173,0.22);
+  }
+
+  /* ---- AVISO SAGRADO DE PERIGO (EM CIMA DO BOTÃO) ---- */
+  .divine-warning {
+    background: #fffbeb;
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 20px auto 16px;
+    max-width: 540px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.16);
+  }
+  .warning-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .warning-text {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #78350f;
+  }
+  .warning-text strong {
+    color: #9a3412;
+    font-weight: 800;
   }
 
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
@@ -148,6 +179,9 @@ if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
     .item-name{font-size:29px;margin-bottom:16px;}
     .appeal-text{font-size:14.5px;}
     .band-light{padding:24px 14px 32px;}
+    .divine-warning { padding: 14px 14px; gap: 10px; margin: 16px auto 14px; }
+    .warning-icon { font-size: 24px; }
+    .warning-text { font-size: 13.5px; }
   }
 </style>
 </head>
@@ -187,7 +221,15 @@ if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
 
       <img class="product-shot" src="guia-15-dias-maria.jpg" alt="Guia Espiritual 15 Dias com Maria" width="800" height="1067" fetchpriority="high" decoding="async">
 
-      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: 28px auto 10px;">Aceder a esta bênção</button>
+      <!-- AVISO SAGRADO DE PERIGO (EM CIMA DO BOTÃO) -->
+      <div class="divine-warning">
+        <span class="warning-icon">⚠️</span>
+        <p class="warning-text">
+          <strong>ATENÇÃO:</strong> Ignorar esta proteção agora é como <strong>abandonar um presente enviado diretamente por Deus</strong> para blindar a sua vida e a sua família. Esta oportunidade sagrada nunca mais se repetirá e não estará disponível em nenhum outro momento.
+        </p>
+      </div>
+
+      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: 18px auto 10px;">Aceder a esta bênção</button>
     </div>
   </section>
 

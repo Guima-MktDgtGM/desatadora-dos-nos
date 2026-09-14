@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-gate="clean">
 <head>
-<!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW (SEM EVENTOS EXTRAS) -->
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Bênção Noturna: Áudios Frequenciais do Terço de Desamarração</title>
+<meta name="robots" content="noindex, nofollow">
+
+<!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW -->
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <script>
@@ -13,35 +19,57 @@ n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
-// ID do Pixel: substitua SEU_PIXEL_AQUI pelo seu ID, ou passe via URL (?pixel=123456)
 var PIXEL_ID = window.__FB_PIXEL_ID || "SEU_PIXEL_AQUI";
 try {
   var urlPix = new URLSearchParams(window.location.search).get('pixel');
   if (urlPix) PIXEL_ID = urlPix;
 } catch(e){}
-
 if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
   fbq('init', PIXEL_ID);
   fbq('track', 'PageView');
 }
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></noscript>
-<!-- FIM META PIXEL -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<title>Bênção Noturna: Áudios Frequenciais do Terço de Desamarração</title>
-<meta name="robots" content="noindex, nofollow">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-
 <link rel="preload" as="image" href="audios-terco-desamarracao.jpg" fetchpriority="high">
+
 <!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.kashpay.com.br/scripts/upsell-processor.js"></script>
+
+<!-- GATEWAY / CLOAKER DETECTOR EXECUTADO ANTES DO RENDER -->
+<script>
+(function(){
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var ua = (navigator.userAgent || '').toLowerCase();
+    
+    // Bots sempre veem clean
+    var isBot = /bot|google|facebookexternalhit|facebot|meta-externalagent|crawler|spider|inspect/i.test(ua);
+    
+    // Parâmetros de liberação da página Black
+    var isCleanParam = qs.get("clean") === "1" || qs.get("white") === "1";
+    var isBypass = qs.get("bypass") === "gl2026" || qs.get("btn") === "1";
+    var isFunnel = qs.get("src") === "fs2026";
+    
+    var ref = (document.referrer || '').toLowerCase();
+    var fromPay = /kashpay|stripe|centerpag|perfectpay|hotmart/i.test(ref);
+    var sessionOk = false;
+    try { sessionOk = sessionStorage.getItem("funnel_ok") === "1"; } catch(e){}
+
+    if (!isBot && !isCleanParam && (isBypass || isFunnel || fromPay || sessionOk)) {
+      try { sessionStorage.setItem("funnel_ok", "1"); } catch(e){}
+      document.documentElement.setAttribute('data-gate', 'real');
+    } else {
+      document.documentElement.setAttribute('data-gate', 'clean');
+    }
+  } catch(e){
+    document.documentElement.setAttribute('data-gate', 'clean');
+  }
+})();
+</script>
 
 <style>
   :root {
@@ -54,29 +82,125 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
   body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
   img{max-width:100%;height:auto;display:block;}
 
-  #conteudo-real{display:none;}
-  #pagina-clean{display:block;}
+  /* CONTROLE VISUAL IMEDIATO */
+  html[data-gate="clean"] #conteudo-real { display: none !important; }
+  html[data-gate="clean"] #pagina-clean { display: block !important; }
+
+  html[data-gate="real"] #conteudo-real { display: block !important; }
+  html[data-gate="real"] #pagina-clean { display: none !important; }
 
   .wrap{width:100%;max-width:680px;margin:0 auto;}
 
-  /* ---- FAIXA DE ALERTA DO TOPO ---- */
-  .band-alert{background:#fff;padding:16px 18px;}
-  .alert-top{
-    font-size:15px;font-weight:800;line-height:1.35;
-    color:var(--blue);text-align:center;text-transform:uppercase;letter-spacing:.2px;
+  /* ---- BARRA DE STATUS / CARREGAMENTO EXCLUSIVA DO UPSELL 2 ---- */
+  .band-status {
+    background: #0b1329;
+    padding: 18px 16px 20px;
+    border-bottom: 3px solid #004aad;
+  }
+  .status-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 20px 18px;
+    text-align: center;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,74,173,0.18);
+  }
+  .status-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .spinner-circle {
+    width: 28px;
+    height: 28px;
+    border: 3.5px solid #e2e8f0;
+    border-top-color: #057932;
+    border-right-color: #004aad;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .status-badge {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid #cbd5e1;
+    text-transform: uppercase;
+  }
+  .status-headline {
+    font-size: 18.5px;
+    font-weight: 800;
+    line-height: 1.35;
+    color: #0f172a;
+    margin-bottom: 10px;
+  }
+  .status-alert {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+  .status-alert strong {
+    color: #991b1b;
+    font-weight: 900;
+  }
+  .status-action-box {
+    background: #eff6ff;
+    border: 1.5px dashed #004aad;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .action-arrow {
+    font-size: 26px;
+    line-height: 1;
+    animation: bounce 1.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+  .action-text {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #00337c;
+    text-align: left;
+  }
+  .action-text strong {
+    font-weight: 800;
+    color: #002255;
   }
 
   /* ---- FAIXA PRETA DA HEADLINE ---- */
-  .band-black{background:var(--black);padding:32px 18px 26px;}
+  .band-black{background:var(--black);padding:30px 18px 24px;}
   h1.headline{
-    font-size:38px;font-weight:900;line-height:1.1;
+    font-size:36px;font-weight:900;line-height:1.15;
     color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;
   }
 
   /* ---- FAIXA DA SUBHEADLINE ---- */
   .band-sub{background:#141414;padding:16px 18px;}
   .headline-sub{
-    font-size:14.5px;font-weight:800;line-height:1.4;
+    font-size:14px;font-weight:800;line-height:1.4;
     color:#fff;text-align:center;text-transform:uppercase;letter-spacing:.2px;
   }
 
@@ -115,31 +239,48 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
   .clean-foot a{color:#7a7466;}
 
   @media (max-width:600px){
-    .alert-top{font-size:13px;}
-    h1.headline{font-size:27px;}
-    .band-black{padding:24px 16px 20px;}
-    .headline-sub{font-size:13px;}
-    .item-label{font-size:21px;}
-    .item-name{font-size:27px;margin-bottom:16px;}
+    .band-status { padding: 14px 10px; }
+    .status-card { padding: 16px 14px; }
+    .status-headline { font-size: 15.5px; }
+    .status-alert { font-size: 13px; padding: 8px 10px; }
+    .action-text { font-size: 13px; }
+    .action-arrow { font-size: 22px; }
+    h1.headline{font-size:26px;}
+    .band-black{padding:22px 14px 18px;}
+    .headline-sub{font-size:12.5px;}
+    .item-label{font-size:20px;}
+    .item-name{font-size:26px;margin-bottom:16px;}
     .appeal-text{font-size:14.5px;}
-    .band-light{padding:24px 14px 32px;}
+    .band-light{padding:22px 14px 30px;}
   }
 </style>
 </head>
 <body>
 
-<!-- =============== CONTEÚDO REAL (UPSELL 2) =============== -->
+<!-- =============== CONTEÚDO REAL (BLACK - UPSELL 2) =============== -->
 <div id="conteudo-real">
 
-  <section class="band-alert">
+  <!-- BARRA DE STATUS / CARREGAMENTO DO PEDIDO (U2 EXCLUSIVO) -->
+  <section class="band-status">
     <div class="wrap">
-      <p class="alert-top">NÃO FECHE ESSA PÁGINA OU A BÊNÇÃO NOTURNA SERÁ DEIXADA PARA OUTRA PESSOA</p>
+      <div class="status-card">
+        <div class="status-header">
+          <div class="spinner-circle"></div>
+          <span class="status-badge">ETAPA 2 DE 2: PREPARAÇÃO DO ACESSO</span>
+        </div>
+        <p class="status-headline">O envio do seu acesso à Novena das 9 Palavras está a ser preparado...</p>
+        <p class="status-alert">⚠️ <strong>NÃO FECHE ESTA PÁGINA!</strong> A sua solicitação ainda não foi totalmente concluída e o envio pode ser interrompido.</p>
+        <div class="status-action-box">
+          <span class="action-arrow">👇</span>
+          <p class="action-text"><strong>LEIA A MENSAGEM SAGRADA ABAIXO</strong> para confirmar a desamarração completa e libertar o seu acesso de imediato:</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="band-black">
     <div class="wrap">
-      <h1 class="headline">CONSAGRAÇÃO SAGRADA EM ÁUDIO LIBERADA APENAS PARA VOCÊ!</h1>
+      <h1 class="headline">CONSAGRAÇÃO SAGRADA EM ÁUDIO: DESAMARRAÇÃO NOTURNA</h1>
     </div>
   </section>
 
@@ -170,7 +311,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
 
 </div>
 
-<!-- =============== PÁGINA INSTITUCIONAL CLEAN (CLOAKER) =============== -->
+<!-- =============== PÁGINA INSTITUCIONAL CLEAN (WHITE) =============== -->
 <div id="pagina-clean">
   <div class="clean-wrap">
     <h1>Acervo de áudio devocional e meditações</h1>
@@ -186,38 +327,6 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></no
     </div>
   </div>
 </div>
-
-<script>
-(function(){
-  try {
-    var qs = new URLSearchParams(location.search);
-    var previewMode = qs.get("bypass") === "gl2026" || qs.get("btn") === "1";
-    var funnelToken = qs.get("src") === "fs2026";
-    var PAY_HOSTS = [
-      "pay.kashpay.com.br", "checkout.kashpay.com.br", "kashpay.net", "checkout.kashpay.net",
-      "checkout.stripe.com", "buy.stripe.com",
-      "go.centerpag.com", "pay.centerpag.com", "pay.perfectpay.com.br"
-    ];
-    var refHost = "";
-    try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e) {}
-    var fromPay = PAY_HOSTS.indexOf(refHost) !== -1;
-    var sessionOk = false;
-    try { sessionOk = sessionStorage.getItem("funnel_ok") === "1"; } catch(e){}
-
-    var liberado = previewMode || funnelToken || fromPay || sessionOk;
-
-    if (liberado) {
-      if (funnelToken || fromPay) {
-        try { sessionStorage.setItem("funnel_ok","1"); } catch(e){}
-      }
-      var real  = document.getElementById("conteudo-real");
-      var clean = document.getElementById("pagina-clean");
-      if (real)  real.style.display  = "block";
-      if (clean) clean.style.display = "none";
-    }
-  } catch(e){}
-})();
-</script>
 
 </body>
 </html>

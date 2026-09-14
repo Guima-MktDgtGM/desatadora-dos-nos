@@ -1,4 +1,16 @@
 # ----------------------------------------------------------------------
+# FORÇAR ENCODING UTF-8 GLOBAL (CORRIGE QUALQUER ERRO DE ACENTUAÇÃO)
+# ----------------------------------------------------------------------
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .php .css .js .txt .json .xml
+
+<IfModule mod_mime.c>
+  AddType "text/html; charset=UTF-8" .html .htm
+  AddType "text/css; charset=UTF-8" .css
+  AddType "application/javascript; charset=UTF-8" .js
+</IfModule>
+
+# ----------------------------------------------------------------------
 # OTIMIZAÇÃO DE VELOCIDADE ULTRA-RÁPIDA (CAMINHOS DA FÉ)
 # ----------------------------------------------------------------------
 
