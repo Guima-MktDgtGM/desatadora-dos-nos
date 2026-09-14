@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW (SEM EVENTOS EXTRAS) -->
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+// ID do Pixel: substitua SEU_PIXEL_AQUI pelo seu ID, ou passe via URL (?pixel=123456)
+var PIXEL_ID = window.__FB_PIXEL_ID || "SEU_PIXEL_AQUI";
+try {
+  var urlPix = new URLSearchParams(window.location.search).get('pixel');
+  if (urlPix) PIXEL_ID = urlPix;
+} catch(e){}
+
+if (PIXEL_ID && PIXEL_ID !== "SEU_PIXEL_AQUI") {
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+}
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></noscript>
+<!-- FIM META PIXEL -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UP3: Acesso Vitalício + Comunidade das Rosas</title>
