@@ -152,7 +152,13 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     line-height: 1.55;
   }
 
-  /* ---- IMAGEM SAGRADA ---- */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ---- IMAGEM SAGRADA (PROPORÇÃO PERFEITA E NATURAL) ---- */
   .image-wrapper {
     padding: 0 24px;
     text-align: center;
@@ -161,12 +167,99 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
   .sacred-image {
     width: 100%;
-    max-width: 440px;
+    max-width: 380px;
+    height: auto !important;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
     margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 20px;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
     display: block;
     border: 3px solid #f1e6cc;
+  }
+
+  /* ---- BOTÃO DE ACESSO IMEDIATO AO APP ---- */
+  .app-cta-wrap {
+    padding: 20px 24px 10px;
+    text-align: center;
+    background: #ffffff;
+  }
+
+  .btn-access-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #0d8a43 0%, #056830 100%);
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 18px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(13, 138, 67, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.25s ease;
+    animation: pulsoBtn 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulsoBtn {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 10px 28px rgba(13, 138, 67, 0.38);
+    }
+    50% {
+      transform: scale(1.025);
+      box-shadow: 0 14px 34px rgba(13, 138, 67, 0.55);
+    }
+  }
+
+  .btn-access-app:hover {
+    background: linear-gradient(135deg, #0f9b4c 0%, #087537 100%);
+    transform: translateY(-2px);
+  }
+
+  .btn-access-app:active {
+    transform: translateY(1px);
+  }
+
+  .btn-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .btn-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-text strong {
+    font-size: 16.5px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    line-height: 1.25;
+  }
+
+  .btn-text small {
+    font-size: 12px;
+    font-weight: 500;
+    color: #d1fae5;
+    margin-top: 3px;
+  }
+
+  .btn-arrow {
+    font-size: 20px;
+    font-weight: 800;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-access-app:hover .btn-arrow {
+    transform: translateX(4px);
   }
 
   /* ---- CARTA DE AGRADECIMENTO (MENSAGEM DE FÉ) ---- */
@@ -407,7 +500,19 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
   <!-- IMAGEM DE MARIA ESTENDENDO AS MÃOS -->
   <div class="image-wrapper">
-    <img src="maria-estende-maos.jpg" alt="Nossa Senhora estendendo as mãos em acolhimento e bênção" class="sacred-image" width="800" height="1067" fetchpriority="high" decoding="async">
+    <img src="maria-estende-maos.jpg" alt="Nossa Senhora estendendo as mãos em acolhimento e bênção" class="sacred-image" width="896" height="1200" fetchpriority="high" decoding="async">
+  </div>
+
+  <!-- BOTÃO DE ACESSO IMEDIATO AO APLICATIVO -->
+  <div class="app-cta-wrap">
+    <a href="https://caminhosdafe.online/app/" class="btn-access-app">
+      <span class="btn-icon">📲</span>
+      <span class="btn-text">
+        <strong>ACEDER AO APLICATIVO AGORA</strong>
+        <small>Toque aqui para abrir a novena imediatamente</small>
+      </span>
+      <span class="btn-arrow">➔</span>
+    </a>
   </div>
 
   <!-- CARTA DE AGRADECIMENTO & PROPÓSITO -->
@@ -441,7 +546,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         <div class="step-num">1</div>
         <div class="step-content">
           <h4>Consulte o Seu E-mail</h4>
-          <p>Enviámos uma mensagem com os dados de acesso imediatos para o endereço de e-mail que informou durante a sua contribuição.</p>
+          <p>Pode aceder <strong>diretamente pelo botão verde acima</strong> ou consultar a mensagem que enviámos para o seu e-mail cadastrado. <a href="https://caminhosdafe.online/app/" style="color: #0d8a43; font-weight: 700; text-decoration: underline;">Clique aqui para aceder ao app agora</a>.</p>
         </div>
       </div>
 
