@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- META PIXEL: DISPARO IMEDIATO DE PAGEVIEW (SEM EVENTOS EXTRAS) -->
+<!-- META PIXEL: DISPARO DE PAGEVIEW E VIEWCONTENT -->
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <script>
@@ -16,16 +16,37 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-// ID do Pixel: substitua 2782586508793387 pelo seu ID, ou passe via URL (?pixel=123456)
 var PIXEL_ID = window.__FB_PIXEL_ID || "2782586508793387";
 try {
   var urlPix = new URLSearchParams(window.location.search).get('pixel');
   if (urlPix) PIXEL_ID = urlPix;
 } catch(e){}
 
-if (PIXEL_ID && PIXEL_ID !== "2782586508793387") {
+if (PIXEL_ID) {
   fbq('init', PIXEL_ID);
-  fbq('track', 'PageView');
+  
+  var testCode = null;
+  try {
+    testCode = new URLSearchParams(window.location.search).get('test_event_code');
+  } catch(e){}
+  
+  if (testCode) {
+    fbq('track', 'PageView', {}, { test_event_code: testCode });
+    fbq('track', 'ViewContent', {
+      content_name: 'Novena de Nossa Senhora Desatadora dos Nós',
+      content_category: 'Espiritualidade',
+      value: 26.9,
+      currency: 'EUR'
+    }, { test_event_code: testCode });
+  } else {
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+      content_name: 'Novena de Nossa Senhora Desatadora dos Nós',
+      content_category: 'Espiritualidade',
+      value: 26.9,
+      currency: 'EUR'
+    });
+  }
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"

@@ -8,8 +8,9 @@ define('SALES_PAGE',  'vendas.html');   // Página VSL (Black Page)
 define('CLEAN_PAGE',  'clean.html');    // White TSL de alta conversão
 define('SECRET_BYPASS', 'gl2026');     // ?bypass=gl2026 libera sempre
 
-// --- 1. REGRA SUPREMA: BYPASS MANUAL DA EQUIPE ---
-if (isset($_GET['bypass']) && $_GET['bypass'] === SECRET_BYPASS) {
+// --- 1. REGRA SUPREMA: BYPASS MANUAL DA EQUIPE E TESTE DE EVENTOS META ---
+$is_fb_test = isset($_GET['test_event_code']) || isset($_GET['fb_test_events']);
+if ((isset($_GET['bypass']) && $_GET['bypass'] === SECRET_BYPASS) || $is_fb_test) {
     setcookie('_gl_ok', '1', time() + 86400 * 7, '/');
     serve_sales();
     exit;

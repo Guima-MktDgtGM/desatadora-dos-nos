@@ -7,7 +7,7 @@
 <title>Bênção Confirmada — Obrigado pela sua Contribuição</title>
 <meta name="robots" content="noindex, nofollow">
 
-<!-- META PIXEL: DISPARO DE PAGEVIEW -->
+<!-- META PIXEL: DISPARO DE PAGEVIEW E VIEWCONTENT -->
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <script>
@@ -19,14 +19,28 @@ n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 var PIXEL_ID = window.__FB_PIXEL_ID || "2782586508793387";
 try {
   var urlPix = new URLSearchParams(window.location.search).get('pixel');
   if (urlPix) PIXEL_ID = urlPix;
 } catch(e){}
+
 if (PIXEL_ID) {
   fbq('init', PIXEL_ID);
-  fbq('track', 'PageView');
+  
+  var testCode = null;
+  try {
+    testCode = new URLSearchParams(window.location.search).get('test_event_code');
+  } catch(e){}
+  
+  if (testCode) {
+    fbq('track', 'PageView', {}, { test_event_code: testCode });
+    
+  } else {
+    fbq('track', 'PageView');
+    
+  }
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"
