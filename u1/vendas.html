@@ -255,6 +255,29 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
   #barra-lembrete b{color:#ffd166;}
   #barra-lembrete.off{transform:translateY(110%);}
   html[data-gate="real"] body{padding-bottom:56px;}
+  /* ---- NOTIFICAÇÃO DISCRETA DE BÊNÇÃO (canto inferior esquerdo, acima da barra) ---- */
+  #notif-bencao{
+    position:fixed;left:12px;bottom:70px;z-index:60;max-width:250px;width:calc(100% - 24px);
+    background:#fff;border:1px solid #e8dcc4;border-left:4px solid var(--green);border-radius:10px;
+    padding:8px 24px 8px 10px;box-shadow:0 8px 24px rgba(0,0,0,.14);
+    opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .35s,transform .35s;
+  }
+  #notif-bencao.on{opacity:1;transform:translateY(0);pointer-events:auto;}
+  #notif-bencao .nb-top{display:flex;align-items:center;gap:8px;}
+  #notif-bencao .nb-ini{
+    width:28px;height:28px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#c9a84c,#9a7b1f);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12.5px;
+  }
+  #notif-bencao .nb-nome{font-weight:800;font-size:12px;color:#111;line-height:1.25;}
+  #notif-bencao .nb-txt{font-size:10.5px;color:#555;line-height:1.35;}
+  #notif-bencao .nb-txt strong{color:var(--blue);}
+  #notif-bencao .nb-local{color:#888;}
+  #notif-bencao .nb-copias{margin-top:6px;padding-top:5px;border-top:1px dashed #e8dcc4;font-size:10.5px;font-weight:800;color:#c0392b;text-align:center;}
+  #notif-bencao .nb-fechar{
+    position:absolute;top:2px;right:2px;width:24px;height:24px;background:none;border:none;cursor:pointer;
+    color:#b0a894;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  }
+  @media(max-width:480px){ #notif-bencao{max-width:235px;width:auto;} }
   .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
 
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
@@ -379,6 +402,98 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       <p class="cta-verse">“Eis agora o tempo favorável, eis agora o dia da salvação.”<span>2 CORÍNTIOS 6:2</span></p>
     </div>
   </section>
+
+  <!-- NOTIFICAÇÃO DISCRETA DE BÊNÇÃO RECEBIDA (canto inferior esquerdo) -->
+  <div id="notif-bencao" aria-live="polite">
+    <button type="button" class="nb-fechar" id="nb-fechar" aria-label="Fechar aviso">&times;</button>
+    <div class="nb-top">
+      <div class="nb-ini" id="nb-ini">M</div>
+      <div>
+        <div class="nb-nome" id="nb-nome">—</div>
+        <div class="nb-txt" id="nb-frase"></div>
+        <div class="nb-txt nb-local" id="nb-local"></div>
+      </div>
+    </div>
+    <div class="nb-copias" id="nb-copias"></div>
+  </div>
+  <script>
+  (function(){
+    // ====== CONFIGURAÇÃO ======
+    // Leitura do bloco (~525 palavras) leva 3 a 3,5 min para o nosso público.
+    // 7 avisos (7 -> 1 cópia) a cada 25-35s cobrem esse tempo e param.
+    var PESSOAS = [
+      ["Maria F.",     "Lisboa, Portugal"],
+      ["Manuel R.",    "Porto, Portugal"],
+      ["Conceição A.", "Braga, Portugal"],
+      ["Joaquim T.",   "Coimbra, Portugal"],
+      ["Fátima S.",    "Faro, Portugal"],
+      ["Rosa P.",      "Luxemburgo"],
+      ["Sylvie L.",    "Paris, França"],
+      ["Fernando B.",  "Lyon, França"],
+      ["Carla N.",     "Genebra, Suíça"],
+      ["Isabel M.",    "Bruxelas, Bélgica"],
+      ["Helena V.",    "Munique, Alemanha"],
+      ["Carmen D.",    "Madrid, Espanha"],
+      ["Giuseppe R.",  "Milão, Itália"],
+      ["Teresa O.",    "Dublin, Irlanda"],
+      ["Paulo A.",     "Londres, Reino Unido"],
+      ["Anna K.",      "Viena, Áustria"],
+      ["Sandra C.",    "Amesterdão, Países Baixos"],
+      ["Ana L.",       "São Paulo, Brasil"],
+      ["José R.",      "Belo Horizonte, Brasil"],
+      ["Marlene G.",   "Recife, Brasil"]
+    ];
+    var COPIAS_INICIAL  = 7;      // primeiro aviso mostra 7 cópias
+    var ATRASO_INICIAL  = 8000;   // 8s depois de abrir a página
+    var INTERVALO_MIN   = 25000;  // 25s
+    var INTERVALO_MAX   = 35000;  // 35s
+    var TEMPO_NA_TELA   = 5000;   // 5s visível
+    // ==========================
+    var GUIA = '<strong>Acelerador do Desatador de Nós</strong>';
+    var FRASES = [
+      'acaba de receber o ' + GUIA,
+      'foi abençoada com o ' + GUIA,
+      'já tem o ' + GUIA + ' libertado em seu nome',
+      'acaba de aceder ao ' + GUIA,
+      'recebeu a bênção do ' + GUIA + ' há instantes',
+      'já começou os 15 Dias com Maria'
+    ];
+
+    var el = document.getElementById('notif-bencao');
+    if (!el || !PESSOAS.length) return;
+    var elIni = document.getElementById('nb-ini'), elNome = document.getElementById('nb-nome'),
+        elLocal = document.getElementById('nb-local'), elFrase = document.getElementById('nb-frase'),
+        elCopias = document.getElementById('nb-copias'), elFechar = document.getElementById('nb-fechar');
+
+    if (elFechar) elFechar.addEventListener('click', function(ev){ ev.stopPropagation(); el.classList.remove('on'); });
+
+    // fila embaralhada, Brasil pesa menos porque tem menos entradas na lista
+    var fila = PESSOAS.slice();
+    for (var i = fila.length - 1; i > 0; i--) { var j = Math.floor(Math.random()*(i+1)); var t = fila[i]; fila[i] = fila[j]; fila[j] = t; }
+
+    var idx = 0, copias = COPIAS_INICIAL, timer = null;
+
+    function proxima(){
+      var p = fila[idx % fila.length]; idx++;
+      elNome.textContent = p[0];
+      elIni.textContent = p[0].charAt(0).toUpperCase();
+      elLocal.textContent = p[1];
+      elFrase.innerHTML = FRASES[Math.floor(Math.random()*FRASES.length)];
+      elCopias.textContent = copias === 1 ? '🔥 Última cópia disponível' : '🔥 Restam apenas ' + copias + ' cópias disponíveis';
+      el.classList.add('on');
+
+      setTimeout(function(){
+        el.classList.remove('on');
+        if (copias <= 1) return;           // chegou à última: para de avisar
+        copias--;
+        timer = setTimeout(proxima, INTERVALO_MIN + Math.random()*(INTERVALO_MAX - INTERVALO_MIN));
+      }, TEMPO_NA_TELA);
+    }
+
+    // só na página real (o bloco está dentro de #conteudo-real, escondido na white)
+    if (document.documentElement.getAttribute('data-gate') === 'real') setTimeout(proxima, ATRASO_INICIAL);
+  })();
+  </script>
 
   <!-- Lembrete fixo: some quando o botão entra no ecrã -->
   <div id="barra-lembrete">Falta 1 passo — <b>leia a mensagem até ao fim</b> para aceder à Novena</div>
