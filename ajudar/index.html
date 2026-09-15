@@ -42,7 +42,12 @@ fbq('track', 'PageView');
   .band-black{background:var(--black);padding:28px 18px 24px;}
   h1.headline{font-size:32px;font-weight:900;line-height:1.1;color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;}
 
-  .band-light{background:var(--light);padding:26px 18px 44px;}
+  .band-light{background:var(--light);padding:22px 18px 44px;}
+  .desca{max-width:520px;margin:0 auto 20px;background:#fffbeb;border:2px solid #f5c542;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 18px rgba(245,197,66,.22);}
+  .desca .seta{font-size:30px;line-height:1;flex-shrink:0;animation:desce 1.1s ease-in-out infinite;}
+  @keyframes desce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  .desca p{font-size:14.5px;font-weight:700;line-height:1.45;color:#5a3d00;}
+  .desca strong{color:#9a3412;font-weight:900;}
   .maria{width:100%;max-width:380px;margin:0 auto 22px;border-radius:14px;box-shadow:0 14px 34px rgba(0,74,173,.18);}
 
   .appeal-box{background:#fff;border-radius:12px;padding:20px 20px;margin-bottom:18px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-left:5px solid var(--blue);}
@@ -69,6 +74,7 @@ fbq('track', 'PageView');
     h1.headline{font-size:26px;}
     .appeal-text{font-size:14.5px;}
     .lista p{font-size:14px;}
+    .desca p{font-size:13.5px;}
     .band-light{padding:22px 14px 36px;}
   }
 </style>
@@ -89,6 +95,11 @@ fbq('track', 'PageView');
 
   <section class="band-light">
     <div class="wrap">
+      <div class="desca">
+        <span class="seta">👇</span>
+        <p><strong>DESÇA A PÁGINA E LEIA ATÉ AO FIM</strong> para reservar as graças de Maria para si e para a sua família.</p>
+      </div>
+
       <img class="maria" src="../images/maria-estende-maos.jpg" alt="Nossa Senhora Desatadora dos Nós" width="800" height="1067" fetchpriority="high" decoding="async">
 
       <div class="appeal-box">
