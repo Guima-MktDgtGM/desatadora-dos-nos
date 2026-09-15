@@ -280,27 +280,44 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
   @media(max-width:480px){ #notif-bencao{max-width:235px;width:auto;} }
   /* ---- AVISO CENTRAL: ÚLTIMA CÓPIA ---- */
   #aviso-ultima{
-    position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;
-    padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;
+    position:fixed;inset:0;z-index:100;background:rgba(5,10,30,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .35s;
   }
   #aviso-ultima.on{opacity:1;pointer-events:auto;}
   #aviso-ultima .au-card{
-    background:#fff;border-radius:16px;max-width:400px;width:100%;padding:26px 22px 20px;text-align:center;
-    border-top:6px solid #c0392b;box-shadow:0 20px 60px rgba(0,0,0,.4);transform:translateY(16px);transition:transform .3s;
+    background:#fff;border-radius:22px;max-width:400px;width:100%;overflow:hidden;text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);
+    transform:translateY(22px) scale(.97);transition:transform .4s cubic-bezier(.2,.9,.3,1.2);
   }
-  #aviso-ultima.on .au-card{transform:translateY(0);}
-  #aviso-ultima .au-icone{font-size:40px;line-height:1;margin-bottom:8px;}
-  #aviso-ultima .au-titulo{font-size:24px;font-weight:900;text-transform:uppercase;color:#c0392b;line-height:1.15;margin-bottom:12px;letter-spacing:-.3px;}
-  #aviso-ultima .au-txt{font-size:15.5px;font-weight:600;line-height:1.6;color:#222;margin-bottom:18px;}
+  #aviso-ultima.on .au-card{transform:translateY(0) scale(1);}
+  #aviso-ultima .au-head{
+    background:radial-gradient(120% 140% at 50% 0%,#1c3f8f 0%,#0b1f4a 60%,#071331 100%);
+    color:#fff;padding:24px 22px 34px;position:relative;
+  }
+  #aviso-ultima .au-kicker{font-size:11.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#ffd166;margin-bottom:10px;}
+  #aviso-ultima .au-titulo{font-size:21px;font-weight:900;line-height:1.22;letter-spacing:-.3px;}
+  #aviso-ultima .au-titulo em{font-style:normal;color:#ffd166;}
+  #aviso-ultima .au-body{padding:0 22px 20px;position:relative;}
+  #aviso-ultima .au-selo{
+    width:76px;height:76px;border-radius:50%;margin:-38px auto 12px;background:#fff;
+    border:4px solid #ffd166;box-shadow:0 8px 22px rgba(0,0,0,.18);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;
+  }
+  #aviso-ultima .au-selo span{font-size:30px;font-weight:900;color:#c0392b;}
+  #aviso-ultima .au-selo small{font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#777;margin-top:3px;line-height:1.15;}
+  #aviso-ultima .au-txt{font-size:15px;font-weight:600;line-height:1.6;color:#2a2a2a;margin-bottom:12px;}
   #aviso-ultima .au-txt strong{color:#c0392b;font-weight:800;}
   #aviso-ultima .au-btn{
-    font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;line-height:1.3;color:#fff;background:var(--green);
-    border:none;border-radius:10px;padding:14px 18px;width:100%;cursor:pointer;
+    font-family:'Poppins',sans-serif;font-size:16.5px;font-weight:600;line-height:1.3;color:#fff;
+    background:linear-gradient(180deg,#0a8f3c,#057932);border:none;border-radius:12px;padding:15px 18px;width:100%;cursor:pointer;
+    margin-top:6px;box-shadow:0 10px 24px rgba(5,121,50,.35);animation:au-pulse 1.8s ease-in-out infinite;
   }
+  @keyframes au-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
   #aviso-ultima .au-fechar{
     display:block;margin:14px auto 0;background:none;border:none;cursor:pointer;
-    font-family:var(--sans);font-size:13px;font-weight:600;color:#888;text-decoration:underline;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:#9a9a9a;text-decoration:underline;text-underline-offset:3px;
   }
+  @media (max-width:360px){ #aviso-ultima .au-titulo{font-size:19px;} #aviso-ultima .au-txt{font-size:14px;} }
   .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
 
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
@@ -429,11 +446,17 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
   <!-- AVISO CENTRAL: ÚLTIMA CÓPIA (dispara na 7.ª notificação) -->
   <div id="aviso-ultima" role="dialog" aria-modal="true" aria-labelledby="au-titulo">
     <div class="au-card">
-      <div class="au-icone">⚠️</div>
-      <h2 id="au-titulo" class="au-titulo">Última cópia disponível</h2>
-      <p class="au-txt">Das <strong>7 cópias</strong> libertadas para esta página, <strong>resta apenas 1</strong>. E está reservada <strong>em seu nome</strong>.</p>
-      <button type="button" class="au-btn" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')">SIM, quero a última cópia</button>
-      <button type="button" class="au-fechar" id="au-fechar">Continuar a ler a mensagem</button>
+      <div class="au-head">
+        <p class="au-kicker">✝ Reserva feita em seu nome</p>
+        <h2 id="au-titulo" class="au-titulo">A última cópia do <em>15 Dias com Maria</em> acabou de ficar reservada para si</h2>
+      </div>
+      <div class="au-body">
+        <div class="au-selo"><span>1</span><small>cópia<br>restante</small></div>
+        <p class="au-txt">Todas as outras já foram entregues a quem contribuiu antes de si. <strong>Sobrou uma — e Nossa Senhora quis que fosse a sua.</strong></p>
+        <p class="au-txt">Se sair agora, esta cópia passa para a próxima pessoa e os seus nós ficam <strong>nove madrugadas inteiras a apertar</strong>, sem blindagem nenhuma. Não há outra.</p>
+        <button type="button" class="au-btn" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')">SIM, quero a minha cópia agora</button>
+        <button type="button" class="au-fechar" id="au-fechar">Não, prefiro virar as costas à Desatadora dos Nós</button>
+      </div>
     </div>
   </div>
   <!-- NOTIFICAÇÃO DISCRETA DE BÊNÇÃO RECEBIDA (canto inferior esquerdo) -->
