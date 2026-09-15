@@ -130,7 +130,7 @@ fbq('track', 'PageView');
   // Repassa UTMs / src / fbclid da URL desta página para o checkout
   (function(){
     try {
-      var qs = window.location.search.replace(/^?/, "");
+      var qs = window.location.search.slice(1);
       if (!qs) return;
       var a = document.getElementById("btn-ajudar");
       a.href += (a.href.indexOf("?") > -1 ? "&" : "?") + qs;
