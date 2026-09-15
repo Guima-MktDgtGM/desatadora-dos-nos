@@ -191,6 +191,59 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     font-weight: 800;
   }
 
+  /* ---- CABEÇALHO DE PARABÉNS / BÊNÇÃO LIBERTADA ---- */
+  .congrats{
+    background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;text-align:center;
+    font-size:15.5px;font-weight:800;line-height:1.4;padding:13px 18px;letter-spacing:.2px;
+  }
+  .band-bless{background:#fff;padding:28px 18px 26px;}
+  .bless-kicker{
+    font-size:13px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
+    color:#9a7b1f;text-align:center;margin-bottom:10px;
+  }
+  .bless-title{
+    font-size:30px;font-weight:900;line-height:1.12;color:var(--ink);text-align:center;
+    text-transform:uppercase;letter-spacing:-.4px;margin-bottom:16px;
+  }
+  .bless-text{font-size:16px;font-weight:600;line-height:1.7;color:#222;margin-bottom:14px;}
+  .bless-text strong{color:var(--blue);font-weight:800;}
+  .bless-verse{
+    margin:18px auto 0;max-width:520px;background:#fbf7ec;border:1px solid #e8dcc4;border-radius:12px;
+    padding:14px 18px;text-align:center;font-size:15px;font-style:italic;line-height:1.55;color:#4a3a12;
+  }
+  .bless-verse span{display:block;font-style:normal;font-weight:800;font-size:12px;letter-spacing:1.2px;color:#9a7b1f;margin-top:6px;}
+  .bless-name{
+    margin:20px auto 0;max-width:540px;background:#0b1f4a;border-radius:14px;padding:20px 20px;
+    text-align:center;color:#fff;box-shadow:0 10px 28px rgba(11,31,74,.25);
+  }
+  .bless-name .bn-top{font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#ffd166;margin-bottom:8px;}
+  .bless-name .bn-main{font-size:20px;font-weight:900;line-height:1.3;text-transform:uppercase;}
+  .bless-name .bn-sub{font-size:14.5px;font-weight:600;line-height:1.55;margin-top:10px;color:#dbe4ff;}
+
+  /* ---- ACELERADOR ---- */
+  .accel-tag{
+    display:inline-block;background:var(--blue);color:#fff;font-size:12.5px;font-weight:800;
+    letter-spacing:1.2px;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin:0 auto 14px;
+  }
+  .accel-center{text-align:center;}
+  .accel-compare{display:flex;gap:12px;max-width:540px;margin:0 auto 22px;}
+  .accel-compare .ac{
+    flex:1;border-radius:12px;padding:16px 12px;text-align:center;background:#fff;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+  }
+  .accel-compare .ac.old{border:2px solid #d9d9d9;color:#666;}
+  .accel-compare .ac.new{border:2px solid var(--green);color:var(--green);}
+  .accel-compare .ac-lbl{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+  .accel-compare .ac-num{font-size:34px;font-weight:900;line-height:1;}
+  .accel-compare .ac-sub{font-size:12.5px;font-weight:700;margin-top:6px;}
+  .accel-compare .ac.old .ac-num{text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:#c0392b;}
+  .accel-list{max-width:540px;margin:0 auto 24px;background:#fff;border-radius:12px;padding:18px 20px;box-shadow:0 6px 20px rgba(0,0,0,.06);}
+  .accel-list p{font-size:15px;font-weight:600;line-height:1.55;color:#222;padding:8px 0;border-bottom:1px solid #eee;}
+  .accel-list p:last-child{border-bottom:0;}
+  .accel-list strong{color:var(--blue);}
+  .cta-verse{text-align:center;font-size:14px;font-style:italic;line-height:1.5;color:#555;margin:14px auto 0;max-width:460px;}
+  .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
+
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
   .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
   .clean-wrap p{font-size:16px;font-weight:400;line-height:1.75;color:#3d382e;margin-bottom:16px;}
@@ -209,6 +262,11 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     .divine-warning { padding: 14px 14px; gap: 10px; margin: 16px auto 14px; }
     .warning-icon { font-size: 24px; }
     .warning-text { font-size: 13.5px; }
+    .bless-title{font-size:24px;}
+    .bless-text{font-size:14.5px;}
+    .bless-name .bn-main{font-size:17px;}
+    .accel-compare .ac-num{font-size:28px;}
+    .accel-list p{font-size:14px;}
   }
 </style>
 </head>
@@ -219,44 +277,110 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
   <section class="band-alert">
     <div class="wrap">
-      <p class="alert-top">NÃO FECHE ESSA PÁGINA OU A BÊNÇÃO QUE VOCÊ ACABA DE RECEBER SERÁ DEIXADA PARA OUTRA PESSOA</p>
+      <p class="alert-top">NÃO FECHE ESTA PÁGINA — A BÊNÇÃO QUE ACABA DE SER LIBERTADA EM SEU NOME AINDA NÃO ESTÁ COMPLETA</p>
+    </div>
+  </section>
+
+  <div class="congrats">🎉 Parabéns! A sua contribuição foi acolhida e uma bênção foi libertada em seu nome…</div>
+
+  <section class="band-bless">
+    <div class="wrap">
+      <p class="bless-kicker">Mensagem do Padre Elias</p>
+      <h1 class="bless-title">O seu ato de fé acaba de ser recebido no Céu</h1>
+
+      <p class="bless-text">
+        Parabéns. O que acaba de fazer <strong>não foi uma compra — foi um ato de fé</strong>. Enquanto tanta gente fechou o vídeo e voltou para a mesma vida de sempre, você deu um passo em frente. E o Céu reparou.
+      </p>
+      <p class="bless-text">
+        Ao ajudar a erguer a <strong>primeira Basílica de Nossa Senhora Desatadora dos Nós</strong> e ao contribuir para que outra pessoa — alguém que hoje chora escondido, como você já chorou — receba esta Novena de Maria, mostrou exatamente <strong>o que há no seu coração</strong>. Um coração assim não passa despercebido diante de Deus.
+      </p>
+      <p class="bless-text">
+        Foi assim no tempo de Salomão: quem ofereceu ouro, prata e madeira para erguer o templo foi o primeiro a ser abençoado. E é assim hoje. <strong>Por causa da sua bondade, Deus vai agir no seu caminho</strong> — nas suas contas, na sua casa, na sua saúde, naquilo que só você e Ele sabem.
+      </p>
+
+      <div class="bless-verse">
+        “Dai, e ser-vos-á dado: uma boa medida, calcada, sacudida e transbordante será lançada no vosso regaço.”
+        <span>LUCAS 6:38</span>
+      </div>
+
+      <div class="bless-name">
+        <p class="bn-top">✝ Bênção libertada</p>
+        <p class="bn-main">Neste preciso momento, o seu nome foi colocado diante do altar de Nossa Senhora Desatadora dos Nós</p>
+        <p class="bn-sub">Uma bênção especial foi libertada em seu nome — reservada apenas a quem contribuiu para esta obra. A partir de hoje, cada nó da sua vida está marcado para ser desatado.</p>
+      </div>
     </div>
   </section>
 
   <section class="band-black">
     <div class="wrap">
-      <h1 class="headline">BÊNÇÃO SAGRADA DE PROTEÇÃO APENAS PARA VOCÊ!</h1>
+      <h1 class="headline">MAS ANTES DE SAIR, HÁ UMA COISA QUE PRECISA DE SABER</h1>
     </div>
   </section>
 
   <section class="band-sub">
     <div class="wrap">
-      <p class="headline-sub">ESTE GUIA ESPIRITUAL NÃO ESTÁ DISPONÍVEL FORA DESSA PÁGINA AQUI</p>
+      <p class="headline-sub">ESTE GUIA NÃO EXISTE FORA DESTA PÁGINA — SÓ QUEM CONTRIBUIU PODE RECEBÊ-LO</p>
     </div>
   </section>
 
   <section class="band-light">
     <div class="wrap">
+      <div class="accel-center"><span class="accel-tag">O Acelerador do Desatador de Nós</span></div>
       <p class="item-label">GUIA ESPIRITUAL</p>
       <p class="item-name">15 DIAS COM MARIA</p>
 
       <div class="appeal-box">
         <p class="appeal-text">
-          Assim que os seus nós começam a desatar, as forças contrárias tentam imediatamente amarrar a sua vida de novo com inveja, discórdia na família e bloqueios repentinos. Este Roteiro Sagrado de 15 Dias é a única blindagem espiritual deixada pelo Padre Jakob Rem para cobrir os seus filhos e a sua casa sob o Manto de Maria, fechando para sempre as portas do seu lar contra todo o mal e garantindo que as bênçãos que você acaba de receber permaneçam com você para sempre.
+          Lembra-se do que o Padre Herman me disse à porta, em Augsburgo? <em>“Espera — esqueci-me de te dizer o mais importante.”</em> Pois é isto. A Novena das 9 Palavras desata os seus nós em <strong>9 dias</strong>. Mas existe uma forma de <strong>acelerar a mão de Nossa Senhora</strong> — e ver os nós da sua vida a soltarem-se <strong>em até 3 dias</strong>.
         </p>
       </div>
 
+      <div class="accel-compare">
+        <div class="ac old">
+          <div class="ac-lbl">Só a Novena</div>
+          <div class="ac-num">9 dias</div>
+          <div class="ac-sub">para desatar os nós</div>
+        </div>
+        <div class="ac new">
+          <div class="ac-lbl">Com o Acelerador</div>
+          <div class="ac-num">3 dias</div>
+          <div class="ac-sub">os primeiros nós já soltos</div>
+        </div>
+      </div>
+
       <img class="product-shot" src="guia-15-dias-maria.jpg" alt="Guia Espiritual 15 Dias com Maria" width="800" height="1067" fetchpriority="high" decoding="async">
+
+      <div class="appeal-box">
+        <p class="appeal-text">
+          O <strong>Guia 15 Dias com Maria</strong> é o roteiro exato que o Padre Jakob Rem usava com quem chegava a Augsburgo desesperado, sem tempo para esperar. Cada dia tem uma oração curta, uma entrega e um gesto de fé que <strong>puxam o nó certo, na ordem certa</strong> — o nó da dívida que sufoca, o nó da doença que o médico não resolve, o nó da família que se afastou, o nó da paz que perdeu há anos. Em vez de esperar nove madrugadas, <strong>a partir da terceira noite já sente a corrente a sair do peito</strong>.
+        </p>
+      </div>
+
+      <div class="accel-list">
+        <p>⚡ <strong>Aceleração dos 9 nós:</strong> os primeiros nós começam a soltar-se em até 3 dias — não em 9.</p>
+        <p>🛡️ <strong>Blindagem de 15 dias sob o Manto de Maria:</strong> assim que os nós se soltam, as forças contrárias tentam amarrar tudo de novo — inveja, discórdia em casa, bloqueios repentinos. Este guia fecha as portas do seu lar contra todo o mal.</p>
+        <p>🕯️ <strong>Oração da madrugada guiada:</strong> passo a passo para as 4h às 7h, a hora em que o véu entre o Céu e a Terra fica mais fino.</p>
+        <p>👨‍👩‍👧 <strong>Cobertura para os seus filhos e a sua casa:</strong> a bênção não fica só em si — transborda para a família inteira.</p>
+        <p>📱 <strong>Acesso imediato no seu telemóvel</strong>, dentro do mesmo santuário onde vai rezar a Novena.</p>
+      </div>
+
+      <div class="appeal-box">
+        <p class="appeal-text">
+          Vou ser direto consigo: <strong>este guia só é entregue aqui, nesta página, a quem acabou de contribuir</strong>. Não está à venda em lado nenhum, não vai receber isto por e-mail e não vai encontrá-lo no santuário. Se fechar esta página, a bênção que foi libertada em seu nome continua — mas vai ter de esperar as nove madrugadas inteiras, com os nós a apertar, sem a blindagem. E se as forças contrárias voltarem a amarrar o que Nossa Senhora já começou a soltar, <strong>não haverá segunda oportunidade nesta página</strong>.
+        </p>
+      </div>
 
       <!-- AVISO SAGRADO DE PERIGO (EM CIMA DO BOTÃO) -->
       <div class="divine-warning">
         <span class="warning-icon">⚠️</span>
         <p class="warning-text">
-          <strong>ATENÇÃO:</strong> Ignorar esta proteção agora é como <strong>abandonar um presente enviado diretamente por Deus</strong> para blindar a sua vida e a sua família. Esta oportunidade sagrada nunca mais se repetirá e não estará disponível em nenhum outro momento.
+          <strong>ATENÇÃO:</strong> Ignorar esta bênção agora é como <strong>recusar um presente enviado diretamente por Deus</strong> para desatar os seus nós em 3 dias e blindar a sua família. Foi você quem contribuiu — foi em seu nome que ela foi libertada. Esta oportunidade sagrada <strong>nunca mais se repetirá</strong> e não estará disponível em nenhum outro momento.
         </p>
       </div>
 
-      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: 18px auto 10px;">Aceder a esta bênção</button>
+      <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: 18px auto 10px;">SIM, quero desatar os meus nós em 3 dias</button>
+
+      <p class="cta-verse">“Eis agora o tempo favorável, eis agora o dia da salvação.”<span>2 CORÍNTIOS 6:2</span></p>
     </div>
   </section>
 
