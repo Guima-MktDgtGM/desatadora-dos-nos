@@ -120,6 +120,22 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       border-radius: 24px;
     }
 
+    /* ===== AS 9 PALAVRAS SAGRADAS ===== */
+    .p9-slot{
+      display:inline-block;padding:6px 11px;border-radius:999px;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px;
+      color:#6b7280;background:rgba(15,26,53,.9);border:1px solid rgba(212,175,55,.18);letter-spacing:2px;
+      filter:blur(1.5px);opacity:.55;transform:scale(.94);transition:all .45s cubic-bezier(.2,.9,.3,1.2);
+    }
+    .p9-slot.on{
+      color:#FDF3D6;background:linear-gradient(135deg,rgba(212,175,55,.28),rgba(212,175,55,.08));border-color:rgba(212,175,55,.55);
+      letter-spacing:0;filter:none;opacity:1;transform:scale(1);text-shadow:0 0 14px rgba(212,175,55,.5);
+    }
+    .p9-conta{width:14px;height:14px;border-radius:50%;border:2px solid rgba(212,175,55,.45);background:transparent;transition:all .3s;}
+    .p9-conta.on{background:#D4AF37;box-shadow:0 0 14px rgba(212,175,55,.8);transform:scale(1.15);}
+    .p9-chama{width:22px;height:34px;border-radius:50% 50% 45% 45%;background:linear-gradient(to top,#ef4444,#fbbf24,#fef9c3);filter:blur(.4px);
+      box-shadow:0 0 30px rgba(251,191,36,.55);animation:p9-flicker 1.4s ease-in-out infinite;}
+    @keyframes p9-flicker{0%,100%{transform:scaleY(1) translateY(0);}50%{transform:scaleY(1.08) translateY(-2px);}}
+
     .glass-modal {
       background: rgba(8, 15, 33, 0.92);
       backdrop-filter: blur(24px);
@@ -238,6 +254,97 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           </p>
         </div>
 
+        <!-- ==================== AS 9 PALAVRAS SAGRADAS (MANUSCRITO DE AUGSBURGO) ==================== -->
+        <div class="glass-card overflow-hidden border-sacred-gold/40 relative" id="card-9palavras">
+          <div class="absolute inset-0 bg-gradient-to-b from-amber-900/20 via-transparent to-transparent pointer-events-none"></div>
+
+          <div class="p-5 pb-3 relative z-10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sacred-gold/15 text-sacred-goldLight text-[10px] font-bold tracking-wider uppercase border border-sacred-gold/30">
+                <i data-lucide="scroll-text" class="w-3 h-3"></i> Manuscrito de Augsburgo · 1615
+              </span>
+              <span id="p9-selo-hoje" class="hidden text-[10px] font-bold text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full">✓ Rezadas hoje</span>
+            </div>
+            <h3 class="text-xl font-cinzel font-bold text-white leading-tight">As 9 Palavras Sagradas</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mt-1">
+              A oração exata que o Padre Jakob Rem deixou escrita, na ordem em que a recebeu. Nove palavras — nem mais, nem menos.
+            </p>
+          </div>
+
+          <!-- Pergaminho -->
+          <button type="button" onclick="abrirManuscrito()" class="relative block w-full px-5 text-left">
+            <div class="relative rounded-2xl overflow-hidden border border-sacred-gold/30 shadow-2xl">
+              <img src="images/manuscrito-9-palavras.jpg" alt="Manuscrito original das 9 Palavras — Augsburgo, 1615" class="w-full h-56 object-cover object-[50%_45%]">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#060B18]/90 via-transparent to-transparent"></div>
+              <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
+                <span class="text-[10px] text-amber-100/90 font-sans italic">Tinta ferrogálica sobre pergaminho · alemão antigo</span>
+                <span class="text-[10px] font-bold text-sacred-gold flex items-center gap-1"><i data-lucide="maximize-2" class="w-3 h-3"></i> Ampliar</span>
+              </div>
+            </div>
+          </button>
+
+          <!-- Tradução / revelação -->
+          <div class="p-5 pt-4 relative z-10 space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-wider">Tradução fiel</span>
+                <span id="p9-contador" class="text-[11px] font-bold text-slate-400">0 / 9</span>
+              </div>
+              <div id="p9-palavras" class="flex flex-wrap gap-1.5 justify-center min-h-[52px]"></div>
+              <p id="p9-original" class="hidden text-center text-[11px] italic text-slate-400 mt-2">“Maria, Mutter, löse die Knoten, die mich binden, jetzt.”</p>
+            </div>
+
+            <button id="p9-btn-revelar" onclick="revelarPalavras()" class="w-full py-3 gold-btn rounded-2xl text-sm flex items-center justify-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> Revelar as 9 Palavras
+            </button>
+            <button id="p9-btn-rezar" onclick="abrirRezar()" class="hidden w-full py-3 gold-btn rounded-2xl text-sm flex items-center justify-center gap-2">
+              <i data-lucide="hand" class="w-4 h-4"></i> Rezar as 9 Palavras agora
+            </button>
+
+            <!-- Porque a maioria não é atendida -->
+            <div class="rounded-2xl border border-red-500/25 bg-red-950/20 p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-300 text-xs">✕</span>
+                <span class="text-xs font-cinzel font-bold text-red-200 uppercase">Porque a maioria não é atendida</span>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-relaxed mb-2">Não é falta de fé. São três erros que quase toda a gente comete sem saber:</p>
+              <div class="space-y-1.5">
+                <button type="button" onclick="toggleMotivo(1)" class="w-full text-left rounded-xl bg-slate-950/60 border border-slate-800 p-3">
+                  <div class="flex items-center justify-between"><span class="text-xs font-bold text-white">1. Pedem com as palavras erradas</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i></div>
+                  <p id="p9-motivo-1" class="hidden text-[11px] text-slate-300 leading-relaxed mt-2">“Pedis e não recebeis, porque pedis mal.” (Tiago 4:3). Uma oração longa e vaga não nomeia o nó. As 9 Palavras nomeiam-no, entregam-no e marcam a hora: <em>agora</em>. Por isso não se troca, não se acrescenta e não se abrevia nenhuma delas.</p>
+                </button>
+                <button type="button" onclick="toggleMotivo(2)" class="w-full text-left rounded-xl bg-slate-950/60 border border-slate-800 p-3">
+                  <div class="flex items-center justify-between"><span class="text-xs font-bold text-white">2. Pedem à hora errada</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i></div>
+                  <p id="p9-motivo-2" class="hidden text-[11px] text-slate-300 leading-relaxed mt-2">O Padre Herman foi claro: entre as <strong class="text-amber-200">4h e as 7h da manhã</strong> o véu entre o Céu e a Terra fica mais fino. O próprio Jesus se levantava de madrugada para orar (Marcos 1:35). Se acorda sem saber porquê, não é por acaso. Se não consegue acordar, reze ao deitar com os Áudios do Terço — a oração sobe por si enquanto dorme.</p>
+                </button>
+                <button type="button" onclick="toggleMotivo(3)" class="w-full text-left rounded-xl bg-slate-950/60 border border-slate-800 p-3">
+                  <div class="flex items-center justify-between"><span class="text-xs font-bold text-white">3. Desistem no 2.º ou 3.º dia</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i></div>
+                  <p id="p9-motivo-3" class="hidden text-[11px] text-slate-300 leading-relaxed mt-2">Quando o Padre Elias começou, tudo pareceu <strong class="text-amber-200">piorar</strong> nos primeiros dias — a cirurgia antecipada, a mãe sem se levantar da cama. É comum: os nós apertam antes de ceder. Quem para no 3.º dia devolve a fita a meio. Nove dias seguidos. Se falhar um, recomeça do dia 1.</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Como usar -->
+            <div class="rounded-2xl border border-sacred-gold/25 bg-slate-950/50 p-4">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="w-6 h-6 rounded-full bg-sacred-gold/20 flex items-center justify-center text-sacred-gold text-xs">✝</span>
+                <span class="text-xs font-cinzel font-bold text-sacred-goldLight uppercase">Como rezar para ser atendido(a)</span>
+              </div>
+              <div class="space-y-2.5 text-[11px] text-slate-200">
+                <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">1</span><p><strong>A hora.</strong> Entre as 4h e as 7h. Ponha o despertador para as 4h30 — ou reze ao deitar com os Áudios do Terço a tocar.</p></div>
+                <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">2</span><p><strong>O lugar.</strong> Acenda a vela (aqui no app ou uma real), silêncio, luz baixa. Três respirações fundas antes de começar.</p></div>
+                <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">3</span><p><strong>As palavras.</strong> Diga as 9 Palavras <strong>três vezes</strong>, em voz baixa, devagar, na ordem exata. Sem trocar nem acrescentar nada. Ao dizer “agora”, imagine a fita a soltar-se.</p></div>
+                <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">4</span><p><strong>O nó do dia.</strong> Nomeie o nó em voz alta (“o nó da dívida”, “o nó do meu filho”) e abra a oração do dia na aba Novena. Um nó por dia, na ordem dos 9 dias.</p></div>
+                <div class="flex items-start gap-3"><span class="w-5 h-5 rounded-full bg-sacred-gold text-slate-950 font-bold text-[10px] flex items-center justify-center flex-shrink-0 mt-0.5">5</span><p><strong>Nove dias seguidos.</strong> Nove é o número que abre o Céu. Não salte nenhum. No 9.º dia, entregue tudo e não volte a pegar.</p></div>
+              </div>
+              <div class="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">Já rezou as 9 Palavras <strong id="p9-total" class="text-sacred-gold">0</strong> vezes</span>
+                <button onclick="abrirRezar()" class="text-[11px] font-bold text-sacred-gold hover:underline">Rezar agora →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- GUIA RÁPIDO DE ORIENTAÇÃO (NOVO) -->
         <div class="glass-card p-4 border-amber-500/20 bg-gradient-to-r from-amber-950/20 via-[#0B132B] to-[#0B132B]">
           <div class="flex items-center justify-between mb-2">
@@ -304,7 +411,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           <div class="flex-1 min-w-0">
             <span class="text-[10px] font-bold text-sacred-gold uppercase tracking-wider block">Oração do Momento</span>
             <h4 id="next-day-title" class="text-sm font-bold text-white truncate font-serif mt-0.5">Dia 1: Abertura dos Caminhos</h4>
-            <p class="text-xs text-slate-400 truncate">Escute as 9 palavras e faça a sua prece.</p>
+            <p class="text-xs text-slate-400 truncate">Reze as 9 Palavras e entregue o nó do dia.</p>
           </div>
           <button onclick="goToCurrentDay()" class="w-11 h-11 rounded-2xl gold-btn flex items-center justify-center shadow-lg flex-shrink-0">
             <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
@@ -652,6 +759,46 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     </nav>
 
         <!-- ==================== MODAL DE TERMOS DE USO (1º ACESSO OBRIGATÓRIO) ==================== -->
+    <!-- ==================== MODAL: MANUSCRITO AMPLIADO ==================== -->
+    <div id="p9-modal-manuscrito" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-3" onclick="fecharManuscrito()">
+      <div class="relative w-full max-w-md" onclick="event.stopPropagation()">
+        <button onclick="fecharManuscrito()" class="absolute -top-2 -right-2 z-10 w-9 h-9 rounded-full bg-slate-900 border border-sacred-gold/40 text-white flex items-center justify-center shadow-lg"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <img src="images/manuscrito-9-palavras.jpg" alt="Manuscrito das 9 Palavras" class="w-full rounded-2xl border border-sacred-gold/30 shadow-2xl">
+        <div class="glass-card mt-3 p-4">
+          <span class="text-[10px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-wider">Original em alemão antigo</span>
+          <p class="text-sm font-serif italic text-white mt-1">“Maria, Mutter, löse die Knoten, die mich binden, jetzt.”</p>
+          <span class="text-[10px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-wider block mt-3">Tradução fiel · 9 palavras</span>
+          <p class="text-base font-serif font-bold text-sacred-gold mt-1">“Maria, Mãe, desatai os nós que me prendem, agora.”</p>
+          <p class="text-[11px] text-slate-400 mt-2 leading-relaxed">Encontrado no quarto do Padre Jakob Rem, em Augsburgo, depois da sua morte. Foi com estas palavras que ergueu a fita cheia de nós do casamento de Wolfgang Langenmantel diante de Nossa Senhora — e os nós se desataram.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL: REZAR AS 9 PALAVRAS (3×) ==================== -->
+    <div id="p9-modal-rezar" class="fixed inset-0 z-50 bg-[#060B18]/97 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="relative w-full max-w-md text-center">
+        <button onclick="fecharRezar()" class="absolute -top-1 right-0 w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700 text-slate-300 flex items-center justify-center"><i data-lucide="x" class="w-4 h-4"></i></button>
+
+        <div class="p9-chama mx-auto mb-5"></div>
+        <span class="text-[10px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-[0.2em]">Devagar · em voz baixa</span>
+        <p class="text-2xl sm:text-3xl font-serif font-bold text-white leading-snug mt-3 px-2">“Maria, Mãe, desatai os nós que me prendem, <span class="text-sacred-gold">agora</span>.”</p>
+
+        <div class="flex items-center justify-center gap-3 mt-7">
+          <span class="p9-conta" id="p9-c1"></span>
+          <span class="p9-conta" id="p9-c2"></span>
+          <span class="p9-conta" id="p9-c3"></span>
+        </div>
+        <p id="p9-rezar-txt" class="text-xs text-slate-300 mt-3">Toque no botão cada vez que terminar de dizer as 9 Palavras.</p>
+
+        <button id="p9-btn-toque" onclick="tocarRezar()" class="mt-5 w-full py-4 gold-btn rounded-2xl text-base flex items-center justify-center gap-2">
+          <i data-lucide="hand" class="w-5 h-5"></i> <span id="p9-btn-toque-txt">Rezei — 1 de 3</span>
+        </button>
+        <button id="p9-btn-concluir" onclick="fecharRezar()" class="hidden mt-5 w-full py-4 rounded-2xl text-base font-bold bg-emerald-600 text-white flex items-center justify-center gap-2">
+          <i data-lucide="check" class="w-5 h-5"></i> Nó entregue a Maria
+        </button>
+      </div>
+    </div>
+
     <div id="terms-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
       <div class="glass-modal w-full max-w-sm rounded-[32px] p-5 shadow-2xl flex flex-col max-h-[90vh] border border-sacred-gold/40 animate-in zoom-in-95 duration-200">
         
@@ -1619,6 +1766,98 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     // -------------------------------------------------------------
     // 11. CONTROLE DE NAVEGAÇÃO ENTRE ABAS
     // -------------------------------------------------------------
+    // ==================== AS 9 PALAVRAS SAGRADAS ====================
+    (function(){
+      var PALAVRAS = ['Maria,', 'Mãe,', 'desatai', 'os', 'nós', 'que', 'me', 'prendem,', 'agora.'];
+      var LS_REVEL = 'novena_9p_reveladas', LS_TOTAL = 'novena_9p_total', LS_HOJE = 'novena_9p_ultimo_dia';
+      var toques = 0, revelando = false;
+
+      function hoje(){ return new Date().toISOString().slice(0,10); }
+      function ls(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch(e){ return null; } }
+
+      function montarSlots(reveladas){
+        var box = document.getElementById('p9-palavras'); if (!box) return;
+        box.innerHTML = '';
+        PALAVRAS.forEach(function(p, i){
+          var s = document.createElement('span');
+          s.className = 'p9-slot' + (reveladas ? ' on' : '');
+          s.textContent = reveladas ? p : '•••';
+          s.style.transitionDelay = '0ms';
+          box.appendChild(s);
+        });
+        document.getElementById('p9-contador').textContent = (reveladas ? 9 : 0) + ' / 9';
+        document.getElementById('p9-original').classList.toggle('hidden', !reveladas);
+        document.getElementById('p9-btn-revelar').classList.toggle('hidden', !!reveladas);
+        document.getElementById('p9-btn-rezar').classList.toggle('hidden', !reveladas);
+      }
+
+      window.revelarPalavras = function(){
+        if (revelando) return; revelando = true;
+        var slots = document.querySelectorAll('#p9-palavras .p9-slot');
+        slots.forEach(function(s, i){
+          setTimeout(function(){
+            s.textContent = PALAVRAS[i];
+            s.classList.add('on');
+            document.getElementById('p9-contador').textContent = (i + 1) + ' / 9';
+            if (i === 8) {
+              ls(LS_REVEL, '1');
+              document.getElementById('p9-original').classList.remove('hidden');
+              document.getElementById('p9-btn-revelar').classList.add('hidden');
+              document.getElementById('p9-btn-rezar').classList.remove('hidden');
+              if (window.confetti) confetti({ particleCount: 40, spread: 55, origin: { y: 0.5 }, colors: ['#D4AF37','#FDF3D6','#ffffff'] });
+              if (window.lucide) lucide.createIcons();
+              revelando = false;
+            }
+          }, 380 * i + 200);
+        });
+      };
+
+      window.toggleMotivo = function(n){
+        var p = document.getElementById('p9-motivo-' + n); if (!p) return;
+        p.classList.toggle('hidden');
+      };
+
+      window.abrirManuscrito = function(){ document.getElementById('p9-modal-manuscrito').classList.remove('hidden'); if (window.lucide) lucide.createIcons(); };
+      window.fecharManuscrito = function(){ document.getElementById('p9-modal-manuscrito').classList.add('hidden'); };
+
+      window.abrirRezar = function(){
+        toques = 0;
+        [1,2,3].forEach(function(i){ document.getElementById('p9-c' + i).classList.remove('on'); });
+        document.getElementById('p9-btn-toque').classList.remove('hidden');
+        document.getElementById('p9-btn-concluir').classList.add('hidden');
+        document.getElementById('p9-btn-toque-txt').textContent = 'Rezei — 1 de 3';
+        document.getElementById('p9-rezar-txt').textContent = 'Toque no botão cada vez que terminar de dizer as 9 Palavras.';
+        document.getElementById('p9-modal-rezar').classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
+      };
+      window.fecharRezar = function(){ document.getElementById('p9-modal-rezar').classList.add('hidden'); };
+
+      window.tocarRezar = function(){
+        toques++;
+        document.getElementById('p9-c' + toques).classList.add('on');
+        if (toques < 3) {
+          document.getElementById('p9-btn-toque-txt').textContent = 'Rezei — ' + (toques + 1) + ' de 3';
+          document.getElementById('p9-rezar-txt').textContent = toques === 1 ? 'Mais devagar desta vez. Sinta cada palavra.' : 'Última vez. Ao dizer “agora”, veja a fita a soltar-se.';
+          return;
+        }
+        var total = parseInt(ls(LS_TOTAL) || '0', 10) + 1;
+        ls(LS_TOTAL, String(total)); ls(LS_HOJE, hoje());
+        document.getElementById('p9-total').textContent = total;
+        document.getElementById('p9-selo-hoje').classList.remove('hidden');
+        document.getElementById('p9-btn-toque').classList.add('hidden');
+        document.getElementById('p9-btn-concluir').classList.remove('hidden');
+        document.getElementById('p9-rezar-txt').textContent = 'A fita da sua vida está nas mãos de Maria. Agora abra a oração do dia na aba Novena.';
+        if (window.confetti) confetti({ particleCount: 70, spread: 70, origin: { y: 0.55 }, colors: ['#D4AF37','#FDF3D6','#34d399'] });
+        if (window.lucide) lucide.createIcons();
+      };
+
+      document.addEventListener('DOMContentLoaded', function(){
+        montarSlots(ls(LS_REVEL) === '1');
+        var t = document.getElementById('p9-total'); if (t) t.textContent = ls(LS_TOTAL) || '0';
+        if (ls(LS_HOJE) === hoje()) document.getElementById('p9-selo-hoje').classList.remove('hidden');
+      });
+    })();
+
     function switchTab(tabId) {
       const tabs = ['tab-inicio', 'tab-novena', 'tab-blindagem', 'tab-comunidade', 'tab-caderno'];
       tabs.forEach(t => {
