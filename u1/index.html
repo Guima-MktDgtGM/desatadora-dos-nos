@@ -511,9 +511,11 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       var av = document.getElementById('aviso-ultima'); if (!av) return;
       try { if (sessionStorage.getItem('ultima_copia_vista') === '1') return; sessionStorage.setItem('ultima_copia_vista', '1'); } catch(e){}
       av.classList.add('on');
-      var fc = document.getElementById('au-fechar');
-      if (fc) fc.addEventListener('click', function(){ av.classList.remove('on'); });
     }
+    (function(){
+      var av = document.getElementById('aviso-ultima'), fc = document.getElementById('au-fechar');
+      if (av && fc) fc.addEventListener('click', function(){ av.classList.remove('on'); });
+    })();
 
     function proxima(){
       if (copias <= 1) { mostrarUltima(); return; }
