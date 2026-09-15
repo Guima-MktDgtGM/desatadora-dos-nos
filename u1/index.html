@@ -278,6 +278,29 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     color:#b0a894;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:50%;
   }
   @media(max-width:480px){ #notif-bencao{max-width:235px;width:auto;} }
+  /* ---- AVISO CENTRAL: ÚLTIMA CÓPIA ---- */
+  #aviso-ultima{
+    position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;
+    padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  #aviso-ultima.on{opacity:1;pointer-events:auto;}
+  #aviso-ultima .au-card{
+    background:#fff;border-radius:16px;max-width:400px;width:100%;padding:26px 22px 20px;text-align:center;
+    border-top:6px solid #c0392b;box-shadow:0 20px 60px rgba(0,0,0,.4);transform:translateY(16px);transition:transform .3s;
+  }
+  #aviso-ultima.on .au-card{transform:translateY(0);}
+  #aviso-ultima .au-icone{font-size:40px;line-height:1;margin-bottom:8px;}
+  #aviso-ultima .au-titulo{font-size:24px;font-weight:900;text-transform:uppercase;color:#c0392b;line-height:1.15;margin-bottom:12px;letter-spacing:-.3px;}
+  #aviso-ultima .au-txt{font-size:15.5px;font-weight:600;line-height:1.6;color:#222;margin-bottom:18px;}
+  #aviso-ultima .au-txt strong{color:#c0392b;font-weight:800;}
+  #aviso-ultima .au-btn{
+    font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;line-height:1.3;color:#fff;background:var(--green);
+    border:none;border-radius:10px;padding:14px 18px;width:100%;cursor:pointer;
+  }
+  #aviso-ultima .au-fechar{
+    display:block;margin:14px auto 0;background:none;border:none;cursor:pointer;
+    font-family:var(--sans);font-size:13px;font-weight:600;color:#888;text-decoration:underline;
+  }
   .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
 
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
@@ -403,6 +426,16 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     </div>
   </section>
 
+  <!-- AVISO CENTRAL: ÚLTIMA CÓPIA (dispara na 7.ª notificação) -->
+  <div id="aviso-ultima" role="dialog" aria-modal="true" aria-labelledby="au-titulo">
+    <div class="au-card">
+      <div class="au-icone">⚠️</div>
+      <h2 id="au-titulo" class="au-titulo">Última cópia disponível</h2>
+      <p class="au-txt">Das <strong>7 cópias</strong> libertadas para esta página, <strong>resta apenas 1</strong>. E está reservada <strong>em seu nome</strong>.</p>
+      <button type="button" class="au-btn" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')">SIM, quero a última cópia</button>
+      <button type="button" class="au-fechar" id="au-fechar">Continuar a ler a mensagem</button>
+    </div>
+  </div>
   <!-- NOTIFICAÇÃO DISCRETA DE BÊNÇÃO RECEBIDA (canto inferior esquerdo) -->
   <div id="notif-bencao" aria-live="polite">
     <button type="button" class="nb-fechar" id="nb-fechar" aria-label="Fechar aviso">&times;</button>
@@ -473,7 +506,17 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
     var idx = 0, copias = COPIAS_INICIAL, timer = null;
 
+    // 7.ª vez (última cópia): aviso central em vez do cartão, uma vez por sessão
+    function mostrarUltima(){
+      var av = document.getElementById('aviso-ultima'); if (!av) return;
+      try { if (sessionStorage.getItem('ultima_copia_vista') === '1') return; sessionStorage.setItem('ultima_copia_vista', '1'); } catch(e){}
+      av.classList.add('on');
+      var fc = document.getElementById('au-fechar');
+      if (fc) fc.addEventListener('click', function(){ av.classList.remove('on'); });
+    }
+
     function proxima(){
+      if (copias <= 1) { mostrarUltima(); return; }
       var p = fila[idx % fila.length]; idx++;
       elNome.textContent = p[0];
       elIni.textContent = p[0].charAt(0).toUpperCase();
