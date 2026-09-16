@@ -540,11 +540,14 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           </div>
 
           <!-- Rodapé do Modal -->
-          <div class="p-4 bg-[#081024] border-t border-slate-800 flex items-center gap-2">
+          <div class="p-4 bg-[#081024] border-t border-slate-800">
+            <div class="flex items-center gap-2">
             <button id="btn-complete-day" onclick="completeCurrentDay()" class="flex-1 py-3.5 gold-btn rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg">
               <i data-lucide="check-circle" class="w-4 h-4"></i>
               <span>Concluir Oração e Desatar Nó</span>
             </button>
+            </div>
+            <button id="btn-undo-day" onclick="undoCurrentDay()" class="hidden w-full mt-2 text-[11px] text-slate-400 underline underline-offset-2 text-center">Marquei sem querer — desfazer</button>
           </div>
         </div>
       </div>
@@ -796,6 +799,19 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         <button id="p9-btn-concluir" onclick="fecharRezar()" class="hidden mt-5 w-full py-4 rounded-2xl text-base font-bold bg-emerald-600 text-white flex items-center justify-center gap-2">
           <i data-lucide="check" class="w-5 h-5"></i> Nó entregue a Maria
         </button>
+      </div>
+    </div>
+
+    <!-- CONFIRMAÇÃO: CONCLUIR DIA -->
+    <div id="confirm-day-modal" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-5">
+      <div class="glass-modal w-full max-w-sm rounded-3xl p-6 text-center">
+        <div class="text-3xl mb-2">🕯️</div>
+        <h3 id="confirm-day-title" class="text-base font-serif font-bold text-white">Terminou a oração do Dia 1?</h3>
+        <p class="text-xs text-slate-300 mt-2 leading-relaxed">Ao confirmar, este nó fica marcado como desatado e o dia seguinte abre-se. Se ainda não rezou, volte à oração.</p>
+        <div class="flex gap-2 mt-5">
+          <button onclick="fecharConfirmDay()" class="flex-1 py-3 rounded-2xl border border-slate-700 text-slate-300 text-xs font-semibold">Ainda não</button>
+          <button onclick="confirmarConcluirDia()" class="flex-1 py-3 gold-btn rounded-2xl text-xs">Sim, terminei</button>
+        </div>
       </div>
     </div>
 
@@ -1250,7 +1266,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         if (isCompleted) {
           statusBadge = '<span class="text-[10px] text-emerald-400 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> Nó Desatado</span>';
           cardStyle = 'glass-card border-emerald-500/30 bg-emerald-950/10';
-          actionBtn = `<button onclick="openDayModal(${d.day})" class="px-3.5 py-1.5 bg-slate-900 border border-slate-700 text-slate-300 font-semibold text-xs rounded-xl hover:bg-slate-800">Rever</button>`;
+          actionBtn = `<button onclick="openDayModal(${d.day})" class="px-3.5 py-1.5 bg-slate-900 border border-slate-700 text-slate-300 font-semibold text-xs rounded-xl hover:bg-slate-800">Rezar de novo</button>`;
         } else if (isLocked) {
           statusBadge = '<span class="text-[10px] text-slate-500 font-medium">Complete o dia anterior</span>';
           cardStyle = 'glass-card border-slate-900 bg-slate-950/40 opacity-50';
@@ -1307,6 +1323,11 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         if (btn) btn.className = 'px-3 py-1.5 rounded-xl border border-slate-700 text-xs font-bold text-slate-400 hover:border-sacred-gold transition';
       });
 
+      const undoBtn = document.getElementById('btn-undo-day');
+      if (undoBtn) {
+        const ultimo = state.completedDays.length ? Math.max.apply(null, state.completedDays) : 0;
+        undoBtn.classList.toggle('hidden', !(isCompleted && dayNum === ultimo));
+      }
       const completeBtn = document.getElementById('btn-complete-day');
       if (isCompleted) {
         completeBtn.innerHTML = '<i data-lucide="check-check" class="w-4 h-4"></i> <span>Nó Já Desatado (Graça Selada)</span>';
@@ -1334,6 +1355,26 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     }
 
     function completeCurrentDay() {
+      const state = getState();
+      if (state.completedDays.includes(activeModalDay)) { closeDayModal(); return; }
+      const t = document.getElementById('confirm-day-title');
+      if (t) t.textContent = 'Terminou a oração do Dia ' + activeModalDay + '?';
+      document.getElementById('confirm-day-modal').classList.remove('hidden');
+    }
+    function fecharConfirmDay() { document.getElementById('confirm-day-modal').classList.add('hidden'); }
+    function undoCurrentDay() {
+      const state = getState();
+      const ultimo = state.completedDays.length ? Math.max.apply(null, state.completedDays) : 0;
+      if (activeModalDay !== ultimo) return;
+      saveState({ completedDays: state.completedDays.filter(d => d !== activeModalDay) });
+      closeDayModal();
+      renderKnotsTrack();
+      renderNovenaDaysList();
+      updateHomeRecommendations();
+    }
+
+    function confirmarConcluirDia() {
+      fecharConfirmDay();
       const state = getState();
       if (!state.completedDays.includes(activeModalDay)) {
         state.completedDays.push(activeModalDay);
