@@ -1282,7 +1282,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         } else if (isAmanha) {
           statusBadge = '<span class="text-[10px] text-amber-300 font-bold flex items-center gap-1"><i data-lucide="moon" class="w-3 h-3"></i> Disponível amanhã</span>';
           cardStyle = 'glass-card border-amber-500/20 bg-slate-950/40 opacity-70';
-          actionBtn = `<button onclick="openDayModal()" class="px-3.5 py-1.5 bg-slate-900 border border-slate-700 text-slate-300 font-semibold text-xs rounded-xl">Ler</button>`;
+          actionBtn = `<button onclick="openDayModal(${d.day})" class="px-3.5 py-1.5 bg-slate-900 border border-slate-700 text-slate-300 font-semibold text-xs rounded-xl">Ler</button>`;
         } else {
           statusBadge = '<span class="text-[10px] text-sacred-gold font-bold flex items-center gap-1">Pronto para Rezar</span>';
           cardStyle = 'glass-card border-sacred-gold/60 shadow-lg';
