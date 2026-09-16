@@ -641,6 +641,35 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         </div>
       </div>
 
+      <!-- ==================== TAB 6: INDICAR (PARTILHA + BÓNUS) ==================== -->
+      <div id="tab-indicar" class="hidden space-y-4">
+        <div class="text-center py-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sacred-gold/15 text-sacred-goldLight text-[10px] font-bold tracking-wider uppercase border border-sacred-gold/30 mb-2">🎁 Bónus exclusivos</span>
+          <h2 class="text-xl font-serif font-bold text-white">Indique um conhecido</h2>
+          <p class="text-xs text-slate-300 max-w-xs mx-auto mt-1">
+            Alguém que ama está com um nó apertado. Leve-lhe a Novena — e a cada partilha, um bónus abre-se para si.
+          </p>
+        </div>
+
+        <!-- Progresso -->
+        <div class="glass-card p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-wider">As suas partilhas</span>
+            <span id="ind-contagem" class="text-[11px] font-bold text-sacred-gold">0</span>
+          </div>
+          <div class="h-2 rounded-full bg-slate-900 overflow-hidden"><div id="ind-barra" class="h-full bg-gradient-to-r from-amber-500 to-yellow-300 rounded-full transition-all duration-700" style="width:0%"></div></div>
+          <div class="flex justify-between mt-1.5 text-[10px] text-slate-500"><span>1 partilha</span><span>3 partilhas</span><span>5 partilhas</span></div>
+        </div>
+
+        <!-- Mensagens prontas -->
+        <div class="space-y-3" id="ind-lista"></div>
+
+        <!-- Bónus -->
+        <div class="space-y-3" id="ind-bonus"></div>
+
+        <p class="text-[10px] text-slate-500 text-center leading-relaxed px-4">Os bónus desbloqueiam-se ao partilhar a partir deste ecrã. Quem receber a sua partilha contribui pelo mesmo valor que você — nada muda para essa pessoa.</p>
+      </div>
+
       <!-- ==================== TAB 4: COMUNIDADE VIVA (COM RESPOSTAS E BOTS) ==================== -->
       <div id="tab-comunidade" class="hidden space-y-4">
         <div class="text-center py-2">
@@ -758,7 +787,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
     <!-- ==================== BOTTOM NAVIGATION BAR (LISA & FLUTUANTE) ==================== -->
     <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#060B18]/95 backdrop-blur-2xl border-t border-sacred-border/30 py-2.5">
-      <div class="max-w-md mx-auto px-4 flex items-center justify-around">
+      <div class="max-w-md mx-auto px-1 flex items-center justify-around">
         <button onclick="switchTab('tab-inicio')" id="nav-tab-inicio" class="flex flex-col items-center gap-1 text-sacred-gold transition">
           <i data-lucide="home" class="w-5 h-5"></i>
           <span class="text-[10px] font-bold">Início</span>
@@ -783,6 +812,11 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
         <button onclick="switchTab('tab-caderno')" id="nav-tab-caderno" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
           <i data-lucide="scroll" class="w-5 h-5"></i>
           <span class="text-[10px] font-bold">Caderno</span>
+        </button>
+
+        <button onclick="switchTab('tab-indicar')" id="nav-tab-indicar" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+          <i data-lucide="gift" class="w-5 h-5"></i>
+          <span class="text-[10px] font-bold">Indicar</span>
         </button>
       </div>
     </nav>
@@ -1999,8 +2033,97 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       });
     })();
 
+    // ==================== INDICAR (PARTILHA + BÓNUS) ====================
+    (function(){
+      var LINK = 'https://checkout.kashpay.com.br/checkout/checkout-1789329090869?utm_source=indicacao&utm_medium=app&utm_campaign=partilha';
+      var MENSAGENS = [
+        {
+          titulo: 'Para uma amiga ou familiar',
+          texto: 'Comecei a Novena das 9 Palavras de Nossa Senhora Desatadora dos Nós e logo na primeira noite senti um peso a sair do peito. É a oração do Padre Jakob Rem, de 1615, guiada no telemóvel, um nó por dia. Pensei em ti. Vê aqui: ' + LINK
+        },
+        {
+          titulo: 'Para quem está a passar por um nó',
+          texto: 'Se tens um nó na tua vida que não desata de maneira nenhuma — dívida, saúde, família, um filho que se afastou — reza isto durante 9 dias. A mim está a ajudar. São 9 palavras, na ordem certa, à hora certa: ' + LINK
+        },
+        {
+          titulo: 'Convite para rezar juntos',
+          texto: 'Estou a fazer a Novena de Nossa Senhora Desatadora dos Nós, um nó por dia, com a oração do Padre Elias no telemóvel. Fazes comigo? Assim rezamos os 9 dias ao mesmo tempo: ' + LINK
+        }
+      ];
+      var BONUS = [
+        { n: 1, titulo: 'Oração de Blindagem do Lar', sub: 'Para rezar à porta de casa, uma vez por semana',
+          texto: 'Nossa Senhora Desatadora dos Nós, coloco esta casa debaixo do vosso Manto. Que nenhuma inveja atravesse esta porta, que nenhuma discórdia se sente à nossa mesa, que nenhum mal toque os que aqui dormem. Onde houver nó escondido nas paredes desta casa — de dívida, de doença, de mágoa antiga — desatai-o esta noite. Selai as janelas com a vossa paz e as portas com o vosso amor. Em nome do Pai, e do Filho, e do Espírito Santo. Ámen.' },
+        { n: 3, titulo: 'Terço de Emergência (5 minutos)', sub: 'Para o dia em que o nó aperta e não há tempo',
+          texto: '1. Sinal da Cruz.\n2. Diga em voz baixa, três vezes: “Maria, Mãe, desatai os nós que me prendem, agora.”\n3. Nomeie o nó em voz alta (“o nó da dívida”, “o nó do meu filho”).\n4. Reze uma dezena: 1 Pai-Nosso, 10 Ave-Marias, 1 Glória — a cada Ave-Maria imagine uma mão de Maria a puxar a fita.\n5. Termine: “Ó Maria, o que estava atado já não está. Está nas vossas mãos.”\n6. Sinal da Cruz. Não volte a pegar no nó durante o resto do dia.' },
+        { n: 5, titulo: 'Consagração Perpétua da Família', sub: 'Reze uma única vez, no 9.º dia, com a família reunida se possível',
+          texto: 'Nossa Senhora Desatadora dos Nós, hoje entrego-vos para sempre esta família: os que estão nesta casa, os que estão longe, os que ainda hão de nascer e os que já partiram. Tomai a fita de cada um de nós e guardai-a nas vossas mãos. Que os nossos nós nunca mais sejam atados pelo medo, pela falta ou pela discórdia. Que a providência do vosso Filho entre por esta porta todos os dias, e que a paz que Ele nos deixou fique connosco até ao fim. Consagro-vos esta família, Mãe. Ela é vossa. Ámen.' }
+      ];
+      var LS = 'novena_partilhas';
+      function get(){ try { return parseInt(localStorage.getItem(LS) || '0', 10); } catch(e){ return 0; } }
+      function set(v){ try { localStorage.setItem(LS, String(v)); } catch(e){} }
+      function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+      function render(){
+        var n = get();
+        var c = document.getElementById('ind-contagem'); if (!c) return;
+        c.textContent = n + (n === 1 ? ' partilha' : ' partilhas');
+        document.getElementById('ind-barra').style.width = Math.min(100, n / 5 * 100) + '%';
+
+        var lista = document.getElementById('ind-lista'); lista.innerHTML = '';
+        MENSAGENS.forEach(function(m, i){
+          lista.innerHTML +=
+            '<div class="glass-card p-4">' +
+              '<span class="text-[10px] font-bold text-sacred-gold uppercase tracking-wider">' + esc(m.titulo) + '</span>' +
+              '<p class="text-xs text-slate-200 leading-relaxed mt-1.5 font-sans">' + esc(m.texto).replace(LINK, '<span class="text-sacred-goldLight break-all">' + LINK + '</span>') + '</p>' +
+              '<div class="grid grid-cols-3 gap-2 mt-3">' +
+                '<button onclick="indPartilhar(' + i + ',\'wa\')" class="py-2.5 rounded-xl bg-[#25D366] text-[#062b16] text-[11px] font-extrabold flex items-center justify-center gap-1"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp</button>' +
+                '<button onclick="indPartilhar(' + i + ',\'fb\')" class="py-2.5 rounded-xl bg-[#1877F2] text-white text-[11px] font-extrabold flex items-center justify-center gap-1"><i data-lucide="facebook" class="w-3.5 h-3.5"></i> Facebook</button>' +
+                '<button onclick="indPartilhar(' + i + ',\'copiar\')" class="py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 text-[11px] font-bold flex items-center justify-center gap-1"><i data-lucide="copy" class="w-3.5 h-3.5"></i> Copiar</button>' +
+              '</div>' +
+            '</div>';
+        });
+
+        var bx = document.getElementById('ind-bonus'); bx.innerHTML = '<div class="text-center pt-2"><span class="text-[11px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-wider">Os seus bónus</span></div>';
+        BONUS.forEach(function(b, i){
+          var aberto = n >= b.n;
+          bx.innerHTML +=
+            '<div class="glass-card p-4 ' + (aberto ? 'border-emerald-500/40' : 'opacity-60') + '">' +
+              '<div class="flex items-center justify-between gap-3">' +
+                '<div class="min-w-0"><span class="text-[10px] font-bold ' + (aberto ? 'text-emerald-300' : 'text-slate-500') + ' uppercase tracking-wider">' + (aberto ? '✓ Desbloqueado' : '🔒 ' + b.n + (b.n === 1 ? ' partilha' : ' partilhas')) + '</span>' +
+                '<h4 class="text-sm font-bold text-white font-serif mt-0.5">' + esc(b.titulo) + '</h4>' +
+                '<p class="text-[10px] text-slate-400">' + esc(b.sub) + '</p></div>' +
+                (aberto ? '<button onclick="indAbrirBonus(' + i + ')" class="px-3.5 py-2 gold-btn text-[11px] rounded-xl flex-shrink-0">Abrir</button>' : '<i data-lucide="lock" class="w-4 h-4 text-slate-600 flex-shrink-0"></i>') +
+              '</div>' +
+              '<div id="ind-bonus-txt-' + i + '" class="hidden mt-3 pt-3 border-t border-slate-800 text-xs text-slate-100 font-serif leading-relaxed whitespace-pre-line">' + esc(b.texto) + '</div>' +
+            '</div>';
+        });
+        if (window.lucide) lucide.createIcons();
+      }
+
+      window.indAbrirBonus = function(i){ var el = document.getElementById('ind-bonus-txt-' + i); if (el) el.classList.toggle('hidden'); };
+
+      window.indPartilhar = function(i, via){
+        var m = MENSAGENS[i]; if (!m) return;
+        var antes = get(), depois = antes + 1;
+        if (via === 'wa') {
+          window.open('https://wa.me/?text=' + encodeURIComponent(m.texto), '_blank');
+        } else if (via === 'fb') {
+          window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(LINK) + '&quote=' + encodeURIComponent(m.texto), '_blank');
+        } else {
+          try { navigator.clipboard.writeText(m.texto); } catch(e){}
+          if (navigator.share) { try { navigator.share({ text: m.texto }); } catch(e){} }
+        }
+        set(depois); render();
+        var novo = BONUS.filter(function(b){ return b.n === depois; })[0];
+        if (novo && window.confetti) confetti({ particleCount: 60, spread: 65, origin: { y: 0.5 }, colors: ['#D4AF37','#FDF3D6','#34d399'] });
+        if (via === 'copiar') alert(novo ? 'Mensagem copiada! Bónus desbloqueado: ' + novo.titulo : 'Mensagem copiada. Cole-a numa conversa ou nas suas redes.');
+      };
+
+      document.addEventListener('DOMContentLoaded', render);
+    })();
+
     function switchTab(tabId) {
-      const tabs = ['tab-inicio', 'tab-novena', 'tab-blindagem', 'tab-comunidade', 'tab-caderno'];
+      const tabs = ['tab-inicio', 'tab-novena', 'tab-blindagem', 'tab-comunidade', 'tab-caderno', 'tab-indicar'];
       tabs.forEach(t => {
         const el = document.getElementById(t);
         const navBtn = document.getElementById('nav-' + t);

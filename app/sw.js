@@ -1,5 +1,5 @@
 // Service Worker do App Caminhos da Fé
-const CACHE_NAME = 'caminhos-da-fe-v6';
+const CACHE_NAME = 'caminhos-da-fe-v7';
 const ASSETS_TO_CACHE = [
   './index.html',
   './manifest.json',
