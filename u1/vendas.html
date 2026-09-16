@@ -386,7 +386,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 <div id="conteudo-real" data-fase="proc">
 
   <!-- BARRA VERMELHA (fica sempre) -->
-  <div class="topo-vermelho">⚠️ Importante: não carregue em voltar nem atualize esta página — pode interromper o processamento da sua contribuição. <b>Continue a descer 👇</b></div>
+  <div class="topo-vermelho" id="topo-vermelho">⚠️ Importante: não carregue em voltar nem atualize esta página — pode interromper o processamento da sua contribuição. <b>Aguarde a confirmação.</b></div>
 
   <!-- PROCESSAMENTO COM CONTAGEM (6 s) -> CONFIRMADO -->
   <div class="proc-pag" id="proc-pag">
@@ -436,6 +436,8 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       if (sub) sub.textContent = 'O seu nome foi colocado diante do altar.';
       if (nf) nf.style.display = 'none';
       raiz.setAttribute('data-fase', 'ok');
+      var topo = document.getElementById('topo-vermelho');
+      if (topo) topo.innerHTML = '✅ Contribuição confirmada. <b>Continue a descer para aceder à sua bênção 👇</b>';
       try { if (window.confetti) confetti({ particleCount: 140, spread: 80, origin: { y: 0.35 }, colors: ['#D4AF37','#FDF3D6','#0f8a3c','#ffffff'] }); } catch(e){}
     }, 1000);
   })();
