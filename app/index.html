@@ -1438,7 +1438,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       const dayData = NOVENA_DAYS_EXTENDED.find(d => d.day === nextDay) || NOVENA_DAYS_EXTENDED[8];
       const titleElem = document.getElementById('next-day-title');
       if (titleElem) {
-        titleElem.textContent = `Dia : ` + (diaSoAmanha(nextDay) ? ' (amanhã)' : '');
+        titleElem.textContent = `Dia ${dayData.day}: ${dayData.title}` + (diaSoAmanha(nextDay) ? ' (amanhã)' : '');
       }
     }
 
