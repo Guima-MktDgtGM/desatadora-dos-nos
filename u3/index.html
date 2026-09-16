@@ -158,6 +158,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
   .pais{background:#fff;border:2px solid #ddd;border-radius:12px;padding:12px 10px;font-family:var(--sans);font-size:14px;font-weight:700;color:#222;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;}
   .pais:hover,.pais.sel{border-color:var(--blue);background:#eef3ff;}
   .pais .fl{font-size:20px;line-height:1;}
+  .pais img.fl{width:28px;height:19px;border-radius:3px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0;}
   .pais.wide{grid-column:1 / -1;}
 
   .loader{max-width:520px;margin:0 auto;background:#0b1f4a;border-radius:14px;padding:26px 20px;color:#fff;text-align:center;box-shadow:0 10px 28px rgba(11,31,74,.25);}
@@ -299,6 +300,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           </p>
         </div>
 
+        <p style="text-align:center;font-size:12.5px;font-weight:600;color:#666;max-width:440px;margin:0 auto 10px;line-height:1.45;">📩 Assim que aceitar, veja o seu e-mail: a Irmã Camila vai pedir-lhe a morada para o envio.</p>
         <!-- ONE-CLICK KASHPAY (U3) — trocar a URL /u/ pelo produto do U3 -->
         <button type="button" class="btn pulse" onclick="acceptUpsell('KASHPAY_U3_URL')">SIM, confirmar o envio protegido para <span id="cta-pais">a minha casa</span></button>
         <p class="cta-verse">“Ungirás com o óleo, e será consagrado.”<span>ÊXODO 40:9</span></p>
@@ -321,28 +323,28 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
   <script>
   (function(){
     var PAISES = [
-      ['🇵🇹','Portugal',      'até 7 dias úteis'],
-      ['🇪🇸','Espanha',       'até 7 dias úteis'],
-      ['🇫🇷','França',        'até 8 dias úteis'],
-      ['🇮🇹','Itália',        'até 8 dias úteis'],
-      ['🇩🇪','Alemanha',      'até 8 dias úteis'],
-      ['🇨🇭','Suíça',         'até 8 dias úteis'],
-      ['🇱🇺','Luxemburgo',    'até 8 dias úteis'],
-      ['🇧🇪','Bélgica',       'até 8 dias úteis'],
-      ['🇳🇱','Países Baixos', 'até 8 dias úteis'],
-      ['🇬🇧','Reino Unido',   'até 9 dias úteis'],
-      ['🇮🇪','Irlanda',       'até 9 dias úteis'],
-      ['🇦🇹','Áustria',       'até 8 dias úteis'],
-      ['🇧🇷','Brasil',        'até 5 dias úteis'],
-      ['🇺🇸','Estados Unidos','até 10 dias úteis'],
-      ['🇨🇦','Canadá',        'até 10 dias úteis'],
-      ['🌍','Outro país',     'até 12 dias úteis']
+      ['pt','Portugal',      'até 7 dias úteis'],
+      ['es','Espanha',       'até 7 dias úteis'],
+      ['fr','França',        'até 8 dias úteis'],
+      ['it','Itália',        'até 8 dias úteis'],
+      ['de','Alemanha',      'até 8 dias úteis'],
+      ['ch','Suíça',         'até 8 dias úteis'],
+      ['lu','Luxemburgo',    'até 8 dias úteis'],
+      ['be','Bélgica',       'até 8 dias úteis'],
+      ['nl','Países Baixos', 'até 8 dias úteis'],
+      ['gb','Reino Unido',   'até 9 dias úteis'],
+      ['ie','Irlanda',       'até 9 dias úteis'],
+      ['at','Áustria',       'até 8 dias úteis'],
+      ['br','Brasil',        'até 5 dias úteis'],
+      ['us','Estados Unidos','até 10 dias úteis'],
+      ['ca','Canadá',        'até 10 dias úteis'],
+      ['','Outro país',     'até 12 dias úteis']
     ];
     var box = document.getElementById('paises');
     PAISES.forEach(function(p, i){
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'pais' + (p[1] === 'Outro país' ? ' wide' : '');
-      b.innerHTML = '<span class="fl">' + p[0] + '</span>' + p[1];
+      b.innerHTML = (p[0] ? '<img class="fl" src="flags/' + p[0] + '.png" alt="" width="28" height="19">' : '<span class="fl">🌍</span>') + p[1];
       b.onclick = function(){ escolherPais(i, b); };
       box.appendChild(b);
     });
@@ -375,7 +377,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           txt.textContent = f.replace('{pais}', p[1]);
           bar.style.width = ((k + 1) / FRASES.length * 100) + '%';
           if (k === FRASES.length - 1) setTimeout(function(){ irPasso(4); }, 700);
-        }, 400 + k * 1100);
+        }, 500 + k * 2300);
       });
     };
 
