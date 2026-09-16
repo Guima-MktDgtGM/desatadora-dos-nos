@@ -257,27 +257,29 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
   html[data-gate="real"] body{padding-bottom:56px;}
   /* ---- NOTIFICAÇÃO DISCRETA DE BÊNÇÃO (canto inferior esquerdo, acima da barra) ---- */
   #notif-bencao{
-    position:fixed;left:12px;bottom:70px;z-index:60;max-width:250px;width:calc(100% - 24px);
-    background:#fff;border:1px solid #e8dcc4;border-left:4px solid var(--green);border-radius:10px;
-    padding:8px 24px 8px 10px;box-shadow:0 8px 24px rgba(0,0,0,.14);
+    position:fixed;left:10px;bottom:66px;z-index:60;max-width:270px;width:calc(100% - 20px);
+    background:#fff;border:1px solid #e8dcc4;border-left:3px solid var(--green);border-radius:9px;
+    padding:5px 22px 5px 8px;box-shadow:0 6px 18px rgba(0,0,0,.12);
     opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .35s,transform .35s;
   }
   #notif-bencao.on{opacity:1;transform:translateY(0);pointer-events:auto;}
-  #notif-bencao .nb-top{display:flex;align-items:center;gap:8px;}
+  #notif-bencao .nb-top{display:flex;align-items:center;gap:7px;min-width:0;}
+  #notif-bencao .nb-top > div{min-width:0;flex:1;}
   #notif-bencao .nb-ini{
-    width:28px;height:28px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#c9a84c,#9a7b1f);
+    width:22px;height:22px;font-size:10.5px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#c9a84c,#9a7b1f);
     color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12.5px;
   }
-  #notif-bencao .nb-nome{font-weight:800;font-size:12px;color:#111;line-height:1.25;}
-  #notif-bencao .nb-txt{font-size:10.5px;color:#555;line-height:1.35;}
+  #notif-bencao .nb-nome{font-weight:800;font-size:11px;color:#111;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #notif-bencao .nb-nome .nb-local{font-weight:600;color:#999;font-size:10px;}
+  #notif-bencao .nb-txt{font-size:10px;color:#555;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   #notif-bencao .nb-txt strong{color:var(--blue);}
   #notif-bencao .nb-local{color:#888;}
-  #notif-bencao .nb-copias{margin-top:6px;padding-top:5px;border-top:1px dashed #e8dcc4;font-size:10.5px;font-weight:800;color:#c0392b;text-align:center;}
+  #notif-bencao .nb-copias{display:inline;font-size:9.5px;font-weight:800;color:#c0392b;white-space:nowrap;}
   #notif-bencao .nb-fechar{
-    position:absolute;top:2px;right:2px;width:24px;height:24px;background:none;border:none;cursor:pointer;
-    color:#b0a894;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:50%;
+    position:absolute;top:0;right:0;width:22px;height:22px;background:none;border:none;cursor:pointer;
+    color:#b0a894;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:50%;
   }
-  @media(max-width:480px){ #notif-bencao{max-width:235px;width:auto;} }
+  @media(max-width:480px){ #notif-bencao{max-width:262px;width:auto;} }
   /* ---- AVISO CENTRAL: ÚLTIMA CÓPIA ---- */
   #aviso-ultima{
     position:fixed;inset:0;z-index:100;background:rgba(5,10,30,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
@@ -465,12 +467,10 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     <div class="nb-top">
       <div class="nb-ini" id="nb-ini">M</div>
       <div>
-        <div class="nb-nome" id="nb-nome">—</div>
-        <div class="nb-txt" id="nb-frase"></div>
-        <div class="nb-txt nb-local" id="nb-local"></div>
+        <div class="nb-nome"><span id="nb-nome">—</span> <span class="nb-local" id="nb-local"></span></div>
+        <div class="nb-txt"><span id="nb-frase"></span> <span class="nb-copias" id="nb-copias"></span></div>
       </div>
     </div>
-    <div class="nb-copias" id="nb-copias"></div>
   </div>
   <script>
   (function(){
@@ -545,9 +545,9 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       var p = fila[idx % fila.length]; idx++;
       elNome.textContent = p[0];
       elIni.textContent = p[0].charAt(0).toUpperCase();
-      elLocal.textContent = p[1];
+      elLocal.textContent = '· ' + p[1];
       elFrase.innerHTML = FRASES[Math.floor(Math.random()*FRASES.length)];
-      elCopias.textContent = copias === 1 ? '🔥 Última cópia disponível' : '🔥 Restam apenas ' + copias + ' cópias disponíveis';
+      elCopias.textContent = '· 🔥 ' + copias + ' cópias';
       el.classList.add('on');
 
       setTimeout(function(){
