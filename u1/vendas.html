@@ -200,6 +200,32 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     font-weight: 800;
   }
 
+  /* ---- TOPO: BARRA VERMELHA / PROCESSAMENTO / AGRACIADA ---- */
+  .topo-vermelho{background:#e8141a;color:#fff;text-align:center;font-size:15px;font-weight:800;line-height:1.35;padding:13px 16px;}
+  .topo-vermelho b{display:block;margin-top:3px;}
+  .proc-pag{background:#fff;text-align:center;padding:36px 20px 32px;}
+  .proc-anel{width:62px;height:62px;margin:0 auto 18px;border:5px solid #f2dede;border-top-color:#c0392b;border-radius:50%;animation:proc-girar .8s linear infinite;}
+  @keyframes proc-girar{to{transform:rotate(360deg);}}
+  .proc-anel.ok{animation:none;border:5px solid #0f8a3c;position:relative;}
+  .proc-anel.ok::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0f8a3c;font-size:34px;font-weight:900;}
+  .proc-txt{font-size:19px;font-weight:900;color:#c0392b;letter-spacing:.3px;line-height:1.3;transition:color .4s;}
+  .proc-txt.ok{color:#0b6b2e;}
+  .proc-sub{font-size:13.5px;font-weight:600;color:#8a8a8a;margin-top:8px;}
+  .proc-nao-feche{font-size:13px;font-weight:600;color:#8a8a8a;margin-top:14px;}
+  #faixa-congrats{display:none;}
+  .escolhida{display:none;background:#fff;padding:34px 20px 30px;text-align:center;}
+  .esc-titulo{font-size:30px;font-weight:900;color:#1aa838;letter-spacing:.5px;margin-bottom:14px;}
+  .esc-sub{font-size:17px;font-weight:600;color:#222;line-height:1.5;margin-bottom:16px;}
+  .esc-sub strong{color:#111;font-weight:800;}
+  .esc-txt{font-size:15.5px;font-weight:600;color:#222;line-height:1.6;max-width:520px;margin:0 auto 14px;}
+  .esc-txt mark{background:#fff23a;color:#111;padding:0 2px;}
+  .esc-verde{color:#1aa838;font-weight:800;}
+  /* durante o processamento só a barra e o anel aparecem */
+  #conteudo-real[data-fase="proc"] > :not(.topo-vermelho):not(#proc-pag){display:none !important;}
+  #conteudo-real[data-fase="ok"] #faixa-congrats{display:block;}
+  #conteudo-real[data-fase="ok"] .escolhida{display:block;}
+  @media (max-width:600px){ .topo-vermelho{font-size:13.5px;} .esc-titulo{font-size:26px;} .esc-sub{font-size:15.5px;} .esc-txt{font-size:14.5px;} }
+
   /* ---- CABEÇALHO DE PARABÉNS / BÊNÇÃO LIBERTADA ---- */
   .congrats{
     background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;text-align:center;
@@ -351,16 +377,31 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 <body>
 
 <!-- =============== CONTEÚDO REAL (BLACK - UPSELL 1) =============== -->
-<div id="conteudo-real">
+<div id="conteudo-real" data-fase="proc">
 
-  <section class="band-alert">
+  <!-- BARRA VERMELHA (fica sempre) -->
+  <div class="topo-vermelho">⚠️ Importante: não carregue em voltar nem atualize esta página — pode interromper o processamento da sua contribuição. <b>Continue a descer 👇</b></div>
+
+  <!-- PROCESSAMENTO (6 s) -> CONFIRMADO -->
+  <div class="proc-pag" id="proc-pag">
+    <div class="proc-anel" id="proc-anel"></div>
+    <p class="proc-txt" id="proc-txt">A confirmar a sua contribuição…</p>
+    <p class="proc-sub" id="proc-sub">Aguarde alguns segundos</p>
+    <p class="proc-nao-feche" id="proc-nao-feche">Não feche esta página enquanto isso.</p>
+  </div>
+
+  <!-- PARABÉNS (aparece quando confirma) -->
+  <div class="congrats" id="faixa-congrats">🎉 Parabéns! A sua contribuição foi acolhida.</div>
+
+  <!-- FOI AGRACIADA (bloco branco) -->
+  <section class="escolhida" id="bloco-escolhida">
     <div class="wrap">
-      <p class="alert-top">📖 LEIA A MENSAGEM DO PADRE ELIAS ATÉ AO FIM PARA ACEDER À NOVENA DE MARIA</p>
+      <h2 class="esc-titulo">FOI AGRACIADA</h2>
+      <p class="esc-sub">Para receber uma <strong>Graça Reservada de Nossa Senhora Desatadora dos Nós</strong>!</p>
+      <p class="esc-txt">Entre todos os que contribuíram hoje, o seu nome foi colocado diante do altar. Ignorar isto agora seria como recusar uma bênção enviada diretamente por Deus — e quando esta porta se fechar, <mark>não voltará a abrir-se</mark>.</p>
+      <p class="esc-txt">Continue a descer, leia a mensagem do Padre Elias e toque em <strong class="esc-verde">"SIM, quero desatar os meus nós em 3 dias"</strong> para receber o que o Céu reservou apenas para os escolhidos.</p>
     </div>
   </section>
-
-  <div class="congrats">🎉 Parabéns! A sua contribuição foi acolhida e uma bênção foi libertada em seu nome…</div>
-
   <section class="band-bless">
     <div class="wrap">
       <p class="bless-kicker">Mensagem do Padre Elias</p>
@@ -388,7 +429,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
   <section class="band-black">
     <div class="wrap">
-      <h1 class="headline">MAS ANTES DE ACEDER, HÁ UMA COISA QUE PRECISA DE SABER</h1>
+      <h1 class="headline">A GRAÇA RESERVADA EM SEU NOME</h1>
     </div>
   </section>
 
@@ -500,7 +541,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       ["Marlene G.",   "Recife, Brasil"]
     ];
     var COPIAS_INICIAL  = 7;      // primeiro aviso mostra 7 cópias
-    var ATRASO_INICIAL  = 8000;   // 8s depois de abrir a página
+    var ATRASO_INICIAL  = 11000;  // 11s: depois do processamento (6s) e do parabéns
     var INTERVALO_MIN   = 18000;  // 18s
     var INTERVALO_MAX   = 26000;  // 26s
     var TEMPO_NA_TELA   = 5000;   // 5s visível
@@ -560,6 +601,27 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
 
     // só na página real (o bloco está dentro de #conteudo-real, escondido na white)
     if (document.documentElement.getAttribute('data-gate') === 'real') setTimeout(proxima, ATRASO_INICIAL);
+  })();
+  </script>
+
+  <!-- PROCESSAMENTO: 6 s a confirmar, depois confirma, solta a chuva dourada e revela a página -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
+  <script>
+  (function(){
+    var raiz = document.getElementById('conteudo-real');
+    if (!raiz) return;
+    var TEMPO = 6000;
+    function confirmar(){
+      var anel = document.getElementById('proc-anel'), txt = document.getElementById('proc-txt'),
+          sub = document.getElementById('proc-sub'), nf = document.getElementById('proc-nao-feche');
+      if (anel) anel.classList.add('ok');
+      if (txt) { txt.textContent = 'Contribuição confirmada'; txt.classList.add('ok'); }
+      if (sub) sub.textContent = 'O seu nome foi colocado diante do altar.';
+      if (nf) nf.style.display = 'none';
+      raiz.setAttribute('data-fase', 'ok');
+      try { if (window.confetti) confetti({ particleCount: 140, spread: 80, origin: { y: 0.35 }, colors: ['#D4AF37','#FDF3D6','#0f8a3c','#ffffff'] }); } catch(e){}
+    }
+    setTimeout(confirmar, TEMPO);
   })();
   </script>
 
