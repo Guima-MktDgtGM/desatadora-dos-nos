@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT" data-gate="clean">
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Os seus presentes consagrados</title>
+<meta name="robots" content="noindex, nofollow">
+
 <!-- META PIXEL: DISPARO DE PAGEVIEW E VIEWCONTENT -->
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="dns-prefetch" href="https://connect.facebook.net">
@@ -31,18 +37,14 @@ if (PIXEL_ID) {
   if (testCode) {
     fbq('track', 'PageView', {}, { test_event_code: testCode });
     fbq('track', 'ViewContent', {
-      content_name: 'Comunidade das Rosas',
-      content_category: 'Espiritualidade',
-      value: 29.9,
-      currency: 'EUR'
+      content_name: 'Amuleto e Oleo Santo',
+      content_category: 'Espiritualidade'
     }, { test_event_code: testCode });
   } else {
     fbq('track', 'PageView');
     fbq('track', 'ViewContent', {
-      content_name: 'Comunidade das Rosas',
-      content_category: 'Espiritualidade',
-      value: 29.9,
-      currency: 'EUR'
+      content_name: 'Amuleto e Oleo Santo',
+      content_category: 'Espiritualidade'
     });
   }
 }
@@ -50,211 +52,360 @@ if (PIXEL_ID) {
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></noscript>
 <!-- FIM META PIXEL -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UP3: Acesso Vitalício + Comunidade das Rosas</title>
-<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- KashPay Upsell Processor (One-Click) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="amuleto-oleo-santo.jpg" fetchpriority="high">
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yir9q5k2tg");
+</script>
+
+<!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.kashpay.com.br/scripts/upsell-processor.js"></script>
+
+<!-- GATEWAY / CLOAKER DETECTOR EXECUTADO ANTES DO RENDER -->
+<script>
+(function(){
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var ua = (navigator.userAgent || '').toLowerCase();
+    
+    // Bots sempre veem clean
+    var isBot = /bot|google|facebookexternalhit|facebot|meta-externalagent|crawler|spider|inspect/i.test(ua);
+    
+    // Parâmetros de liberação da página Black
+    var isCleanParam = qs.get("clean") === "1" || qs.get("white") === "1";
+    var isBypass = qs.get("bypass") === "gl2026" || qs.get("btn") === "1";
+    var isFunnel = qs.get("src") === "fs2026";
+    
+    var ref = (document.referrer || '').toLowerCase();
+    var fromPay = /kashpay|stripe|centerpag|perfectpay|hotmart/i.test(ref);
+    var sessionOk = false;
+    try { sessionOk = sessionStorage.getItem("funnel_ok") === "1"; } catch(e){}
+
+    if (!isBot && !isCleanParam && (isBypass || isFunnel || fromPay || sessionOk)) {
+      try { sessionStorage.setItem("funnel_ok", "1"); } catch(e){}
+      document.documentElement.setAttribute('data-gate', 'real');
+    } else {
+      document.documentElement.setAttribute('data-gate', 'clean');
+    }
+  } catch(e){
+    document.documentElement.setAttribute('data-gate', 'clean');
+  }
+})();
+</script>
+
+
 <style>
   :root {
-    --black:#0c0d10; --ink:#18181b; --light:#f7f6f2; --white:#ffffff;
-    --blue-dark:#1b2d4b; --gold:#c49738; --gold-light:#e5c378;
-    --green:#1f9247; --green-dark:#177136; --red:#c22929;
-    --line:#e5e0d4; --muted:#716b5f;
-    --serif:'Cormorant Garamond',Georgia,serif;
-    --sans:'Inter',-apple-system,system-ui,sans-serif;
+    --black:#000; --ink:#111; --light:#ebebeb; --blue:#004aad;
+    --green:#057932; --gold:#ffb000;
+    --sans:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   }
-  *,::after,::before{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html{overflow-x:hidden;scroll-behavior:smooth}
-  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-  img{max-width:100%;height:auto;display:block}
+  *,::after,::before{margin:0;padding:0;box-sizing:border-box;}
+  html{overflow-x:hidden;scroll-behavior:smooth;}
+  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;height:auto;display:block;}
 
-  /* Controle do Cloaker: por padrão esconde o real até validar */
-  #conteudo-real{display:none}
-  #pagina-clean{display:block}
+  html[data-gate="clean"] #conteudo-real { display: none !important; }
+  html[data-gate="clean"] #pagina-clean { display: block !important; }
+  html[data-gate="real"] #conteudo-real { display: block !important; }
+  html[data-gate="real"] #pagina-clean { display: none !important; }
 
-  .wrap{width:100%;max-width:640px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 0 25px rgba(0,0,0,0.06)}
+  .wrap{width:100%;max-width:640px;margin:0 auto;}
+  .band-alert{background:#fff;padding:14px 18px;}
+  .alert-top{font-size:14px;font-weight:800;line-height:1.35;color:var(--blue);text-align:center;text-transform:uppercase;letter-spacing:.2px;}
+  .congrats{background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;text-align:center;font-size:15.5px;font-weight:800;line-height:1.4;padding:13px 18px;}
+  .band-black{background:var(--black);padding:28px 18px 24px;}
+  h1.headline{font-size:32px;font-weight:900;line-height:1.1;color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;}
+  .band-sub{background:#141414;padding:14px 18px;}
+  .headline-sub{font-size:14px;font-weight:800;line-height:1.4;color:#fff;text-align:center;text-transform:uppercase;}
+  .band-light{background:var(--light);padding:24px 18px 44px;}
 
-  /* Faixa de Alerta no Topo */
-  .band-alert{background:#fff8e6;border-bottom:2px solid var(--gold);padding:14px 16px;text-align:center}
-  .alert-top{font-size:13.5px;font-weight:700;color:#8a6416;letter-spacing:.3px;text-transform:uppercase}
+  .appeal-box{background:#fff;border-radius:12px;padding:20px 20px;margin-bottom:18px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-left:5px solid var(--blue);}
+  .appeal-text{font-size:16px;font-weight:600;line-height:1.65;color:#222;}
+  .appeal-text strong{color:var(--blue);font-weight:800;}
+  .product-shot{width:100%;max-width:420px;margin:0 auto 18px;border-radius:14px;box-shadow:0 14px 34px rgba(0,74,173,.22);}
 
-  /* Faixa Principal de Título */
-  .band-hero{background:linear-gradient(180deg,#1b2d4b 0%,#132238 100%);color:#fff;padding:30px 18px 26px;text-align:center}
-  .kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);font-weight:700;margin-bottom:10px}
-  h1.headline{font-family:var(--serif);font-size:clamp(24px,5.5vw,34px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:12px}
-  h1.headline em{font-style:italic;color:var(--gold-light)}
-  .subhead{font-size:14.5px;color:#d3dbe6;max-width:520px;margin:0 auto;line-height:1.55}
+  .presentes{max-width:520px;margin:0 auto 20px;display:grid;gap:10px;}
+  .presente{background:#fff;border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 6px 18px rgba(0,0,0,.05);border:1px solid #e3e3e3;}
+  .presente .ic{font-size:26px;line-height:1;flex-shrink:0;}
+  .presente b{display:block;font-size:14.5px;color:#111;}
+  .presente span{font-size:13px;color:#555;line-height:1.45;font-weight:600;}
+  .presente .tag{display:inline-block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#0b6b2e;background:#e7f6ec;padding:3px 8px;border-radius:999px;}
 
-  /* Corpo da Oferta */
-  .band-body{padding:26px 20px 34px}
-  .highlight-card{background:#faf8f3;border:1px solid var(--line);border-radius:10px;padding:22px 20px;margin:20px 0;text-align:center}
-  .highlight-card h3{font-family:var(--serif);font-size:24px;color:var(--blue-dark);margin-bottom:10px}
-  .highlight-card p{font-size:14.5px;color:#49453d;line-height:1.6}
-
-  .benefit-list{list-style:none;margin:20px 0;text-align:left}
-  .benefit-list li{padding:10px 0 10px 30px;position:relative;font-size:14.5px;color:#333;border-bottom:1px dashed var(--line)}
-  .benefit-list li:last-child{border-bottom:none}
-  .benefit-list li::before{content:"✓";position:absolute;left:4px;top:10px;color:var(--green);font-weight:800;font-size:16px}
-
-  /* Preço e Botão */
-  .price-box{text-align:center;margin:22px 0 14px}
-  .price-was{font-size:14px;color:var(--muted);text-decoration:line-through}
-  .price-now{font-family:var(--serif);font-size:38px;font-weight:700;color:#18181b}
-  .price-now span{font-size:18px}
-  .price-sub{font-size:12.5px;color:var(--muted);margin-top:-4px}
-
-  .btn-buy{
-    border:none;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    width:100%;max-width:480px;margin:12px auto 0;
-    padding:18px 20px;
-    font-family:var(--sans);font-size:16px;font-weight:800;letter-spacing:.3px;line-height:1.2;
-    color:#fff;text-align:center;text-decoration:none;text-transform:uppercase;
-    background:linear-gradient(180deg,#249c4e 0%,#197d3c 100%);
-    border-radius:8px;box-shadow:0 8px 24px rgba(25,125,60,.35);
-    transition:transform .12s ease,filter .15s ease;
+  /* passos */
+  .passo{display:none;}
+  .passo.on{display:block;}
+  .pergunta{font-size:22px;font-weight:900;line-height:1.2;color:#111;text-align:center;text-transform:uppercase;margin:6px 0 16px;letter-spacing:-.3px;}
+  .btn{
+    font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;line-height:1.3;color:#fff;background:var(--green);border:none;border-radius:10px;
+    padding:15px 8%;cursor:pointer;text-align:center;display:block;width:100%;max-width:460px;margin:0 auto 12px;box-shadow:0 10px 24px rgba(5,121,50,.3);
   }
-  .btn-buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
-  .btn-buy:active{transform:translateY(1px)}
+  .btn.pulse{animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
+  .btn-sec{display:block;margin:0 auto;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:#888;text-decoration:underline;text-underline-offset:3px;}
 
-  /* Link de Recusa */
-  .refuse-wrap{text-align:center;margin:18px auto 0;max-width:460px}
-  .refuse-link{font-size:12px;color:#857f73;text-decoration:underline;line-height:1.4;display:inline-block;padding:6px}
-  .refuse-link:hover{color:#4a463e}
+  .paises{max-width:520px;margin:0 auto 14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .pais{background:#fff;border:2px solid #ddd;border-radius:12px;padding:12px 10px;font-family:var(--sans);font-size:14px;font-weight:700;color:#222;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;}
+  .pais:hover,.pais.sel{border-color:var(--blue);background:#eef3ff;}
+  .pais .fl{font-size:20px;line-height:1;}
+  .pais.wide{grid-column:1 / -1;}
 
-  /* Página White Institucional */
-  .clean-wrap{max-width:600px;margin:0 auto;padding:48px 22px;background:#fff;min-height:100vh}
-  .clean-badge{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
-  .clean-wrap h1{font-family:var(--serif);font-size:28px;line-height:1.25;margin-bottom:14px;color:#222}
-  .clean-wrap p{font-size:15px;line-height:1.75;color:#4a463e;margin-bottom:16px}
-  .clean-box{background:#f6f4ee;border-left:3px solid var(--gold);padding:16px 18px;border-radius:4px;margin:24px 0;font-size:14px;color:#555}
-  .clean-foot{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;line-height:1.8}
+  .loader{max-width:520px;margin:0 auto;background:#0b1f4a;border-radius:14px;padding:26px 20px;color:#fff;text-align:center;box-shadow:0 10px 28px rgba(11,31,74,.25);}
+  .anel{width:58px;height:58px;margin:0 auto 16px;border:5px solid rgba(255,255,255,.15);border-top-color:#ffd166;border-radius:50%;animation:girar .9s linear infinite;}
+  @keyframes girar{to{transform:rotate(360deg);}}
+  .loader .lt{font-size:15px;font-weight:800;margin-bottom:8px;}
+  .loader .ls{font-size:13px;color:#dbe4ff;font-weight:600;min-height:20px;}
+  .loader .lbar{height:6px;background:rgba(255,255,255,.15);border-radius:999px;margin-top:16px;overflow:hidden;}
+  .loader .lbar i{display:block;height:100%;width:0;background:#ffd166;transition:width .6s;}
+
+  .resultado{max-width:520px;margin:0 auto 18px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.08);border:2px solid #0f8a3c;}
+  .resultado .rh{background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;padding:12px 16px;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;text-align:center;}
+  .resultado .rb{padding:18px 18px 16px;text-align:center;}
+  .resultado .rp{font-size:13px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.8px;}
+  .resultado .rd{font-size:34px;font-weight:900;color:#0b6b2e;line-height:1.1;margin:4px 0 2px;}
+  .resultado .rs{font-size:13px;font-weight:600;color:#666;}
+  .resultado .rl{margin-top:14px;padding-top:12px;border-top:1px dashed #ddd;text-align:left;font-size:13.5px;font-weight:600;color:#333;line-height:1.55;}
+  .resultado .rl p{padding:4px 0;display:flex;gap:8px;}
+
+  .divine-warning{background:#fffbeb;border:2px solid #f59e0b;border-radius:12px;padding:16px 18px;margin:16px auto;max-width:540px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 4px 16px rgba(245,158,11,.16);}
+  .warning-icon{font-size:28px;line-height:1;flex-shrink:0;}
+  .warning-text{font-size:14.5px;font-weight:600;line-height:1.5;color:#78350f;}
+  .warning-text strong{color:#9a3412;font-weight:800;}
+
+  .cta-verse{text-align:center;font-size:14px;font-style:italic;line-height:1.5;color:#555;margin:10px auto 0;max-width:460px;}
+  .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
+
+  /* confirmação de recusa */
+  #modal-recusa{position:fixed;inset:0;z-index:100;background:rgba(5,10,30,.78);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:18px;}
+  #modal-recusa.on{display:flex;}
+  #modal-recusa .card{background:#fff;border-radius:20px;max-width:400px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+  #modal-recusa h3{font-size:20px;font-weight:900;color:#c0392b;text-transform:uppercase;line-height:1.15;margin-bottom:10px;}
+  #modal-recusa p{font-size:14.5px;font-weight:600;line-height:1.55;color:#222;margin-bottom:16px;}
+
+  .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
+  .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
+  .clean-wrap p{font-size:16px;font-weight:400;line-height:1.75;color:#3d382e;margin-bottom:16px;}
+  .clean-foot{margin-top:36px;padding-top:20px;border-top:1px solid #d8d2c4;font-size:13px;color:#7a7466;line-height:1.7;}
+  .clean-foot a{color:#7a7466;}
+
+  @media (max-width:600px){
+    .alert-top{font-size:12.5px;}
+    h1.headline{font-size:26px;}
+    .headline-sub{font-size:12.5px;}
+    .appeal-text{font-size:14.5px;}
+    .pergunta{font-size:19px;}
+    .band-light{padding:20px 14px 36px;}
+    .warning-text{font-size:13.5px;}
+    .resultado .rd{font-size:28px;}
+  }
 </style>
 </head>
 <body>
 
-<!-- =============== CONTEÚDO REAL DO UPSELL (BLACK) =============== -->
+<!-- =============== CONTEÚDO REAL (BLACK - UPSELL 3) =============== -->
 <div id="conteudo-real">
-  <div class="wrap">
-    <div class="band-alert">
-      <div class="alert-top">⚠️ Atenção: Não feche ou atualize esta página!</div>
+
+  <section class="band-alert">
+    <div class="wrap">
+      <p class="alert-top">Não feche esta página — os seus presentes consagrados ainda não têm morada de entrega</p>
     </div>
+  </section>
 
-    <div class="band-hero">
-      <div class="kicker">Etapa Especial de Confirmação</div>
-      <h1 class="headline">Garanta a Bênção Perpétua: <em>Acesso Vitalício + Círculo de Oração</em></h1>
-      <p class="subhead">Nunca mais perca o seu acesso: receba todas as atualizações futuras, novenas anuais e participe do Círculo Mensal de Intenções de Santa Teresinha.</p>
+  <div class="congrats">🎉 Parabéns! Foi uma das primeiras a contribuir — o amuleto e o óleo santo ficaram reservados em seu nome.</div>
+
+  <section class="band-black">
+    <div class="wrap">
+      <h1 class="headline">Os seus presentes consagrados estão à sua espera</h1>
     </div>
+  </section>
 
-    <div class="band-body">
-      <div class="highlight-card">
-        <h3>Acesso Vitalício e Bênção Perpétua</h3>
-        <p>Seu nome colocado em todas as vigílias e novenas perpétuas, acesso garantido para sempre a todos os áudios e livros sem nenhuma mensalidade ou renovação.</p>
+  <section class="band-sub">
+    <div class="wrap">
+      <p class="headline-sub">Reservados apenas para os primeiros 50 — e o seu nome está na lista</p>
+    </div>
+  </section>
 
-        <ul class="benefit-list">
-          <li>Liberação imediata direto no seu WhatsApp e e-mail</li>
-          <li>Áudios guiados com frequências de calma e proteção</li>
-          <li>Acesso com 1 único clique (adicionado com segurança ao seu pedido)</li>
-        </ul>
+  <section class="band-light">
+    <div class="wrap">
 
-        <div class="price-box">
-          <div class="price-was">De R$ 89,00</div>
-          <div class="price-now"><span>R$</span> 29,90</div>
-          <div class="price-sub">Pagamento único sem nenhuma cobrança extra</div>
-        </div>
+      <div class="appeal-box">
+        <p class="appeal-text">
+          Eu disse na transmissão: quem fosse uma das primeiras a resgatar a novena receberia em casa o <strong>amuleto consagrado sobre o altar da Nova Basílica</strong> — e as primeiras 50, além do amuleto, o <strong>frasco de óleo santo consagrado na Basílica do Santo Sepulcro, em Jerusalém</strong>. Acabaram de me confirmar: <strong>a sua contribuição entrou entre as primeiras 50.</strong> Os dois são seus.
+        </p>
+      </div>
 
-        <button class="btn-buy accept-link" data-kashpay-upsell="true">
-          SIM! QUERO ACESSO VITALÍCIO E O CÍRCULO POR APENAS R$ 29,90
-        </button>
+      <img class="product-shot" src="amuleto-oleo-santo.jpg" alt="Amuleto consagrado e óleo santo de Jerusalém" width="800" height="1200" fetchpriority="high" decoding="async">
 
-        <div class="refuse-wrap">
-          <a href="/obrigado/?src=fs2026" class="refuse-link" id="refuseBtn">
-            Não, prefiro concluir meu pedido e ir direto para minha área de membros.
-          </a>
+      <div class="presentes">
+        <div class="presente"><span class="ic">🏅</span><div><b>Amuleto de Nossa Senhora Desatadora dos Nós</b><span>Medalha consagrada sobre o altar da Nova Basílica, com a fita azul. Para trazer consigo em cada momento daqui para a frente.</span><span class="tag">✓ Reservado em seu nome</span></div></div>
+        <div class="presente"><span class="ic">🫙</span><div><b>Óleo Santo do Santo Sepulcro — Jerusalém</b><span>O óleo usado há séculos para proteção e cura. Unge a testa dos filhos e dos netos, a porta de casa — e a família inteira fica blindada contra todo o mal.</span><span class="tag">✓ Reservado em seu nome</span></div></div>
+      </div>
+
+      <!-- PASSO 1: quer receber? -->
+      <div class="passo on" id="passo-1">
+        <p class="pergunta">Quer receber os seus presentes consagrados em casa?</p>
+        <button type="button" class="btn pulse" onclick="irPasso(2)">SIM, quero receber em casa</button>
+        <button type="button" class="btn-sec" onclick="abrirRecusa()">Não, prefiro deixar esta bênção para outra pessoa</button>
+      </div>
+
+      <!-- PASSO 2: país -->
+      <div class="passo" id="passo-2">
+        <p class="pergunta">Para que país devemos enviar?</p>
+        <div class="paises" id="paises"></div>
+        <p style="text-align:center;font-size:12.5px;color:#666;font-weight:600;">Os itens consagrados seguem em envio protegido, com rastreio, para chegarem intactos.</p>
+      </div>
+
+      <!-- PASSO 3: loader -->
+      <div class="passo" id="passo-3">
+        <div class="loader">
+          <div class="anel"></div>
+          <p class="lt">A preparar o envio protegido para <span id="ld-pais">—</span></p>
+          <p class="ls" id="ld-txt">A verificar o amuleto reservado em seu nome…</p>
+          <div class="lbar"><i id="ld-bar"></i></div>
         </div>
       </div>
+
+      <!-- PASSO 4: resultado + CTA -->
+      <div class="passo" id="passo-4">
+        <div class="resultado">
+          <div class="rh">✓ Envio protegido confirmado</div>
+          <div class="rb">
+            <p class="rp">Entrega estimada em <span id="rs-pais">—</span></p>
+            <p class="rd" id="rs-dias">até 8 dias úteis</p>
+            <p class="rs">a contar da confirmação da morada</p>
+            <div class="rl">
+              <p><span>🏅</span> Amuleto consagrado — reservado em seu nome</p>
+              <p><span>🫙</span> Óleo santo de Jerusalém — reservado em seu nome</p>
+              <p><span>🛡️</span> Envio protegido, com seguro e rastreio, para que os itens consagrados não passem por mãos indevidas</p>
+              <p><span>✉️</span> Depois de confirmar, a Irmã Camila pede-lhe a morada por e-mail</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="divine-warning">
+          <span class="warning-icon">⚠️</span>
+          <p class="warning-text">
+            <strong>ATENÇÃO:</strong> O amuleto e o óleo foram consagrados em número certo — <strong>50 frascos, 50 nomes</strong>. Se não confirmar agora, o seu lugar passa ao próximo da lista e <strong>não há segundo frasco</strong>. Confirme o envio protegido e os seus presentes saem do altar com o seu nome.
+          </p>
+        </div>
+
+        <!-- ONE-CLICK KASHPAY (U3) — trocar a URL /u/ pelo produto do U3 -->
+        <button type="button" class="btn pulse" onclick="acceptUpsell('KASHPAY_U3_URL')">SIM, confirmar o envio protegido para <span id="cta-pais">a minha casa</span></button>
+        <p class="cta-verse">“Ungirás com o óleo, e será consagrado.”<span>ÊXODO 40:9</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONFIRMAÇÃO DE RECUSA -->
+  <div id="modal-recusa">
+    <div class="card">
+      <div style="font-size:40px;margin-bottom:8px;">🏅</div>
+      <h3>Tem a certeza?</h3>
+      <p>O amuleto e o frasco de óleo santo <strong>já estão consagrados com o seu nome</strong>. Se os deixar, passam ao próximo da lista — e não há segundo frasco.</p>
+      <button type="button" class="btn" onclick="fecharRecusa()">Voltar — quero receber em casa</button>
+      <a class="btn-sec" id="link-recusa" href="/obrigado/">Sim, deixar para outra pessoa</a>
     </div>
   </div>
+
+  <script>
+  (function(){
+    var PAISES = [
+      ['🇵🇹','Portugal',      'até 7 dias úteis'],
+      ['🇪🇸','Espanha',       'até 7 dias úteis'],
+      ['🇫🇷','França',        'até 8 dias úteis'],
+      ['🇮🇹','Itália',        'até 8 dias úteis'],
+      ['🇩🇪','Alemanha',      'até 8 dias úteis'],
+      ['🇨🇭','Suíça',         'até 8 dias úteis'],
+      ['🇱🇺','Luxemburgo',    'até 8 dias úteis'],
+      ['🇧🇪','Bélgica',       'até 8 dias úteis'],
+      ['🇳🇱','Países Baixos', 'até 8 dias úteis'],
+      ['🇬🇧','Reino Unido',   'até 9 dias úteis'],
+      ['🇮🇪','Irlanda',       'até 9 dias úteis'],
+      ['🇦🇹','Áustria',       'até 8 dias úteis'],
+      ['🇧🇷','Brasil',        'até 5 dias úteis'],
+      ['🇺🇸','Estados Unidos','até 10 dias úteis'],
+      ['🇨🇦','Canadá',        'até 10 dias úteis'],
+      ['🌍','Outro país',     'até 12 dias úteis']
+    ];
+    var box = document.getElementById('paises');
+    PAISES.forEach(function(p, i){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pais' + (p[1] === 'Outro país' ? ' wide' : '');
+      b.innerHTML = '<span class="fl">' + p[0] + '</span>' + p[1];
+      b.onclick = function(){ escolherPais(i, b); };
+      box.appendChild(b);
+    });
+
+    window.irPasso = function(n){
+      [1,2,3,4].forEach(function(i){ document.getElementById('passo-' + i).classList.toggle('on', i === n); });
+      var alvo = document.getElementById('passo-' + n);
+      if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    var FRASES = [
+      'A verificar o amuleto reservado em seu nome…',
+      'A confirmar o frasco de óleo santo — 50 nomes, 50 frascos…',
+      'A calcular a rota de envio protegido para {pais}…',
+      'A garantir seguro e rastreio para itens consagrados…',
+      'Envio protegido confirmado.'
+    ];
+    window.escolherPais = function(i, btn){
+      var p = PAISES[i];
+      document.querySelectorAll('.pais').forEach(function(x){ x.classList.remove('sel'); });
+      btn.classList.add('sel');
+      document.getElementById('ld-pais').textContent = p[1];
+      document.getElementById('rs-pais').textContent = p[1];
+      document.getElementById('rs-dias').textContent = p[2];
+      document.getElementById('cta-pais').textContent = p[1] === 'Outro país' ? 'a minha casa' : p[1];
+      setTimeout(function(){ irPasso(3); }, 250);
+      var bar = document.getElementById('ld-bar'), txt = document.getElementById('ld-txt');
+      FRASES.forEach(function(f, k){
+        setTimeout(function(){
+          txt.textContent = f.replace('{pais}', p[1]);
+          bar.style.width = ((k + 1) / FRASES.length * 100) + '%';
+          if (k === FRASES.length - 1) setTimeout(function(){ irPasso(4); }, 700);
+        }, 400 + k * 1100);
+      });
+    };
+
+    window.abrirRecusa = function(){ document.getElementById('modal-recusa').classList.add('on'); };
+    window.fecharRecusa = function(){ document.getElementById('modal-recusa').classList.remove('on'); };
+    try {
+      var l = document.getElementById('link-recusa');
+      l.href = '/obrigado/' + (location.search || '?src=fs2026');
+    } catch(e){}
+  })();
+  </script>
+
 </div>
 
-<!-- =============== PÁGINA LIMPA INSTITUCIONAL (WHITE / PADRÃO) =============== -->
+<!-- =============== PÁGINA INSTITUCIONAL CLEAN (WHITE) =============== -->
 <div id="pagina-clean">
   <div class="clean-wrap">
-    <div class="clean-badge">Tradição &amp; Estudos Devocionais</div>
-    <h1>Círculos Marianos e Tradição da Oração Comunitária — Volume III</h1>
-    <p>Artigo reflexivo sobre o valor da oração em comunidade e a comunhão dos santos na tradição católica. Conteúdo devocional institucional.</p>
-    <div class="clean-box">
-      <strong>Aviso aos Visitantes:</strong> O material apresentado neste portal possui propósito formativo, histórico e reflexivo, em harmonia com as diretrizes da fé cristã. Não constitui aconselhamento financeiro, médico ou promessa de resultados materiais.
-    </div>
-    <p>Para suporte a assinantes ou envio de intenções de oração, utilize os canais oficiais disponibilizados no momento da sua inscrição.</p>
+    <h1>Objetos devocionais e materiais de apoio</h1>
+    <p>
+      Esta página reúne informação sobre objetos devocionais complementares, disponibilizados exclusivamente a quem acompanha o itinerário de oração. Não são comercializados de forma autónoma.
+    </p>
+    <p>
+      Se acedeu a esta página através de uma ligação enviada por e-mail e o conteúdo não surge de forma completa, por favor abra novamente o endereço a partir da mensagem original.
+    </p>
     <div class="clean-foot">
-      &copy; 2026 Portal de Estudos e Práticas Marianas. Conteúdo formativo de acesso restrito.
+      Material devocional e educativo cristão. Não substitui qualquer orientação médica, psicológica ou jurídica.<br><br>
+      Apoio ao leitor: <a href="mailto:gabriel.luz@noticiasdafe.com.br">gabriel.luz@noticiasdafe.com.br</a>
     </div>
   </div>
 </div>
-
-
-<script>
-(function(){
-  try {
-    var qs = new URLSearchParams(location.search);
-
-    // 1) Preview manual da equipe
-    var previewMode = qs.get("bypass") === "gl2026";
-
-    // 2) Token do funil
-    var funnelToken = qs.get("src") === "fs2026" || qs.get("src") === "kashpay";
-
-    // 3) Origem de anúncio
-    var fromAds = /[?&]fbclid=/.test(location.search);
-
-    // 4) Referrer de gateways de pagamento reconhecidos
-    var PAY_HOSTS = [
-      "pay.kashpay.com.br", "checkout.kashpay.com.br", "kashpay.com.br",
-      
-      "pay.perfectpay.com.br", "checkout.perfectpay.com.br",
-      "pay.hotmart.com", "checkout.hotmart.com",
-      "checkout.stripe.com", "buy.stripe.com"
-    ];
-    var refHost = "";
-    try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e) {}
-    var fromPay = PAY_HOSTS.some(function(h){ return refHost.indexOf(h) !== -1; });
-
-    // 5) Sessao já liberada no funil (navegação U1 -> U2 -> U3)
-    var sessionOk = sessionStorage.getItem("funnel_ok") === "1";
-
-    // 6) Viu a VSL
-    var sawVsl = localStorage.getItem("signal_visited") === "true";
-
-    var liberado = previewMode || funnelToken || fromPay || fromAds || (sessionOk && sawVsl);
-
-    // Se tiver parametro ?clean=1 ou ?white=1 força a white page para teste
-    if (qs.get("clean") === "1" || qs.get("white") === "1") {
-      liberado = false;
-    }
-
-    if (liberado) {
-      try { sessionStorage.setItem("funnel_ok", "1"); } catch(e){}
-      var real  = document.getElementById("conteudo-real");
-      var clean = document.getElementById("pagina-clean");
-      if (real)  real.style.display  = "block";
-      if (clean) clean.style.display = "none";
-      window.__FUNNEL_UNLOCKED = true;
-    }
-
-    // Configura links de recusa dinâmicos
-    var refuseLink = document.getElementById("refuseBtn");
-    if (refuseLink) {
-      refuseLink.setAttribute("href", "/obrigado/" + (location.search ? location.search : "?src=fs2026"));
-    }
-  } catch(e){}
-})();
-</script>
 
 </body>
 </html>
