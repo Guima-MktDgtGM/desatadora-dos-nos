@@ -1,12 +1,13 @@
 // Service Worker do App Caminhos da Fé
-const CACHE_NAME = 'caminhos-da-fe-v5';
+const CACHE_NAME = 'caminhos-da-fe-v6';
 const ASSETS_TO_CACHE = [
   './index.html',
   './manifest.json',
   './images/app-icon.jpg',
   './images/vela-altar.jpg',
   './images/frequencia-som.jpg',
-  './images/manuscrito-9-palavras.jpg'
+  './images/manuscrito-9-palavras.jpg',
+  './images/padre-elias.jpg'
 ];
 
 self.addEventListener('install', (e) => {

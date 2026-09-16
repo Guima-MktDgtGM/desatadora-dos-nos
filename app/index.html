@@ -377,6 +377,19 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           </div>
         </div>
 
+        <!-- CÍRCULO DE ORAÇÃO NO WHATSAPP -->
+        <a href="https://chat.whatsapp.com/JZRzUaIEfw75xzBFWPSroQ" target="_blank" rel="noopener" onclick="marcarGrupoVisto()" class="glass-card p-4 flex items-center gap-3.5 border-emerald-500/30 bg-gradient-to-r from-emerald-950/30 via-[#0B132B] to-[#0B132B]">
+          <img src="images/padre-elias.jpg" alt="Padre Elias" class="w-12 h-12 rounded-2xl object-cover border border-sacred-gold/40 flex-shrink-0">
+          <div class="flex-1 min-w-0">
+            <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-wider block">Círculo de Oração · WhatsApp</span>
+            <h4 class="text-sm font-bold text-white font-serif mt-0.5">Ninguém reza sozinho</h4>
+            <p class="text-[11px] text-slate-400 leading-snug">Entre no grupo do Padre Elias e reze com os irmãos.</p>
+          </div>
+          <span class="w-10 h-10 rounded-2xl bg-[#25D366] flex items-center justify-center flex-shrink-0 shadow-lg">
+            <i data-lucide="message-circle" class="w-5 h-5 text-[#062b16]"></i>
+          </span>
+        </a>
+
         <!-- CARD DA VELA SAGRADA DA FAMÍLIA (STREAK DIÁRIO COM CHAMA LÍQUIDA) -->
         <div class="glass-card p-5 border-amber-500/30 relative overflow-hidden bg-gradient-to-b from-amber-950/30 via-sacred-surface to-sacred-surface">
           <div class="flex items-start justify-between">
@@ -635,6 +648,19 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
           <p class="text-xs text-slate-300">Milhares de irmãos unidos em oração mútua sob o Manto de Maria.</p>
         </div>
 
+        <!-- GRUPO NO WHATSAPP -->
+        <a href="https://chat.whatsapp.com/JZRzUaIEfw75xzBFWPSroQ" target="_blank" rel="noopener" onclick="marcarGrupoVisto()" class="glass-card p-4 flex items-center gap-3.5 border-emerald-500/30 bg-emerald-950/20">
+          <img src="images/padre-elias.jpg" alt="Padre Elias" class="w-12 h-12 rounded-2xl object-cover border border-sacred-gold/40 flex-shrink-0">
+          <div class="flex-1 min-w-0">
+            <span class="text-[10px] font-bold text-emerald-300 uppercase tracking-wider block">Grupo no WhatsApp</span>
+            <h4 class="text-sm font-bold text-white font-serif mt-0.5">Rezar com o Padre Elias e os irmãos</h4>
+            <p class="text-[11px] text-slate-400 leading-snug">Orações diárias em grupo, pedidos e graças partilhadas.</p>
+          </div>
+          <span class="w-10 h-10 rounded-2xl bg-[#25D366] flex items-center justify-center flex-shrink-0 shadow-lg">
+            <i data-lucide="message-circle" class="w-5 h-5 text-[#062b16]"></i>
+          </span>
+        </a>
+
         <!-- CAMPO DE PUBLICAÇÃO DO DEVOTO -->
         <div class="glass-card p-4 space-y-3">
           <span class="text-[11px] font-cinzel font-bold text-sacred-gold block uppercase tracking-wider">Deixe o Seu Pedido ou Testemunho</span>
@@ -815,6 +841,26 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       </div>
     </div>
 
+    <!-- CONVITE PARA O GRUPO (aparece uma vez: 2.ª abertura ou após o Dia 1) -->
+    <div id="grupo-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-5">
+      <div class="glass-modal w-full max-w-sm rounded-3xl overflow-hidden">
+        <div class="p-6 pb-4 text-center">
+          <img src="images/padre-elias.jpg" alt="Padre Elias" class="w-20 h-20 rounded-full object-cover border-2 border-sacred-gold mx-auto shadow-lg">
+          <span class="text-[10px] font-cinzel font-bold text-sacred-goldLight uppercase tracking-wider block mt-3">Mensagem do Padre Elias</span>
+          <h3 class="text-lg font-serif font-bold text-white mt-1 leading-snug">Ninguém desata os nós sozinho</h3>
+          <p class="text-xs text-slate-300 leading-relaxed mt-2">
+            O Padre Herman não me deu as 9 Palavras e me mandou embora — ficou comigo e rezou comigo. É isso que o Círculo de Oração faz por si: todos os dias rezamos juntos, levamos as intenções uns dos outros ao altar de Maria e ninguém desiste no 3.º dia.
+          </p>
+        </div>
+        <div class="px-6 pb-6 space-y-2">
+          <a href="https://chat.whatsapp.com/JZRzUaIEfw75xzBFWPSroQ" target="_blank" rel="noopener" onclick="marcarGrupoVisto(); fecharGrupoModal();" class="w-full py-3.5 rounded-2xl bg-[#25D366] text-[#062b16] font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Entrar no Círculo de Oração
+          </a>
+          <button onclick="marcarGrupoVisto(); fecharGrupoModal();" class="w-full py-2 text-[11px] text-slate-500 underline underline-offset-2">Agora não</button>
+        </div>
+      </div>
+    </div>
+
     <div id="terms-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
       <div class="glass-modal w-full max-w-sm rounded-[32px] p-5 shadow-2xl flex flex-col max-h-[90vh] border border-sacred-gold/40 animate-in zoom-in-95 duration-200">
         
@@ -956,6 +1002,28 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
       const modal = document.getElementById('terms-modal');
       if (modal) modal.classList.add('hidden');
     }
+
+    // ---- Convite para o grupo: 2.ª abertura (ou Dia 1 concluído), uma vez só ----
+    function marcarGrupoVisto() { try { localStorage.setItem('novena_grupo_visto', '1'); } catch (e) {} }
+    function fecharGrupoModal() { document.getElementById('grupo-modal').classList.add('hidden'); }
+    function verificarConviteGrupo() {
+      try {
+        if (localStorage.getItem('novena_grupo_visto') === '1') return;
+        if (localStorage.getItem('novena_terms_accepted') !== 'true') return;
+        const aberturas = parseInt(localStorage.getItem('novena_aberturas') || '0', 10);
+        const diasFeitos = JSON.parse(localStorage.getItem('novena_completed_days') || '[]').length;
+        if (aberturas < 2 && diasFeitos < 1) return;
+        const termosAberto = !document.getElementById('terms-modal').classList.contains('hidden');
+        const instalarAberto = document.getElementById('install-modal') && !document.getElementById('install-modal').classList.contains('hidden');
+        if (termosAberto || instalarAberto) return;
+        document.getElementById('grupo-modal').classList.remove('hidden');
+        lucide.createIcons();
+      } catch (e) {}
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      try { localStorage.setItem('novena_aberturas', String(parseInt(localStorage.getItem('novena_aberturas') || '0', 10) + 1)); } catch (e) {}
+      setTimeout(verificarConviteGrupo, 2500);
+    });
 
     function acceptTerms() {
       saveState({ termsAccepted: true });
