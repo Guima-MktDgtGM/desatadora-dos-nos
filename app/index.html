@@ -1,10 +1,3 @@
-const isNext = (i === 1 || state.completedDays.includes(i - 1)) && !diaSoAmanha(i);    // Datas de conclusão (dia -> YYYY-MM-DD). Um dia por dia: o seguinte só abre no dia civil seguinte.
-    function hojeISO() { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
-    function getCompletedDates() { try { return JSON.parse(localStorage.getItem('novena_completed_dates') || '{}'); } catch(e) { return {}; } }
-    function setCompletedDate(day, iso) { const m = getCompletedDates(); if (iso) m[day] = iso; else delete m[day]; localStorage.setItem('novena_completed_dates', JSON.stringify(m)); }
-    // true se o dia N só abre amanhã (anterior concluído HOJE)
-    function diaSoAmanha(n) { if (n <= 1) return false; const s = getState(); if (!s.completedDays.includes(n - 1) || s.completedDays.includes(n)) return false; return getCompletedDates()[n - 1] === hojeISO(); }
-
 <!DOCTYPE html>
 <html lang="pt-PT" class="dark">
 <head>
@@ -1185,6 +1178,27 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
     // -------------------------------------------------------------
     // 3. GERENCIADOR DE ESTADO LOCALSTORAGE
     // -------------------------------------------------------------
+    // Datas de conclusão (dia -> YYYY-MM-DD). Um nó por dia: o seguinte só abre no dia civil seguinte.
+    function hojeISO() {
+      const d = new Date();
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+    function getCompletedDates() {
+      try { return JSON.parse(localStorage.getItem('novena_completed_dates') || '{}'); } catch (e) { return {}; }
+    }
+    function setCompletedDate(day, iso) {
+      const m = getCompletedDates();
+      if (iso) m[day] = iso; else delete m[day];
+      localStorage.setItem('novena_completed_dates', JSON.stringify(m));
+    }
+    // true se o dia N só abre amanhã (o anterior foi concluído HOJE)
+    function diaSoAmanha(n) {
+      if (n <= 1) return false;
+      const s = getState();
+      if (!s.completedDays.includes(n - 1) || s.completedDays.includes(n)) return false;
+      return getCompletedDates()[n - 1] === hojeISO();
+    }
+
     function getState() {
       return {
         completedDays: JSON.parse(localStorage.getItem('novena_completed_days') || '[]'),
@@ -1238,7 +1252,7 @@ src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></
             </div>
           `;
         } else {
-          const isNext = i === 1 || state.completedDays.includes(i - 1);
+          const isNext = (i === 1 || state.completedDays.includes(i - 1)) && !diaSoAmanha(i);
           const knotClass = isNext ? 'knot-pulse border-sacred-gold bg-[#0F1E3D] text-sacred-gold font-bold' : 'border-slate-800 bg-slate-950/60 text-slate-600';
           html += `
             <div onclick="openDayModal(${i})" class="flex flex-col items-center cursor-pointer group">
