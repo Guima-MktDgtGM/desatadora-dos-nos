@@ -1,45 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-PT" class="dark">
 <head>
-<!-- META PIXEL: DISPARO DE PAGEVIEW E VIEWCONTENT -->
-<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-<link rel="dns-prefetch" href="https://connect.facebook.net">
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-
-var PIXEL_ID = window.__FB_PIXEL_ID || "2782586508793387";
-try {
-  var urlPix = new URLSearchParams(window.location.search).get('pixel');
-  if (urlPix) PIXEL_ID = urlPix;
-} catch(e){}
-
-if (PIXEL_ID) {
-  fbq('init', PIXEL_ID);
-  
-  var testCode = null;
-  try {
-    testCode = new URLSearchParams(window.location.search).get('test_event_code');
-  } catch(e){}
-  
-  if (testCode) {
-    fbq('track', 'PageView', {}, { test_event_code: testCode });
-    
-  } else {
-    fbq('track', 'PageView');
-    
-  }
-}
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2782586508793387&ev=PageView&noscript=1"/></noscript>
-<!-- FIM META PIXEL -->
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
