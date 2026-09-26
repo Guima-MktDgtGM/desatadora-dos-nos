@@ -384,6 +384,10 @@
     .appeal-text{font-size:14.5px;}
     .band-light{padding:22px 14px 30px;}
   }
+
+  /* Ocultar silenciosamente botões de erro/recusa da KashPay */
+  #kashpay-skip-btn, #kashpay-retry-btn { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -460,6 +464,10 @@
       <button type="button" id="btn-upsell" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/a18aafbc3a9f66a8')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: 18px auto 10px;">SIM, quero que a oração reze por mim enquanto durmo</button>
 
       <p class="cta-verse">“De madrugada, ainda escuro, Jesus levantou-se, saiu e foi orar.”<span>MARCOS 1:35</span></p>
+
+      <!-- LINK DE RECUSA MANUAL (DIRECIONA PARA /U3/ PRESERVANDO PARÂMETROS) -->
+      <a href="/u3/" id="link-recusa-u2" style="display:block;margin:16px auto 0;font-size:12.5px;font-weight:600;color:#888;text-decoration:underline;text-underline-offset:3px;text-align:center;">Não, prefiro abrir mão destes áudios sagrados</a>
+
     </div>
   </section>
 
@@ -482,6 +490,68 @@
     </div>
   </div>
 </div>
+
+
+  <!-- REDIRECIONAMENTO SILENCIOSO EM CASO DE RECUSA/FALHA NO CARTÃO OU RECUSA MANUAL (U2 -> /u3/) -->
+  <script>
+  (function() {
+    var redirected = false;
+    var targetPath = '/u3/';
+
+    function triggerRedirect() {
+      if (redirected) return;
+      redirected = true;
+      var search = window.location.search || '';
+      if (!search) {
+        search = '?src=fs2026';
+      } else if (search.indexOf('src=') === -1) {
+        search += '&src=fs2026';
+      }
+      window.location.href = targetPath + search;
+    }
+
+    // Se já estiver no DOM
+    if (document.getElementById('kashpay-skip-btn')) {
+      triggerRedirect();
+      return;
+    }
+
+    // MutationObserver em document.body para detectar quando #kashpay-skip-btn for renderizado
+    var observer = new MutationObserver(function(mutations, obs) {
+      if (redirected) return;
+      var skipBtn = document.getElementById('kashpay-skip-btn') || document.querySelector('#kashpay-skip-btn');
+      if (skipBtn) {
+        obs.disconnect();
+        triggerRedirect();
+      }
+    });
+
+    function initObserver() {
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          if (document.body) {
+            observer.observe(document.body, { childList: true, subtree: true });
+          }
+        });
+      }
+    }
+
+    initObserver();
+
+    // Link de recusa ("não quero") redirecionando para /u3/ preservando parâmetros
+    document.addEventListener('DOMContentLoaded', function() {
+      var linkRecusa = document.getElementById('link-recusa-u2');
+      if (linkRecusa) {
+        linkRecusa.addEventListener('click', function(e) {
+          e.preventDefault();
+          triggerRedirect();
+        });
+      }
+    });
+  })();
+  </script>
 
 </body>
 </html>

@@ -380,6 +380,10 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+
+  /* Ocultar silenciosamente botões de erro/recusa da KashPay */
+  #kashpay-skip-btn, #kashpay-retry-btn { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -621,6 +625,57 @@
       }, 4200);
     }
   };
+  </script>
+
+
+  <!-- REDIRECIONAMENTO SILENCIOSO EM CASO DE RECUSA/FALHA NO CARTÃO (U1 -> /u2/) -->
+  <script>
+  (function() {
+    var redirected = false;
+    var targetPath = '/u2/';
+
+    function triggerRedirect() {
+      if (redirected) return;
+      redirected = true;
+      var search = window.location.search || '';
+      if (!search) {
+        search = '?src=fs2026';
+      } else if (search.indexOf('src=') === -1) {
+        search += '&src=fs2026';
+      }
+      window.location.href = targetPath + search;
+    }
+
+    // Se já estiver no DOM
+    if (document.getElementById('kashpay-skip-btn')) {
+      triggerRedirect();
+      return;
+    }
+
+    // MutationObserver em document.body para detectar quando #kashpay-skip-btn for renderizado
+    var observer = new MutationObserver(function(mutations, obs) {
+      if (redirected) return;
+      var skipBtn = document.getElementById('kashpay-skip-btn') || document.querySelector('#kashpay-skip-btn');
+      if (skipBtn) {
+        obs.disconnect();
+        triggerRedirect();
+      }
+    });
+
+    function initObserver() {
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          if (document.body) {
+            observer.observe(document.body, { childList: true, subtree: true });
+          }
+        });
+      }
+    }
+
+    initObserver();
+  })();
   </script>
 
 </body>
