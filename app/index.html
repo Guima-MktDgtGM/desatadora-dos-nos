@@ -526,6 +526,179 @@
         </div>
       </div>
 
+      <!-- ==================== MODAL GUIA DE 15 DIAS COM MARIA (LEITOR COMPLETO) ==================== -->
+      <div id="guia-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="glass-modal w-full max-w-md max-h-[94vh] rounded-t-[32px] sm:rounded-3xl flex flex-col shadow-2xl overflow-hidden animate-in slide-in-from-bottom duration-300 border-t border-sacred-gold/40">
+          
+          <!-- Topo do Modal -->
+          <div class="p-4 px-5 border-b border-slate-800/80 flex items-center justify-between bg-[#081024]">
+            <div class="flex items-center gap-2.5">
+              <span id="guia-day-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase gold-pill">Dia 1</span>
+              <div>
+                <h3 class="text-sm font-serif font-bold text-white">Guia de 15 Dias com Maria</h3>
+                <span class="text-[10px] text-slate-400 block -mt-0.5">Padre Jakob Rem · Blindagem do Lar</span>
+              </div>
+            </div>
+            <button onclick="closeGuideModal()" class="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800 transition">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Carrossel / Seletor Rápido dos 15 Dias -->
+          <div class="p-2.5 px-4 bg-slate-950/70 border-b border-slate-800/80 overflow-x-auto no-scrollbar flex items-center gap-2">
+            <div id="guia-days-track" class="flex items-center gap-2 min-w-max">
+              <!-- Injetado dinamicamente via JS (D1..D15) -->
+            </div>
+          </div>
+
+          <!-- Conteúdo Litúrgico do Dia com Scroll Suave -->
+          <div class="flex-1 overflow-y-auto p-5 space-y-4 text-slate-200 text-xs leading-relaxed" id="guia-modal-scroll">
+            
+            <!-- Título do Dia e Graça -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <span id="guia-grace-tag" class="text-[10px] font-bold uppercase tracking-wider text-sacred-gold">Purificação e Abertura</span>
+                <span id="guia-status-pill" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400">Em curso</span>
+              </div>
+              <h2 id="guia-day-title" class="text-base font-serif font-bold text-white leading-snug">
+                Dia 1: A Invocação do Manto Sagrado
+              </h2>
+            </div>
+
+            <!-- Versículo Bíblico Sagrado -->
+            <div class="bg-slate-900/80 border-l-2 border-sacred-gold p-3 rounded-r-xl space-y-1 text-slate-300">
+              <p id="guia-verse" class="font-serif italic text-[11px] leading-relaxed">
+                «O Senhor guardará a tua entrada e a tua saída...»
+              </p>
+            </div>
+
+            <!-- Meditação do Padre Jakob Rem -->
+            <div class="space-y-1.5">
+              <h4 class="text-xs font-bold text-sacred-gold uppercase tracking-wider flex items-center gap-1.5 font-cinzel">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>Meditação Sagrada</span>
+              </h4>
+              <p id="guia-meditation" class="text-slate-300 text-[11.5px] leading-relaxed text-justify">
+                O Padre Jakob Rem ensinava que nenhuma oração pode florescer...
+              </p>
+            </div>
+
+            <!-- Oração de Blindagem do Dia -->
+            <div class="space-y-2 pt-2 border-t border-slate-800/80">
+              <h4 class="text-xs font-bold text-sacred-gold uppercase tracking-wider flex items-center gap-1.5 font-cinzel">
+                <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+                <span>Oração de Blindagem do Dia</span>
+              </h4>
+              <div id="guia-prayer-body" class="space-y-2 text-slate-200 text-xs leading-relaxed text-justify">
+                <!-- Parágrafos da oração -->
+              </div>
+            </div>
+
+            <!-- Ação Sagrada / Ritual Prático -->
+            <div class="glass-card p-3.5 bg-gradient-to-r from-[#0d1b38] to-slate-900 border-sacred-gold/40 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-lg bg-sacred-gold/20 flex items-center justify-center text-sacred-gold text-xs">
+                  🕊️
+                </div>
+                <h5 class="text-xs font-bold text-white uppercase tracking-wider font-cinzel">Ação de Fé do Dia</h5>
+              </div>
+              <p id="guia-ritual" class="text-[11px] text-slate-300 leading-relaxed">
+                Acenda a vela sagrada virtual no aplicativo...
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Rodapé de Ações do Dia -->
+          <div class="p-4 px-5 border-t border-slate-800/80 bg-[#081024] space-y-2">
+            <div class="flex items-center gap-2">
+              <button onclick="navigateGuideDay(-1)" id="guia-btn-prev" class="px-3 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold transition flex items-center justify-center">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+              </button>
+
+              <button onclick="toggleCompleteGuideDay()" id="guia-btn-complete" class="flex-1 py-3 gold-btn rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <span id="guia-btn-complete-txt">Concluir Dia 1 do Guia</span>
+              </button>
+
+              <button onclick="navigateGuideDay(1)" id="guia-btn-next" class="px-3 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold transition flex items-center justify-center">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <p class="text-[10px] text-slate-400 text-center">Progresso guardado automaticamente no seu telemóvel.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== MODAL DE PERFIL DO DEVOTO ==================== -->
+      <div id="profile-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="glass-modal w-full max-w-md max-h-[92vh] rounded-t-[32px] sm:rounded-3xl flex flex-col shadow-2xl overflow-hidden animate-in slide-in-from-bottom duration-300 border-t border-sacred-gold/40">
+          
+          <!-- Topo do Modal -->
+          <div class="p-4 px-5 border-b border-slate-800/80 flex items-center justify-between bg-[#081024]">
+            <div class="flex items-center gap-2.5">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase gold-pill">O Seu Perfil</span>
+              <h3 class="text-sm font-serif font-bold text-white">Identidade no Círculo de Oração</h3>
+            </div>
+            <button onclick="closeProfileModal()" class="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800 transition">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Conteúdo -->
+          <div class="flex-1 overflow-y-auto p-5 space-y-4 text-slate-200 text-xs">
+            
+            <!-- Avatar Atual e Foto -->
+            <div class="flex flex-col items-center justify-center space-y-2 py-2">
+              <div class="relative group cursor-pointer" onclick="triggerProfileUpload()">
+                <img id="profile-preview-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=160&auto=format&fit=crop&q=80" alt="Avatar" class="w-20 h-20 rounded-3xl object-cover border-2 border-sacred-gold shadow-xl">
+                <div class="absolute inset-0 bg-black/40 rounded-3xl opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                  <i data-lucide="camera" class="w-6 h-6 text-white"></i>
+                </div>
+              </div>
+              <input type="file" id="profile-file-input" accept="image/*" class="hidden" onchange="handleProfileFileUpload(event)">
+              <button type="button" onclick="triggerProfileUpload()" class="text-[11px] text-sacred-gold hover:underline flex items-center gap-1 font-semibold">
+                <i data-lucide="upload" class="w-3 h-3"></i>
+                <span>Carregar Foto do Meu Telemóvel</span>
+              </button>
+            </div>
+
+            <!-- Campos de Nome e Cidade -->
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1">Como deseja ser chamado(a):</label>
+                <input type="text" id="profile-name-input" placeholder="Ex: Maria Ferreira, António Silva" class="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-sacred-gold">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1">Sua Cidade ou Região:</label>
+                <input type="text" id="profile-location-input" placeholder="Ex: Porto, Braga, Lisboa, Luanda, Berna..." class="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-sacred-gold">
+              </div>
+            </div>
+
+            <!-- Galeria de Fotos / Imagens de Devoção Prontas -->
+            <div class="space-y-2 pt-2 border-t border-slate-800/80">
+              <label class="block text-[11px] font-bold text-slate-300">Ou escolha uma foto de devoção pronta:</label>
+              <div class="grid grid-cols-4 gap-2.5" id="profile-presets-grid">
+                <!-- Injetado dinamicamente com opções católicas e fotos de pessoas respeitosas -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Rodapé -->
+          <div class="p-4 px-5 border-t border-slate-800/80 bg-[#081024]">
+            <button onclick="saveUserProfile()" class="w-full py-3 gold-btn rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg">
+              <i data-lucide="save" class="w-4 h-4"></i>
+              <span>Guardar o Meu Perfil</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+
       <!-- ==================== TAB 3: BLINDAGEM (UPSELLS) ==================== -->
       <div id="tab-blindagem" class="hidden space-y-4">
         <div class="text-center py-2">
@@ -651,7 +824,31 @@
           </span>
         </a>
 
-        <!-- CAMPO DE PUBLICAÇÃO DO DEVOTO -->
+        
+        <!-- CARD DO PERFIL DO DEVOTO NA COMUNIDADE -->
+        <div class="glass-card p-3 px-4 flex items-center justify-between border-sacred-gold/30">
+          <div class="flex items-center gap-3">
+            <div class="relative cursor-pointer" onclick="openProfileModal()">
+              <img id="user-community-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80" alt="Meu Perfil" class="w-11 h-11 rounded-2xl object-cover border-2 border-sacred-gold shadow">
+              <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-sacred-gold text-slate-950 flex items-center justify-center shadow text-[10px] font-bold">
+                <i data-lucide="camera" class="w-3 h-3"></i>
+              </span>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h4 id="user-community-name" class="text-xs font-bold text-white">Devoto(a) de Maria</h4>
+                <span class="text-[9px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.2 rounded-full border border-emerald-500/30">Membro Ativo</span>
+              </div>
+              <p id="user-community-location" class="text-[10px] text-slate-400">Lisboa, Portugal</p>
+            </div>
+          </div>
+          <button onclick="openProfileModal()" class="px-3 py-1.5 rounded-xl border border-sacred-gold/50 text-sacred-gold hover:bg-sacred-gold hover:text-slate-950 text-xs font-bold transition flex items-center gap-1">
+            <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+            <span>Editar</span>
+          </button>
+        </div>
+
+<!-- CAMPO DE PUBLICAÇÃO DO DEVOTO -->
         <div class="glass-card p-4 space-y-3">
           <span class="text-[11px] font-cinzel font-bold text-sacred-gold block uppercase tracking-wider">Deixe o Seu Pedido ou Testemunho</span>
           <textarea id="user-post-input" rows="2" placeholder="Escreva a sua intenção para que a comunidade reze por si..." class="w-full bg-slate-950/80 border border-slate-700/80 rounded-2xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold resize-none"></textarea>
@@ -1167,12 +1364,276 @@
     // -------------------------------------------------------------
     // 2. BANCO DE TESTEMUNHOS COM RESPOSTAS ENCADDEADAS & BOTS
     // -------------------------------------------------------------
-    const INITIAL_POSTS_WITH_REPLIES = [
+    
+    // -------------------------------------------------------------
+    // GUIA DE 15 DIAS COM MARIA — PADRE JAKOB REM (BLINDAGEM DO LAR)
+    // -------------------------------------------------------------
+    const GUIA_15_DIAS_DATA = [
+      {
+        day: 1,
+        title: "A Invocação do Manto Sagrado e Purificação do Lar",
+        grace: "Purificação e Abertura",
+        verse: "«O Senhor guardará a tua entrada e a tua saída, desde agora e para sempre.» — Salmo 121:8",
+        meditation: "O Padre Jakob Rem ensinava que nenhuma oração pode florescer onde há impureza espiritual ou resquícios de brigas antigas. No primeiro dia, entregamos as chaves espirituais da nossa casa à Virgem Maria para que Ela passe à frente e varra toda e qualquer perturbação.",
+        prayerParagraphs: [
+          "Santíssima Virgem Maria, Mãe do Bom Conselho e Desatadora de todos os Nós, entro na Tua santa presença neste primeiro dia de consagração para Vos entregar as portas e janelas do meu lar.",
+          "Estende sobre nós a borda do Teu Manto Celeste. Onde houver discórdia, semeia a paz; onde houver tristeza, derrama o Teu bálsamo; onde houver frieza espiritual, acende a chama viva do Espírito Santo.",
+          "Nenhum mal resiste ao Teu olhar materno. Eu acolho a Tua bênção e consagro a minha família aos Teus cuidados amorosos hoje e por todos os 15 dias desta caminhada. Amém."
+        ],
+        ritual: "Acenda a vela sagrada virtual no aplicativo ou uma vela no seu altar e faça o Sinal da Cruz no ar voltado para a entrada principal da sua casa, dizendo: 'Esta casa pertence a Jesus e Maria'."
+      },
+      {
+        day: 2,
+        title: "Quebra do Nó do Medo e da Insegurança",
+        grace: "Coragem e Fé Inabalável",
+        verse: "«Não temas, porque Eu sou contigo; não te assombres, porque Eu sou o teu Deus.» — Isaías 41:10",
+        meditation: "O medo é a corda invisível com que o inimigo amarra os nossos passos. Quando Maria recebe a anunciação do Anjo, Ela responde com coragem: 'Faça-se em mim'. Hoje, pedimos que Ela desate o medo de faltar o sustento, o medo do futuro e a angústia noturna.",
+        prayerParagraphs: [
+          "Mãe Admirável, Tu que sentiste o peso da perseguição e fugiste para o Egito carregando o Menino Jesus nos braços, conheces bem as angústias do coração humano.",
+          "Venho a Ti desatar o nó do medo que tantas vezes paralisa os meus pensamentos e me faz duvidar do amanhã. Arranca do meu peito toda a insegurança em relação ao sustento da minha casa e ao destino dos meus entes queridos.",
+          "Enche-me da fortaleza celestial. Sob Teu Manto, nada me faltará e nenhum pavor noturno perturbará o meu descanso. Amém."
+        ],
+        ritual: "Coloque a mão direita sobre o coração, respire fundo três vezes em silêncio e repita mentalmente: 'Maria passa à frente e desata o nó do meu medo'."
+      },
+      {
+        day: 3,
+        title: "Selagem dos Quatro Cantos da Casa",
+        grace: "Escudo Protetor",
+        verse: "«Nenhum mal te atingirá, desgraça alguma chegará à tua tenda.» — Salmo 91:10",
+        meditation: "Na tradição espiritual dos devotos de Ingolstadt, o Padre Jakob Rem conduzia os fiéis a traçarem uma cerca viva de oração ao redor da residência. Os quatro cantos da casa representam a saúde, as finanças, os relacionamentos e a fé.",
+        prayerParagraphs: [
+          "Nossa Senhora, guardiã dos lares, desce com as hostes de Anjos sobre cada cômodo desta moradia. Coloca Teus Anjos sentinelas na porta de entrada, no teto, nas fundações e nos limites da minha casa.",
+          "Que nenhuma energia contrária, nenhuma palavra de maldição lançada contra nós e nenhum espírito de contenda consiga cruzar o nosso limiar.",
+          "Declaro que esta casa é um santuário de oração, blindada pelo Sangue de Cristo e guardada pela intercessão perene da Virgem Imaculada. Amém."
+        ],
+        ritual: "Percorra mentalmente ou fisicamente os cômodos da sua casa orando uma Ave-Maria em cada um, pedindo que a paz de Maria permaneça em cada canto."
+      },
+      {
+        day: 4,
+        title: "Afastar Olhares Contrários e Inveja",
+        grace: "Libertação de Olho Gordo",
+        verse: "«Mil cairão ao teu lado e dez mil à tua direita, mas tu não serás atingido.» — Salmo 91:7",
+        meditation: "A inveja muitas vezes entra de forma sutil, em elogios falsos ou em pessoas que não suportam ver as vitórias da nossa família. Maria é a mulher vestida de sol que pisa na cabeça da serpente.",
+        prayerParagraphs: [
+          "Maria Santíssima, Teu coração puríssimo reflete a luz de Deus que cega as trevas. Peço-Te humildemente que afastes da minha vida e da minha família todos os olhares invejosos e pensamentos de rancor.",
+          "Cobre-nos com Teu véu de invisibilidade espiritual contra todo aquele que nos desejar o mal, a ruína ou a separação. Que a inveja seja dissolvida antes mesmo de tocar os nossos portões.",
+          "Que as bênçãos que Deus reservou para nós cheguem sem impedimentos e sem travas humanas. Amém."
+        ],
+        ritual: "Escreva num papel os nomes das pessoas com quem sente tensão ou desconfiança e entregue nas mãos de Maria, rezando pela libertação e pacificação delas."
+      },
+      {
+        day: 5,
+        title: "Desatar o Nó Financeiro e da Escassez",
+        grace: "Provisão e Destravamento",
+        verse: "«O meu Deus suprirá todas as vossas necessidades segundo as Suas riquezas em glória.» — Filipenses 4:19",
+        meditation: "As Bodas de Caná nos mostram que Maria se antecipa às nossas necessidades materiais antes mesmo de nós percebermos: 'Eles não têm mais vinho'. Hoje pedimos a Ela que olhe para as contas, para as dívidas e para a escassez que aperta a família.",
+        prayerParagraphs: [
+          "Mãe da Divina Providência, assim como intercedeste em Caná para que a festa não perdesse a alegria pela falta do vinho, olha hoje com piedade para as nossas finanças.",
+          "Desata, Senhora, o nó das dívidas que asfixiam a nossa tranquilidade, o nó dos gastos imprevistos e da escassez que gera discórdia e angústia no seio da família.",
+          "Abre portas de trabalho honrado, oportunidades justas e concede sabedoria para administrar cada centavo com retidão e gratidão. Que nunca falte o pão na nossa mesa nem a paz no nosso descanso. Amém."
+        ],
+        ritual: "Segure um bilhete ou comprovante que represente suas finanças diante da imagem de Maria no app e faça o compromisso de jamais perder a fé na Divina Providência."
+      },
+      {
+        day: 6,
+        title: "Reconciliação Familiar e Paz no Lar",
+        grace: "Harmonia e União",
+        verse: "«Acima de tudo, porém, revistam-se do amor, que é o elo perfeito.» — Colossenses 3:14",
+        meditation: "O Padre Jakob Rem foi procurado pelo nobre Wolfgang Langenmantel justamente porque o casamento dele estava destruído e à beira da ruína. Ao rezar diante do quadro de Maria, o nó conjugal desatou-se milagrosamente e a paz voltou a reinar.",
+        prayerParagraphs: [
+          "Maria, Mãe da Sagrada Família de Nazaré, Tu que mantiveste a perfeita comunhão com São José e Vosso Filho Jesus, olha para os relacionamentos dentro da minha casa.",
+          "Desata todos os nós do orgulho, das palavras duras, dos mal-entendidos e do silêncio que machuca. Quebra a dureza dos corações e devolve o carinho, a paciência e a doçura do perdão mútuo.",
+          "Restaura os laços entre esposos, entre pais e filhos, e entre irmãos, para que o nosso teto seja um refúgio de amor e não um campo de batalha. Amém."
+        ],
+        ritual: "Mande uma mensagem afetuosa ou faça um gesto de carinho inesperado a alguém da sua família com quem tenha havido atrito recente."
+      },
+      {
+        day: 7,
+        title: "Cura do Coração e Libertação de Mágoas",
+        grace: "Alívio Emocional e Perdão",
+        verse: "«O Senhor sara os de coração quebrantado e cuida das suas feridas.» — Salmo 147:3",
+        meditation: "Guardar mágoa é como segurar um nó apertado com as próprias mãos: só machuca a quem segura. No 7º dia, a meio caminho da nossa caminhada, lavamos o coração na água pura da misericórdia de Maria.",
+        prayerParagraphs: [
+          "Doce Mãe de Misericórdia, Tu que permaneceste de pé junto à Cruz de Teu Filho sem guardar ressentimento contra os Teus perseguidores, ajuda-me a desatar os nós do meu passado.",
+          "Liberta o meu peito das feridas antigas, das traições que me marcaram, das injustiças sofridas e da dor que insiste em voltar à memória.",
+          "Lava a minha alma de toda a amargura. Dá-me a graça de perdoar para que eu seja verdadeiramente livre e possa receber as graças abundantes que tens reservadas para mim. Amém."
+        ],
+        ritual: "Feche os olhos por 2 minutos, visualize o rosto de quem mais lhe feriu no passado e diga baixinho: 'Com o auxílio de Maria, eu te perdoo e te liberto da minha mágoa'."
+      },
+      {
+        day: 8,
+        title: "Proteção dos Filhos, Netos e Gerações",
+        grace: "Guarda Materna dos Filhos",
+        verse: "«Todos os teus filhos serão ensinados pelo Senhor, e grande será a paz de teus filhos.» — Isaías 54:13",
+        meditation: "Não há aflição maior para um pai ou uma mãe do que ver um filho desviado, em perigo ou sofrendo. Maria é Mãe por excelência e acolhe os nossos filhos sob o Seu Manto com amor redobrado.",
+        prayerParagraphs: [
+          "Virgem Imaculada, coloco nas Tuas mãos santas a vida, a saúde e o futuro de cada um dos meus filhos, netos e entes queridos.",
+          "Defende-os das más companhias, dos vícios que destroem a juventude, das ciladas do mundo moderno e de todos os acidentes e perigos visíveis e invisíveis.",
+          "Quando eu não puder estar por perto para protegê-los, sê Tu a Mãe atenta ao lado deles. Desata qualquer nó de rebeldia ou desespero e guia os seus passos no caminho do bem e da fé. Amém."
+        ],
+        ritual: "Diga em voz alta o nome de cada filho, neto ou ente querido que você deseja proteger, traçando o Sinal da Cruz no ar por cada um deles."
+      },
+      {
+        day: 9,
+        title: "Aceleração da Causa Impossível",
+        grace: "O Milagre Urgente",
+        verse: "«Porque para Deus nada é impossível.» — Lucas 1:37",
+        meditation: "Chegamos ao 9º dia, completando o ciclo sagrado da Novena dentro dos 15 dias. É o dia de trazer ao altar aquela causa que você considera humanamente perdida, aquela que tira o seu sono há meses ou anos.",
+        prayerParagraphs: [
+          "Nossa Senhora Desatadora dos Nós, Rainha dos Milagres, volto o meu olhar para Ti com a fé dos que já não têm a quem recorrer no mundo.",
+          "Apresento-Te a minha maior aflição, o nó mais apertado e antigo que carrego. O que é impossível aos homens é fácil para a Mãe de Deus.",
+          "Apressa a Tua intercessão junto ao trono do Vosso Filho. Desata este nó hoje mesmo e concede-me o testemunho vivo da Tua bondade para que eu glorifique o Teu nome perante todos. Amém."
+        ],
+        ritual: "Reze com devoção fervorosa uma Salve Rainha bem devagar, visualizando o nó mais difícil da sua vida a desatar-se como uma fita lisa nas mãos da Virgem."
+      },
+      {
+        day: 10,
+        title: "Quebra de Palavras Negativas e Pragas",
+        grace: "Selamento contra Maldições",
+        verse: "«Nenhuma arma forjada contra ti prosperará, e toda língua que se levantar contra ti em juízo, tu a condenarás.» — Isaías 54:17",
+        meditation: "Palavras pesadas ditas em momentos de raiva ou inveja podem atuar como amarras sobre a vida familiar. O Padre Jakob Rem orientava o cancelamento de toda palavra destrutiva através do Santo Nome de Maria.",
+        prayerParagraphs: [
+          "Soberana Rainha do Céu, pelo poder santificador do Santo Nome de Jesus e pela Tua Imaculada Conceição, venho quebrar todo o efeito de palavras malditas, pragas ou desejos de ruína lançados contra mim ou contra a minha família.",
+          "Desfaço agora toda a mentira, toda a fofoca e todo o peso de condenações humanas. Que onde lançaram espinhos, floresçam as rosas do Teu amor.",
+          "Sela os meus ouvidos e a minha alma para que nenhuma palavra contrária me atinja. Eu recebo apenas a bênção do Pai Celeste. Amém."
+        ],
+        ritual: "Repita em voz audível três vezes: 'Bendito seja o nome de Maria, refúgio seguro da minha família'."
+      },
+      {
+        day: 11,
+        title: "Serenidade da Mente contra a Ansiedade",
+        grace: "Paz Interior e Sono Tranquilo",
+        verse: "«Deixo-vos a paz, a minha paz vos dou; não vo-la dou como o mundo a dá.» — João 14:27",
+        meditation: "A mente atribulada é solo fértil para desespero. Maria guardava todas as coisas e as meditava no seu coração em profundo silêncio de oração. Hoje pedimos que Ela acalme o turbilhão dos nossos pensamentos.",
+        prayerParagraphs: [
+          "Mãe Admirável, pousa as Tuas mãos puríssimas sobre a minha fronte e acalma as tempestades da minha mente.",
+          "Desata o nó da ansiedade que me impede de respirar em paz, o nó da insônia que rouba a minha energia e a angústia de querer controlar tudo pelas minhas próprias forças.",
+          "Ensina-me a descansar na certeza de que Tu estás a cuidar de cada detalhe. Concede-me noites de sono restaurador e dias de serenidade profunda. Amém."
+        ],
+        ritual: "Antes de deitar, ouça 5 minutos da frequência sacra de 432Hz no app e adormeça entregando todas as preocupações nas mãos de Nossa Senhora."
+      },
+      {
+        day: 12,
+        title: "Bênção do Trabalho e Sustento Digno",
+        grace: "Abertura de Caminhos e Valorização",
+        verse: "«Confirma sobre nós as obras das nossas mãos; sim, confirma a obra das nossas mãos.» — Salmo 90:17",
+        meditation: "Na oficina de Nazaré, o trabalho diário era santificado pela oração e pela retidão. Hoje pedimos que Maria abençoe a fonte de sustento da nossa casa, afastando perseguições no emprego ou paralisia nos negócios.",
+        prayerParagraphs: [
+          "Maria, Mãe operosa que partilhaste a labuta do lar com São José e Jesus, olha para o trabalho que sustenta a minha vida.",
+          "Desata todos os nós da injustiça no meu ambiente de trabalho, da falta de clientes, dos projetos emperrados e da desvalorização do meu esforço.",
+          "Que o fruto do meu suor seja sempre abençoado, que as portas certas se abram e que haja sempre abundância para socorrer também aqueles que mais necessitam. Amém."
+        ],
+        ritual: "Coloque diante de Deus o seu ofício ou atividade e faça uma oração de agradecimento pelo pão de cada dia."
+      },
+      {
+        day: 13,
+        title: "Restauração do Casamento e do Amor",
+        grace: "Fidelidade e Doçura Conjugal",
+        verse: "«O amor jamais acaba.» — 1 Coríntios 13:8",
+        meditation: "O matrimônio foi o primeiro sacramento defendido pela intercessão da Desatadora dos Nós em 1615. Mesmo que haja frieza, distanciamento ou mágoas profundas, Maria é capaz de acender novamente a chama do amor puro.",
+        prayerParagraphs: [
+          "Virgem Fidelíssima, patrona dos casamentos restaurados, desce com a Tua doçura sobre a aliança conjugal da minha casa.",
+          "Desata as amarras da traição, do desrespeito, da indiferença e da frieza. Afasta toda a terceira pessoa que tente semear a discórdia ou destruir o sacramento abençoado por Deus.",
+          "Renova o diálogo afetuoso, o companheirismo e o respeito mútuo, para que a nossa casa seja um reflexo fiel da união sagrada de Nazaré. Amém."
+        ],
+        ritual: "Se for casado(a), abençoe a sua aliança ou faça uma oração especial pelo seu cônjuge. Se não for casado(a), ore pela harmonia nos afetos e pela paz do seu coração."
+      },
+      {
+        day: 14,
+        title: "Escudo dos Anjos Guardiões",
+        grace: "Combate Espiritual e Vitória",
+        verse: "«Aos Seus anjos dará ordens a teu respeito, para que te guardem em todos os teus caminhos.» — Salmo 91:11",
+        meditation: "Na véspera do encerramento dos 15 dias, invocamos a milícia celeste chefiada por São Miguel Arcanjo sob o comando da Rainha dos Anjos para varrer definitivamente qualquer sombra remanescente.",
+        prayerParagraphs: [
+          "Augusta Rainha dos Céus e Senhora dos Anjos, Tu que recebeste de Deus o poder e a missão de esmagar a cabeça de satanás, envia as Tuas santas legiões de Arcanjos e Anjos.",
+          "Que São Miguel, São Gabriel e São Rafael cerquem a minha família com espadas de fogo celeste, expulsando para longe qualquer influência maligna, cilada ou armadilha espiritual.",
+          "Estamos cobertos pelo Teu Manto e protegidos pelos Anjos de Deus. Nenhum dardo inflamado do inimigo nos tocará. Amém."
+        ],
+        ritual: "Reze com vigor a oração a São Miguel Arcanjo: 'São Miguel Arcanjo, defendei-nos no combate...' e sinta a presença protetora dos Anjos ao seu redor."
+      },
+      {
+        day: 15,
+        title: "Consagração Eterna e Triunfo do Lar",
+        grace: "Consagração e Bênção Perene",
+        verse: "«Por fim, o meu Imaculado Coração triunfará!» — Mensagem de Fátima",
+        meditation: "Chegamos ao cume do itinerário dos 15 dias. Os nós foram expostos à luz da Mãe de Deus e desfeitos pela Sua graça. Agora selamos esta blindagem para que o que foi desatado permaneça livre para sempre.",
+        prayerParagraphs: [
+          "Ó Maria, Virgem Poderosa e Mãe Imaculada, chego ao fim destes 15 dias transformado(a) pela Tua santa presença e pela certeza do Teu socorro.",
+          "Consagro irrevogavelmente a Ti o meu corpo, a minha alma, o meu lar, a minha família, os meus bens e todo o meu futuro. Eu sou todo(a) Teu(Tua) e tudo o que me pertence é Teu.",
+          "Que o Teu Imaculado Coração reine soberano na minha casa. Onde antes havia nó, agora há fita lisa; onde havia dor, agora há graça. Guarda-nos na Tua paz hoje e para todo o sempre. Amém!"
+        ],
+        ritual: "Acenda a vela virtual no aplicativo, dê graças com três Ave-Marias solenes e compartilhe o seu testemunho de gratidão na comunidade do aplicativo."
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // POOL DINÂMICO DE TESTEMUNHOS REAIS DA COMUNIDADE
+    // -------------------------------------------------------------
+    const COMMUNITY_LIVE_TESTIMONIALS_POOL = [
+      {
+        author: "Helena Maria Gouveia",
+        location: "Funchal, Madeira",
+        minutesAgo: 6,
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80",
+        tag: "Alívio de Dívidas",
+        text: "Irmãos, fiz o 7º dia do Guia com Maria ontem à noite com muita fé. Hoje de manhã recebi uma mensagem do banco a aprovar a consolidação do meu crédito que já tinha sido recusado 3 vezes! Maria desatou o nó financeiro da minha vida!",
+        prayersCount: 142,
+        replies: [
+          { author: "Padre Francisco (Apoio)", text: "Glória a Deus, D. Helena! A perseverança na fé nunca fica sem resposta." }
+        ]
+      },
+      {
+        author: "Manuel Joaquim Ribeiro",
+        location: "Viseu, Portugal",
+        minutesAgo: 19,
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&auto=format&fit=crop&q=80",
+        tag: "Cura & Serenidade",
+        text: "Estava há meses sem dormir com palpitações e medo do amanhã. Coloquei os áudios sagrados em 432Hz e fiz a oração de blindagem do 11º dia. Pela primeira vez dormi a noite inteira em paz profunda. Deus abençoe quem criou este aplicativo.",
+        prayersCount: 298,
+        replies: [
+          { author: "Maria do Rosário (Sintra)", text: "Amém, Sr. Manuel! A paz de Maria cura todas as ansiedades." }
+        ]
+      },
+      {
+        author: "Rosa Maria Pires",
+        location: "Évora, Portugal",
+        minutesAgo: 38,
+        avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&auto=format&fit=crop&q=80",
+        tag: "Filho Encaminhado",
+        text: "Pedi no 8º dia a proteção dos meus netos e filhos. Meu filho andava metido em más companhias e hoje sentou comigo à mesa para pedir perdão e disse que quer voltar para a Igreja. Senti o Manto de Maria nesta casa!",
+        prayersCount: 367,
+        replies: []
+      },
+      {
+        author: "Gonçalo Duarte Coutinho",
+        location: "Sintra, Portugal",
+        minutesAgo: 55,
+        avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&auto=format&fit=crop&q=80",
+        tag: "Negócio Destravado",
+        text: "A escritura da minha pequena propriedade estava travada em tribunal há mais de 4 anos. Concluí a Novena dos 9 nós na terça-feira e hoje o advogado ligou a confirmar que o juiz assinou o despacho favorável! Inacreditável!",
+        prayersCount: 421,
+        replies: [
+          { author: "António Manuel (Braga)", text: "Que bênção retumbante, Gonçalo! Quando Maria entra, a justiça divina prevalece." }
+        ]
+      },
+      {
+        author: "Lurdes Rodrigues de Matos",
+        location: "Faro, Portugal",
+        minutesAgo: 74,
+        avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=120&auto=format&fit=crop&q=80",
+        tag: "Casamento Restaurado",
+        text: "Eu e o meu marido já não nos falávamos há 3 semanas e íamos assinar a separação. Fiz a oração de Maria Desatadora e ontem ele chegou com flores a chorar e pediu para recomeçarmos. O amor venceu pelo poder da oração.",
+        prayersCount: 512,
+        replies: []
+      }
+    ];
+
+const INITIAL_POSTS_WITH_REPLIES = [
       {
         id: "p1",
         author: "Maria Teresa Albuquerque",
         location: "Porto, Portugal",
-        timeAgo: "há 18 min",
+        timeAgo: "há 18 min", timestamp: Date.now() - 18 * 60000,
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80",
         tag: "Nó do Dinheiro Desatado",
         text: "Irmãos, não tenho palavras para agradecer a Nossa Senhora. Terminei o 6º dia da novena ontem. Tinha uma dívida de quase 3.000€ no banco que me tirava o sono há 8 meses. Esta manhã chamaram-me para renegociar com perdão total dos juros! O que parecia impossível desatou-se!",
@@ -1187,7 +1648,7 @@
         id: "p2",
         author: "António Manuel Ferreira",
         location: "Braga, Portugal",
-        timeAgo: "há 45 min",
+        timeAgo: "há 45 min", timestamp: Date.now() - 45 * 60000,
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80",
         tag: "Fartura & Comércio",
         text: "Estava com o meu pequeno comércio a passar dificuldades e os clientes sumiram. Comecei a ouvir os áudios frequenciais em 432Hz ao deitar. A paz que entrou na minha casa foi imediata e ontem fechei o maior contrato do ano com uma distribuidora. Glória a Deus!",
@@ -1201,7 +1662,7 @@
         id: "p3",
         author: "Fátima Silva dos Santos",
         location: "Coimbra, Portugal",
-        timeAgo: "há 2 horas",
+        timeAgo: "há 2 horas", timestamp: Date.now() - 120 * 60000,
         avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=120&auto=format&fit=crop&q=80",
         tag: "Emprego para Filho",
         text: "O meu filho mais velho estava sem trabalho há quase um ano e o clima em casa era só tristeza. Rezei o 3º dia com muita fé pelas 9 palavras. Hoje às 15h chamaram-no para uma entrevista e já ficou contratado para começar segunda-feira! Confiem nas 9 palavras!",
@@ -1215,7 +1676,7 @@
         id: "p4",
         author: "José Carlos Mendonça",
         location: "Lisboa, Portugal",
-        timeAgo: "há 4 horas",
+        timeAgo: "há 4 horas", timestamp: Date.now() - 240 * 60000,
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80",
         tag: "Paz Familiar",
         text: "A blindagem dos 15 dias com Maria tirou o peso do meu peito. As discussões diárias cessaram e sinto os meus netos guardados sob o Manto. Deus abençoe esta obra linda que nos devolveu a esperança.",
@@ -1705,7 +2166,7 @@
                 <img src="${p.avatar}" alt="${p.author}" class="w-10 h-10 rounded-2xl object-cover border border-sacred-gold/40 shadow">
                 <div>
                   <h4 class="text-xs font-bold text-white leading-tight">${p.author}</h4>
-                  <span class="text-[10px] text-slate-400">${p.location} · ${p.timeAgo}</span>
+                  <span class="text-[10px] text-slate-400">${p.location} · ${formatTimeAgo(p.timestamp)}</span>
                 </div>
               </div>
               <span class="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase gold-pill">
@@ -1762,14 +2223,15 @@
       const text = (input ? input.value : '').trim();
       if (!text) return;
 
+      const userProfile = getUserProfile();
       const state = getState();
       const newPostId = 'user_p_' + Date.now();
       const newPost = {
         id: newPostId,
-        author: 'Devoto(a) de Maria (Você)',
-        location: 'Portugal',
-        timeAgo: 'agora mesmo',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
+        author: userProfile.name + ' (Você)',
+        location: userProfile.location,
+        timestamp: Date.now(),
+        avatar: userProfile.avatar,
         tag: 'Em Oração',
         text: text,
         prayersCount: 1,
@@ -2136,9 +2598,357 @@
       }
     }
 
-    function openGuideModal() {
-      alert('Guia de 15 Dias com Maria: 15 roteiros sagrados desbloqueados para proteção do seu lar!');
+
+    // =============================================================
+    // GESTÃO DO GUIA DE 15 DIAS COM MARIA (PADRE JAKOB REM)
+    // =============================================================
+    let activeGuideDay = 1;
+
+    function getGuideCompletedDays() {
+      try {
+        return JSON.parse(localStorage.getItem('guia_15dias_completed_days') || '[]');
+      } catch(e) {
+        return [];
+      }
     }
+
+    function setGuideCompletedDays(arr) {
+      localStorage.setItem('guia_15dias_completed_days', JSON.stringify(arr));
+    }
+
+    function openGuideModal(dayNum) {
+      const completed = getGuideCompletedDays();
+      if (!dayNum) {
+        dayNum = 1;
+        for (let i = 1; i <= 15; i++) {
+          if (!completed.includes(i)) {
+            dayNum = i;
+            break;
+          }
+        }
+      }
+      activeGuideDay = dayNum;
+
+      const modal = document.getElementById('guia-modal');
+      if (modal) modal.classList.remove('hidden');
+
+      renderGuideDay(activeGuideDay);
+      lucide.createIcons();
+    }
+
+    function closeGuideModal() {
+      const modal = document.getElementById('guia-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function renderGuideDay(dayNum) {
+      activeGuideDay = dayNum;
+      const data = GUIA_15_DIAS_DATA.find(d => d.day === dayNum) || GUIA_15_DIAS_DATA[0];
+      const completed = getGuideCompletedDays();
+      const isDone = completed.includes(dayNum);
+
+      const badge = document.getElementById('guia-day-badge');
+      const tag = document.getElementById('guia-grace-tag');
+      const title = document.getElementById('guia-day-title');
+      const verse = document.getElementById('guia-verse');
+      const med = document.getElementById('guia-meditation');
+      const ritual = document.getElementById('guia-ritual');
+
+      if (badge) badge.textContent = 'Dia ' + data.day + ' de 15';
+      if (tag) tag.textContent = data.grace;
+      if (title) title.textContent = data.title;
+      if (verse) verse.textContent = data.verse;
+      if (med) med.textContent = data.meditation;
+      if (ritual) ritual.textContent = data.ritual;
+
+      const statusPill = document.getElementById('guia-status-pill');
+      if (statusPill) {
+        if (isDone) {
+          statusPill.className = 'text-[9px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+          statusPill.textContent = 'Concluído ✓';
+        } else {
+          statusPill.className = 'text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400';
+          statusPill.textContent = 'Em curso';
+        }
+      }
+
+      const prayerContainer = document.getElementById('guia-prayer-body');
+      if (prayerContainer) {
+        prayerContainer.innerHTML = data.prayerParagraphs.map(p => '<p>' + p + '</p>').join('');
+      }
+
+      const completeBtnTxt = document.getElementById('guia-btn-complete-txt');
+      const completeBtn = document.getElementById('guia-btn-complete');
+      if (completeBtnTxt && completeBtn) {
+        if (isDone) {
+          completeBtnTxt.textContent = 'Dia ' + data.day + ' Concluído ✓';
+          completeBtn.className = 'flex-1 py-3 rounded-2xl text-xs flex items-center justify-center gap-2 bg-emerald-600/90 text-white font-bold shadow-lg';
+        } else {
+          completeBtnTxt.textContent = 'Concluir Dia ' + data.day + ' do Guia';
+          completeBtn.className = 'flex-1 py-3 gold-btn rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg';
+        }
+      }
+
+      const prevBtn = document.getElementById('guia-btn-prev');
+      const nextBtn = document.getElementById('guia-btn-next');
+      if (prevBtn) prevBtn.style.visibility = (dayNum > 1) ? 'visible' : 'hidden';
+      if (nextBtn) nextBtn.style.visibility = (dayNum < 15) ? 'visible' : 'hidden';
+
+      renderGuideDaysTrack();
+
+      const scrollEl = document.getElementById('guia-modal-scroll');
+      if (scrollEl) scrollEl.scrollTop = 0;
+
+      lucide.createIcons();
+    }
+
+    function renderGuideDaysTrack() {
+      const track = document.getElementById('guia-days-track');
+      if (!track) return;
+      const completed = getGuideCompletedDays();
+
+      let html = '';
+      for (let i = 1; i <= 15; i++) {
+        const isCurrent = (i === activeGuideDay);
+        const isDone = completed.includes(i);
+
+        let btnClass = 'w-8 h-8 rounded-2xl text-xs font-serif flex items-center justify-center transition cursor-pointer ';
+        if (isCurrent) {
+          btnClass += 'bg-sacred-gold text-slate-950 font-black shadow-lg scale-110 border-2 border-amber-200';
+        } else if (isDone) {
+          btnClass += 'bg-emerald-600/80 text-white font-bold border border-emerald-400/50';
+        } else {
+          btnClass += 'bg-slate-900 border border-slate-700/80 text-slate-400 hover:text-white';
+        }
+
+        html += '<button onclick="renderGuideDay(' + i + ')" class="flex flex-col items-center gap-1 group">';
+        html += '<div class="' + btnClass + '">' + (isDone && !isCurrent ? '✓' : i) + '</div>';
+        html += '<span class="text-[9px] ' + (isCurrent ? 'font-bold text-sacred-gold' : 'text-slate-500') + '">D' + i + '</span>';
+        html += '</button>';
+      }
+      track.innerHTML = html;
+    }
+
+    function navigateGuideDay(delta) {
+      const nextDay = activeGuideDay + delta;
+      if (nextDay >= 1 && nextDay <= 15) {
+        renderGuideDay(nextDay);
+      }
+    }
+
+    function toggleCompleteGuideDay() {
+      let completed = getGuideCompletedDays();
+      if (!completed.includes(activeGuideDay)) {
+        completed.push(activeGuideDay);
+        setGuideCompletedDays(completed);
+        try {
+          if (window.confetti) confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
+          playSacredBellSound();
+        } catch(e){}
+      }
+      renderGuideDay(activeGuideDay);
+
+      if (activeGuideDay < 15) {
+        setTimeout(() => {
+          renderGuideDay(activeGuideDay + 1);
+        }, 1200);
+      }
+    }
+
+
+    // =============================================================
+    // GESTÃO DO PERFIL DO DEVOTO (NOME E FOTO)
+    // =============================================================
+    const DEFAULT_PROFILE_AVATARS = [
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&auto=format&fit=crop&q=80"
+    ];
+
+    function getUserProfile() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novena_user_profile') || '{}');
+        return {
+          name: saved.name || 'Devoto(a) de Maria',
+          location: saved.location || 'Lisboa, Portugal',
+          avatar: saved.avatar || DEFAULT_PROFILE_AVATARS[0]
+        };
+      } catch(e) {
+        return {
+          name: 'Devoto(a) de Maria',
+          location: 'Lisboa, Portugal',
+          avatar: DEFAULT_PROFILE_AVATARS[0]
+        };
+      }
+    }
+
+    function updateUserProfileDisplay() {
+      const p = getUserProfile();
+      const nameEl = document.getElementById('user-community-name');
+      const locEl = document.getElementById('user-community-location');
+      const avatarEl = document.getElementById('user-community-avatar');
+
+      if (nameEl) nameEl.textContent = p.name;
+      if (locEl) locEl.textContent = p.location;
+      if (avatarEl) avatarEl.src = p.avatar;
+    }
+
+    let selectedAvatarCandidate = '';
+
+    function openProfileModal() {
+      const p = getUserProfile();
+      selectedAvatarCandidate = p.avatar;
+
+      const nameInput = document.getElementById('profile-name-input');
+      const locInput = document.getElementById('profile-location-input');
+      const previewImg = document.getElementById('profile-preview-avatar');
+
+      if (nameInput) nameInput.value = p.name;
+      if (locInput) locInput.value = p.location;
+      if (previewImg) previewImg.src = p.avatar;
+
+      renderProfilePresets();
+
+      const modal = document.getElementById('profile-modal');
+      if (modal) modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeProfileModal() {
+      const modal = document.getElementById('profile-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function renderProfilePresets() {
+      const grid = document.getElementById('profile-presets-grid');
+      if (!grid) return;
+
+      let html = '';
+      DEFAULT_PROFILE_AVATARS.forEach((url, i) => {
+        const isSel = (url === selectedAvatarCandidate);
+        html += '<div onclick="selectPresetAvatar(\'' + url + '\')" class="cursor-pointer relative group rounded-2xl overflow-hidden border-2 ' + (isSel ? 'border-sacred-gold shadow-lg scale-105' : 'border-slate-800') + ' transition">';
+        html += '<img src="' + url + '" class="w-full h-12 object-cover">';
+        if (isSel) {
+          html += '<span class="absolute inset-0 bg-sacred-gold/30 flex items-center justify-center font-bold text-xs text-white">✓</span>';
+        }
+        html += '</div>';
+      });
+      grid.innerHTML = html;
+    }
+
+    function selectPresetAvatar(url) {
+      selectedAvatarCandidate = url;
+      const previewImg = document.getElementById('profile-preview-avatar');
+      if (previewImg) previewImg.src = url;
+      renderProfilePresets();
+    }
+
+    function triggerProfileUpload() {
+      const fileInput = document.getElementById('profile-file-input');
+      if (fileInput) fileInput.click();
+    }
+
+    function handleProfileFileUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        selectedAvatarCandidate = e.target.result;
+        const previewImg = document.getElementById('profile-preview-avatar');
+        if (previewImg) previewImg.src = selectedAvatarCandidate;
+        renderProfilePresets();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function saveUserProfile() {
+      const nameInput = document.getElementById('profile-name-input');
+      const locInput = document.getElementById('profile-location-input');
+
+      const name = (nameInput ? nameInput.value : '').trim() || 'Devoto(a) de Maria';
+      const location = (locInput ? locInput.value : '').trim() || 'Portugal';
+      const avatar = selectedAvatarCandidate || DEFAULT_PROFILE_AVATARS[0];
+
+      const profile = { name, location, avatar };
+      localStorage.setItem('novena_user_profile', JSON.stringify(profile));
+
+      updateUserProfileDisplay();
+      closeProfileModal();
+
+      try {
+        if (window.confetti) confetti({ particleCount: 40, spread: 50, origin: { y: 0.5 } });
+      } catch(e){}
+    }
+
+
+    // =============================================================
+    // TEMPO DINÂMICO E INJEÇÃO ORGÂNICA DE NOVOS TESTEMUNHOS
+    // =============================================================
+    function formatTimeAgo(timestamp) {
+      if (!timestamp) return 'há 15 min';
+      const now = Date.now();
+      const diff = Math.max(0, now - timestamp);
+      const min = Math.floor(diff / 60000);
+      if (min < 1) return 'agora mesmo';
+      if (min < 60) return 'há ' + min + ' min';
+      const hours = Math.floor(min / 60);
+      if (hours < 24) return 'há ' + hours + 'h';
+      const days = Math.floor(hours / 24);
+      if (days === 1) return 'ontem';
+      return 'há ' + days + ' dias';
+    }
+
+    function checkAndInjectLiveTestimonials() {
+      const state = getState();
+      if (!state.posts || !Array.isArray(state.posts)) return;
+
+      let needsSave = false;
+      const now = Date.now();
+      state.posts.forEach((p, idx) => {
+        if (!p.timestamp) {
+          p.timestamp = now - (idx * 25 + 12) * 60000;
+          needsSave = true;
+        }
+      });
+
+      const lastInject = parseInt(localStorage.getItem('novena_last_pool_inject') || '0', 10);
+      const timeSinceInject = now - lastInject;
+
+      if (timeSinceInject > 480000 && state.posts.length < 25) {
+        let poolIdx = parseInt(localStorage.getItem('novena_pool_inject_idx') || '0', 10);
+        const item = COMMUNITY_LIVE_TESTIMONIALS_POOL[poolIdx % COMMUNITY_LIVE_TESTIMONIALS_POOL.length];
+        localStorage.setItem('novena_pool_inject_idx', (poolIdx + 1).toString());
+        localStorage.setItem('novena_last_pool_inject', now.toString());
+
+        const newPost = {
+          id: 'live_p_' + now,
+          author: item.author,
+          location: item.location,
+          timestamp: now - (item.minutesAgo || 3) * 60000,
+          avatar: item.avatar,
+          tag: item.tag,
+          text: item.text,
+          prayersCount: item.prayersCount || 150,
+          hasPrayed: false,
+          replies: item.replies || []
+        };
+
+        state.posts.unshift(newPost);
+        needsSave = true;
+      }
+
+      if (needsSave) {
+        saveState({ posts: state.posts });
+        renderCommunityFeed();
+      }
+    }
+
 
     // -------------------------------------------------------------
     // 13. INICIALIZAÇÃO
