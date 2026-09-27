@@ -39,26 +39,27 @@ foreach ($bot_agents as $b) {
     }
 }
 
+// UA vazio ou curto demais = automação
+if (empty($ua) || strlen($ua) < 20) {
+    serve_clean();
+    exit;
+}
+
 // --- 3. COOKIE ATIVO (Usuário já validado anteriormente) ---
 if (!empty($_COOKIE['_gl_ok'])) {
     serve_sales();
     exit;
 }
 
-// --- 4. FILTRO DE ORIGEM (FBCLID / ORGÂNICO / TOKEN) ---
-$has_fbclid = isset($_GET['fbclid']) && !empty($_GET['fbclid']);
-$ref = strtolower($_SERVER['HTTP_REFERER'] ?? '');
-$is_organic = (
-    strpos($ref, 'google.') !== false ||
-    strpos($ref, 'bing.') !== false ||
-    strpos($ref, 'facebook.com') !== false ||
-    strpos($ref, 'instagram.com') !== false ||
-    strpos($ref, 'youtube.com') !== false
-);
+// --- 4. FILTRO: SÓ CLIQUE REAL DE ANÚNCIO ---
+// O referer NÃO vale como prova de origem: a Biblioteca de Anúncios, os grupos e
+// qualquer link partilhado no Facebook chegam com referer facebook.com e abririam
+// a VSL para quem não clicou em anúncio nenhum. Só passa quem traz ID de clique.
+$is_meta_click   = !empty($_GET['fbclid']) && strlen($_GET['fbclid']) > 15;
+$is_tiktok_click = !empty($_GET['ttclid']) && $_GET['ttclid'] !== '__CLICKID__' && strlen($_GET['ttclid']) > 10;
 $has_src = (isset($_GET['src']) && $_GET['src'] === 'fs2026');
 
-// Se NÃO tiver fbclid, NEM orgânico, NEM token -> Serve a White TSL para os curiosos
-if (!$has_fbclid && !$is_organic && !$has_src) {
+if (!$is_meta_click && !$is_tiktok_click && !$has_src) {
     serve_clean();
     exit;
 }
