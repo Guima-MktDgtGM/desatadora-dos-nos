@@ -333,27 +333,49 @@
     .accel-list p{font-size:14px;}
   }
 
-  /* ---- QUIZ INTERATIVO U1 (BLINDAGEM & CADÊNCIA DE ANTIFRAUDE) ---- */
+    /* ---- QUIZ INTERATIVO U1 (BLINDAGEM & CADÊNCIA DE ANTIFRAUDE) ---- */
+  .quiz-instruction {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0b6b2e;
+    text-align: center;
+    margin-bottom: 12px;
+    background: #eefbf1;
+    border: 1px dashed #86efac;
+    border-radius: 8px;
+    padding: 7px 12px;
+    display: block;
+    box-sizing: border-box;
+  }
   .quiz-btn {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
     width: 100%;
     background: #ffffff;
-    border: 2px solid #e2e8f0;
+    border: 2px solid #cbd5e1;
     border-radius: 12px;
     padding: 13px 14px;
     text-align: left;
     cursor: pointer;
     font-family: var(--sans);
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    position: relative;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
-  .quiz-btn:hover, .quiz-btn:active {
+  .quiz-btn:hover {
     border-color: #057932;
     background: #f0fdf4;
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(5, 121, 50, 0.12);
+  }
+  .quiz-btn:active, .quiz-btn.selected {
+    border-color: #057932 !important;
+    background: #eaf8ee !important;
+    transform: scale(0.99);
   }
   .quiz-ic {
     font-size: 24px;
@@ -365,6 +387,53 @@
     font-weight: 700;
     line-height: 1.4;
     color: #1e293b;
+    flex: 1;
+    text-align: left;
+  }
+  /* Bolinha seletora na direita (estilo radio button) */
+  .quiz-radio {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    border: 2px solid #94a3b8;
+    background: #ffffff;
+    margin-left: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
+  }
+  .quiz-radio::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #057932;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .quiz-btn:hover .quiz-radio {
+    border-color: #057932;
+  }
+  .quiz-btn:hover .quiz-radio::after {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  .quiz-btn:active .quiz-radio,
+  .quiz-btn.selected .quiz-radio {
+    border-color: #057932 !important;
+    border-width: 2.5px;
+    background: #ffffff !important;
+  }
+  .quiz-btn:active .quiz-radio::after,
+  .quiz-btn.selected .quiz-radio::after {
+    transform: scale(1) !important;
+    opacity: 1 !important;
   }
   .quiz-loader {
     background: #ffffff;
@@ -422,26 +491,26 @@
         </p>
       </div>
 
-      <!-- QUIZ INTERATIVO COM LOADERS -->
+            <!-- QUIZ INTERATIVO COM LOADERS -->
       <div id="quiz-blindagem" style="max-width:460px;margin:0 auto 24px;">
         
         <!-- ETAPA 1 -->
         <div id="quiz-etapa-1" class="quiz-step">
           <div style="font-size:11.5px;font-weight:800;letter-spacing:1px;color:#0b6b2e;text-transform:uppercase;margin-bottom:6px;text-align:center;">Pergunta 1 de 3</div>
-          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:6px;">Assim que os seus nós forem desatados, onde você mais teme que as forças contrárias tentem te atacar?</h3>
-          <p style="font-size:12px;font-weight:600;color:#0b6b2e;text-align:center;margin-bottom:14px;">👉 Toque na opção que melhor representa o seu caso:</p>
+          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:8px;">Assim que os seus nós forem desatados, onde você mais teme que as forças contrárias tentem te atacar?</h3>
+          <p class="quiz-instruction">👇 Toque em uma das opções abaixo para escolher:</p>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <button type="button" class="quiz-btn" onclick="responderPergunta(1)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(1, this)">
               <span class="quiz-ic">👁️</span>
               <span class="quiz-txt">Na inveja de pessoas próximas ou parentes que não gostam de me ver vencer</span>
               <span class="quiz-radio"></span>
             </button>
-            <button type="button" class="quiz-btn" onclick="responderPergunta(1)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(1, this)">
               <span class="quiz-ic">🏠</span>
               <span class="quiz-txt">Nas brigas repentinas e discórdias dentro da minha própria casa</span>
               <span class="quiz-radio"></span>
             </button>
-            <button type="button" class="quiz-btn" onclick="responderPergunta(1)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(1, this)">
               <span class="quiz-ic">💸</span>
               <span class="quiz-txt">Em gastos inesperados que sempre travam meu dinheiro no fim do mês</span>
               <span class="quiz-radio"></span>
@@ -462,20 +531,20 @@
         <!-- ETAPA 2 -->
         <div id="quiz-etapa-2" class="quiz-step" style="display:none;">
           <div style="font-size:11.5px;font-weight:800;letter-spacing:1px;color:#0b6b2e;text-transform:uppercase;margin-bottom:6px;text-align:center;">Pergunta 2 de 3</div>
-          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:6px;">Sob o Manto Protetor de Maria, quem você mais deseja cobrir durante esses 15 dias de oração?</h3>
-          <p style="font-size:12px;font-weight:600;color:#0b6b2e;text-align:center;margin-bottom:14px;">👉 Toque na opção que deseja proteger:</p>
+          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:8px;">Sob o Manto Protetor de Maria, quem você mais deseja cobrir durante esses 15 dias de oração?</h3>
+          <p class="quiz-instruction">👇 Toque na opção que deseja proteger:</p>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <button type="button" class="quiz-btn" onclick="responderPergunta(2)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(2, this)">
               <span class="quiz-ic">👨‍👩‍👧‍👦</span>
               <span class="quiz-txt">Os meus filhos e netos (para que nenhum mal espiritual os alcance)</span>
               <span class="quiz-radio"></span>
             </button>
-            <button type="button" class="quiz-btn" onclick="responderPergunta(2)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(2, this)">
               <span class="quiz-ic">💍</span>
               <span class="quiz-txt">O meu casamento e a paz do meu lar</span>
               <span class="quiz-radio"></span>
             </button>
-            <button type="button" class="quiz-btn" onclick="responderPergunta(2)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(2, this)">
               <span class="quiz-ic">🛡️</span>
               <span class="quiz-txt">A minha própria mente e a proteção da minha vida inteira</span>
               <span class="quiz-radio"></span>
@@ -496,15 +565,15 @@
         <!-- ETAPA 3 -->
         <div id="quiz-etapa-3" class="quiz-step" style="display:none;">
           <div style="font-size:11.5px;font-weight:800;letter-spacing:1px;color:#0b6b2e;text-transform:uppercase;margin-bottom:6px;text-align:center;">Pergunta 3 de 3</div>
-          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:6px;">As orações de blindagem exigem apenas 3 minutos antes de dormir. Você se compromete a fazer a leitura?</h3>
-          <p style="font-size:12px;font-weight:600;color:#0b6b2e;text-align:center;margin-bottom:14px;">👉 Toque para confirmar o seu compromisso:</p>
+          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:8px;">As orações de blindagem exigem apenas 3 minutos antes de dormir. Você se compromete a fazer a leitura?</h3>
+          <p class="quiz-instruction">👇 Toque para confirmar o seu compromisso:</p>
           <div style="display:flex;flex-direction:column;gap:10px;">
-            <button type="button" class="quiz-btn" onclick="responderPergunta(3)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(3, this)">
               <span class="quiz-ic">🕯️</span>
               <span class="quiz-txt">SIM, comprometo-me a dedicar 3 minutos para blindar a minha família</span>
               <span class="quiz-radio"></span>
             </button>
-            <button type="button" class="quiz-btn" onclick="responderPergunta(3)">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(3, this)">
               <span class="quiz-ic">✨</span>
               <span class="quiz-txt">SIM, não quero permitir que nenhum novo nó volte a amarrar a minha vida</span>
               <span class="quiz-radio"></span>
@@ -591,39 +660,44 @@
 </div>
 
 
-  <script>
-  window.responderPergunta = function(etapa) {
-    if (etapa === 1) {
-      document.getElementById('quiz-etapa-1').style.display = 'none';
-      document.getElementById('quiz-loader-1').style.display = 'block';
-      setTimeout(function() {
-        document.getElementById('quiz-loader-1').style.display = 'none';
-        document.getElementById('quiz-etapa-2').style.display = 'block';
-      }, 3800);
-    } else if (etapa === 2) {
-      document.getElementById('quiz-etapa-2').style.display = 'none';
-      document.getElementById('quiz-loader-2').style.display = 'block';
-      setTimeout(function() {
-        document.getElementById('quiz-loader-2').style.display = 'none';
-        document.getElementById('quiz-etapa-3').style.display = 'block';
-      }, 3800);
-    } else if (etapa === 3) {
-      document.getElementById('quiz-etapa-3').style.display = 'none';
-      document.getElementById('quiz-loader-final').style.display = 'block';
-      setTimeout(function() {
-        var bar = document.getElementById('quiz-bar-final');
-        if (bar) bar.style.width = '100%';
-      }, 2000);
-      setTimeout(function() {
-        document.getElementById('quiz-loader-final').style.display = 'none';
-        document.getElementById('quiz-resultado').style.display = 'block';
-        try {
-          if (window.confetti) {
-            confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 }, colors: ['#057932', '#D4AF37', '#ffffff'] });
-          }
-        } catch(e){}
-      }, 4200);
+    <script>
+  window.responderPergunta = function(etapa, btn) {
+    if (btn) {
+      btn.classList.add('selected');
     }
+    setTimeout(function() {
+      if (etapa === 1) {
+        document.getElementById('quiz-etapa-1').style.display = 'none';
+        document.getElementById('quiz-loader-1').style.display = 'block';
+        setTimeout(function() {
+          document.getElementById('quiz-loader-1').style.display = 'none';
+          document.getElementById('quiz-etapa-2').style.display = 'block';
+        }, 3800);
+      } else if (etapa === 2) {
+        document.getElementById('quiz-etapa-2').style.display = 'none';
+        document.getElementById('quiz-loader-2').style.display = 'block';
+        setTimeout(function() {
+          document.getElementById('quiz-loader-2').style.display = 'none';
+          document.getElementById('quiz-etapa-3').style.display = 'block';
+        }, 3800);
+      } else if (etapa === 3) {
+        document.getElementById('quiz-etapa-3').style.display = 'none';
+        document.getElementById('quiz-loader-final').style.display = 'block';
+        setTimeout(function() {
+          var bar = document.getElementById('quiz-bar-final');
+          if (bar) bar.style.width = '100%';
+        }, 2000);
+        setTimeout(function() {
+          document.getElementById('quiz-loader-final').style.display = 'none';
+          document.getElementById('quiz-resultado').style.display = 'block';
+          try {
+            if (window.confetti) {
+              confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 }, colors: ['#057932', '#D4AF37', '#ffffff'] });
+            }
+          } catch(e){}
+        }, 4200);
+      }
+    }, 200);
   };
   </script>
 
