@@ -849,6 +849,7 @@
     var fora = document.querySelector('.hm-fora');
     if (!fora) return;
     var esc = fora.querySelector('.hm-escala');
+    if (!fora.clientWidth) return;   /* aba oculta: nao encolher para zero */
     var s = Math.min(1, fora.clientWidth / 420);
     esc.style.transform = 'scale(' + s + ')';
     fora.style.height = Math.ceil(92 * s) + 'px';
