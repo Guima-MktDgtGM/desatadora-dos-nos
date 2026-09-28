@@ -249,7 +249,7 @@
         </p>
       </div>
 
-      <img class="product-shot" src="amuleto-oleo-santo.jpg" alt="Amuleto consagrado e óleo santo de Jerusalém" width="800" height="1200" fetchpriority="high" decoding="async">
+      <img class="product-shot" src="../u3/amuleto-oleo-santo.jpg" alt="Amuleto consagrado e óleo santo de Jerusalém" width="800" height="1200" fetchpriority="high" decoding="async">
 
       <div class="presentes">
         <div class="presente"><span class="ic">🏅</span><div><b>Amuleto de Nossa Senhora Desatadora dos Nós</b><span>Medalha consagrada sobre o altar da Nova Basílica, com a fita azul. Para trazer consigo em cada momento daqui para a frente.</span><span class="tag">✓ Reservado em seu nome</span></div></div>
@@ -352,7 +352,7 @@
     PAISES.forEach(function(p, i){
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'pais' + (p[1] === 'Outro país' ? ' wide' : '');
-      b.innerHTML = (p[0] ? '<img class="fl" src="flags/' + p[0] + '.png" alt="" width="28" height="19">' : '<span class="fl">🌍</span>') + p[1];
+      b.innerHTML = (p[0] ? '<img class="fl" src="../u3/../u3/flags/' + p[0] + '.png" alt="" width="28" height="19">' : '<span class="fl">🌍</span>') + p[1];
       b.onclick = function(){ escolherPais(i, b); };
       box.appendChild(b);
     });
