@@ -215,6 +215,29 @@
           </p>
         </div>
 
+        <!-- CARD DE ACESSO RÁPIDO AO GUIA 15 DIAS NA TELA INICIAL -->
+        <div class="glass-card p-4 border border-sacred-gold/40 bg-gradient-to-r from-[#0C152B] via-[#0F1E3D] to-[#0C152B] shadow-xl relative overflow-hidden cursor-pointer" onclick="openGuideModal()">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-2xl bg-sacred-gold/20 border border-sacred-gold/50 flex items-center justify-center text-sacred-gold shadow">
+                <i data-lucide="book-open" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[9px] bg-sacred-gold text-slate-950 font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Módulo Desbloqueado</span>
+                </div>
+                <h4 class="text-sm font-serif font-bold text-white mt-0.5">Guia de 15 Dias com Maria</h4>
+                <p class="text-[10px] text-slate-300">Blindagem espiritual da sua família dia a dia</p>
+              </div>
+            </div>
+            <button type="button" onclick="event.stopPropagation(); openGuideModal();" class="px-3.5 py-2 gold-btn text-xs rounded-xl shadow-lg flex items-center gap-1 font-bold">
+              <span>Abrir</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+
         <!-- ==================== AS 9 PALAVRAS SAGRADAS (MANUSCRITO DE AUGSBURGO) ==================== -->
         <div class="glass-card overflow-hidden border-sacred-gold/40 relative" id="card-9palavras">
           <div class="absolute inset-0 bg-gradient-to-b from-amber-900/20 via-transparent to-transparent pointer-events-none"></div>
@@ -2636,6 +2659,17 @@ const INITIAL_POSTS_WITH_REPLIES = [
       lucide.createIcons();
     }
 
+    
+    window.forcarAtualizacaoApp = function() {
+      if ('caches' in window) {
+        caches.keys().then(names => Promise.all(names.map(name => caches.delete(name)))).then(() => {
+          window.location.href = window.location.origin + window.location.pathname + '?v=' + Date.now() + '&guia=1';
+        });
+      } else {
+        window.location.href = window.location.origin + window.location.pathname + '?v=' + Date.now() + '&guia=1';
+      }
+    };
+
     function closeGuideModal() {
       const modal = document.getElementById('guia-modal');
       if (modal) modal.classList.add('hidden');
@@ -2954,8 +2988,19 @@ const INITIAL_POSTS_WITH_REPLIES = [
     // 13. INICIALIZAÇÃO
     // -------------------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
+
+      // SUPORTE A LINK DIRETO DE ACESSO (Ex: ?guia=1 ou ?abrir=guia)
+      try {
+        const qs = new URLSearchParams(window.location.search);
+        if (qs.get('guia') === '1' || qs.get('abrir') === 'guia' || qs.get('abrir') === '15dias') {
+          setTimeout(() => {
+            openGuideModal();
+          }, 450);
+        }
+      } catch(e){}
+
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(() => {});
+        navigator.serviceWorker.register('sw.js?v=10').then(r => r.update()).catch(() => {});
       }
 
       renderKnotsTrack();

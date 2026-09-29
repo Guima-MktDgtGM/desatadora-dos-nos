@@ -1,7 +1,6 @@
-// Service Worker do App Caminhos da Fé
-const CACHE_NAME = 'caminhos-da-fe-v8';
+// Service Worker do App Caminhos da Fé v10 (Network-First para HTML)
+const CACHE_NAME = 'caminhos-da-fe-v10';
 const ASSETS_TO_CACHE = [
-  './index.html',
   './manifest.json',
   './images/app-icon.jpg',
   './images/vela-altar.jpg',
@@ -30,8 +29,27 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
+// Network-First para páginas HTML (garante que atualizações do app entrem imediatamente no telemóvel do cliente)
 self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((res) => res || fetch(e.request))
-  );
+  const isHtml = e.request.mode === 'navigate' || (e.request.headers.get('accept') && e.request.headers.get('accept').includes('text/html'));
+
+  if (isHtml) {
+    e.respondWith(
+      fetch(e.request)
+        .then((res) => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+          return res;
+        })
+        .catch(() => caches.match(e.request))
+    );
+  } else {
+    e.respondWith(
+      caches.match(e.request).then((cached) => cached || fetch(e.request).then((res) => {
+        const clone = res.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+        return res;
+      }))
+    );
+  }
 });
