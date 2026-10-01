@@ -9,7 +9,7 @@ if (isset($_GET['logout'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
-    if ($_POST['password'] === ADMIN_PASSWORD) {
+    if (hash('sha256', trim($_POST['password'] ?? '')) === ADMIN_AUTH_HASH) {
         $_SESSION['admin_logged'] = true;
         header('Location: index.php');
         exit;
