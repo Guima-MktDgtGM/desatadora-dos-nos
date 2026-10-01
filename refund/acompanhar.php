@@ -204,6 +204,18 @@ $waLink = "https://wa.me/" . $waNumber . "?text=" . rawurlencode($waMsg);
       </div>
     </div>
 
+    
+    <!-- ALERTA DE SEGURANÇA SOBRE NÃO ABRIR CONTESTAÇÃO BANCÁRIA -->
+    <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-4 space-y-1.5 text-xs">
+      <div class="flex items-center gap-2 text-red-300 font-bold">
+        <span>⚠️</span>
+        <span class="font-cinzel text-[11px] uppercase tracking-wider">Atenção com o seu banco:</span>
+      </div>
+      <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
+        Por favor, <strong>não abra uma contestação paralela no aplicativo do seu banco enquanto este protocolo estiver em curso</strong>. Como as doações são repassadas a projetos sociais, quando o banco intervém, o sistema oficial é bloqueado e o prazo salta para <strong>20 a 30 dias úteis de auditoria bancária</strong>. Aguarde a nossa liquidação direta ou fale connosco pelo botão abaixo.
+      </p>
+    </div>
+
     <!-- BOTÃO DIRETO DO WHATSAPP -->
     <div class="pt-3 space-y-2.5">
       <a href="<?= $waLink ?>" target="_blank" class="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition">

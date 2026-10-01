@@ -114,12 +114,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <strong>É óbvio que nós devolveremos a sua oferta</strong> se este valor fizer falta na mesa da sua família ou se ocorreu qualquer engano. <em>Jamais iríamos querer ficar com algo que você não estivesse entregando de coração inteiramente aberto</em> para socorrer o próximo — mesmo sabendo que Deus multiplica a generosidade de quem ajuda.
     </p>
 
-    <div class="bg-amber-950/30 border border-amber-500/30 rounded-xl p-3 text-[11px] text-amber-200 flex items-start gap-2">
-      <span class="text-base">⏳</span>
-      <span>
-        <strong>Prazo previsto de liquidação:</strong> O processo de desvinculação da oferta e estorno bancário é estimado inicialmente de <strong>3 a 7 dias úteis</strong>, enquanto os lançamentos são regularizados pela nossa tesouraria.
-      </span>
+    
+  <!-- AVISO DE CONTRASTE BANCÁRIO (DESESTÍMULO AO BANCO) -->
+  <div class="bg-gradient-to-r from-[#0C152B] via-[#111F42] to-[#0C152B] border-2 border-amber-400/50 rounded-2xl p-5 sm:p-6 shadow-2xl space-y-4">
+    <div class="flex items-center gap-2.5 pb-2 border-b border-slate-700/80">
+      <span class="text-xl">⚠️</span>
+      <h3 class="font-cinzel font-bold text-amber-300 text-sm sm:text-base">
+        Aviso Importante sobre os Prazos de Restituição
+      </h3>
     </div>
+
+    <p class="text-xs text-slate-300 leading-relaxed text-justify">
+      Como as ofertas recebidas não ficam retidas em conta bancária e são <strong>repassadas quase de imediato para a aquisição de materiais de construção da capela e socorro das famílias</strong>, existe uma diferença fundamental de prazos que você precisa saber:
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+      
+      <!-- OPÇÃO BANCÁRIA -->
+      <div class="bg-red-950/30 border border-red-500/40 rounded-xl p-3.5 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-red-300 uppercase tracking-wider">Se solicitar pelo seu Banco:</span>
+          <span class="text-xs">🏛️</span>
+        </div>
+        <div class="text-lg font-black text-red-400 font-mono">20 a 30 dias úteis</div>
+        <p class="text-[11px] text-slate-400 leading-relaxed text-justify">
+          É um direito pleno seu contestar junto à sua agência. Porém, como os fundos já foram alocados em materiais e alimentos, os bancos internacionais instauram uma <strong>auditoria burocrática de destinação social</strong>, congelando o processo e demorando até <strong>5 vezes mais</strong> para liberar qualquer valor.
+        </p>
+      </div>
+
+      <!-- OPÇÃO CANAL OFICIAL -->
+      <div class="bg-emerald-950/30 border-2 border-emerald-500/60 rounded-xl p-3.5 space-y-2 relative shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-black text-emerald-300 uppercase tracking-wider flex items-center gap-1">
+            <span>✓ Pelo Canal Pastoral Oficial:</span>
+          </span>
+          <span class="text-xs">🕊️</span>
+        </div>
+        <div class="text-lg font-black text-emerald-400 font-mono">3 a 7 dias úteis</div>
+        <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
+          Nós fazemos a solicitação diretamente na nossa tesouraria de <strong>bom grado e com prioridade</strong>, cobrindo o valor com recursos próprios da paróquia para que você receba o seu dinheiro de volta o mais rápido possível e sem atritos.
+        </p>
+      </div>
+
+    </div>
+
+    <p class="text-[11px] text-amber-200/90 text-center font-medium pt-1">
+      Ao preencher o formulário abaixo, o seu pedido entra na fila prioritária de 3 a 7 dias úteis.
+    </p>
+  </div>
+
   </div>
 
   <?php if ($error): ?>
