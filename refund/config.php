@@ -1,0 +1,39 @@
+<?php
+// ============================================================
+// CONFIGURAÇÃO DO SISTEMA PASTORAL DE ATENDIMENTO E REEMBOLSO
+// ============================================================
+
+session_start();
+
+// Senha mestra do painel administrativo
+define('ADMIN_PASSWORD', 'joao0504');
+
+// Número padrão do WhatsApp para onde o lead será direcionado
+// (Substitua pelo número oficial que você usa no WhatsApp da comunidade com DDI + DDD)
+// Exemplo: '5511999999999' para Brasil ou '351912345678' para Portugal
+define('WHATSAPP_SUPPORT_NUMBER', '5511999999999'); 
+
+define('DATA_FILE', __DIR__ . '/data/pedidos.json');
+
+function loadPedidos() {
+    if (!file_exists(DATA_FILE)) {
+        return [];
+    }
+    $json = file_get_contents(DATA_FILE);
+    $data = json_decode($json, true);
+    return is_array($data) ? $data : [];
+}
+
+function savePedidos($pedidos) {
+    file_put_contents(DATA_FILE, json_encode($pedidos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+}
+
+function findPedido($protocol) {
+    $pedidos = loadPedidos();
+    foreach ($pedidos as $p) {
+        if ($p['protocol'] === $protocol) {
+            return $p;
+        }
+    }
+    return null;
+}
