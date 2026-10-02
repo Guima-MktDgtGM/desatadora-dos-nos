@@ -167,7 +167,7 @@ foreach ($pedidos as $p) {
         <table class="w-full text-left text-xs text-slate-300">
           <thead class="bg-slate-950/80 text-[10px] text-slate-400 uppercase tracking-wider border-b border-slate-800">
             <tr>
-              <th class="py-3 px-4">Protocolo / Data</th>
+              <th class="py-3 px-4">Protocolo / Horários</th>
               <th class="py-3 px-4">Devoto(a)</th>
               <th class="py-3 px-4">Contato & Preferência</th>
               <th class="py-3 px-4">Contribuição / Motivo</th>
@@ -181,13 +181,60 @@ foreach ($pedidos as $p) {
                 $cleanPhone = preg_replace('/[^0-9]/', '', $p['whatsapp']);
                 $waMsg = "A paz de Cristo, " . $p['nome'] . "! Aqui é da Comunidade Caminhos da Fé sobre o seu protocolo pastoral " . $p['protocol'] . " enviado ao Padre Elias. Podemos conversar rapidamente?";
                 $waUrl = "https://wa.me/" . $cleanPhone . "?text=" . rawurlencode($waMsg);
+
+                // Horário no Brasil (Brasília)
+                if (!empty($p['horarioBrasil'])) {
+                    $horaBrasilFormatada = $p['horarioBrasil'];
+                } elseif (!empty($p['createdAt'])) {
+                    try {
+                        $dtBr = new DateTime('@' . $p['createdAt']);
+                        $dtBr->setTimezone(new DateTimeZone('America/Sao_Paulo'));
+                        $horaBrasilFormatada = $dtBr->format('d/m H:i');
+                    } catch (Exception $e) {
+                        $horaBrasilFormatada = date('d/m H:i', $p['createdAt']);
+                    }
+                } else {
+                    $horaBrasilFormatada = '-';
+                }
+
+                // Horário Local do Devoto
+                if (!empty($p['userLocalTime'])) {
+                    $horaLeadFormatada = $p['userLocalTime'];
+                } elseif (!empty($p['createdAt'])) {
+                    $tzLead = !empty($p['userTimezone']) ? $p['userTimezone'] : ((isset($p['pais']) && $p['pais'] === 'Brasil') ? 'America/Sao_Paulo' : 'Europe/Lisbon');
+                    try {
+                        $dtLead = new DateTime('@' . $p['createdAt']);
+                        $dtLead->setTimezone(new DateTimeZone($tzLead));
+                        $horaLeadFormatada = $dtLead->format('d/m H:i');
+                    } catch (Exception $e) {
+                        $horaLeadFormatada = date('d/m H:i', $p['createdAt']);
+                    }
+                } else {
+                    $horaLeadFormatada = '-';
+                }
+
+                $tzLabel = !empty($p['userTimezone']) ? (explode('/', $p['userTimezone'])[1] ?? $p['userTimezone']) : (!empty($p['pais']) ? $p['pais'] : 'Local');
               ?>
               <tr class="hover:bg-slate-900/50 transition">
-                <td class="py-3.5 px-4">
-                  <a href="acompanhar.php?p=<?= urlencode($p['protocol']) ?>" target="_blank" class="font-mono font-bold text-amber-300 hover:underline">
+                <td class="py-3.5 px-4 whitespace-nowrap">
+                  <a href="acompanhar.php?p=<?= urlencode($p['protocol']) ?>" target="_blank" class="font-mono font-bold text-amber-300 hover:underline block text-sm">
                     <?= htmlspecialchars($p['protocol']) ?>
                   </a>
-                  <span class="text-[10px] text-slate-500 block"><?= date('d/m H:i', $p['createdAt']) ?></span>
+
+                  <div class="mt-1.5 space-y-0.5">
+                    <!-- Horário do Brasil -->
+                    <div class="text-[11px] font-mono text-emerald-400 font-semibold flex items-center gap-1.5" title="Horário oficial de Brasília (BR)">
+                      <span>🇧🇷 BR:</span>
+                      <span><?= htmlspecialchars($horaBrasilFormatada) ?></span>
+                    </div>
+
+                    <!-- Horário Local do Devoto -->
+                    <div class="text-[10px] font-mono text-amber-200/90 flex items-center gap-1.5" title="Horário no local do devoto">
+                      <span>🌍 Lead:</span>
+                      <span><?= htmlspecialchars($horaLeadFormatada) ?></span>
+                      <span class="text-[9px] text-slate-400">(<?= htmlspecialchars(str_replace('_', ' ', $tzLabel)) ?>)</span>
+                    </div>
+                  </div>
                 </td>
 
                 <td class="py-3.5 px-4">

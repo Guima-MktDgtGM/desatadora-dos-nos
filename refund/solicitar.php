@@ -9,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ddi = trim($_POST['ddi'] ?? '+351');
     $paisNome = trim($_POST['pais_nome'] ?? 'Portugal');
     $canal = trim($_POST['canal'] ?? 'email');
+    $userTimezone = trim($_POST['user_timezone'] ?? '');
+    $userLocalTime = trim($_POST['user_local_time'] ?? '');
     
     // Múltipla escolha de produtos
     $produtosArray = $_POST['produtos'] ?? [];
@@ -43,10 +45,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $canal = 'email'; // Se não tiver WhatsApp, canal é e-mail automaticamente
         }
 
+        // Horário oficial do Brasil (Brasília)
+        try {
+            $dtBr = new DateTime('now', new DateTimeZone('America/Sao_Paulo'));
+            $horarioBrasil = $dtBr->format('d/m/Y H:i');
+        } catch (Exception $e) {
+            $horarioBrasil = date('d/m/Y H:i');
+        }
+
+        // Validação e cálculo do Horário Local do Devoto
+        if (empty($userLocalTime) && !empty($userTimezone)) {
+            try {
+                $dtLead = new DateTime('now', new DateTimeZone($userTimezone));
+                $userLocalTime = $dtLead->format('d/m/Y H:i');
+            } catch (Exception $e) {
+                $userLocalTime = $horarioBrasil;
+            }
+        } elseif (empty($userLocalTime)) {
+            $tzGuess = ($ddi === '+351' || $paisNome === 'Portugal') ? 'Europe/Lisbon' : 'America/Sao_Paulo';
+            try {
+                $dtLead = new DateTime('now', new DateTimeZone($tzGuess));
+                $userLocalTime = $dtLead->format('d/m/Y H:i');
+                $userTimezone = $tzGuess;
+            } catch (Exception $e) {
+                $userLocalTime = $horarioBrasil;
+            }
+        }
+
         $novoPedido = [
             'id' => uniqid('ref_'),
             'protocol' => $protocol,
             'createdAt' => time(),
+            'userTimezone' => $userTimezone,
+            'userLocalTime' => $userLocalTime,
+            'horarioBrasil' => $horarioBrasil,
             'nome' => $nome,
             'email' => $email,
             'whatsapp' => $formattedWhatsapp,
@@ -59,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'historico' => [
                 [
                     'data' => time(),
+                    'horaLocal' => $userLocalTime,
                     'evento' => 'Solicitação registrada no sistema pastoral'
                 ]
             ]
@@ -224,8 +257,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php endif; ?>
 
   <!-- Formulário de Solicitação -->
-  <form method="POST" class="bg-slate-900/80 border gold-border rounded-3xl p-6 sm:p-8 card-shadow backdrop-blur-xl space-y-5">
+  <form method="POST" id="form-refund" onsubmit="captureClientTime()" class="bg-slate-900/80 border gold-border rounded-3xl p-6 sm:p-8 card-shadow backdrop-blur-xl space-y-5">
     
+    <!-- Captura de Fuso e Horário Local do Devoto -->
+    <input type="hidden" name="user_timezone" id="input-user-timezone" value="">
+    <input type="hidden" name="user_local_time" id="input-user-local-time" value="">
+
     <div class="border-b border-slate-800 pb-3">
       <h3 class="text-sm font-bold text-white font-cinzel">1. Dados da Sua Contribuição</h3>
       <p class="text-xs text-slate-400">Preencha para localizarmos o seu registro no altar</p>
@@ -380,11 +417,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <textarea name="mensagem" rows="2" placeholder="Se desejar, explique brevemente a sua situação..." class="w-full bg-slate-950/90 border border-slate-700/80 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition resize-none"></textarea>
     </div>
 
-    <!-- Botão de Envio -->
+    <!-- Botão de Envio com Ativação Visual Dinâmica -->
     <div class="pt-4 space-y-3">
-      <button type="submit" class="w-full py-4 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs sm:text-sm font-bold text-slate-200 hover:text-white transition leading-snug shadow-xl flex items-center justify-center gap-2">
-        <span>Quero retirar a minha doação da Capela e abrir mão da bênção consagrada</span>
+      <button type="submit" id="btn-submit-refund" class="w-full py-4 px-5 rounded-2xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm font-bold text-slate-400 opacity-60 cursor-not-allowed transition-all duration-300 leading-snug shadow-xl flex items-center justify-center gap-2">
+        <span id="btn-submit-icon">🔒</span>
+        <span id="btn-submit-text">Quero retirar minha garantia e abrir mão da bênção consagrada</span>
       </button>
+
+      <p id="form-validation-hint" class="text-[11px] text-amber-300/80 text-center leading-relaxed font-medium transition-colors">
+        * Preencha o seu Nome Completo e E-mail acima para liberar a solicitação.
+      </p>
 
       <p class="text-[11px] text-slate-400 text-center leading-relaxed">
         Ao confirmar, um protocolo individual será gerado para acompanhamento contínuo em tempo real.
@@ -442,6 +484,65 @@ function selectAllProducts() {
   const checkboxes = document.querySelectorAll('.product-checkbox');
   const allChecked = Array.from(checkboxes).every(c => c.checked);
   checkboxes.forEach(c => c.checked = !allChecked);
+  checkRequiredFields();
+}
+
+function captureClientTime() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+    const tzInput = document.getElementById('input-user-timezone');
+    if (tzInput) tzInput.value = tz;
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    const localTimeInput = document.getElementById('input-user-local-time');
+    if (localTimeInput) localTimeInput.value = `${dateStr} ${timeStr}`;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function checkRequiredFields() {
+  const nomeInput = document.querySelector('input[name="nome"]');
+  const emailInput = document.querySelector('input[name="email"]');
+  const checkboxes = document.querySelectorAll('.product-checkbox');
+  const btn = document.getElementById('btn-submit-refund');
+  const icon = document.getElementById('btn-submit-icon');
+  const hint = document.getElementById('form-validation-hint');
+
+  if (!btn || !nomeInput || !emailInput) return;
+
+  const nomeVal = (nomeInput.value || '').trim();
+  const emailVal = (emailInput.value || '').trim();
+  const hasProduct = Array.from(checkboxes).some(c => c.checked);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isNomeValid = nomeVal.length >= 2;
+  const isEmailValid = emailRegex.test(emailVal);
+  const isValid = isNomeValid && isEmailValid && hasProduct;
+
+  if (isValid) {
+    // BOTÃO VERDE ATIVADO COM DESTAQUE
+    btn.classList.remove('bg-slate-800/90', 'border-slate-700', 'text-slate-400', 'opacity-60', 'cursor-not-allowed');
+    btn.classList.add('bg-emerald-600', 'hover:bg-emerald-500', 'border-emerald-400', 'text-white', 'cursor-pointer', 'shadow-emerald-600/30', 'hover:shadow-emerald-500/50', 'transform', 'hover:-translate-y-0.5');
+    if (icon) icon.textContent = '✓';
+    if (hint) {
+      hint.textContent = '✓ Dados preenchidos com sucesso. O botão acima está liberado.';
+      hint.classList.remove('text-amber-300/80');
+      hint.classList.add('text-emerald-400');
+    }
+  } else {
+    // BOTÃO INATIVO
+    btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-500', 'border-emerald-400', 'text-white', 'cursor-pointer', 'shadow-emerald-600/30', 'hover:shadow-emerald-500/50', 'transform', 'hover:-translate-y-0.5');
+    btn.classList.add('bg-slate-800/90', 'border-slate-700', 'text-slate-400', 'opacity-60', 'cursor-not-allowed');
+    if (icon) icon.textContent = '🔒';
+    if (hint) {
+      hint.textContent = '* Preencha o seu Nome Completo e E-mail acima para liberar a solicitação.';
+      hint.classList.remove('text-emerald-400');
+      hint.classList.add('text-amber-300/80');
+    }
+  }
 }
 
 // Lista completa de países com bandeiras reais via flagcdn
@@ -566,7 +667,9 @@ document.addEventListener('click', function(e) {
 
 // Inicialização inteligente com base no idioma do visitante
 window.addEventListener('DOMContentLoaded', function() {
+  captureClientTime();
   renderCountries();
+
   const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
   if (lang.includes('br')) {
     selectCountry('br', '+55', 'Brasil', '(11) 98765-4321');
@@ -579,6 +682,18 @@ window.addEventListener('DOMContentLoaded', function() {
   } else {
     selectCountry('pt', '+351', 'Portugal', '912 345 678');
   }
+
+  // Monitorar campos obrigatórios para ativar o botão verde
+  const nomeInput = document.querySelector('input[name="nome"]');
+  const emailInput = document.querySelector('input[name="email"]');
+  const checkboxes = document.querySelectorAll('.product-checkbox');
+
+  if (nomeInput) nomeInput.addEventListener('input', checkRequiredFields);
+  if (emailInput) emailInput.addEventListener('input', checkRequiredFields);
+  checkboxes.forEach(c => c.addEventListener('change', checkRequiredFields));
+
+  // Validação inicial (caso campos venham pré-preenchidos pelo navegador)
+  setTimeout(checkRequiredFields, 120);
 });
 </script>
 

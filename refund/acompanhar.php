@@ -124,7 +124,12 @@ $waLink = "https://wa.me/" . $waNumber . "?text=" . rawurlencode($waMsg);
       </div>
       <div class="text-right">
         <span class="text-[10px] text-slate-400 block font-medium">Registrado em</span>
-        <span class="text-xs font-bold text-slate-200"><?= date('d/m/Y - H:i', $pedido['createdAt']) ?></span>
+        <span class="text-xs font-bold text-slate-200">
+          <?= htmlspecialchars(!empty($pedido['userLocalTime']) ? $pedido['userLocalTime'] : date('d/m/Y - H:i', $pedido['createdAt'])) ?>
+        </span>
+        <?php if (!empty($pedido['userTimezone'])): ?>
+          <span class="text-[9px] text-slate-400 block">Horário local</span>
+        <?php endif; ?>
       </div>
     </div>
 
