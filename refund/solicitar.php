@@ -225,9 +225,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <span class="text-[10px] font-bold text-red-300 uppercase tracking-wider">Se for pelo seu Banco:</span>
           <span class="text-sm">🏛️</span>
         </div>
-        <div class="text-base sm:text-lg font-black text-red-400 font-mono">20 a 30 dias úteis</div>
+        <div class="text-base sm:text-lg font-black text-red-400 font-mono">30 a 60 dias</div>
         <p class="text-[11px] text-slate-400 leading-relaxed text-justify">
-          É um direito seu pleno recorrer à sua agência. Contudo, como os fundos foram alocados em obras sociais, os bancos internacionais instauram uma <strong>auditoria burocrática</strong> que retém o processo por até <strong>5 vezes mais tempo</strong>.
+          É um direito seu pleno recorrer à sua agência. Contudo, abrir contestação paralela pelo banco gera um conflito sistêmico interbancário e uma <strong>auditoria burocrática</strong> que retém o processo por até <strong>30 a 60 dias</strong>.
         </p>
       </div>
 

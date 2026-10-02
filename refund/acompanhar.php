@@ -207,27 +207,55 @@ $waLink = "https://wa.me/" . $waNumber . "?text=" . rawurlencode($waMsg);
       </div>
     </div>
 
-    <!-- ALERTA DE SEGURANÇA SOBRE O BANCO -->
-    <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-4 space-y-1 text-xs">
-      <div class="flex items-center gap-2 text-red-300 font-bold">
-        <span>⚠️</span>
+    <!-- ALERTA DE CONFLITO BUROCRÁTICO INTERBANCÁRIO -->
+    <div class="bg-amber-950/20 border border-amber-500/30 rounded-2xl p-4 sm:p-5 space-y-2 text-xs">
+      <div class="flex items-center gap-2 text-amber-300 font-bold">
+        <span class="text-base">⚠️</span>
         <span class="font-cinzel text-[11px] uppercase tracking-wider">Atenção com o seu banco:</span>
       </div>
       <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
-        Por favor, <strong>não abra uma contestação paralela no aplicativo do seu banco enquanto este protocolo estiver em curso</strong>. Como as doações são repassadas a projetos sociais, quando o banco intervém, o sistema oficial é bloqueado e o prazo salta para <strong>20 a 30 dias úteis de auditoria bancária</strong>. Aguarde a nossa liquidação direta ou fale connosco pelo botão abaixo.
+        <strong>Aviso Técnico do Sistema de Compensação:</strong> Caso seja aberta uma solicitação de contestação direta no aplicativo do seu banco paralelamente a este protocolo oficial em andamento, os sistemas emissores e adquirentes identificam uma <strong>duplicidade de processo (conflito sistêmico interbancário)</strong>.
+      </p>
+      <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
+        Quando ocorre esse conflito, o procedimento direto e amigável é compulsoriamente suspenso pela regulação bancária e o processo é transferido para o <strong>setor de auditoria externa e conciliação pericial dos grandes bancos</strong>.
+      </p>
+      <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
+        Devido à burocracia dos sistemas bancários tradicionais (análises documentais de lote, validação de remessa e conciliação de faturas), o tempo de resolução deixa de ser ágil e estende-se para <strong>30 a 60 dias</strong>, mantendo o valor retido até a conclusão pericial. Para que a sua devolução ocorra no menor tempo possível e sem bloqueios no seu limite, orientamos que mantenha apenas este canal oficial ativo e acompanhe a evolução por esta página.
+      </p>
+    </div>
+
+    <!-- BOX PARA COPIAR O LINK DO PROTOCOLO -->
+    <div class="bg-slate-950/80 border border-slate-700/80 rounded-2xl p-4 sm:p-5 space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider font-cinzel flex items-center gap-1.5">
+          <span>🔗</span> Link Direto de Acompanhamento
+        </span>
+        <span class="text-[10px] text-slate-400">Guarde para consultar</span>
+      </div>
+      
+      <div class="relative">
+        <input id="protocolLinkInput" type="text" readonly 
+               value="https://caminhosdafe.online/refund/acompanhar.php?p=<?= urlencode($pedido['protocol']) ?>" 
+               class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-slate-300 font-mono focus:outline-none select-all">
+      </div>
+
+      <button type="button" id="copyLinkBtn" onclick="copyProtocolLink()" 
+              class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer shadow-md">
+        <span id="copyIcon" class="text-base">📋</span>
+        <span id="copyText">Copiar Link do Meu Protocolo</span>
+      </button>
+
+      <p class="text-[10px] text-slate-400 text-center leading-normal">
+        Salve nos seus favoritos do navegador ou envie no seu WhatsApp pessoal para consultar o status em tempo real sempre que quiser, sem precisar preencher o formulário novamente.
       </p>
     </div>
 
     <!-- BOTÃO DIRETO DO WHATSAPP -->
-    <div class="pt-2 space-y-2.5">
+    <div class="pt-1 space-y-2">
       <a href="<?= $waLink ?>" target="_blank" class="w-full py-4 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl transition">
         <span class="text-lg">🟢</span>
         <span>Falar com o Atendente Pastoral no WhatsApp</span>
       </a>
-
-      <p class="text-[11px] text-slate-400 text-center leading-relaxed">
-        Guarde o link desta página para acompanhar as atualizações diárias do seu trâmite pastoral.
-      </p>
     </div>
 
   </div>
@@ -240,6 +268,52 @@ $waLink = "https://wa.me/" . $waNumber . "?text=" . rawurlencode($waMsg);
   Comunidade Caminhos da Fé · Obras Sociais de Nossa Senhora Desatadora dos Nós<br>
   Apoio ao devoto: <a href="mailto:gabriel.luz@noticiasdafe.com.br" class="text-slate-400 underline">gabriel.luz@noticiasdafe.com.br</a>
 </footer>
+
+<script>
+function copyProtocolLink() {
+  const input = document.getElementById('protocolLinkInput');
+  const btn = document.getElementById('copyLinkBtn');
+  const icon = document.getElementById('copyIcon');
+  const text = document.getElementById('copyText');
+  
+  if (!input) return;
+
+  const link = window.location.href || input.value;
+  input.value = link;
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(link).then(onCopied).catch(function() { fallbackCopy(input); });
+  } else {
+    fallbackCopy(input);
+  }
+
+  function fallbackCopy(elm) {
+    elm.focus();
+    elm.select();
+    elm.setSelectionRange(0, 99999);
+    try {
+      document.execCommand('copy');
+      onCopied();
+    } catch (e) {
+      prompt('Copie o link abaixo para guardar o seu protocolo:', elm.value);
+    }
+  }
+
+  function onCopied() {
+    btn.classList.remove('bg-slate-800', 'hover:bg-slate-700', 'border-slate-600');
+    btn.classList.add('bg-emerald-700', 'border-emerald-500', 'text-white');
+    icon.textContent = '✅';
+    text.textContent = 'Link Copiado com Sucesso!';
+    
+    setTimeout(function() {
+      btn.classList.remove('bg-emerald-700', 'border-emerald-500');
+      btn.classList.add('bg-slate-800', 'hover:bg-slate-700', 'border-slate-600');
+      icon.textContent = '📋';
+      text.textContent = 'Copiar Link do Meu Protocolo';
+    }, 4000);
+  }
+}
+</script>
 
 </body>
 </html>
