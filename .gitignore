@@ -1,0 +1,5 @@
+# Ignorar banco de dados local e dados em tempo de execução
+refund/data/*.json
+refund/data/*.log
+refund/data/*.txt
+refund/data/backups/
