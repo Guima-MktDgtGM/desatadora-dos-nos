@@ -1,5 +1,5 @@
-// Service Worker do App Caminhos da Fé v10 (Network-First para HTML)
-const CACHE_NAME = 'caminhos-da-fe-v10';
+// Service Worker do App Caminhos da Fé v11 (Network-First para HTML)
+const CACHE_NAME = 'caminhos-da-fe-v11';
 const ASSETS_TO_CACHE = [
   './manifest.json',
   './images/app-icon.jpg',

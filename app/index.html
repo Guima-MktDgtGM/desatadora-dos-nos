@@ -750,50 +750,78 @@
           </div>
         </div>
 
-        <!-- MÓDULO 2: ÁUDIOS FREQUENCIAIS NOTURNOS -->
-        <div class="glass-card overflow-hidden shadow-xl border-sacred-gold/30">
-          <div class="relative h-40 overflow-hidden">
+        <!-- MÓDULO 2: ÁUDIOS FREQUENCIAIS SAGRADOS DO TERÇO NOTURNO (UP2) -->
+        <div id="modulo-audios-terco" class="glass-card overflow-hidden shadow-2xl border-sacred-gold/40">
+          <div class="relative h-44 overflow-hidden">
             <img src="images/frequencia-som.jpg" alt="Frequências Sacras" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-[#0B132B]/60 to-transparent"></div>
-            <span class="absolute top-3 left-3 bg-indigo-500 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full shadow uppercase">Módulo 2</span>
+            <div class="absolute top-3 left-3 flex items-center gap-1.5 bg-sacred-gold text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full shadow uppercase tracking-wider">
+              <span>🎧 Módulo 2 · Consagração Noturna</span>
+            </div>
+            <div class="absolute bottom-3 left-4 right-4">
+              <span class="text-[10px] text-amber-300 font-bold uppercase tracking-widest block font-cinzel">Áudios Frequenciais Sagrados</span>
+              <h3 class="font-serif font-bold text-lg text-white">Terço Noturno de 432Hz & Frequências de Libertação</h3>
+            </div>
           </div>
-          <div class="p-5 space-y-3 -mt-6 relative z-10">
-            <div>
-              <h3 class="font-serif font-bold text-lg text-white">Áudios Frequenciais do Terço Noturno</h3>
-              <p class="text-xs text-slate-300 leading-relaxed">Frequências harmónicas sacras para reproduzir ao dormir com fones de ouvido.</p>
+
+          <div class="p-5 space-y-4 relative z-10">
+            <p class="text-xs text-slate-300 leading-relaxed text-justify">
+              Áudios harmônicos sagrados produzidos para escuta com fones de ouvido durante a oração ou ao deitar-se. As vibrações puras acalmam o peito angustiado, blindam o sono contra pesadelos e aceleram o desatar de nós no lar.
+            </p>
+
+            <!-- PLAYER CENTRAL EM DESTAQUE -->
+            <div id="active-audio-panel" class="p-4 bg-gradient-to-r from-slate-950 via-[#071026] to-slate-950 rounded-2xl border border-sacred-gold/30 shadow-inner space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 overflow-hidden">
+                  <div id="main-play-disc" class="w-11 h-11 flex-shrink-0 rounded-2xl bg-sacred-gold/20 flex items-center justify-center text-sacred-gold border border-sacred-gold/30 shadow transition-all duration-300">
+                    <i data-lucide="headphones" id="main-audio-icon" class="w-5 h-5"></i>
+                  </div>
+                  <div class="overflow-hidden">
+                    <span id="active-track-badge" class="text-[10px] font-bold text-sacred-gold block uppercase tracking-wider font-cinzel">Frequência Pronta</span>
+                    <h4 id="active-track-title" class="text-xs font-bold text-white truncate">Toque em qualquer áudio abaixo</h4>
+                  </div>
+                </div>
+
+                <button id="main-play-btn" onclick="toggleMainPlay()" class="w-11 h-11 flex-shrink-0 rounded-2xl gold-btn flex items-center justify-center shadow-lg transition active:scale-95 cursor-pointer">
+                  <i data-lucide="play" id="main-play-icon" class="w-5 h-5 fill-current ml-0.5"></i>
+                </button>
+              </div>
+
+              <!-- BARRA DE PROGRESSO & TEMPO -->
+              <div class="space-y-1.5 pt-1">
+                <div class="flex justify-between items-center text-[10px] text-slate-400 font-mono">
+                  <span id="audio-time-current">00:00</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="toggleAudioLoop()" id="audio-loop-btn" class="px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-[10px] font-bold border border-amber-400/40 flex items-center gap-1 cursor-pointer transition" title="Repetir a noite toda">
+                      <span id="loop-indicator">🔁 Repetir: Ligado</span>
+                    </button>
+                  </div>
+                  <span id="audio-time-duration">~30:00</span>
+                </div>
+                
+                <div class="w-full bg-slate-900 rounded-full h-2 cursor-pointer relative overflow-hidden" onclick="seekAudio(event)" id="audio-progress-container">
+                  <div id="audio-progress-bar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-300 rounded-full w-0 transition-all duration-100"></div>
+                </div>
+              </div>
+
+              <!-- TIMER DE SONO -->
+              <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 text-[10px] text-slate-400">
+                <span>Timer para Dormir:</span>
+                <div class="flex items-center gap-1">
+                  <button type="button" onclick="setPlayerSleepTimer(15)" class="px-2 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[10px] cursor-pointer">15m</button>
+                  <button type="button" onclick="setPlayerSleepTimer(30)" class="px-2 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[10px] cursor-pointer">30m</button>
+                  <button type="button" onclick="setPlayerSleepTimer(60)" class="px-2 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[10px] cursor-pointer">60m</button>
+                  <button type="button" onclick="setPlayerSleepTimer(0)" class="px-2 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-[10px] cursor-pointer">Desativar</button>
+                  <span id="player-timer-status" class="text-amber-300 font-bold ml-1 font-mono"></span>
+                </div>
+              </div>
             </div>
 
-            <div class="space-y-2.5 pt-1">
-              <div class="flex items-center justify-between p-3 bg-slate-900/90 rounded-2xl border border-slate-800">
-                <div>
-                  <span class="text-xs font-bold text-white block">432Hz — Sono Reparador & Paz</span>
-                  <span class="text-[10px] text-slate-400">Harmonia para acalmar a mente agitada</span>
-                </div>
-                <button onclick="toggleAudioFrequency(432)" class="w-9 h-9 rounded-xl gold-btn flex items-center justify-center">
-                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
-                </button>
-              </div>
-
-              <div class="flex items-center justify-between p-3 bg-slate-900/90 rounded-2xl border border-slate-800">
-                <div>
-                  <span class="text-xs font-bold text-white block">528Hz — Desbloqueio e Prosperidade</span>
-                  <span class="text-[10px] text-slate-400">Frequência milagrosa de restauração</span>
-                </div>
-                <button onclick="toggleAudioFrequency(528)" class="w-9 h-9 rounded-xl gold-btn flex items-center justify-center">
-                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
-                </button>
-              </div>
-
-              <div class="flex items-center justify-between p-3 bg-slate-900/90 rounded-2xl border border-slate-800">
-                <div>
-                  <span class="text-xs font-bold text-white block">963Hz — Presença Mariana Noturna</span>
-                  <span class="text-[10px] text-slate-400">Conexão espiritual com o Manto Protetor</span>
-                </div>
-                <button onclick="toggleAudioFrequency(963)" class="w-9 h-9 rounded-xl gold-btn flex items-center justify-center">
-                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
-                </button>
-              </div>
+            <!-- LISTA DE FAIXAS SAGRADAS DISPONÍVEIS -->
+            <div class="space-y-2 pt-1" id="tracks-list-container">
+              <!-- Inserido dinamicamente via renderSacredTracksList() -->
             </div>
+
           </div>
         </div>
       </div>
@@ -2101,60 +2129,286 @@ const INITIAL_POSTS_WITH_REPLIES = [
       } catch(e){}
     }
 
-    function toggleAudioFrequency(hz = 432) {
-      if (isPlayingAudio) stopAudioFrequency();
-      else startAudioFrequency(hz);
-    }
-
-    function startAudioFrequency(hz) {
-      try {
-        const ctx = getAudioContext();
-        stopAudioFrequency();
-
-        oscillator = ctx.createOscillator();
-        gainNode = ctx.createGain();
-
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(hz, ctx.currentTime);
-
-        gainNode.gain.setValueAtTime(0.01, ctx.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 2);
-
-        oscillator.connect(gainNode);
-        gainNode.connect(ctx.destination);
-
-        oscillator.start();
-        isPlayingAudio = true;
-
-        const icon = document.getElementById('audio-icon');
-        if (icon) icon.setAttribute('data-lucide', 'pause');
-        lucide.createIcons();
-      } catch(e){}
-    }
-
-    function stopAudioFrequency() {
-      if (oscillator) {
-        try {
-          oscillator.stop();
-          oscillator.disconnect();
-        } catch(e){}
-        oscillator = null;
+    // -------------------------------------------------------------
+    // SISTEMA DE ÁUDIOS FREQUENCIAIS SAGRADOS (UP2)
+    // -------------------------------------------------------------
+    const SACRED_TRACKS = [
+      {
+        id: 1,
+        file: 'audios/4hz-theta-sono.mp3',
+        hz: '4Hz Theta',
+        badge: 'Sono Profundo',
+        title: 'Sono Reparador & Blindagem Noturna',
+        desc: 'Ondas Theta sagradas para silenciar a mente agitada, acalmar o coração e afastar pesadelos.',
+        duration: '30:32'
+      },
+      {
+        id: 2,
+        file: 'audios/528hz-milagres.mp3',
+        hz: '528Hz',
+        badge: 'Milagres & Prosperidade',
+        title: 'Frequência dos Milagres & Restauração',
+        desc: 'Harmonia sacra para regeneração interior, desatar nós financeiros e renovar a esperança.',
+        duration: '29:34'
+      },
+      {
+        id: 3,
+        file: 'audios/639hz-harmonia.mp3',
+        hz: '639Hz',
+        badge: 'Cura Familiar',
+        title: 'Harmonia Familiar & Reconciliação',
+        desc: 'Dissolução de mágoas e atritos, união entre pais e filhos e restauração da paz no lar.',
+        duration: '32:12'
+      },
+      {
+        id: 4,
+        file: 'audios/741hz-libertacao.mp3',
+        hz: '741Hz',
+        badge: 'Desatar de Nós',
+        title: 'Limpeza Espiritual & Desatar de Nós',
+        desc: 'Purificação profunda contra inveja, cargas pesadas e nós espirituais que travavam a sua vida.',
+        duration: '30:25'
+      },
+      {
+        id: 5,
+        file: 'audios/852hz-mariana.mp3',
+        hz: '852Hz',
+        badge: 'Manto Protetor',
+        title: 'Presença Mariana & Intuição Sagrada',
+        desc: 'Conexão íntima sob o Manto de Maria Desatadora dos Nós e sensibilidade às graças celestes.',
+        duration: '29:43'
+      },
+      {
+        id: 6,
+        file: 'audios/888hz-abundancia.mp3',
+        hz: '888Hz',
+        badge: 'Graça Crística',
+        title: 'Abundância Divina & Prosperidade',
+        desc: 'A vibração divina do número de Cristo para multiplicação de bênçãos e portas abertas.',
+        duration: '29:51'
+      },
+      {
+        id: 7,
+        file: 'audios/40hz-gamma-foco.mp3',
+        hz: '40Hz Gamma',
+        badge: 'Clareza & Foco',
+        title: 'Foco Divino & Meditação Contemplativa',
+        desc: 'Clareza mental para oração profunda, silêncio da alma e discernimento de caminhos.',
+        duration: '32:59'
       }
-      isPlayingAudio = false;
-      const icon = document.getElementById('audio-icon');
-      if (icon) icon.setAttribute('data-lucide', 'play');
-      lucide.createIcons();
+    ];
+
+    let currentTrackIdx = -1;
+    let sacredAudioPlayer = null;
+    let isTrackPlaying = false;
+    let isLoopEnabled = true;
+    let playerSleepTimerId = null;
+
+    function initSacredAudioEngine() {
+      if (!sacredAudioPlayer) {
+        sacredAudioPlayer = new Audio();
+        sacredAudioPlayer.loop = isLoopEnabled;
+        sacredAudioPlayer.preload = 'metadata';
+
+        sacredAudioPlayer.addEventListener('timeupdate', onAudioTimeUpdate);
+        sacredAudioPlayer.addEventListener('ended', onAudioTrackEnded);
+        sacredAudioPlayer.addEventListener('play', () => updatePlayVisuals(true));
+        sacredAudioPlayer.addEventListener('pause', () => updatePlayVisuals(false));
+      }
+    }
+
+    function renderSacredTracksList() {
+      const container = document.getElementById('tracks-list-container');
+      if (!container) return;
+
+      container.innerHTML = SACRED_TRACKS.map((t, idx) => {
+        const isCurrent = currentTrackIdx === idx;
+        const isThisPlaying = isCurrent && isTrackPlaying;
+
+        return `
+          <div id="track-card-${idx}" class="p-3.5 bg-slate-900/80 hover:bg-slate-900 rounded-2xl border ${isCurrent ? 'border-amber-400 bg-[#0B152E]' : 'border-slate-800'} transition cursor-pointer flex items-center justify-between gap-3" onclick="selectAndPlayTrack(${idx})">
+            <div class="flex items-center gap-3 overflow-hidden">
+              <div class="w-9 h-9 flex-shrink-0 rounded-xl ${isThisPlaying ? 'bg-amber-400 text-slate-950 font-black' : 'gold-btn'} flex items-center justify-center shadow">
+                <i data-lucide="${isThisPlaying ? 'pause' : 'play'}" class="w-4 h-4 fill-current ml-0.5"></i>
+              </div>
+              <div class="overflow-hidden">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[10px] font-bold text-amber-300 font-cinzel">${t.hz}</span>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-300">${t.badge}</span>
+                </div>
+                <h5 class="text-xs font-bold text-white truncate">${t.title}</h5>
+                <p class="text-[10px] text-slate-400 truncate">${t.desc}</p>
+              </div>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono flex-shrink-0">${t.duration}</span>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function selectAndPlayTrack(idx) {
+      initSacredAudioEngine();
+
+      if (currentTrackIdx === idx && isTrackPlaying) {
+        sacredAudioPlayer.pause();
+        return;
+      }
+
+      if (currentTrackIdx === idx && !isTrackPlaying) {
+        sacredAudioPlayer.play().catch(console.error);
+        return;
+      }
+
+      currentTrackIdx = idx;
+      const track = SACRED_TRACKS[idx];
+      sacredAudioPlayer.src = track.file;
+      sacredAudioPlayer.load();
+      sacredAudioPlayer.play().catch(console.error);
+
+      // Atualiza interface do painel principal
+      const badge = document.getElementById('active-track-badge');
+      const title = document.getElementById('active-track-title');
+      const duration = document.getElementById('audio-time-duration');
+      if (badge) badge.textContent = `${track.hz} · ${track.badge}`;
+      if (title) title.textContent = track.title;
+      if (duration) duration.textContent = track.duration;
+
+      renderSacredTracksList();
+    }
+
+    function toggleMainPlay() {
+      initSacredAudioEngine();
+      if (currentTrackIdx === -1) {
+        selectAndPlayTrack(0);
+      } else {
+        if (isTrackPlaying) {
+          sacredAudioPlayer.pause();
+        } else {
+          sacredAudioPlayer.play().catch(console.error);
+        }
+      }
+    }
+
+    function updatePlayVisuals(playing) {
+      isTrackPlaying = playing;
+      const mainIcon = document.getElementById('main-play-icon');
+      const disc = document.getElementById('main-play-disc');
+      const homeIcon = document.getElementById('audio-icon');
+      
+      if (mainIcon) {
+        mainIcon.setAttribute('data-lucide', playing ? 'pause' : 'play');
+      }
+      if (homeIcon) {
+        homeIcon.setAttribute('data-lucide', playing ? 'pause' : 'play');
+      }
+      if (disc) {
+        if (playing) {
+          disc.classList.add('ring-2', 'ring-amber-400', 'animate-pulse');
+        } else {
+          disc.classList.remove('ring-2', 'ring-amber-400', 'animate-pulse');
+        }
+      }
+
+      renderSacredTracksList();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function onAudioTimeUpdate() {
+      if (!sacredAudioPlayer) return;
+      const cur = sacredAudioPlayer.currentTime || 0;
+      const dur = sacredAudioPlayer.duration || 1;
+
+      const curLabel = document.getElementById('audio-time-current');
+      const bar = document.getElementById('audio-progress-bar');
+
+      if (curLabel) {
+        const m = Math.floor(cur / 60);
+        const s = Math.floor(cur % 60);
+        curLabel.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      }
+
+      if (bar && dur > 0) {
+        const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
+        bar.style.width = `${pct}%`;
+      }
+    }
+
+    function seekAudio(e) {
+      if (!sacredAudioPlayer || !sacredAudioPlayer.duration) return;
+      const container = document.getElementById('audio-progress-container');
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = Math.max(0, Math.min(1, clickX / rect.width));
+      sacredAudioPlayer.currentTime = pct * sacredAudioPlayer.duration;
+    }
+
+    function toggleAudioLoop() {
+      initSacredAudioEngine();
+      isLoopEnabled = !isLoopEnabled;
+      sacredAudioPlayer.loop = isLoopEnabled;
+      const btnText = document.getElementById('loop-indicator');
+      const btn = document.getElementById('audio-loop-btn');
+      if (btnText) {
+        btnText.textContent = isLoopEnabled ? '🔁 Repetir: Ligado' : '➡️ Tocar 1x';
+      }
+      if (btn) {
+        if (isLoopEnabled) {
+          btn.classList.add('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+          btn.classList.remove('bg-slate-800', 'text-slate-400');
+        } else {
+          btn.classList.remove('bg-amber-400/20', 'text-amber-300', 'border-amber-400/40');
+          btn.classList.add('bg-slate-800', 'text-slate-400');
+        }
+      }
+    }
+
+    function setPlayerSleepTimer(minutes) {
+      if (playerSleepTimerId) {
+        clearTimeout(playerSleepTimerId);
+        playerSleepTimerId = null;
+      }
+      const label = document.getElementById('player-timer-status');
+      const homeStatus = document.getElementById('sleep-timer-status');
+      if (minutes > 0) {
+        if (label) label.textContent = `(${minutes}m)`;
+        if (homeStatus) homeStatus.textContent = `(${minutes}m)`;
+        playerSleepTimerId = setTimeout(() => {
+          if (sacredAudioPlayer) sacredAudioPlayer.pause();
+          if (label) label.textContent = '';
+          if (homeStatus) homeStatus.textContent = '';
+        }, minutes * 60 * 1000);
+      } else {
+        if (label) label.textContent = '';
+        if (homeStatus) homeStatus.textContent = '';
+      }
+    }
+
+    function onAudioTrackEnded() {
+      if (!isLoopEnabled) {
+        if (currentTrackIdx < SACRED_TRACKS.length - 1) {
+          selectAndPlayTrack(currentTrackIdx + 1);
+        } else {
+          updatePlayVisuals(false);
+        }
+      }
+    }
+
+    // Compatibilidade com o player do modal diário da Novena
+    function toggleAudioFrequency(hz = 432) {
+      initSacredAudioEngine();
+      if (isTrackPlaying) {
+        sacredAudioPlayer.pause();
+      } else {
+        const targetIdx = hz === 528 ? 1 : 0;
+        selectAndPlayTrack(targetIdx);
+      }
     }
 
     function setSleepTimer(minutes) {
-      if (sleepTimeout) clearTimeout(sleepTimeout);
-      const status = document.getElementById('sleep-timer-status');
-      if (status) status.textContent = `(${minutes}m)`;
-
-      sleepTimeout = setTimeout(() => {
-        stopAudioFrequency();
-        if (status) status.textContent = '';
-      }, minutes * 60 * 1000);
+      setPlayerSleepTimer(minutes);
     }
 
     // -------------------------------------------------------------
@@ -2989,24 +3243,31 @@ const INITIAL_POSTS_WITH_REPLIES = [
     // -------------------------------------------------------------
     window.addEventListener('DOMContentLoaded', () => {
 
-      // SUPORTE A LINK DIRETO DE ACESSO (Ex: ?guia=1 ou ?abrir=guia)
+      // SUPORTE A LINK DIRETO DE ACESSO (Ex: ?guia=1 ou ?abrir=guia ou ?terco=1)
       try {
         const qs = new URLSearchParams(window.location.search);
         if (qs.get('guia') === '1' || qs.get('abrir') === 'guia' || qs.get('abrir') === '15dias') {
           setTimeout(() => {
             openGuideModal();
           }, 450);
+        } else if (qs.get('terco') === '1' || qs.get('audios') === '1' || qs.get('audio') === '1' || qs.get('up2') === '1') {
+          setTimeout(() => {
+            switchTab('tab-blindagem');
+            const el = document.getElementById('modulo-audios-terco');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 450);
         }
       } catch(e){}
 
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js?v=10').then(r => r.update()).catch(() => {});
+        navigator.serviceWorker.register('sw.js?v=11').then(r => r.update()).catch(() => {});
       }
 
       renderKnotsTrack();
       renderNovenaDaysList();
       renderCommunityFeed();
       renderKnotsList();
+      renderSacredTracksList();
       updateCandleUI();
       updateHomeRecommendations();
       lucide.createIcons();
