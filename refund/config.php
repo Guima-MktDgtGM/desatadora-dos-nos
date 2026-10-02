@@ -8,10 +8,8 @@ session_start();
 // Hash criptográfico seguro da chave de acesso (joao0504)
 define('ADMIN_AUTH_HASH', '83375422e737befa73ff56fac98b8848ad3f876d7c4bf8b3ba855ebcf6959a9b');
 
-// Número padrão do WhatsApp para onde o lead será direcionado
-// (Substitua pelo número oficial que você usa no WhatsApp da comunidade com DDI + DDD)
-// Exemplo: '5511999999999' para Brasil ou '351912345678' para Portugal
-define('WHATSAPP_SUPPORT_NUMBER', '5511999999999'); 
+// Número oficial do WhatsApp para onde o lead será direcionado
+define('WHATSAPP_SUPPORT_NUMBER', '5586998332748'); 
 
 define('DATA_FILE', __DIR__ . '/data/pedidos.json');
 
