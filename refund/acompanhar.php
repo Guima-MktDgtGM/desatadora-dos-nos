@@ -208,19 +208,19 @@ $waLink = "https://wa.me/" . $waNumber . "?text=" . rawurlencode($waMsg);
     </div>
 
     <!-- ALERTA DE CONFLITO BUROCRÁTICO INTERBANCÁRIO -->
-    <div class="bg-amber-950/20 border border-amber-500/30 rounded-2xl p-4 sm:p-5 space-y-2 text-xs">
+    <div class="bg-amber-950/20 border border-amber-500/30 rounded-2xl p-4 sm:p-5 space-y-2.5 text-xs">
       <div class="flex items-center gap-2 text-amber-300 font-bold">
         <span class="text-base">⚠️</span>
         <span class="font-cinzel text-[11px] uppercase tracking-wider">Atenção com o seu banco:</span>
       </div>
       <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
-        <strong>Aviso Técnico do Sistema de Compensação:</strong> Caso seja aberta uma solicitação de contestação direta no aplicativo do seu banco paralelamente a este protocolo oficial em andamento, os sistemas emissores e adquirentes identificam uma <strong>duplicidade de processo (conflito sistêmico interbancário)</strong>.
+        <strong>Aviso Técnico de Conciliação:</strong> Caso você abra uma contestação paralela no aplicativo do seu banco enquanto este protocolo oficial já está aberto, ocorre um <strong>conflito de duplicidade entre os sistemas</strong>.
       </p>
       <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
-        Quando ocorre esse conflito, o procedimento direto e amigável é compulsoriamente suspenso pela regulação bancária e o processo é transferido para o <strong>setor de auditoria externa e conciliação pericial dos grandes bancos</strong>.
+        Quando isso acontece, o seu estorno fica <strong>congelado e travado entre as duas esferas</strong> (no nosso canal e na auditoria bancária externa). Por conta dessa burocracia dos grandes bancos, o processo fica retido de <strong>30 a 60 dias</strong> até a conclusão pericial.
       </p>
       <p class="text-[11px] text-slate-300 leading-relaxed text-justify">
-        Devido à burocracia dos sistemas bancários tradicionais (análises documentais de lote, validação de remessa e conciliação de faturas), o tempo de resolução deixa de ser ágil e estende-se para <strong>30 a 60 dias</strong>, mantendo o valor retido até a conclusão pericial. Para que a sua devolução ocorra no menor tempo possível e sem bloqueios no seu limite, orientamos que mantenha apenas este canal oficial ativo e acompanhe a evolução por esta página.
+        Para evitar esse congelamento e receber o valor no menor tempo possível, orientamos manter apenas este protocolo ativo e acompanhar a evolução por esta página.
       </p>
     </div>
 
