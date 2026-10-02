@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $whatsapp = trim($_POST['whatsapp'] ?? '');
+    $ddi = trim($_POST['ddi'] ?? '+351');
+    $paisNome = trim($_POST['pais_nome'] ?? 'Portugal');
     $canal = trim($_POST['canal'] ?? 'email');
     
     // Múltipla escolha de produtos
@@ -26,8 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pedidos = loadPedidos();
         $protocol = 'CP-' . rand(1000, 9999);
         
-        $cleanWhatsapp = preg_replace('/[^0-9]/', '', $whatsapp);
-        if (empty($cleanWhatsapp)) {
+        $cleanPhone = preg_replace('/[^0-9]/', '', $whatsapp);
+        $cleanDdi = preg_replace('/[^0-9]/', '', $ddi);
+        
+        if (!empty($cleanPhone)) {
+            // Se o devoto já digitou o DDI junto com o número, evita duplicar
+            if (!empty($cleanDdi) && strpos($cleanPhone, $cleanDdi) === 0 && strlen($cleanPhone) > strlen($cleanDdi) + 6) {
+                $formattedWhatsapp = '+' . $cleanPhone;
+            } else {
+                $formattedWhatsapp = ($cleanDdi ? ('+' . $cleanDdi) : '') . $cleanPhone;
+            }
+        } else {
+            $formattedWhatsapp = '';
             $canal = 'email'; // Se não tiver WhatsApp, canal é e-mail automaticamente
         }
 
@@ -37,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'createdAt' => time(),
             'nome' => $nome,
             'email' => $email,
-            'whatsapp' => $cleanWhatsapp,
+            'whatsapp' => $formattedWhatsapp,
+            'pais' => $paisNome,
             'canal' => $canal,
             'produto' => $produto,
             'motivo' => $motivo,
@@ -97,6 +110,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   .custom-checkbox:checked {
     background-color: #d4af37;
     border-color: #d4af37;
+  }
+  /* Custom scrollbar para lista de países */
+  .custom-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scroll::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 8px;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 8px;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.7);
   }
 </style>
 </head>
@@ -215,14 +243,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" name="email" required placeholder="exemplo@email.com" class="w-full bg-slate-950/90 border border-slate-700/80 rounded-xl px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
       </div>
 
-      <!-- WhatsApp Opcional -->
+      <!-- WhatsApp Opcional com Seletor de País e Bandeiras Reais -->
       <div>
         <div class="flex items-center justify-between mb-1.5">
           <label class="text-xs font-semibold text-slate-300">WhatsApp / Telemóvel:</label>
           <span class="text-[10px] text-amber-300/80 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20 font-medium">Opcional</span>
         </div>
-        <input type="text" name="whatsapp" placeholder="Ex: +351 912 345 678 ou (86) 99833-2748" class="w-full bg-slate-950/90 border border-slate-700/80 rounded-xl px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
-        <p class="text-[11px] text-slate-400 mt-1">Se preenchido, podemos enviar as notificações de andamento diretamente pelo WhatsApp.</p>
+
+        <div class="relative">
+          <div class="flex items-center">
+            <!-- Botão Seletor com Bandeira Real e DDI -->
+            <button type="button" id="btn-country-picker" onclick="toggleCountryDropdown()" class="flex-shrink-0 flex items-center gap-2 bg-slate-950 border border-slate-700/80 rounded-l-xl px-3 py-3 hover:border-amber-400 transition cursor-pointer select-none">
+              <img id="selected-flag-img" src="https://flagcdn.com/w40/pt.png" alt="Portugal" class="w-5 h-3.5 object-cover rounded shadow-sm flex-shrink-0">
+              <span id="selected-ddi-label" class="text-xs sm:text-sm font-semibold text-white font-mono">+351</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <!-- Inputs Ocultos do País -->
+            <input type="hidden" name="ddi" id="input-ddi" value="+351">
+            <input type="hidden" name="pais_nome" id="input-pais" value="Portugal">
+
+            <!-- Campo de Número -->
+            <input type="tel" name="whatsapp" id="input-phone" placeholder="912 345 678" class="flex-1 bg-slate-950/90 border border-l-0 border-slate-700/80 rounded-r-xl px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
+          </div>
+
+          <!-- Dropdown de Países com Bandeiras Reais -->
+          <div id="country-dropdown" class="hidden absolute top-full left-0 mt-2 w-full sm:w-80 bg-[#0B152E] border border-amber-400/40 rounded-2xl shadow-2xl p-3 z-50 backdrop-blur-xl">
+            <div class="relative mb-2.5">
+              <input type="text" id="country-search" oninput="filterCountries()" placeholder="🔍 Pesquisar país ou indicativo..." class="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition">
+            </div>
+
+            <div id="countries-list" class="max-h-60 overflow-y-auto divide-y divide-slate-800/60 custom-scroll pr-1">
+              <!-- Preenchido dinamicamente via JS -->
+            </div>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-400 mt-1.5">Selecione o seu país para receber notificações do andamento direto no WhatsApp.</p>
       </div>
 
       <!-- Canal Preferencial -->
@@ -384,6 +443,143 @@ function selectAllProducts() {
   const allChecked = Array.from(checkboxes).every(c => c.checked);
   checkboxes.forEach(c => c.checked = !allChecked);
 }
+
+// Lista completa de países com bandeiras reais via flagcdn
+const countryList = [
+  // Europa
+  { name: "Portugal", code: "pt", ddi: "+351", placeholder: "912 345 678" },
+  { name: "Espanha", code: "es", ddi: "+34", placeholder: "612 345 678" },
+  { name: "França", code: "fr", ddi: "+33", placeholder: "6 12 34 56 78" },
+  { name: "Suíça", code: "ch", ddi: "+41", placeholder: "79 123 45 67" },
+  { name: "Reino Unido", code: "gb", ddi: "+44", placeholder: "7123 456789" },
+  { name: "Alemanha", code: "de", ddi: "+49", placeholder: "151 23456789" },
+  { name: "Itália", code: "it", ddi: "+39", placeholder: "312 345 6789" },
+  { name: "Bélgica", code: "be", ddi: "+32", placeholder: "470 12 34 56" },
+  { name: "Luxemburgo", code: "lu", ddi: "+352", placeholder: "621 123 456" },
+  { name: "Holanda", code: "nl", ddi: "+31", placeholder: "6 12345678" },
+  { name: "Irlanda", code: "ie", ddi: "+353", placeholder: "83 123 4567" },
+  { name: "Áustria", code: "at", ddi: "+43", placeholder: "664 1234567" },
+  { name: "Suécia", code: "se", ddi: "+46", placeholder: "70 123 45 67" },
+  { name: "Noruega", code: "no", ddi: "+47", placeholder: "412 34 567" },
+  { name: "Dinamarca", code: "dk", ddi: "+45", placeholder: "20 12 34 56" },
+  { name: "Polônia", code: "pl", ddi: "+48", placeholder: "512 345 678" },
+
+  // Américas
+  { name: "Brasil", code: "br", ddi: "+55", placeholder: "(11) 98765-4321" },
+  { name: "Estados Unidos", code: "us", ddi: "+1", placeholder: "(555) 123-4567" },
+  { name: "Canadá", code: "ca", ddi: "+1", placeholder: "(555) 123-4567" },
+  { name: "Argentina", code: "ar", ddi: "+54", placeholder: "11 1234-5678" },
+  { name: "México", code: "mx", ddi: "+52", placeholder: "55 1234 5678" },
+  { name: "Chile", code: "cl", ddi: "+56", placeholder: "9 1234 5678" },
+  { name: "Colômbia", code: "co", ddi: "+57", placeholder: "300 123 4567" },
+  { name: "Uruguai", code: "uy", ddi: "+598", placeholder: "99 123 456" },
+  { name: "Paraguai", code: "py", ddi: "+595", placeholder: "981 123 456" },
+
+  // Ásia, África & Oceania
+  { name: "Japão", code: "jp", ddi: "+81", placeholder: "90 1234 5678" },
+  { name: "Angola", code: "ao", ddi: "+244", placeholder: "923 123 456" },
+  { name: "Moçambique", code: "mz", ddi: "+258", placeholder: "84 123 4567" },
+  { name: "Cabo Verde", code: "cv", ddi: "+238", placeholder: "991 23 45" },
+  { name: "Austrália", code: "au", ddi: "+61", placeholder: "412 345 678" },
+  { name: "África do Sul", code: "za", ddi: "+27", placeholder: "71 123 4567" }
+];
+
+function renderCountries(filter = '') {
+  const container = document.getElementById('countries-list');
+  if (!container) return;
+  const lowerFilter = filter.toLowerCase().trim();
+  const filtered = countryList.filter(c => 
+    c.name.toLowerCase().includes(lowerFilter) || 
+    c.ddi.includes(lowerFilter) || 
+    c.code.toLowerCase().includes(lowerFilter)
+  );
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="text-center py-4 text-xs text-slate-500">Nenhum país encontrado</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(c => `
+    <button type="button" onclick="selectCountry('${c.code}', '${c.ddi}', '${c.name.replace(/'/g, "\\'")}', '${c.placeholder}')" class="w-full flex items-center justify-between p-2 rounded-xl hover:bg-slate-800/80 transition text-left group">
+      <div class="flex items-center gap-2.5">
+        <img src="https://flagcdn.com/w40/${c.code}.png" alt="${c.name}" class="w-5 h-3.5 object-cover rounded shadow-sm flex-shrink-0">
+        <span class="text-xs text-slate-200 group-hover:text-white font-medium">${c.name}</span>
+      </div>
+      <span class="text-xs font-mono font-bold text-amber-400">${c.ddi}</span>
+    </button>
+  `).join('');
+}
+
+function selectCountry(code, ddi, name, placeholder) {
+  const flagImg = document.getElementById('selected-flag-img');
+  const ddiLabel = document.getElementById('selected-ddi-label');
+  const ddiInput = document.getElementById('input-ddi');
+  const paisInput = document.getElementById('input-pais');
+  const phoneInput = document.getElementById('input-phone');
+
+  if (flagImg) {
+    flagImg.src = `https://flagcdn.com/w40/${code}.png`;
+    flagImg.alt = name;
+  }
+  if (ddiLabel) ddiLabel.textContent = ddi;
+  if (ddiInput) ddiInput.value = ddi;
+  if (paisInput) paisInput.value = name;
+  if (phoneInput && placeholder) phoneInput.placeholder = placeholder;
+
+  closeCountryDropdown();
+}
+
+function toggleCountryDropdown() {
+  const dropdown = document.getElementById('country-dropdown');
+  if (!dropdown) return;
+  const isHidden = dropdown.classList.contains('hidden');
+  if (isHidden) {
+    dropdown.classList.remove('hidden');
+    const searchInput = document.getElementById('country-search');
+    if (searchInput) {
+      searchInput.value = '';
+      renderCountries();
+      setTimeout(() => searchInput.focus(), 50);
+    }
+  } else {
+    dropdown.classList.add('hidden');
+  }
+}
+
+function closeCountryDropdown() {
+  const dropdown = document.getElementById('country-dropdown');
+  if (dropdown) dropdown.classList.add('hidden');
+}
+
+function filterCountries() {
+  const searchInput = document.getElementById('country-search');
+  if (searchInput) renderCountries(searchInput.value);
+}
+
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('country-dropdown');
+  const btn = document.getElementById('btn-country-picker');
+  if (dropdown && !dropdown.contains(e.target) && btn && !btn.contains(e.target)) {
+    closeCountryDropdown();
+  }
+});
+
+// Inicialização inteligente com base no idioma do visitante
+window.addEventListener('DOMContentLoaded', function() {
+  renderCountries();
+  const lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  if (lang.includes('br')) {
+    selectCountry('br', '+55', 'Brasil', '(11) 98765-4321');
+  } else if (lang.includes('es')) {
+    selectCountry('es', '+34', 'Espanha', '612 345 678');
+  } else if (lang.includes('fr')) {
+    selectCountry('fr', '+33', 'França', '6 12 34 56 78');
+  } else if (lang.includes('us') || lang.includes('en-us')) {
+    selectCountry('us', '+1', 'Estados Unidos', '(555) 123-4567');
+  } else {
+    selectCountry('pt', '+351', 'Portugal', '912 345 678');
+  }
+});
 </script>
 
 </body>

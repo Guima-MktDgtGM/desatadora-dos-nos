@@ -197,6 +197,9 @@ foreach ($pedidos as $p) {
 
                 <td class="py-3.5 px-4">
                   <span class="font-mono text-slate-200 block"><?= htmlspecialchars($p['whatsapp']) ?></span>
+                  <?php if (!empty($p['pais'])): ?>
+                    <span class="text-[10px] text-slate-400 block font-medium">📍 <?= htmlspecialchars($p['pais']) ?></span>
+                  <?php endif; ?>
                   <?php if ($p['canal'] === 'whatsapp'): ?>
                     <span class="text-[9px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">🟢 Prefere WhatsApp</span>
                   <?php else: ?>
