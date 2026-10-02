@@ -116,7 +116,6 @@
   }
   .btn.pulse{animation:pulse 1.8s ease-in-out infinite;}
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
-  .btn-sec{display:block;margin:0 auto;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:#888;text-decoration:underline;text-underline-offset:3px;}
 
   .paises{max-width:520px;margin:0 auto 14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   .pais{background:#fff;border:2px solid #ddd;border-radius:12px;padding:12px 10px;font-family:var(--sans);font-size:14px;font-weight:700;color:#222;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;}
@@ -151,11 +150,6 @@
   .cta-verse span{display:block;font-style:normal;font-weight:800;font-size:11.5px;letter-spacing:1.2px;color:#9a7b1f;margin-top:4px;}
 
   /* confirmação de recusa */
-  #modal-recusa{position:fixed;inset:0;z-index:100;background:rgba(5,10,30,.78);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:18px;}
-  #modal-recusa.on{display:flex;}
-  #modal-recusa .card{background:#fff;border-radius:20px;max-width:400px;width:100%;padding:26px 22px 20px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);}
-  #modal-recusa h3{font-size:20px;font-weight:900;color:#c0392b;text-transform:uppercase;line-height:1.15;margin-bottom:10px;}
-  #modal-recusa p{font-size:14.5px;font-weight:600;line-height:1.55;color:#222;margin-bottom:16px;}
 
   .clean-wrap{max-width:640px;margin:0 auto;padding:60px 22px 80px;}
   .clean-wrap h1{font-size:26px;font-weight:700;line-height:1.3;color:#1d1a14;margin-bottom:14px;}
@@ -259,7 +253,6 @@
       <div class="passo on" id="passo-1">
         <p class="pergunta">Quer receber os seus presentes consagrados em casa?</p>
         <button type="button" class="btn pulse" onclick="irPasso(2)">SIM, quero receber em casa</button>
-        <button type="button" class="btn-sec" onclick="abrirRecusa()">Não, prefiro deixar esta bênção para outra pessoa</button>
       </div>
 
       <!-- PASSO 2: país -->
@@ -315,17 +308,6 @@
 
     </div>
   </section>
-
-  <!-- CONFIRMAÇÃO DE RECUSA -->
-  <div id="modal-recusa">
-    <div class="card">
-      <div style="font-size:40px;margin-bottom:8px;">🏅</div>
-      <h3>Tem a certeza?</h3>
-      <p>O amuleto e o frasco de óleo santo <strong>já estão consagrados com o seu nome</strong>. Se os deixar, passam ao próximo da lista — e não há segundo frasco.</p>
-      <button type="button" class="btn" onclick="fecharRecusa()">Voltar — quero receber em casa</button>
-      <a class="btn-sec" id="link-recusa" href="/obrigado/">Sim, deixar para outra pessoa</a>
-    </div>
-  </div>
 
   <script>
   (function(){
@@ -387,13 +369,6 @@
         }, 500 + k * 2300);
       });
     };
-
-    window.abrirRecusa = function(){ document.getElementById('modal-recusa').classList.add('on'); };
-    window.fecharRecusa = function(){ document.getElementById('modal-recusa').classList.remove('on'); };
-    try {
-      var l = document.getElementById('link-recusa');
-      l.href = '/obrigado/' + (location.search || '?src=fs2026');
-    } catch(e){}
   })();
   </script>
 

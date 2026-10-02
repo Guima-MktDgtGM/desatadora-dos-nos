@@ -513,9 +513,6 @@
 
       <p class="cta-verse">“De madrugada, ainda escuro, Jesus levantou-se, saiu e foi orar.”<span>MARCOS 1:35</span></p>
 
-      <!-- LINK DE RECUSA MANUAL (DIRECIONA PARA /U3/ PRESERVANDO PARÂMETROS) -->
-      <a href="/u3/" id="link-recusa-u2" style="display:block;margin:16px auto 0;font-size:12.5px;font-weight:600;color:#888;text-decoration:underline;text-underline-offset:3px;text-align:center;">Não, prefiro abrir mão destes áudios sagrados</a>
-
     </div>
   </section>
 
@@ -621,17 +618,6 @@
     }
 
     initObserver();
-
-    // Link de recusa ("não quero") redirecionando para /u3/ preservando parâmetros
-    document.addEventListener('DOMContentLoaded', function() {
-      var linkRecusa = document.getElementById('link-recusa-u2');
-      if (linkRecusa) {
-        linkRecusa.addEventListener('click', function(e) {
-          e.preventDefault();
-          triggerRedirect();
-        });
-      }
-    });
   })();
   </script>
 
