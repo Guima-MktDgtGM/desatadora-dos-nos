@@ -17,6 +17,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Anton&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="audios-terco-desamarracao.jpg" fetchpriority="high">
 
+<!-- KashPay Session Token Persistence (Garante permanência do token entre etapas) -->
+<script>
+(function() {
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var ks = qs.get('ks');
+    if (ks) {
+      sessionStorage.setItem('kashpay_ks', ks);
+      localStorage.setItem('kashpay_ks', ks);
+    } else {
+      var savedKs = sessionStorage.getItem('kashpay_ks') || localStorage.getItem('kashpay_ks');
+      if (savedKs) {
+        qs.set('ks', savedKs);
+        var newSearch = '?' + qs.toString();
+        var newUrl = window.location.pathname + newSearch + window.location.hash;
+        window.history.replaceState(null, '', newUrl);
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+
 <!-- KashPay — processador do one-click upsell -->
 <script src="https://checkout.kashpay.com.br/scripts/upsell-processor.js"></script>
 
@@ -385,8 +407,45 @@
     .band-light{padding:22px 14px 30px;}
   }
 
-  /* Ocultar silenciosamente botões de erro/recusa da KashPay */
-  #kashpay-skip-btn, #kashpay-retry-btn { display: none !important; }
+  /* Estilização refinada do modal KashPay (3DS e Retentativa) */
+  #kashpay-retry-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #057932 !important;
+    color: #ffffff !important;
+    font-family: var(--sans), sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    padding: 13px 22px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(5,121,50,0.35) !important;
+    transition: background .2s ease !important;
+  }
+  #kashpay-retry-btn:hover {
+    background-color: #046328 !important;
+  }
+  #kashpay-skip-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f1f5f9 !important;
+    color: #64748b !important;
+    font-family: var(--sans), sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 12px 18px !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    cursor: pointer !important;
+    transition: background .2s ease !important;
+  }
+  #kashpay-skip-btn:hover {
+    background-color: #e2e8f0 !important;
+    color: #334155 !important;
+  }
 
 </style>
 </head>
@@ -492,7 +551,7 @@
 </div>
 
 
-  <!-- REDIRECIONAMENTO SILENCIOSO EM CASO DE RECUSA/FALHA NO CARTÃO OU RECUSA MANUAL (U2 -> /u3/) -->
+  <!-- NAVEGAÇÃO DE RECUSA E SUPORTE A 3DS / RETENTATIVA KASHPAY (U2 -> /u3/) -->
   <script>
   (function() {
     var redirected = false;
@@ -510,37 +569,7 @@
       window.location.href = targetPath + search;
     }
 
-    // Se já estiver no DOM
-    if (document.getElementById('kashpay-skip-btn')) {
-      triggerRedirect();
-      return;
-    }
-
-    // MutationObserver em document.body para detectar quando #kashpay-skip-btn for renderizado
-    var observer = new MutationObserver(function(mutations, obs) {
-      if (redirected) return;
-      var skipBtn = document.getElementById('kashpay-skip-btn') || document.querySelector('#kashpay-skip-btn');
-      if (skipBtn) {
-        obs.disconnect();
-        triggerRedirect();
-      }
-    });
-
-    function initObserver() {
-      if (document.body) {
-        observer.observe(document.body, { childList: true, subtree: true });
-      } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          if (document.body) {
-            observer.observe(document.body, { childList: true, subtree: true });
-          }
-        });
-      }
-    }
-
-    initObserver();
-
-    // Link de recusa ("não quero") redirecionando para /u3/ preservando parâmetros
+    // Clique manual no link de recusa ("Não, prefiro abrir mão...")
     document.addEventListener('DOMContentLoaded', function() {
       var linkRecusa = document.getElementById('link-recusa-u2');
       if (linkRecusa) {
@@ -550,6 +579,42 @@
         });
       }
     });
+
+    // Delegar clique no botão de pular (#kashpay-skip-btn) se o cliente decidir conscientemente não retentar
+    document.addEventListener('click', function(e) {
+      var skip = e.target.closest('#kashpay-skip-btn');
+      if (skip) {
+        e.preventDefault();
+        triggerRedirect();
+      }
+    });
+
+    // Injetar aviso pastoral de segurança se o modal de recusa/3DS aparecer
+    var declineObserver = new MutationObserver(function() {
+      var retryBtn = document.getElementById('kashpay-retry-btn');
+      if (retryBtn && !document.getElementById('kp-3ds-dica')) {
+        var notice = document.createElement('div');
+        notice.id = 'kp-3ds-dica';
+        notice.style.cssText = 'background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13px;line-height:1.45;color:#166534;text-align:center;font-weight:500;font-family:sans-serif;';
+        notice.innerHTML = '📱 <strong>Aviso do Banco:</strong> Se recebeu uma notificação no telemóvel (ex: MB WAY ou Caixa Directa), autorize a operação e depois toque em <strong>Tentar novamente</strong>.';
+        var container = retryBtn.parentElement;
+        if (container && container.parentElement) {
+          container.parentElement.insertBefore(notice, container);
+        }
+      }
+    });
+
+    function initNoticeObserver() {
+      if (document.body) {
+        declineObserver.observe(document.body, { childList: true, subtree: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          if (document.body) declineObserver.observe(document.body, { childList: true, subtree: true });
+        });
+      }
+    }
+
+    initNoticeObserver();
   })();
   </script>
 

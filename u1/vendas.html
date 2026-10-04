@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT" data-gate="real">
+<html lang="pt-PT" data-gate="clean">
 <head>
 <meta charset="UTF-8">
 <!-- UTMIFY PIXEL -->
@@ -24,6 +24,28 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yir9q5k2tg");
+</script>
+
+<!-- KashPay Session Token Persistence (Garante permanência do token entre etapas) -->
+<script>
+(function() {
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var ks = qs.get('ks');
+    if (ks) {
+      sessionStorage.setItem('kashpay_ks', ks);
+      localStorage.setItem('kashpay_ks', ks);
+    } else {
+      var savedKs = sessionStorage.getItem('kashpay_ks') || localStorage.getItem('kashpay_ks');
+      if (savedKs) {
+        qs.set('ks', savedKs);
+        var newSearch = '?' + qs.toString();
+        var newUrl = window.location.pathname + newSearch + window.location.hash;
+        window.history.replaceState(null, '', newUrl);
+      }
+    }
+  } catch(e) {}
+})();
 </script>
 
 <!-- KashPay — processador do one-click upsell -->
@@ -53,10 +75,10 @@
       try { sessionStorage.setItem("funnel_ok", "1"); } catch(e){}
       document.documentElement.setAttribute('data-gate', 'real');
     } else {
-      document.documentElement.setAttribute('data-gate', 'real');
+      document.documentElement.setAttribute('data-gate', 'clean');
     }
   } catch(e){
-    document.documentElement.setAttribute('data-gate', 'real');
+    document.documentElement.setAttribute('data-gate', 'clean');
   }
 })();
 </script>
@@ -450,8 +472,45 @@
   }
 
 
-  /* Ocultar silenciosamente botões de erro/recusa da KashPay */
-  #kashpay-skip-btn, #kashpay-retry-btn { display: none !important; }
+  /* Estilização refinada do modal KashPay (3DS e Retentativa) */
+  #kashpay-retry-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #057932 !important;
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    padding: 13px 22px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(5,121,50,0.35) !important;
+    transition: background .2s ease !important;
+  }
+  #kashpay-retry-btn:hover {
+    background-color: #046328 !important;
+  }
+  #kashpay-skip-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f1f5f9 !important;
+    color: #64748b !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 12px 18px !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    cursor: pointer !important;
+    transition: background .2s ease !important;
+  }
+  #kashpay-skip-btn:hover {
+    background-color: #e2e8f0 !important;
+    color: #334155 !important;
+  }
 
 </style>
 </head>
@@ -472,22 +531,22 @@
   </div>
 
   <!-- PARABÉNS -->
-  <div class="congrats" id="faixa-congrats">🎉 Parabéns! A sua contribuição foi acolhida.</div>
+  <div class="congrats" id="faixa-congrats">🎉 A sua contribuição já está a ajudar nas obras da nossa igreja.</div>
 
   <!-- BLOCO LIMPO E DIRETO -->
   <section class="escolhida" id="bloco-escolhida">
     <div class="wrap">
-      <h2 class="esc-titulo">FOI AGRACIADA</h2>
-      <p class="esc-sub">Para receber o <strong>Acelerador do Desatador de Nós</strong> — o Guia 15 Dias com Maria que faz os seus nós soltarem-se <strong>em até 3 dias</strong>, e não em 9!</p>
+      <h2 class="esc-titulo">FOI LIBERTADA UMA BÊNÇÃO EM SEU NOME</h2>
+      <p class="esc-sub">Para a receber, falta um único passo — o <strong>Acelerador do Desatador de Nós</strong>, o Guia 15 Dias com Maria que faz os seus nós soltarem-se <strong>em até 3 dias</strong>, e não em 9.</p>
       <p class="esc-txt">Ignorar isto agora seria como recusar uma bênção enviada diretamente por Deus — e quando esta porta se fechar, <mark>não voltará a abrir-se</mark>.</p>
-      <p class="esc-txt">Toque em <strong class="esc-verde">"SIM, QUERO A MINHA GRAÇA"</strong> e receba o que o Céu reservou apenas para os escolhidos.</p>
+      <p class="esc-txt">Toque em <strong class="esc-verde">"SIM, QUERO A MINHA GRAÇA"</strong> e receba o que o Céu guardou em seu nome.</p>
 
       <img class="esc-img" src="guia-15-dias-maria.jpg" alt="Guia Espiritual 15 Dias com Maria" width="800" height="1067" decoding="async">
 
       <!-- AVISO DISCRETO DE 50 CÓPIAS CONSAGRADAS -->
       <div style="max-width:440px;margin:14px auto 18px;text-align:center;padding:10px 14px;background:rgba(255,255,255,0.75);border:1px solid #e2d9c2;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.03);">
         <p style="font-size:12.5px;font-weight:600;color:#5c5446;margin:0;line-height:1.45;">
-          🕊️ <strong style="color:#222;">Edição limitada:</strong> Apenas 50 cópias consagradas sobre o altar. Toque numa das opções abaixo para vincular a sua:
+          🕊️ <strong style="color:#222;">Edição limitada:</strong> Apenas 50 cópias consagradas sobre o altar. Responda às perguntas abaixo para receber a sua bênção:
         </p>
       </div>
 
@@ -605,7 +664,7 @@
             </p>
 
             <!-- ONE-CLICK KASHPAY ORIGINAL -->
-            <button type="button" id="btn-upsell" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/b99e60b100fb3abe')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 15px 7%; cursor: pointer; text-align: center; display: block; margin: 10px auto; width: 100%; max-width: 440px; box-shadow: 0 10px 24px rgba(5,121,50,.3); animation: pulse 1.8s ease-in-out infinite;">SIM, QUERO A MINHA GRAÇA</button>
+            <button type="button" id="btn-upsell" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/217d045a89eff4da')" style="font-family: 'Poppins'; font-size: 18px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 10px; padding: 15px 7%; cursor: pointer; text-align: center; display: block; margin: 10px auto; width: 100%; max-width: 440px; box-shadow: 0 10px 24px rgba(5,121,50,.3); animation: pulse 1.8s ease-in-out infinite;">SIM, QUERO A MINHA GRAÇA</button>
           </div>
         </div>
 
@@ -702,7 +761,7 @@
   </script>
 
 
-  <!-- REDIRECIONAMENTO SILENCIOSO EM CASO DE RECUSA/FALHA NO CARTÃO (U1 -> /u2/) -->
+  <!-- NAVEGAÇÃO DE RECUSA E SUPORTE A 3DS / RETENTATIVA KASHPAY (U1 -> /u2/) -->
   <script>
   (function() {
     var redirected = false;
@@ -720,35 +779,41 @@
       window.location.href = targetPath + search;
     }
 
-    // Se já estiver no DOM
-    if (document.getElementById('kashpay-skip-btn')) {
-      triggerRedirect();
-      return;
-    }
-
-    // MutationObserver em document.body para detectar quando #kashpay-skip-btn for renderizado
-    var observer = new MutationObserver(function(mutations, obs) {
-      if (redirected) return;
-      var skipBtn = document.getElementById('kashpay-skip-btn') || document.querySelector('#kashpay-skip-btn');
-      if (skipBtn) {
-        obs.disconnect();
+    // Delegar clique no botão de pular (#kashpay-skip-btn) se o cliente decidir conscientemente não retentar
+    document.addEventListener('click', function(e) {
+      var skip = e.target.closest('#kashpay-skip-btn');
+      if (skip) {
+        e.preventDefault();
         triggerRedirect();
       }
     });
 
-    function initObserver() {
+    // Injetar aviso pastoral de segurança se o modal de recusa/3DS aparecer
+    var declineObserver = new MutationObserver(function() {
+      var retryBtn = document.getElementById('kashpay-retry-btn');
+      if (retryBtn && !document.getElementById('kp-3ds-dica')) {
+        var notice = document.createElement('div');
+        notice.id = 'kp-3ds-dica';
+        notice.style.cssText = 'background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13px;line-height:1.45;color:#166534;text-align:center;font-weight:500;font-family:sans-serif;';
+        notice.innerHTML = '📱 <strong>Aviso do Banco:</strong> Se recebeu uma notificação no telemóvel (ex: MB WAY ou Caixa Directa), autorize a operação e depois toque em <strong>Tentar novamente</strong>.';
+        var container = retryBtn.parentElement;
+        if (container && container.parentElement) {
+          container.parentElement.insertBefore(notice, container);
+        }
+      }
+    });
+
+    function initNoticeObserver() {
       if (document.body) {
-        observer.observe(document.body, { childList: true, subtree: true });
+        declineObserver.observe(document.body, { childList: true, subtree: true });
       } else {
         document.addEventListener('DOMContentLoaded', function() {
-          if (document.body) {
-            observer.observe(document.body, { childList: true, subtree: true });
-          }
+          if (document.body) declineObserver.observe(document.body, { childList: true, subtree: true });
         });
       }
     }
 
-    initObserver();
+    initNoticeObserver();
   })();
   </script>
 
