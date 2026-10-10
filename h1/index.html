@@ -163,15 +163,9 @@
   /* ---- TOPO: BARRA VERMELHA / PROCESSAMENTO / AGRACIADA ---- */
   .topo-vermelho{background:#e8141a;color:#fff;text-align:center;font-size:15px;font-weight:800;line-height:1.35;padding:13px 16px;}
   .topo-vermelho b{display:block;margin-top:3px;}
-  .proc-pag{background:#fff;text-align:center;padding:36px 20px 32px;}
+  /* o anel continua a ser usado como spinner dentro dos passos do quiz */
   .proc-anel{width:62px;height:62px;margin:0 auto 18px;border:5px solid #f2dede;border-top-color:#c0392b;border-radius:50%;animation:proc-girar .8s linear infinite;}
   @keyframes proc-girar{to{transform:rotate(360deg);}}
-  .proc-anel.ok{animation:none;border:5px solid #0f8a3c;position:relative;}
-  .proc-anel.ok::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0f8a3c;font-size:34px;font-weight:900;}
-  .proc-txt{font-size:19px;font-weight:900;color:#c0392b;letter-spacing:.3px;line-height:1.3;transition:color .4s;}
-  .proc-txt.ok{color:#0b6b2e;}
-  .proc-sub{font-size:13.5px;font-weight:600;color:#8a8a8a;margin-top:8px;}
-  .proc-nao-feche{font-size:13px;font-weight:600;color:#8a8a8a;margin-top:14px;}
   #faixa-congrats{display:none;}
   .escolhida{display:none;background:#fff;padding:34px 20px 30px;text-align:center;}
   .esc-titulo{font-size:30px;font-weight:900;color:#1aa838;letter-spacing:.5px;margin-bottom:14px;}
@@ -180,14 +174,11 @@
   .esc-txt{font-size:15.5px;font-weight:600;color:#222;line-height:1.6;max-width:520px;margin:0 auto 14px;}
   .esc-txt mark{background:#fff23a;color:#111;padding:0 2px;}
   .esc-verde{color:#1aa838;font-weight:800;}
-  .proc-anel{position:relative;}
-  .proc-anel #proc-seg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#c0392b;}
   .esc-img{width:100%;max-width:300px;margin:6px auto 4px;border-radius:12px;box-shadow:0 12px 30px rgba(0,74,173,.2);}
   .esc-nota{font-size:12.5px;font-weight:700;color:#c0392b;margin-top:6px;}
   @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
   html[data-gate="real"] body{padding-bottom:0;}
   /* durante o processamento só a barra e o anel aparecem */
-  #conteudo-real[data-fase="proc"] > :not(.topo-vermelho):not(#proc-pag){display:none !important;}
   #conteudo-real[data-fase="ok"] #faixa-congrats{display:block;}
   #conteudo-real[data-fase="ok"] .escolhida{display:block;}
   @media (max-width:600px){ .topo-vermelho{font-size:13.5px;} .esc-titulo{font-size:26px;} .esc-sub{font-size:15.5px;} .esc-txt{font-size:14.5px;} }
@@ -510,18 +501,10 @@
 <body>
 
 <!-- =============== CONTEÚDO REAL (BLACK - UPSELL 1) =============== -->
-<div id="conteudo-real" data-fase="proc">
+<div id="conteudo-real" data-fase="ok">
 
   <!-- BARRA VERMELHA (fica sempre) -->
-  <div class="topo-vermelho" id="topo-vermelho">⚠️ Importante: não carregue em voltar nem atualize esta página — pode interromper o processamento da sua contribuição. <b>Aguarde a confirmação.</b></div>
-
-  <!-- PROCESSAMENTO COM CONTAGEM (6 s) -> CONFIRMADO -->
-  <div class="proc-pag" id="proc-pag">
-    <div class="proc-anel" id="proc-anel"><span id="proc-seg">6</span></div>
-    <p class="proc-txt" id="proc-txt">A confirmar a sua contribuição…</p>
-    <p class="proc-sub" id="proc-sub">Falta <b id="proc-falta">6</b> segundos</p>
-    <p class="proc-nao-feche" id="proc-nao-feche">Não feche esta página enquanto isso.</p>
-  </div>
+  <div class="topo-vermelho" id="topo-vermelho">✅ Contribuição confirmada. <b>Continue a descer para aceder à sua bênção 👇</b></div>
 
   <!-- PARABÉNS -->
   <div class="congrats" id="faixa-congrats">🎉 Parabéns! A sua contribuição foi acolhida.</div>
@@ -667,30 +650,18 @@
     </div>
   </section>
 
-  <!-- PROCESSAMENTO: contagem de 6 s, confirma, chuva dourada e revela o bloco -->
+  <!-- A pagina abre confirmada: so a chuva dourada, sem contagem -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
   <script>
   (function(){
-    var raiz = document.getElementById('conteudo-real');
-    if (!raiz) return;
-    var seg = 6;
-    var elSeg = document.getElementById('proc-seg'), elFalta = document.getElementById('proc-falta');
-    var t = setInterval(function(){
-      seg--;
-      if (seg > 0) { if (elSeg) elSeg.textContent = seg; if (elFalta) elFalta.textContent = seg; return; }
-      clearInterval(t);
-      var anel = document.getElementById('proc-anel'), txt = document.getElementById('proc-txt'),
-          sub = document.getElementById('proc-sub'), nf = document.getElementById('proc-nao-feche');
-      if (elSeg) elSeg.textContent = '';
-      if (anel) anel.classList.add('ok');
-      if (txt) { txt.textContent = 'Contribuição confirmada'; txt.classList.add('ok'); }
-      if (sub) sub.textContent = 'O seu nome foi colocado diante do altar.';
-      if (nf) nf.style.display = 'none';
-      raiz.setAttribute('data-fase', 'ok');
-      var topo = document.getElementById('topo-vermelho');
-      if (topo) topo.innerHTML = '✅ Contribuição confirmada. <b>Continue a descer para aceder à sua bênção 👇</b>';
+    function festa(){
       try { if (window.confetti) confetti({ particleCount: 140, spread: 80, origin: { y: 0.35 }, colors: ['#D4AF37','#FDF3D6','#0f8a3c','#ffffff'] }); } catch(e){}
-    }, 1000);
+    }
+    // o confetti entra com async: espera-o sem segurar a pagina
+    var tentativas = 0;
+    var t = setInterval(function(){
+      if (window.confetti || ++tentativas > 20) { clearInterval(t); festa(); }
+    }, 150);
   })();
   </script>
 
