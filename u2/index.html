@@ -470,8 +470,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-/* Embalagem visual herdada de outra pagina nossa. Só o estilo. */
-
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{overflow-x:hidden;max-width:100%;}
 body{background:#faf7f0;color:#2e2a3f;font-family:'Lato',sans-serif;line-height:1.75;}
@@ -628,191 +626,307 @@ h1 u{text-decoration-thickness:2px;text-underline-offset:3px;}
   font-size:15px;color:#2f6b48;line-height:1.7;}
 .footer{text-align:center;padding:34px 0 0;color:#b5ad9c;font-size:12.5px;line-height:1.7;}
 .footer a{color:#b5ad9c;}
-
-/* ---- ajustes desta pagina ----
-   La dentro da placa .rev-art ia uma ilustracao; aqui vai um simbolo,
-   que tem de ocupar a placa toda em vez de ficar perdido no meio dela. */
-.rev-art{display:flex;align-items:center;justify-content:center;}
-.rev-art .art{font-size:88px;line-height:1;color:#e9c87a;text-shadow:0 0 30px rgba(233,200,122,.5);}
-@media (max-width:420px){ .rev-art .art{font-size:72px;} }
 </style>
 </head>
 <body>
 
 <div id="conteudo-real">
+<div class="congrats">⚠️ MENSAGEM URGENTE: O seu anjo da guarda quer falar com você</div>
 
-  <div class="congrats">⚠️ MENSAGEM URGENTE: o Padre Elias tem uma última palavra para si</div>
+<!-- CARROSSEL DOS 7 ARCANJOS -->
+<div class="carrossel-wrap">
+  <div class="carrossel" id="carrossel"></div>
+</div>
 
-  <div class="container">
+<div class="container" style="padding-top:14px;">
 
-    <div class="proc">
-      <div class="bolinha"></div>
-      <div class="txt">A preparar o envio do seu acesso à Novena das 9 Palavras…</div>
-    </div>
-    <div class="rolar-simples">Continue a descer a página</div>
+  <div class="proc">
+    <div class="bolinha"></div>
+    <div class="txt">Liberando os seus acessos...</div>
+  </div>
+  <p class="rolar-simples">Continue rolando a tela para baixo <span class="seta">👇</span></p>
 
-    <div class="hero">
-      <span class="tag alerta">⚠️ Atenção</span>
-      <h1><span class="red">REVELADO:</span> o erro que <span class="marca">9 em cada 10 pessoas</span> cometem ao rezar <u>a novena das 9 palavras</u></h1>
-      <p class="sub">Você reza. Você pede. Você acende a vela. Mas reza <strong>à hora em que o Céu está fechado</strong> — e por isso o nó continua apertado.</p>
-    </div>
-
-    <div class="verso">
-      “De madrugada, ainda escuro,<br>Jesus levantou-se, saiu e foi orar.”<br>Marcos 1:35
-    </div>
-
-    <div class="section">
-      <p class="body">O Padre Herman foi claro comigo: esta oração <strong>tem de ser rezada entre as 4h e as 7h da manhã</strong>, quando o véu entre o Céu e a Terra fica mais fino. Fora dessa janela, as palavras saem — mas não sobem.</p>
-      <p class="body">E existem <strong>9 nós</strong> que prendem uma vida. Cada pessoa carrega um como principal, e é esse que trava todos os outros. <strong>A sua data de nascimento revela qual é o seu.</strong></p>
-    </div>
-
-    <!-- QUIZ -->
-    <div class="section">
-      <div class="section-label">→ Descubra agora</div>
-
-      <div class="quiz" id="quiz">
-
-        <div id="p1">
-          <div class="passo">Passo 1</div>
-          <h3>Descubra o seu nó principal</h3>
-          <p class="body" style="text-align:center;font-size:15.5px;margin:10px 0 0;">O nó que prende a sua vida é <strong>revelado pela sua data de nascimento</strong>. Seleccione abaixo o dia, o mês e o ano em que nasceu:</p>
-          <div class="data-linha">
-            <select id="dia" aria-label="Dia de nascimento"></select>
-            <select id="mes" aria-label="Mês de nascimento"></select>
-            <select id="ano" aria-label="Ano de nascimento"></select>
-          </div>
-          <button class="btn-quiz" id="btn1" type="button">Revelar o meu nó principal ✨</button>
-        </div>
-
-        <div id="carregando" style="display:none;">
-          <div class="revelando">
-            <div class="bolinha"></div>
-            <p id="txt-revelando">A consultar o calendário do seu nascimento…</p>
-            <div class="progresso-container">
-              <div class="progresso-barra" id="progresso-barra"></div>
-            </div>
-          </div>
-        </div>
-
-        <div id="resultado" style="display:none;"></div>
-
-      </div>
-    </div>
-
-    <!-- OFERTA (só aparece depois da revelação) -->
-    <div id="oferta" style="display:none;" class="animar-revelacao">
-
-      <div class="section">
-        <div class="section-label">A oração que reza por si enquanto dorme</div>
-        <h2 style="text-align:center;">ÁUDIOS DO TERÇO<br>DAS 9 PALAVRAS</h2>
-        <img src="../images/audios-terco-desamarracao.jpg" alt="Áudios do Terço das 9 Palavras" width="800" height="1067" loading="lazy" decoding="async" style="width:100%;max-width:330px;margin:14px auto 6px;display:block;border-radius:14px;">
-        <p class="body">Eu sei o que está a pensar: <em>“Padre, eu não vou conseguir acordar às 4 da manhã.”</em></p>
-        <p class="body">Foi por isso que gravei estes áudios. As <strong>9 Palavras Sagradas e o Terço de Nossa Senhora, na minha voz</strong>, em frequências de 432Hz e 528Hz. Coloca os auscultadores, deita-se, e <strong>a oração reza por si a noite inteira</strong> — exactamente dentro da janela das 4h às 7h.</p>
-        <p class="body"><strong>Estes áudios não existem fora desta página.</strong> Só quem contribuiu pode recebê-los.</p>
-      </div>
-
-      <div class="section cta-area">
-        <div style="margin-top:10px;">
-          <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/6a1da98a54b48bdb')" style="font-family: 'Poppins'; font-size: 19px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 17px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: auto;" class="cta-pulsa">Quero desatar o meu nó esta madrugada</button>
-        </div>
-
-        <p class="versiculo-cta">“De madrugada, ainda escuro,<br>Jesus levantou-se, saiu e foi orar.”<br>— Marcos 1:35</p>
-      </div>
-
-    </div><!-- /oferta -->
-
-    <div class="footer">
-      <p>Aviso: este material tem carácter espiritual e devocional. Não se destina a diagnosticar, tratar ou curar qualquer condição, e não substitui acompanhamento médico ou psicológico.</p>
-      <p>Copyright © 2026 — Caminhos da Fé · Novena das 9 Palavras. Todos os direitos reservados.</p>
-      <p>Dúvidas? <a href="mailto:gabriel.luz@noticiasdafe.com.br">gabriel.luz@noticiasdafe.com.br</a></p>
-    </div>
-
+  <!-- HERO -->
+  <div class="hero">
+    <span class="tag alerta">⚠️ Atenção</span>
+    <h1><span class="red">REVELADO:</span> O erro que <span class="marca">9 em cada 10 pessoas</span> cometem ao pedir <u>proteção para a família</u></h1>
+    <p class="sub">Você reza. Você pede. Você acende a vela. Mas está a falar com uma multidão — quando existe <strong>um</strong> que foi designado à sua casa desde o dia em que você nasceu.</p>
   </div>
 
-  <script>
-  /* Quiz do nó principal. A data de nascimento reduz-se a um dígito de 1 a 9,
-     que é o número do nó — o mesmo arranjo dos nove dias da novena.
-     É determinístico: a mesma data dá sempre o mesmo nó. */
-  (function () {
-    var NOS = [
-      null,
-      { n: "O nó da saúde",     i: "✚", d: "Alguma coisa no corpo trava a sua vida — sua ou de quem você ama. É o primeiro nó que a novena desata, e o que mais rápido se solta quando a oração é rezada na hora certa." },
-      { n: "O nó do dinheiro",  i: "✦", d: "O aperto que sufoca o fim do mês. Não é falta de trabalho: é um nó que fecha portas antes mesmo de você bater nelas." },
-      { n: "O nó do casamento", i: "❤", d: "O amor esfriou, a casa virou um campo de silêncio. Este nó não se desata com conversa — desata-se com oração, e de madrugada." },
-      { n: "O nó do retorno",   i: "↩", d: "Alguém se afastou e deixou uma ferida aberta. Este é o nó que mais depressa dá sinal: muita gente recebe notícia ainda na mesma semana." },
-      { n: "O nó dos filhos",   i: "☗", d: "A aflição que não passa, onde quer que eles estejam. Proteção e livramento é o que esta oração pede por eles." },
-      { n: "O nó do trabalho",  i: "⚒", d: "Portas que não abrem, recomeços que não vêm. É o nó da provisão, e costuma estar amarrado ao do dinheiro." },
-      { n: "O nó do perdão",    i: "✝", d: "Uma mágoa que você carrega no peito e que envenena as suas noites. Enquanto este nó estiver atado, nenhum dos outros se solta por inteiro." },
-      { n: "O nó da paz",       i: "☮", d: "A solidão, a tristeza, a angústia que rouba o sono. É o nó que mais se sente de madrugada — e por isso é de madrugada que se desata." },
-      { n: "O nó da entrega",   i: "✧", d: "Você segura tudo com as duas mãos e já não consegue receber nada. O último nó da novena, e o que liberta todos os anteriores." }
-    ];
-    var MESES = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+  <!-- VERSICULO: sem caixa, com um risco de luz correndo ao redor -->
+  <div class="verso">
+    <svg class="circuito" viewBox="0 0 400 180" preserveAspectRatio="none" aria-hidden="true">
+      <path class="halo" d="M12 90 L48 36 L86 66 L128 20 L186 52 L244 16 L296 48 L344 22 L388 90 L344 158 L296 132 L244 164 L186 128 L128 160 L86 114 L48 144 Z"/>
+      <path class="nucleo" d="M12 90 L48 36 L86 66 L128 20 L186 52 L244 16 L296 48 L344 22 L388 90 L344 158 L296 132 L244 164 L186 128 L128 160 L86 114 L48 144 Z"/>
+    </svg>
+    <p>“E vi os sete anjos<br>que estão diante de Deus.”
+      <span class="ref">Apocalipse 8:2</span>
+    </p>
+  </div>
 
-    var dia = document.getElementById("dia"), mes = document.getElementById("mes"), ano = document.getElementById("ano");
-    if (!dia || !mes || !ano) return;
+  <p class="body" style="text-align:center;margin-bottom:28px;">Existem <strong>7 arcanjos principais</strong> diante de Deus, e cada pessoa é guardada por <strong>apenas um deles</strong> durante toda a sua vida.<br><strong>Descubra agora qual foi designado especialmente para proteger você e a sua família.</strong></p>
 
-    function op(v, t) { var o = document.createElement("option"); o.value = v; o.textContent = t; return o; }
-    dia.appendChild(op("", "Dia"));
-    for (var d = 1; d <= 31; d++) dia.appendChild(op(d, d));
-    mes.appendChild(op("", "Mês"));
-    for (var m = 1; m <= 12; m++) mes.appendChild(op(m, MESES[m - 1]));
-    ano.appendChild(op("", "Ano"));
-    var hoje = new Date().getFullYear();
-    for (var a = hoje - 18; a >= hoje - 95; a--) ano.appendChild(op(a, a));
+  <!-- QUIZ -->
+  <div class="section">
+    <div class="section-label">→ Descubra agora</div>
 
-    function reduzir(n) { while (n > 9) { n = String(n).split("").reduce(function (s, c) { return s + (+c); }, 0); } return n || 9; }
+    <div class="quiz" id="quiz">
 
-    function revelar() {
-      if (!dia.value || !mes.value || !ano.value) {
-        var b = document.getElementById("btn1");
-        if (b) { b.textContent = "Seleccione a sua data de nascimento"; setTimeout(function () { b.textContent = "Revelar o meu nó principal ✨"; }, 1800); }
-        return;
-      }
-      var soma = (+dia.value) + (+mes.value) + String(ano.value).split("").reduce(function (s, c) { return s + (+c); }, 0);
-      var no = NOS[reduzir(soma)];
+      <div id="p1">
+        <div class="passo">Passo 1</div>
+        <h3>Descubra o seu anjo da guarda</h3>
+        <p class="body" style="text-align:center;font-size:15.5px;margin:10px 0 0;">O seu anjo protetor é <strong>definido pela sua data de nascimento</strong>. Selecione abaixo o dia, mês e ano em que você nasceu para revelar:</p>
+        <div class="data-linha">
+          <select id="dia"></select>
+          <select id="mes"></select>
+          <select id="ano"></select>
+        </div>
+        <button class="btn-quiz" id="btn1" onclick="revelar()">Revelar Meu Anjo da Guarda ✨</button>
+      </div>
 
-      document.getElementById("p1").style.display = "none";
-      document.getElementById("carregando").style.display = "block";
+      <div id="carregando" style="display:none;">
+        <div class="revelando">
+          <div class="bolinha"></div>
+          <p id="txt-revelando">Consultando o calendário sagrado do seu nascimento...</p>
+          <div class="progresso-container">
+            <div class="progresso-barra" id="progresso-barra"></div>
+          </div>
+        </div>
+      </div>
 
-      var frases = [
-        "A consultar o calendário do seu nascimento…",
-        "A alinhar a sua data com os nove nós…",
-        "A identificar o nó que trava os outros…"
-      ];
-      var barra = document.getElementById("progresso-barra"), txt = document.getElementById("txt-revelando");
-      var passo = 0, pct = 0;
-      var t = setInterval(function () {
-        pct += 4;
-        if (barra) barra.style.width = Math.min(100, pct) + "%";
-        if (pct > 33 && passo === 0) { passo = 1; if (txt) txt.textContent = frases[1]; }
-        if (pct > 66 && passo === 1) { passo = 2; if (txt) txt.textContent = frases[2]; }
-        if (pct < 100) return;
-        clearInterval(t);
-        document.getElementById("carregando").style.display = "none";
-        var r = document.getElementById("resultado");
-        r.innerHTML =
-          '<div class="revelacao animar-revelacao">' +
-            '<div class="rev-card">' +
-              '<div class="rev-art"><div class="art">' + no.i + '</div></div>' +
-              '<div class="rev-info">' +
-                '<div class="passo">O seu nó principal</div>' +
-                '<div class="nome">' + no.n + '</div>' +
-                '<p class="rev-desc">' + no.d + '</p>' +
-              '</div>' +
-            '</div>' +
-            '<p class="body" style="text-align:center;margin-top:14px;">E há uma coisa que o Padre Herman me disse e que muda tudo: <strong>este nó só se desata entre as 4h e as 7h da manhã</strong>.</p>' +
-          '</div>';
-        r.style.display = "block";
-        var of = document.getElementById("oferta");
-        of.style.display = "block";
-        setTimeout(function () { of.scrollIntoView({ behavior: "smooth", block: "start" }); }, 260);
-      }, 70);
+      <div id="resultado" style="display:none;"></div>
+
+    </div>
+  </div>
+
+  <!-- OFERTA (so aparece depois da revelacao) -->
+  <div id="oferta" style="display:none;" class="animar-revelacao">
+
+    <div class="section cta-area">
+      <div style="margin-top:10px;">
+        <button type="button" onclick="acceptUpsell('https://checkout.kashpay.com.br/u/6a1da98a54b48bdb')" style="font-family: 'Poppins'; font-size: 19px; font-weight: 600; line-height: 1.3; color: #ffffff; background-color: #057932; border: none; border-radius: 17px; padding: 13px 7%; cursor: pointer; text-align: center; display: block; margin: auto;" class="cta-pulsa">Quero me conectar ao meu Anjo da Guarda</button>
+      </div>
+
+      <p class="versiculo-cta">“Porque aos seus anjos dará ordem a teu respeito,<br>para te guardarem em todos os teus caminhos.”<br>— Salmo 91:11</p>
+    </div>
+
+
+  </div><!-- /oferta -->
+
+  <div class="footer">
+    <p style="font-size:9px;line-height:1.5;color:#b5ad9c;"><em>Aviso: este produto tem caráter espiritual e educativo e não se destina a diagnosticar, tratar, curar ou prevenir qualquer doença.</em></p>
+    <p style="margin-top:10px;">Copyright © 2026 — Caminhos da Fé · Padre Elias. Todos os direitos reservados.<br>
+    Dúvidas? <a href="mailto:gabriel.luz@noticiasdafe.com.br">gabriel.luz@noticiasdafe.com.br</a></p>
+  </div>
+
+</div>
+
+<script>
+/* Rolagem suave, propria. O 'behavior:smooth' do navegador roda em ~300ms
+   com freada seca e briga com quem esta rolando com o dedo. Aqui a duracao
+   acompanha a distancia e qualquer toque cancela na hora. */
+(function(){
+  var animacao = null;
+  function parar(){ if (animacao) { cancelAnimationFrame(animacao); animacao = null; } }
+  ['touchstart','wheel','keydown','pointerdown'].forEach(function(ev){
+    window.addEventListener(ev, parar, { passive: true });
+  });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) parar(); });
+
+  function suavizar(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+
+  window.rolarSuave = function(destino){
+    var inicio = window.pageYOffset || document.documentElement.scrollTop;
+    var limite = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    var fim = Math.max(0, Math.min(destino, limite));
+    var distancia = fim - inicio;
+    if (Math.abs(distancia) < 8) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, fim); return;
     }
+    var duracao = Math.min(1600, Math.max(700, Math.abs(distancia) * 1.5));
+    var t0 = null;
+    parar();
+    function passo(agora){
+      if (t0 === null) t0 = agora;
+      var t = Math.min(1, (agora - t0) / duracao);
+      window.scrollTo(0, inicio + distancia * suavizar(t));
+      if (t < 1) animacao = requestAnimationFrame(passo); else animacao = null;
+    }
+    animacao = requestAnimationFrame(passo);
+  };
+})();
 
-    document.getElementById("btn1").addEventListener("click", revelar);
-  })();
-  </script>
+/* Os sete anjos, na ordem dos dias da semana.
+   Indice 0 = domingo, 6 = sabado — o mesmo indice de Date.getDay(). */
+var ANJOS = [
+  { id:'miguel',   nome:'Miguel',   dia:'domingo',       emoji:'⚔️', rege:'Proteção e batalha espiritual',
+    frase:'Nasceu num domingo — o dia do sol, o dia do príncipe dos exércitos.',
+    desc:'Miguel é o anjo que não negoceia. Onde ele entra, o que estava enraizado na sua casa <b>é obrigado a sair</b>. Quem nasce sob a regência dele carrega uma proteção que os outros sentem antes de perceber — e é justamente por isso que costuma ser o alvo preferido da inveja. Miguel não vem para consolar. Vem para <b>cortar</b>.' },
+  { id:'gabriel',  nome:'Gabriel',  dia:'segunda-feira', emoji:'📯', rege:'Mensagens, clareza e direção',
+    frase:'Nasceu numa segunda-feira — o dia da lua, o dia do mensageiro.',
+    desc:'Gabriel é o anjo que <b>traz a resposta</b>. Foi ele quem anunciou a Maria. Quem nasce sob a regência dele vive um paradoxo: recebe sinais o tempo todo, mas duvida de todos eles. Quando aprende a chamá-lo pelo nome, a confusão para — e a próxima decisão da sua vida <b>fica óbvia</b>.' },
+  { id:'chamuel',  nome:'Chamuel',  dia:'terça-feira',   emoji:'💗', rege:'Amor, família e reconciliação',
+    frase:'Nasceu numa terça-feira — o dia da força, o dia de quem reconcilia.',
+    desc:'Chamuel é o anjo que <b>reata o que se rompeu</b>. Casamentos frios, filhos distantes, irmãos que não se falam há anos. Quem nasce sob a regência dele foi feito para ser a ponte da própria família — e por isso costuma carregar sozinho o peso da casa inteira. Chamuel devolve esse peso a Deus.' },
+  { id:'rafael',   nome:'Rafael',   dia:'quarta-feira',  emoji:'🌿', rege:'Cura e saúde',
+    frase:'Nasceu numa quarta-feira — o dia da travessia, o dia do médico do céu.',
+    desc:'Rafael é o anjo <b>da cura</b> — do corpo e do que o corpo esconde. Quem nasce sob a regência dele sente a dor dos outros como se fosse sua, e por isso adoece do que não lhe pertence. A oração de chamado de Rafael serve para duas coisas: pedir cura <b>e devolver</b> o que anda a carregar pelos outros.' },
+  { id:'uriel',    nome:'Uriel',    dia:'quinta-feira',  emoji:'🔥', rege:'Provisão e prosperidade',
+    frase:'Nasceu numa quinta-feira — o dia da abundância, o dia do fogo que provê.',
+    desc:'Uriel é o anjo que <b>abre a porta do sustento</b>. Não é o anjo do dinheiro fácil: é o anjo da porta que se abre quando já não havia porta. Quem nasce sob a regência dele costuma ver a provisão chegar <b>à última hora</b> — e passa a vida a achar que teve sorte. Não teve. Tinha Uriel.' },
+  { id:'jofiel',   nome:'Jofiel',   dia:'sexta-feira',   emoji:'📜', rege:'Sabedoria e paz interior',
+    frase:'Nasceu numa sexta-feira — o dia da beleza, o dia de quem ilumina a mente.',
+    desc:'Jofiel é o anjo que <b>acalma o pensamento</b>. Quem nasce sob a regência dele tem a mente que não desliga: revive discussões, antecipa tragédias, dorme mal. Jofiel não tira os problemas — tira o barulho de cima deles. E aí você finalmente <b>enxerga a saída que sempre esteve ali</b>.' },
+  { id:'zadquiel', nome:'Zadquiel', dia:'sábado',        emoji:'⛓️', rege:'Perdão, libertação e recomeço',
+    frase:'Nasceu num sábado — o dia do descanso, o dia de quem quebra correntes.',
+    desc:'Zadquiel é o anjo que <b>rompe o que vem de trás</b>. Repetições que atravessam gerações: a mesma dívida, a mesma doença, o mesmo tipo de homem, o mesmo vazio. Quem nasce sob a regência dele veio para ser <b>o fim da linha</b> de alguma coisa antiga na família. Zadquiel dá as palavras para cortar.' }
+];
 
+var MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+
+/* ---------- Carrossel: fita que desliza sozinha ---------- */
+(function(){
+  var c = document.getElementById('carrossel');
+
+  function cartao(a){
+    var d = document.createElement('div');
+    d.className = 'card';
+    d.innerHTML =
+      '<div class="art">' +
+        '<span class="emoji">' + a.emoji + '</span>' +
+        /* sem lazy: a fita anda por transform e o navegador nao reavalia o lazy,
+           entao um cartao entraria na tela vazio. Sao 7 arquivos, servidos duas vezes do cache. */
+      '<img src="/img/anjos/' + a.id + '.jpg" alt="Arcanjo ' + a.nome + '" onerror="if(this.src.indexOf(\'../\')===-1){this.src=\'../img/anjos/' + a.id + '.jpg\';}else{this.remove();}">' +
+      '</div>' +
+      '<div class="nome">' + a.nome + '<small>' + a.rege + '</small></div>';
+    return d;
+  }
+
+  /* a lista entra duas vezes: a segunda cobre o vao enquanto a primeira volta */
+  ANJOS.forEach(function(a){ c.appendChild(cartao(a)); });
+  ANJOS.forEach(function(a){ c.appendChild(cartao(a)); });
+
+  /* o deslocamento certo e a posicao do primeiro cartao da copia.
+     Medir e mais seguro do que calcular na mao: nao depende da largura
+     do cartao nem do tamanho do intervalo entre eles. */
+  function medir(){
+    var copia = c.children[ANJOS.length];
+    if (!copia) return;
+    var passo = copia.offsetLeft - c.children[0].offsetLeft;
+    if (passo > 0){
+      c.style.setProperty('--deslocamento', passo + 'px');
+      /* ~26 pixels por segundo: devagar o bastante para dar tempo de ler cada nome */
+      c.style.setProperty('--duracao', Math.round(passo / 26) + 's');
+    }
+  }
+  medir();
+  window.addEventListener('resize', medir);
+})();
+
+/* ---------- Selects de data ---------- */
+(function(){
+  var dia = document.getElementById('dia'), mes = document.getElementById('mes'), ano = document.getElementById('ano');
+  dia.innerHTML = '<option value="">Dia</option>';
+  for (var d = 1; d <= 31; d++) dia.innerHTML += '<option value="' + d + '">' + d + '</option>';
+  mes.innerHTML = '<option value="">Mês</option>';
+  MESES.forEach(function(m, k){ mes.innerHTML += '<option value="' + k + '">' + m.charAt(0).toUpperCase() + m.slice(1) + '</option>'; });
+  var atual = new Date().getFullYear();
+  ano.innerHTML = '<option value="">Ano</option>';
+  for (var y = atual - 15; y >= 1935; y--) ano.innerHTML += '<option value="' + y + '">' + y + '</option>';
+})();
+
+/* ---------- Revelacao ---------- */
+var escolha = { data: null };
+
+function revelar(){
+  var d = +document.getElementById('dia').value,
+      m = document.getElementById('mes').value,
+      y = +document.getElementById('ano').value;
+  if (!d || m === '' || !y) { 
+    alert('Por favor, selecione o dia, mês e ano do seu nascimento.'); 
+    return; 
+  }
+  escolha.data = new Date(y, +m, d);
+  if (escolha.data.getDate() !== d) { 
+    alert('Essa data não existe. Confira o dia e o mês selecionados.'); 
+    return; 
+  }
+
+  document.getElementById('p1').style.display = 'none';
+  document.getElementById('carregando').style.display = 'block';
+  empurrar();
+
+  var t = document.getElementById('txt-revelando');
+  var b = document.getElementById('progresso-barra');
+
+  if (b) b.style.width = '16%';
+
+  setTimeout(function(){ 
+    t.textContent = 'A localizar o dia sagrado em que você veio ao mundo...'; 
+    if (b) b.style.width = '42%';
+  }, 1200);
+
+  setTimeout(function(){ 
+    t.textContent = 'A consultar os 7 Arcanjos Celestiais diante de Deus...'; 
+    if (b) b.style.width = '68%';
+  }, 2500);
+
+  setTimeout(function(){ 
+    t.textContent = 'A identificar o anjo designado para guardar a sua família...'; 
+    if (b) b.style.width = '88%';
+  }, 3800);
+
+  setTimeout(function(){ 
+    t.textContent = 'Revelando a presença do seu anjo protetor...'; 
+    if (b) b.style.width = '98%';
+  }, 4800);
+
+  setTimeout(function(){
+    if (b) b.style.width = '100%';
+    var a = ANJOS[escolha.data.getDay()];
+    var diaTexto = escolha.data.getDate() + ' de ' + MESES[escolha.data.getMonth()] + ' de ' + escolha.data.getFullYear();
+
+    document.getElementById('carregando').style.display = 'none';
+    var r = document.getElementById('resultado');
+    r.innerHTML =
+      '<div class="revelacao animar-revelacao">' +
+        '<div class="rev-card">' +
+          '<div class="rev-art">' +
+            '<span class="emoji">' + a.emoji + '</span>' +
+            '<img src="/img/anjos/' + a.id + '.jpg" alt="Arcanjo ' + a.nome + '" onerror="if(this.src.indexOf(\'../\')===-1){this.src=\'../img/anjos/' + a.id + '.jpg\';}else{this.remove();}">' +
+          '</div>' +
+          '<div class="rev-info">' +
+            '<p class="quem">O seu anjo da guarda é</p>' +
+            '<h2>' + a.nome + '</h2>' +
+            '<p class="rege">' + a.rege + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="rev-desc">' +
+          '<p style="margin-bottom:12px;"><b>' + diaTexto + '.</b> ' + a.frase + '</p>' +
+          '<p>' + a.desc + '</p>' +
+        '</div>' +
+      '</div>';
+    r.style.display = 'block';
+    document.getElementById('oferta').style.display = 'block';
+    empurrar();
+  }, 5400);
+}
+
+/* rolagem suave em direcao ao card revelado */
+function empurrar(){
+  setTimeout(function(){
+    var r = document.getElementById('resultado');
+    if (r && r.style.display !== 'none') {
+      var y = r.getBoundingClientRect().top + (window.pageYOffset || 0)
+              - Math.round(window.innerHeight * 0.22);
+      rolarSuave(y);
+    } else {
+      rolarSuave((window.pageYOffset || 0) + Math.round(window.innerHeight * 0.28));
+    }
+  }, 220);
+}
+</script>
 </div>
 
 <div id="pagina-clean">
