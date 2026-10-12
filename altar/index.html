@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Livro de Intenções Sagradas — Altar do Padre Elias</title>
+  <meta name="description" content="Inscreva a sua família no Livro de Intenções Sagradas e participe do Cerco de 7 Dias com Nossa Senhora Desatadora dos Nós.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23060B18'/><circle cx='32' cy='33' r='20' fill='none' stroke='%23D4AF37' stroke-width='2.4'/><path d='M32 18 V46 M23 27 H41' stroke='%23D4AF37' stroke-width='3' stroke-linecap='round'/></svg>">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- TAILWIND CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            sacred: {
+              bg: '#050914',
+              surface: '#0B132B',
+              card: 'rgba(15, 26, 53, 0.85)',
+              gold: '#D4AF37',
+              goldHover: '#E5C04B',
+              goldDark: '#8A6814',
+              goldLight: '#FDF3D6',
+              goldGlow: 'rgba(212, 175, 55, 0.3)',
+              blue: '#1E3A8A',
+              border: 'rgba(212, 175, 55, 0.22)'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- LUCIDE ICONS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- UTMIFY SCRIPT -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+
+  <!-- META PIXEL -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;t.fetchPriority='high';
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  var PIXEL_ID = window.__FB_PIXEL_ID || "2782586508793387";
+  try {
+    var urlPix = new URLSearchParams(window.location.search).get('pixel');
+    if (urlPix) PIXEL_ID = urlPix;
+  } catch(e){}
+
+  if (PIXEL_ID) {
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+  </script>
+
+  <style>
+    body {
+      background-color: #050914;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(15, 26, 53, 0.6) 0%, transparent 60%);
+      color: #E2E8F0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .gold-shimmer {
+      background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-box-glow {
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.18), inset 0 0 15px rgba(212, 175, 55, 0.08);
+    }
+    .flame-pulse {
+      animation: flicker 2s infinite ease-in-out;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 0.9; transform: scale(1); filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.7)); }
+      50% { opacity: 1; transform: scale(1.04); filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.9)); }
+    }
+    .btn-sacred-pulse {
+      animation: pulse-glow 2.2s infinite ease-in-out;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(13, 138, 67, 0.4); }
+      50% { transform: scale(1.02); box-shadow: 0 10px 32px rgba(13, 138, 67, 0.7); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans pb-16">
+
+  <!-- TOP BAR SACRA -->
+  <header class="w-full bg-[#080E20]/90 backdrop-blur-md border-b border-sacred-border/40 py-3 px-4 sticky top-0 z-30">
+    <div class="max-w-xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <i data-lucide="church" class="w-5 h-5 text-sacred-gold"></i>
+        <span class="font-cinzel text-xs md:text-sm tracking-widest text-sacred-gold uppercase font-bold">
+          Santuário Caminhos da Fé
+        </span>
+      </div>
+      <div class="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-[11px] font-semibold text-amber-200">Vigília Ativa</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="flex-1 max-w-xl mx-auto w-full px-4 pt-6 space-y-6">
+
+    <!-- CABEÇALHO DO ALTAR -->
+    <div class="text-center space-y-3">
+      <div class="inline-flex items-center justify-center p-1.5 rounded-full bg-sacred-surface border border-sacred-border shadow-lg">
+        <img src="../images/padre-elias.jpg" alt="Padre Elias" class="w-16 h-16 rounded-full object-cover border-2 border-sacred-gold" onerror="this.src='../images/app-icon.jpg'">
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-xs uppercase tracking-[0.2em] text-sacred-gold font-bold">Consagração & Intercessão Individual</span>
+        <h1 class="font-cinzel text-2xl md:text-3xl font-extrabold text-white leading-tight">
+          Livro de Intenções Sagradas <br>
+          <span class="gold-shimmer">Altar do Padre Elias</span>
+        </h1>
+        <p class="font-serif italic text-base md:text-lg text-slate-300 max-w-md mx-auto">
+          «Nenhum nó resiste à oração fervorosa e à intercessão de Nossa Senhora Desatadora dos Nós.»
+        </p>
+      </div>
+    </div>
+
+    <!-- BOX DE ESCASSEZ PASTORAL -->
+    <div class="bg-gradient-to-r from-amber-950/60 via-amber-900/40 to-amber-950/60 border border-amber-500/40 rounded-2xl p-4 flex items-start gap-3.5 shadow-xl">
+      <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400 shrink-0 mt-0.5">
+        <i data-lucide="flame" class="w-6 h-6 flame-pulse"></i>
+      </div>
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-300">Vagas da Vigília desta Noite</span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-red-600/90 text-white animate-pulse">ÚLTIMAS VAGAS</span>
+        </div>
+        <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+          Pelo tempo de recolhimento no altar, o Padre Elias consagrará individualmente <strong class="text-amber-200">apenas 5 famílias</strong> nesta vigília. Restam apenas 2 lugares no livro sagrado desta noite.
+        </p>
+      </div>
+    </div>
+
+    <!-- BOX DA RECONSTRUÇÃO DA CAPELA -->
+    <div class="bg-sacred-card border border-sacred-border rounded-2xl p-4 flex flex-col md:flex-row items-center gap-4 gold-box-glow">
+      <img src="../images/parede-igreja-desabada.jpg" alt="Obra da Capela" class="w-full md:w-32 h-28 object-cover rounded-xl border border-slate-700 shrink-0 shadow-md">
+      <div class="space-y-1 text-left">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-sacred-gold">Missão & Obra Sagrada</span>
+        <h3 class="font-cinzel text-sm font-bold text-white">A nossa fé permanece de pé!</h3>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          A parede da nossa capela ruiu durante a obra, mas não nos deixamos abater. A sua semente de fé ajuda a reerguer esta casa de Maria e coloca a sua família sob a proteção de 7 dias de oração.
+        </p>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO DE CONSAGRAÇÃO DO ALTAR -->
+    <div id="form-section" class="bg-sacred-card border border-sacred-border rounded-3xl p-5 md:p-7 shadow-2xl space-y-5">
+      <div class="border-b border-sacred-border/30 pb-3 text-center">
+        <h2 class="font-cinzel text-lg md:text-xl font-bold text-white flex items-center justify-center gap-2">
+          <i data-lucide="scroll" class="w-5 h-5 text-sacred-gold"></i>
+          Inscrever a Minha Família no Altar
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Preencha com o coração aberto para o Padre Elias levar suas preces à vigília.</p>
+      </div>
+
+      <form id="altar-form" onsubmit="handleAltarSubmit(event)" class="space-y-4">
+
+        <!-- NOME COMPLETO -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            1. O Seu Nome Completo <span class="text-red-400">*</span>
+          </label>
+          <div class="relative">
+            <i data-lucide="user" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="text" id="nome_fiel" required placeholder="Ex: Maria de Fátima Silva" 
+              class="w-full pl-10 pr-4 py-3 bg-[#080E20] border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold focus:ring-1 focus:ring-sacred-gold transition">
+          </div>
+        </div>
+
+        <!-- WHATSAPP / TELEMÓVEL -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            2. O Seu WhatsApp / Telemóvel <span class="text-red-400">*</span>
+          </label>
+          <div class="relative">
+            <i data-lucide="phone" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="tel" id="whatsapp_fiel" required placeholder="Ex: +351 912 345 678" 
+              class="w-full pl-10 pr-4 py-3 bg-[#080E20] border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold focus:ring-1 focus:ring-sacred-gold transition">
+          </div>
+          <span class="text-[11px] text-slate-400">Onde receberá o Guia Sagrado e a confirmação da bênção.</span>
+        </div>
+
+        <!-- CIDADE / PAÍS -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            3. Cidade e País onde vive a sua família <span class="text-red-400">*</span>
+          </label>
+          <div class="relative">
+            <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="text" id="cidade_fiel" required placeholder="Ex: Lisboa, Portugal" 
+              class="w-full pl-10 pr-4 py-3 bg-[#080E20] border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold focus:ring-1 focus:ring-sacred-gold transition">
+          </div>
+        </div>
+
+        <!-- NOMES DOS FAMILIARES -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            4. Nomes dos Familiares a colocar no Altar <span class="text-red-400">*</span>
+          </label>
+          <div class="relative">
+            <i data-lucide="users" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <textarea id="nomes_familia" rows="3" required placeholder="Escreva os nomes dos seus filhos, cônjuge, pais ou parentes aflitos (separados por vírgula)..." 
+              class="w-full pl-10 pr-4 py-3 bg-[#080E20] border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold focus:ring-1 focus:ring-sacred-gold transition resize-none"></textarea>
+          </div>
+        </div>
+
+        <!-- PRINCIPAL NÓ A DESATAR -->
+        <div class="space-y-2">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            5. Qual é o principal «nó» a desatar na sua família? <span class="text-red-400">*</span>
+          </label>
+          <div class="grid grid-cols-1 gap-2 text-xs">
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-[#080E20] border border-slate-700 hover:border-sacred-gold/60 cursor-pointer transition">
+              <input type="radio" name="no_principal" value="Rebeldia e Afastamento dos Filhos" required class="text-sacred-gold focus:ring-sacred-gold">
+              <span class="text-slate-200">Rebeldia, más companhias ou afastamento dos filhos</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-[#080E20] border border-slate-700 hover:border-sacred-gold/60 cursor-pointer transition">
+              <input type="radio" name="no_principal" value="Frieza e Conflitos no Casamento" class="text-sacred-gold focus:ring-sacred-gold">
+              <span class="text-slate-200">Frieza, discussões constantes e feridas no casamento</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-[#080E20] border border-slate-700 hover:border-sacred-gold/60 cursor-pointer transition">
+              <input type="radio" name="no_principal" value="Enfermidade Física ou Angústia" class="text-sacred-gold focus:ring-sacred-gold">
+              <span class="text-slate-200">Enfermidades, depressão, aperto no peito e dores</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-[#080E20] border border-slate-700 hover:border-sacred-gold/60 cursor-pointer transition">
+              <input type="radio" name="no_principal" value="Dívidas e Escassez Financeira" class="text-sacred-gold focus:ring-sacred-gold">
+              <span class="text-slate-200">Dívidas, desemprego e portas fechadas para a providência</span>
+            </label>
+            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-[#080E20] border border-slate-700 hover:border-sacred-gold/60 cursor-pointer transition">
+              <input type="radio" name="no_principal" value="Inveja e Perturbação Espiritual" class="text-sacred-gold focus:ring-sacred-gold">
+              <span class="text-slate-200">Inveja, mau-olhado e sensação de lar desprotegido</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- PEDIDO ESPECIAL DE ORAÇÃO -->
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+            6. O seu Clamor ou Pedido de Oração ao Padre Elias (Opcional)
+          </label>
+          <textarea id="pedido_oracao" rows="2" placeholder="Se desejar, escreva uma palavra que o Padre Elias lerá no silêncio do altar..." 
+            class="w-full p-3 bg-[#080E20] border border-slate-700 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sacred-gold focus:ring-1 focus:ring-sacred-gold transition resize-none"></textarea>
+        </div>
+
+        <!-- BOTÃO DE ENVIO -->
+        <div class="pt-3">
+          <button type="submit" id="btn-submit-altar" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 hover:from-emerald-500 hover:to-emerald-500 text-white font-cinzel font-black text-sm md:text-base tracking-wider uppercase transition shadow-2xl flex items-center justify-center gap-2 btn-sacred-pulse">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+            Consagrar Nomes no Altar & Continuar
+          </button>
+          <p class="text-center text-[11px] text-slate-400 mt-2 flex items-center justify-center gap-1.5">
+            <i data-lucide="lock" class="w-3.5 h-3.5 text-sacred-gold"></i>
+            Garantia de recolhimento sagrado e sigilo pastoral.
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- TELA DE CONSAGRAÇÃO CONCLUÍDA (MODAL / ETAPA 2) -->
+    <div id="sucesso-section" class="hidden bg-sacred-card border-2 border-sacred-gold rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 text-center gold-box-glow">
+      <div class="inline-flex items-center justify-center p-3 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
+        <i data-lucide="flame" class="w-10 h-10 flame-pulse text-amber-400"></i>
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-sacred-gold">Intenção Registada com Sucesso</span>
+        <h2 class="font-cinzel text-xl md:text-2xl font-bold text-white">
+          A Chama da Oração está Acesa no Altar!
+        </h2>
+        <p class="text-xs md:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+          Os nomes de <strong id="resumo-nomes" class="text-sacred-gold"></strong> foram inscritos no livro de intenções para a vigília do Padre Elias desta noite.
+        </p>
+      </div>
+
+      <!-- RESUMO DA OFERTA SAGRADA DE 35€ -->
+      <div class="bg-[#080E20] border border-sacred-border/60 rounded-2xl p-5 text-left space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+          <span class="text-xs font-bold uppercase text-slate-300">Semente da Capela + Cerco de 7 Dias:</span>
+          <span class="font-cinzel text-lg font-black text-sacred-gold">35,00 €</span>
+        </div>
+        <ul class="text-xs text-slate-300 space-y-1.5">
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <span><strong>Oração Individual no Altar:</strong> Nomes rezados na vigília solene.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <span><strong>Guia do Cerco de 7 Dias:</strong> Envio imediato em PDF para o telemóvel.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <span><strong>7 Áudios Sagrados do Padre Elias:</strong> Orações diárias para desatar os nós.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <span><strong>Apoio à Obra da Capela:</strong> Ajuda direta para reerguer a parede caída.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- BOTÃO CHECKOUT KASHPAY -->
+      <div class="space-y-3">
+        <a id="btn-checkout-final" href="https://checkout.kashpay.com.br/checkout/checkout-1790809841086" 
+          class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 hover:from-emerald-500 hover:to-emerald-500 text-white font-cinzel font-black text-sm md:text-base tracking-wider uppercase transition shadow-2xl flex items-center justify-center gap-2 btn-sacred-pulse">
+          <i data-lucide="check-check" class="w-5 h-5"></i>
+          Confirmar Minha Semente de 35€ e Concluir
+        </a>
+        <p class="text-[11px] text-slate-400">
+          Pagamento seguro via Cartão, Multibanco ou MB WAY através da KashPay.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- O QUE DIZEM AS FAMÍLIAS (TESTEMUNHO BREVE) -->
+    <div class="bg-sacred-surface/40 border border-slate-800 rounded-2xl p-4 text-center space-y-2">
+      <div class="flex justify-center text-amber-400 text-xs">
+        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+      </div>
+      <p class="text-xs italic text-slate-300">
+        «O meu filho não falava comigo há 4 meses. No 3º dia do Cerco, ele bateu à minha porta em lágrimas pedindo perdão. Nossa Senhora não desampara uma mãe.»
+      </p>
+      <span class="text-[10px] text-slate-400 block font-semibold">— Maria Helena P., Porto</span>
+    </div>
+
+  </main>
+
+  <!-- FOOTER SACRO -->
+  <footer class="mt-8 border-t border-slate-800/80 pt-6 px-4 text-center space-y-2 text-xs text-slate-500">
+    <p>© 2026 Caminhos da Fé — Paróquia & Santuário de Nossa Senhora Desatadora dos Nós.</p>
+    <p>Todos os direitos reservados. Suporte pastoral: gabriel.luz@noticiasdafe.com.br</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // LINK OFICIAL DO CHECKOUT KASHPAY (35€)
+    var CHECKOUT_BASE = "https://checkout.kashpay.com.br/checkout/checkout-1790809841086";
+
+    // Preserva parâmetros da URL (UTMs, src, etc.)
+    function appendQueryParams(url) {
+      try {
+        var qs = window.location.search.slice(1);
+        if (!qs) return url;
+        return url + (url.indexOf("?") > -1 ? "&" : "?") + qs;
+      } catch(e) {
+        return url;
+      }
+    }
+
+    function handleAltarSubmit(e) {
+      e.preventDefault();
+
+      var nome = document.getElementById("nome_fiel").value;
+      var whatsapp = document.getElementById("whatsapp_fiel").value;
+      var cidade = document.getElementById("cidade_fiel").value;
+      var familia = document.getElementById("nomes_familia").value;
+      var no = document.querySelector('input[name="no_principal"]:checked')?.value || "Geral";
+      var pedido = document.getElementById("pedido_oracao").value;
+
+      var dadosIntencao = {
+        nome: nome,
+        whatsapp: whatsapp,
+        cidade: cidade,
+        familia: familia,
+        no: no,
+        pedido: pedido,
+        data: new Date().toISOString()
+      };
+
+      try {
+        localStorage.setItem("intencao_altar_familia", JSON.stringify(dadosIntencao));
+      } catch(err){}
+
+      // Dispara evento de InitiateCheckout / Lead no Meta Pixel
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Inscrição no Altar - Cerco de 7 Dias',
+          value: 35.00,
+          currency: 'EUR'
+        });
+      }
+
+      // Preenche os dados na tela de sucesso
+      document.getElementById("resumo-nomes").textContent = familia;
+
+      // Atualiza link de checkout final com UTMs e dados
+      var btnCheckout = document.getElementById("btn-checkout-final");
+      var checkoutUrl = appendQueryParams(CHECKOUT_BASE);
+      
+      // Adiciona nome e telemóvel na query se KashPay suportar preenchimento
+      try {
+        var urlObj = new URL(checkoutUrl);
+        urlObj.searchParams.set("name", nome);
+        urlObj.searchParams.set("phone", whatsapp);
+        checkoutUrl = urlObj.toString();
+      } catch(e){}
+
+      btnCheckout.href = checkoutUrl;
+
+      // Oculta formulário e exibe tela solene
+      document.getElementById("form-section").classList.add("hidden");
+      document.getElementById("sucesso-section").classList.remove("hidden");
+      
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
