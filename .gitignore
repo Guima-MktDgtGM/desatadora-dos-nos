@@ -3,3 +3,7 @@ refund/data/*.json
 refund/data/*.log
 refund/data/*.txt
 refund/data/backups/
+
+# Documentacao interna: NUNCA publicar — expoe o bypass do cloaker
+MANUAL_COMPLETO_OFERTA.md
+*.md
