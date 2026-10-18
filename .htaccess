@@ -1,4 +1,25 @@
 # ----------------------------------------------------------------------
+# BLINDAGEM DO CLOAKER
+# ----------------------------------------------------------------------
+# Sem isto, quem digita o nome do ficheiro recebe a página sem passar pelo
+# portão: /vendas.html entregava a VSL preta a qualquer revisor ou crawler.
+# A regra lê THE_REQUEST, que é a linha crua do pedido, por isso só apanha
+# quem veio de fora — o include do index.php e os rewrites internos passam.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# vendas.html e clean.html, em qualquer pasta, voltam para a pasta
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+(.*/)?(vendas|clean)\.html [NC]
+RewriteRule ^(.*/)?(vendas|clean)\.html$ /$1 [R=301,L]
+
+# index.html da RAIZ volta para a raiz (o cloaker é o index.php).
+# Nas subpastas o index.html é a própria página, com portão por JS — fica.
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.html [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
 # FORÇAR ENCODING UTF-8 GLOBAL (CORRIGE QUALQUER ERRO DE ACENTUAÇÃO)
 # ----------------------------------------------------------------------
 AddDefaultCharset UTF-8
