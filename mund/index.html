@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="pt" data-gate="white">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novena das 9 Palavras — Caminhos da Fé</title>
+<meta name="description" content="Novena de Nossa Senhora Desatadora dos Nós em formato digital: nove dias de orações, meditações e reflexões bíblicas. Edição digital das Caminhos da Fé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Roboto:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     CLOAKER — decide antes de pintar, para não haver flash.
+     Só vê a oferta quem: tem o bypass, chega com parâmetro do
+     funil da MundPay, vem do domínio do checkout, ou já foi
+     liberado nesta sessão. Todo o resto vê a página do produto.
+     ============================================================ -->
+<script>
+(function(){
+  try {
+    var qs = new URLSearchParams(location.search);
+
+    // 1. chave manual de bypass
+    var bypass = qs.get('bypass') === 'fiel2026' || qs.get('btn') === '1';
+
+    // 2. SEGREDO DO FUNIL — é ESTE o portão principal.
+    //    Vai na URL de redirecionamento configurada no painel da MundPay:
+    //    https://caminhosdafe.online/mund/up1/?src=mp2026
+    //    Ninguém que não venha do funil conhece este valor.
+    var doFunil = qs.get('src') === 'mp2026';
+
+    // 3. referrer — SÓ o domínio de checkout puro, hostname EXATO.
+    //    NUNCA o site institucional nem o painel do gateway: analista
+    //    logado lá dentro que clique no nosso link cairia na oferta.
+    //    (foi assim que o revisor caiu na black no The Creation Key)
+    var refHost = '';
+    try { refHost = new URL(document.referrer).hostname.toLowerCase(); } catch(e){}
+    var HOSTS = ['pay.mycheckoutt.com','checkout.mundpay.com','pay.mundpay.com'];
+    var doCheckout = HOSTS.indexOf(refHost) !== -1;
+
+    // 4. já liberado nesta sessão (gravado só por esta página, nunca na landing)
+    var noFunil = false;
+    try { noFunil = sessionStorage.getItem('funnel_mund_ok') === '1'; } catch(e){}
+
+    // 5. parâmetro explícito para inspecionar a White Page
+    var forceWhite = qs.get('clean') === '1' || qs.get('white') === '1';
+
+    // 6. robô / user-agent suspeito -> sempre a página do produto
+    var ua = (navigator.userAgent || '').toLowerCase();
+    var BOTS = ['facebookexternalhit','facebot','facebookcatalog','meta-externalagent',
+                'meta-externalhit','googlebot','adsbot-google','mediapartners-google',
+                'bingbot','yandex','semrushbot','ahrefsbot','headlesschrome','phantomjs',
+                'selenium','webdriver','puppeteer','playwright','python-requests',
+                'curl','wget','bot','crawler','spider','inspect'];
+    var ehBot = ua.length < 20;
+    for (var i = 0; i < BOTS.length && !ehBot; i++) { if (ua.indexOf(BOTS[i]) !== -1) ehBot = true; }
+
+    var liberar = !ehBot && !forceWhite && (bypass || doFunil || doCheckout || noFunil);
+
+    if (liberar) {
+      document.documentElement.setAttribute('data-gate','real');
+      try { sessionStorage.setItem('funnel_mund_ok','1'); } catch(e){}
+    }
+  } catch(e){ /* qualquer falha -> fica na white */ }
+})();
+</script>
+
+<style>
+  /* ---------- o gate ---------- */
+  #pagina-white  { display:block; }
+  #conteudo-real { display:none; }
+  html[data-gate="real"] #pagina-white  { display:none; }
+  html[data-gate="real"] #conteudo-real { display:block; }
+
+  /* ================= BLACK ================= */
+  .alertbar {
+    background:#ff0000; color:#ffffff; font-family:'Roboto',Arial,sans-serif;
+    font-size:19px; font-weight:700; line-height:1.3; text-align:center; padding:14px 16px;
+  }
+  .bwrap { max-width:620px; width:100%; margin:0 auto; padding:34px 18px 30px; text-align:center; font-family:'Roboto',Arial,sans-serif; color:#000; }
+  .bwrap h1 { color:#16a34a; font-size:34px; font-weight:900; line-height:1.15; margin-bottom:18px; text-transform:uppercase; }
+  .blead { font-size:19px; line-height:1.5; margin-bottom:16px; }
+  .blead b { font-weight:700; }
+  .bwrap mark { background:#fef08a; padding:0 3px; }
+  .bgreen { color:#16a34a; font-weight:700; }
+  .preco-caixa { max-width:420px; margin:26px auto 0; padding:18px 20px; border:2px solid #16a34a; border-radius:12px; background:#f1f8f2; }
+  .preco-caixa .rotulo { font-size:14px; color:#14532d; font-weight:700; letter-spacing:.5px; text-transform:uppercase; }
+  .preco-caixa .pvalor { font-size:40px; font-weight:900; color:#14532d; line-height:1.1; margin:4px 0 2px; }
+  .preco-caixa .nota { font-size:13.5px; color:#3f6b57; }
+  .btn-comprar {
+    display:block; max-width:420px; margin:16px auto 0;
+    background:#16a34a; color:#fff !important; text-decoration:none;
+    font-size:20px; font-weight:900; text-transform:uppercase;
+    padding:18px 20px; border-radius:10px; letter-spacing:.3px;
+    box-shadow:0 4px 14px rgba(22,163,74,.35);
+  }
+  .btn-comprar:hover { background:#138a3e; text-decoration:none !important; }
+  .aviso-acesso {
+    max-width:420px; margin:16px auto 0; padding:12px 15px;
+    background:#f1f8f2; border:1px solid #bfe0c6; border-radius:10px;
+    font-size:16px; line-height:1.45; color:#14532d; text-align:center;
+  }
+  .aviso-acesso b { color:#15803d; }
+  .prod-foto { display:block; width:100%; max-width:300px; height:auto; margin:20px auto 0; border-radius:10px; }
+  .recusar { display:block; max-width:420px; margin:18px auto 0; font-size:14px; color:#8a8a8a; text-decoration:underline; text-align:center; }
+  .brodape { background:#f4f4f4; border-top:1px solid #e0e0e0; padding:22px 18px; text-align:center; font-size:12.5px; color:#666; line-height:1.6; font-family:'Roboto',Arial,sans-serif; }
+  .brodape a { color:#666; }
+  .bfoot-small { margin-top:8px; font-size:11.5px; color:#888; }
+  @media(max-width:560px){
+    .bwrap h1 { font-size:27px; }
+    .blead { font-size:17px; }
+    .alertbar { font-size:16px; }
+  }
+
+  /* ================= WHITE ================= */
+  :root{
+    --tinta:#1b2430; --tinta-suave:#56616f; --papel:#ffffff;
+    --papel-morno:#f6f7f5; --linha:#e3e6e2; --verde:#2f5d50; --verde-claro:#eef4f1;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--tinta);background:var(--papel);line-height:1.7;font-size:16.5px;}
+  a{color:var(--verde);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .limite{max-width:960px;margin:0 auto;padding:0 22px;}
+
+  .topo{border-bottom:1px solid var(--linha);background:var(--papel);position:sticky;top:0;z-index:50;}
+  .topo-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 22px;max-width:960px;margin:0 auto;flex-wrap:wrap;}
+  .marca{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600;}
+  .marca span{color:var(--verde);}
+  .menu{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;font-weight:500;}
+  .menu a{color:var(--tinta-suave);}
+  .menu a:hover{color:var(--verde);text-decoration:none;}
+
+  .abertura{background:var(--papel-morno);border-bottom:1px solid var(--linha);padding:50px 0;}
+  .etiqueta{font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--verde);margin-bottom:14px;}
+  .abertura h1{font-family:'Lora',Georgia,serif;font-size:34px;line-height:1.25;font-weight:600;max-width:680px;margin-bottom:16px;}
+  .abertura p{font-size:18px;color:var(--tinta-suave);max-width:620px;}
+
+  section{padding:50px 0;}
+  section + section{border-top:1px solid var(--linha);}
+  h2{font-family:'Lora',Georgia,serif;font-size:26px;font-weight:600;margin-bottom:10px;}
+  .sub-seccao{color:var(--tinta-suave);margin-bottom:28px;max-width:660px;}
+  h3{font-size:17px;font-weight:600;margin-bottom:8px;}
+
+  .produto{display:grid;grid-template-columns:1.25fr .85fr;gap:36px;align-items:start;}
+  @media(max-width:780px){.produto{grid-template-columns:minmax(0,1fr);}}
+  .conteudos{list-style:none;}
+  .conteudos li{padding:11px 0 11px 28px;position:relative;border-bottom:1px solid var(--linha);font-size:15.5px;}
+  .conteudos li:last-child{border-bottom:none;}
+  .conteudos li::before{content:"";position:absolute;left:4px;top:19px;width:7px;height:7px;border-radius:50%;background:var(--verde);}
+
+  .caixa-compra{border:1px solid var(--linha);border-radius:12px;padding:26px 24px;background:var(--papel);box-shadow:0 2px 14px rgba(27,36,48,.05);position:sticky;top:84px;}
+  .caixa-compra .nome{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600;margin-bottom:4px;}
+  .caixa-compra .formato{font-size:13.5px;color:var(--tinta-suave);margin-bottom:18px;}
+  .valor{font-size:34px;font-weight:700;letter-spacing:-1px;}
+  .valor-nota{font-size:13.5px;color:var(--tinta-suave);margin:4px 0 20px;}
+  .botao{display:block;text-align:center;background:var(--verde);color:#fff !important;font-weight:600;font-size:16.5px;padding:15px 20px;border-radius:8px;transition:background .18s;}
+  .botao:hover{background:#24493f;text-decoration:none !important;}
+  .selos{margin-top:18px;font-size:13.5px;color:var(--tinta-suave);}
+  .selos div{padding:5px 0 5px 22px;position:relative;}
+  .selos div::before{content:"✓";position:absolute;left:0;color:var(--verde);font-weight:700;}
+
+  .passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+  @media(max-width:700px){.passos{grid-template-columns:minmax(0,1fr);}}
+  .passo{background:var(--verde-claro);border-radius:10px;padding:22px;}
+  .passo .n{width:28px;height:28px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-bottom:12px;}
+  .passo p{font-size:15px;color:var(--tinta-suave);}
+
+  .pergunta{border-bottom:1px solid var(--linha);}
+  .pergunta summary{cursor:pointer;padding:16px 0;font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:16px;}
+  .pergunta summary::-webkit-details-marker{display:none;}
+  .pergunta summary::after{content:"+";color:var(--verde);font-weight:700;font-size:20px;line-height:1;}
+  .pergunta[open] summary::after{content:"–";}
+  .pergunta p{padding:0 0 18px;color:var(--tinta-suave);font-size:15.5px;max-width:790px;}
+
+  .doc{padding-top:26px;}
+  .doc h4{font-size:14.5px;color:var(--verde);margin:16px 0 5px;}
+  .doc p,.doc li{font-size:15px;color:var(--tinta-suave);margin-bottom:9px;}
+  .doc ul{padding-left:20px;}
+
+  .rodape{background:var(--papel-morno);border-top:1px solid var(--linha);padding:40px 0 34px;}
+  .rodape-links{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:20px;font-size:14.5px;font-weight:500;}
+  .rodape-empresa{font-size:13px;color:var(--tinta-suave);line-height:1.8;margin-bottom:16px;}
+  .rodape-aviso{font-size:12.5px;color:#8b949e;line-height:1.75;max-width:840px;border-top:1px solid var(--linha);padding-top:16px;}
+
+  @media(max-width:700px){
+    .abertura h1{font-size:26px;}
+    .abertura{padding:38px 0;}
+    .caixa-compra{position:static;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== BLACK — a oferta ==================== -->
+<div id="conteudo-real">
+
+  <div class="alertbar">
+    ⚠ Importante: não carregue no botão de voltar nem atualize esta página.
+    Isso pode interromper a entrega da sua Novena. Continue a descer! 👇
+  </div>
+
+  <div class="bwrap">
+    <h1>VOCÊ FOI ESCOLHIDO(A)</h1>
+
+    <p class="blead">Para receber a <b>Novena de Nossa Senhora Desatadora dos Nós</b>!</p>
+
+    <p class="blead">
+      Ignorá-la agora seria como recusar uma bênção direta de Deus, e assim que esta porta
+      se fechar, <mark>nunca mais voltará a abrir</mark>.
+    </p>
+
+    <p class="blead">
+      Carregue no <span class="bgreen">botão verde abaixo</span> e receba aquilo que o Céu
+      reservou apenas para os escolhidos.
+    </p>
+
+    <div class="preco-caixa">
+      <div class="rotulo">Oferta única nesta página</div>
+      <div class="pvalor">€ 47,00</div>
+      <div class="nota">Pagamento único, em euros. Acesso imediato.</div>
+    </div>
+
+    <a class="btn-comprar" href="https://pay.mycheckoutt.com/01a14660-7c10-7193-b31d-13b4e7b080f4?ref=" data-oferta="novena47">Receber a minha bênção</a>
+
+    <p class="aviso-acesso">
+      Assim que carregar no botão acima, a sua <b>Novena das 9 Palavras</b> abre-se de imediato, aqui no navegador.
+    </p>
+
+    <img class="prod-foto" src="novena-produto.webp" width="640" height="640"
+         alt="Novena das 9 Palavras que Desatam os Nós" decoding="async">
+
+    <a class="recusar" href="https://caminhosdafe.online/app/">Não, obrigado. Prefiro seguir sem a Novena.</a>
+  </div>
+
+  <div class="brodape">
+    Copyright 2026 – Caminhos da Fé &middot; caminhosdafe.online<br>
+    Todos os direitos reservados
+    <div class="bfoot-small">
+      GUIMA DR &middot; Av. Paulista, 1471, conjunto 1110 &middot; Jardim Paulista &middot; São Paulo/SP<br>
+      Apoio: <a href="mailto:suporte@caminhosdafe.online">suporte@caminhosdafe.online</a> &middot;
+      Conteúdo educacional. Resultados variam por pessoa.
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== WHITE — página do produto ==================== -->
+<div id="pagina-white">
+
+<header class="topo">
+  <div class="topo-inner">
+    <div class="marca"><span>Caminhos</span> da Fé</div>
+    <nav class="menu">
+      <a href="#produto">Produto</a>
+      <a href="#entrega">Entrega</a>
+      <a href="#reembolso">Reembolso</a>
+      <a href="#privacidade">Privacidade</a>
+      <a href="#termos">Termos</a>
+      <a href="#apoio">Suporte</a>
+    </nav>
+  </div>
+</header>
+
+<div class="abertura">
+  <div class="limite">
+    <div class="etiqueta">Material devocional complementar</div>
+    <h1>Novena das 9 Palavras de Nossa Senhora Desatadora dos Nós</h1>
+    <p>Nove dias de orações, meditações e reflexões bíblicas, em formato digital, para quem procura um percurso de oração curto e estruturado.</p>
+  </div>
+</div>
+
+<!-- ============ PRODUTO ============ -->
+<section id="produto">
+  <div class="limite">
+    <h2>O que compõe a edição</h2>
+    <p class="sub-seccao">Edição digital independente, com nove dias de orações, meditações e reflexões bíblicas.</p>
+
+    <div class="produto">
+      <div>
+        <ul class="conteudos">
+          <li><strong>Guia completo da Novena</strong> — os nove dias de devoção, com texto de abertura e encerramento para cada um.</li>
+          <li><strong>Orações diárias</strong> — uma oração por dia, acompanhada da passagem bíblica correspondente.</li>
+          <li><strong>Meditações guiadas</strong> — reflexão escrita para cada um dos nove dias, com cerca de dez minutos de leitura.</li>
+          <li><strong>Orientação de oração</strong> — sugestão de ritmo diário e de como retomar quando se falha um dia.</li>
+          <li><strong>Caderno de intenções</strong> — página para impressão, destinada a registar as intenções de cada dia.</li>
+          <li><strong>Área de leitura online</strong> — todo o material acessível pelo navegador, sem instalar aplicações.</li>
+        </ul>
+      </div>
+
+      <aside class="caixa-compra">
+        <div class="nome">Novena das 9 Palavras</div>
+        <div class="formato">Edição digital</div>
+        <div class="valor">€ 47,00</div>
+        <div class="valor-nota">Pagamento único, em euros (EUR). Sem mensalidade e sem renovação automática.</div>
+
+        <a class="botao" href="https://pay.mycheckoutt.com/01a14660-7c10-7193-b31d-13b4e7b080f4?ref=" data-oferta="novena47">Adquirir edição</a>
+
+        <div class="selos">
+          <div>Acesso imediato após a confirmação do pagamento</div>
+          <div>Sem envio de material físico</div>
+          <div>Garantia de 7 dias para devolução</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENTREGA ============ -->
+<section id="entrega">
+  <div class="limite">
+    <h2>Forma de entrega</h2>
+    <p class="sub-seccao">Produto inteiramente digital. Não há envio de material físico nem custos de portes.</p>
+    <div class="passos">
+      <div class="passo">
+        <div class="n">1</div>
+        <h3>Conclui a compra</h3>
+        <p>O pagamento é processado em euros (EUR) por plataforma de pagamento certificada.</p>
+      </div>
+      <div class="passo">
+        <div class="n">2</div>
+        <h3>Recebe o acesso</h3>
+        <p>Acesso imediato após a confirmação do pagamento, enviado por e-mail para o endereço indicado na compra.</p>
+      </div>
+      <div class="passo">
+        <div class="n">3</div>
+        <h3>Lê onde quiser</h3>
+        <p>A área de leitura abre no navegador do telemóvel, tablet ou computador. Sem instalação e sem palavra-passe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERGUNTAS ============ -->
+<section id="perguntas">
+  <div class="limite">
+    <h2>Perguntas frequentes</h2>
+
+    <details class="pergunta">
+      <summary>Preciso de conhecimento prévio para acompanhar?</summary>
+      <p>Não. Os textos são escritos em linguagem simples e cada dia traz a oração, a passagem bíblica e a reflexão já prontas. Não é preciso formação nem leitura anterior.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Recebo algum livro em papel?</summary>
+      <p>Não. A edição é exclusivamente digital, lida no navegador. Não há envio postal nem custos de portes.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Quanto tempo demora a chegar o acesso?</summary>
+      <p>O acesso é enviado para o e-mail indicado na compra logo após a confirmação do pagamento. Se não encontrar a mensagem, verifique a pasta de correio não solicitado e contacte-nos para reenvio.</p>
+    </details>
+    <details class="pergunta">
+      <summary>É uma assinatura? Vou ser cobrado outra vez?</summary>
+      <p>Não. É um pagamento único de € 47,00. Não existe mensalidade, renovação automática nem qualquer cobrança posterior.</p>
+    </details>
+    <details class="pergunta">
+      <summary>E se não for aquilo que eu esperava?</summary>
+      <p>Tem 7 dias para pedir a devolução do valor, sem precisar de justificar. Consulte a <a href="#reembolso">Política de Reembolso</a>.</p>
+    </details>
+    <details class="pergunta">
+      <summary>Este material substitui acompanhamento religioso ou profissional?</summary>
+      <p>Não. Trata-se de conteúdo educativo e de leitura devocional. Não substitui o acompanhamento da sua comunidade religiosa nem constitui aconselhamento financeiro, médico, jurídico ou psicológico. Não garantimos qualquer resultado.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ REEMBOLSO ============ -->
+<section id="reembolso">
+  <div class="limite doc">
+    <h2>Política de Reembolso</h2>
+    <h4>Prazo de garantia</h4>
+    <p>O prazo para solicitação de reembolso é de até <strong>7 dias</strong> após a confirmação do pagamento, sem necessidade de justificação.</p>
+    <h4>Como solicitar</h4>
+    <ul>
+      <li>Enviar e-mail para <a href="mailto:suporte@caminhosdafe.online">suporte@caminhosdafe.online</a> com o assunto <strong>"Reembolso — Pedido #XXXX"</strong>.</li>
+      <li>Informar nome, e-mail usado na compra e número do pedido.</li>
+    </ul>
+    <h4>Forma e prazo do estorno</h4>
+    <p>O estorno é processado no <strong>mesmo método de pagamento</strong>, em até <strong>7 dias úteis</strong> após a aprovação do pedido.</p>
+    <h4>Exceções</h4>
+    <p>Reembolsos solicitados fora do prazo de 7 dias não serão aceites. Compras feitas por engano devem seguir o mesmo procedimento e prazo.</p>
+  </div>
+</section>
+
+<!-- ============ PRIVACIDADE ============ -->
+<section id="privacidade">
+  <div class="limite doc">
+    <h2>Política de Privacidade</h2>
+    <h4>Dados recolhidos</h4>
+    <p>Nome, endereço de e-mail, dados relativos à compra e ao acesso ao material.</p>
+    <h4>Finalidades</h4>
+    <p>Entregar o produto, prestar apoio ao cliente, emitir facturação e enviar comunicações relativas à transacção.</p>
+    <h4>Base legal</h4>
+    <p>Execução do contrato e, quando aplicável, consentimento do titular, nos termos do RGPD e da LGPD (art. 7.º, V).</p>
+    <h4>Partilha com terceiros</h4>
+    <p>Apenas com o processador de pagamento e com fornecedores de infraestrutura (alojamento e envio de e-mail), no estritamente necessário. Não vendemos nem cedemos dados para fins publicitários.</p>
+    <h4>Direitos do titular</h4>
+    <p>Pode aceder, corrigir ou pedir a eliminação dos seus dados a qualquer momento, através de <a href="mailto:suporte@caminhosdafe.online">suporte@caminhosdafe.online</a>.</p>
+  </div>
+</section>
+
+<!-- ============ TERMOS ============ -->
+<section id="termos">
+  <div class="limite doc">
+    <h2>Termos de Uso</h2>
+    <h4>Objecto</h4>
+    <p>Estes termos regulam o acesso a este sítio e aos materiais digitais aqui comercializados.</p>
+    <h4>Licença de uso</h4>
+    <p>O acesso é <strong>pessoal e intransmissível</strong>. Não é permitida a cópia, partilha, revenda ou distribuição do material sem autorização escrita.</p>
+    <h4>Natureza do conteúdo</h4>
+    <p>Material <strong>educativo e devocional</strong>. Não constitui aconselhamento financeiro, médico, jurídico ou psicológico, e não garante qualquer resultado. A experiência varia de leitor para leitor.</p>
+    <h4>Pagamentos</h4>
+    <p>Processados por plataforma de pagamento certificada, em euros (EUR). Pagamento único, sem recorrência.</p>
+  </div>
+</section>
+
+<!-- ============ SUPORTE ============ -->
+<section id="apoio">
+  <div class="limite doc">
+    <h2>Suporte</h2>
+    <h4>Canais de atendimento</h4>
+    <ul>
+      <li><strong>E-mail:</strong> <a href="mailto:suporte@caminhosdafe.online">suporte@caminhosdafe.online</a></li>
+      <li><strong>Tempo de resposta:</strong> até 1 dia útil, de segunda a sexta, das 9h às 18h</li>
+    </ul>
+    <h4>Acesso ao produto</h4>
+    <p>Área de leitura: <a href="https://caminhosdafe.online/app/">caminhosdafe.online/app/</a></p>
+    <p>Dificuldades de acesso? Envie o e-mail usado na compra e o número do pedido.</p>
+    <h4>Questões comuns</h4>
+    <p><strong>Não recebi o acesso:</strong> verifique a pasta de spam ou o separador de promoções; se não encontrar, escreva-nos para reenvio imediato.</p>
+    <p><strong>Quero reembolso:</strong> consulte a Política de Reembolso acima e escreva-nos dentro dos 7 dias.</p>
+    <p><strong>Dúvida sobre a cobrança:</strong> envie os dados do pedido e analisamos de imediato.</p>
+  </div>
+</section>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="rodape">
+  <div class="limite">
+    <div class="rodape-links">
+      <a href="#termos">Termos de Uso</a>
+      <a href="#privacidade">Política de Privacidade</a>
+      <a href="#reembolso">Política de Reembolso</a>
+      <a href="#apoio">Suporte</a>
+    </div>
+
+    <div class="rodape-empresa">
+      <strong>GUIMA DR</strong> &middot; CNPJ 24.023.795/0001-11<br>
+      Av. Paulista, 1471, conjunto 1110 &middot; Jardim Paulista &middot; São Paulo/SP &middot; CEP 01311-927 &middot; Brasil<br>
+      Apoio ao cliente: <a href="mailto:suporte@caminhosdafe.online">suporte@caminhosdafe.online</a>
+    </div>
+
+    <div class="rodape-aviso">
+      Conteúdo educacional. Resultados variam por pessoa. Os materiais publicados destinam-se a leitura devocional e a estudo pessoal.
+      As passagens bíblicas citadas baseiam-se em textos de domínio público. Nada do que aqui se publica constitui aconselhamento
+      financeiro, médico, jurídico ou psicológico, nem substitui acompanhamento profissional ou religioso.
+      Produto digital entregue por e-mail após a confirmação do pagamento, com garantia de devolução de 7 dias.
+    </div>
+  </div>
+</footer>
+
+</div><!-- /#pagina-white -->
+
+</body>
+</html>
